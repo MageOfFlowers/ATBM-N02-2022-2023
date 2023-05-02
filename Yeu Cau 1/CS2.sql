@@ -1,6 +1,6 @@
 grant role_nhanvien to role_giangvien;
 grant select on phancong to role_giangvien;
-grant select, update on dangky to role_giangvien;
+grant select, update(diemth, diemqt, diemck, diemtk) on dangky to role_giangvien;
 /
 create or replace function xemBT_phancong(p_schema varchar2, p_obj varchar2)
 return varchar2

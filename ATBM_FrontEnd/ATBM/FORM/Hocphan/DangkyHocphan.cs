@@ -26,7 +26,7 @@ namespace ATBM.FORM.Hocphan
             masv = m_masv;
             try
             {
-                ds = hp.ds_HocPhanDangKy(masv);
+                ds = hp.ds_HocPhanDangKy();
                 loadCB(ds);
                 loadHP(ds);
             }
@@ -77,7 +77,7 @@ namespace ATBM.FORM.Hocphan
                     {
                         hp.dang_ky_hp(masv, lop);
                         MessageBox.Show("Đăng ký thành công");
-                        ds = hp.ds_HocPhanDangKy(masv);
+                        ds = hp.ds_HocPhanDangKy();
                     }
                     catch (Exception ex)
                     {
@@ -114,7 +114,7 @@ namespace ATBM.FORM.Hocphan
         {
             try
             {
-                ds = hp.ds_HocPhanDangKy(masv);
+                ds = hp.ds_HocPhanDangKy();
                 loadHP(ds);
             }
             catch(Exception ex)

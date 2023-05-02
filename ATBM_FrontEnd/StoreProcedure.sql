@@ -109,7 +109,7 @@ begin
 end;
 /
 
-create or replace procedure xem_khm_cua_sv (m_masv in varchar2, c1 out SYS_REFCURSOR)
+create or replace procedure xem_khm_cua_sv (c1 out SYS_REFCURSOR)
 as
 begin
     open c1 for
@@ -119,8 +119,18 @@ begin
     except
     select k.mahp, h.tenhp, k.hk, k.nam, k.mact 
     from admin_ols1.dangky k join admin_ols1.hocphan h
-    on k.mahp = h.mahp
-    where k.masv = m_masv;
+    on k.mahp = h.mahp;
+    DBMS_SQL.RETURN_RESULT(c1);
+end;
+/
+
+create or replace procedure xem_khm_da_dk (c1 out SYS_REFCURSOR)
+as
+begin
+    open c1 for
+    select k.mahp, h.tenhp, k.hk, k.nam, k.mact 
+    from admin_ols1.dangky k join admin_ols1.hocphan h
+    on k.mahp = h.mahp;
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
@@ -129,6 +139,7 @@ grant execute on xem_ds_ke_hoach_mo to role_sinhvien, role_nhanvien, role_giangv
 grant execute on them_ke_hoach to role_giaovu;
 grant execute on thay_doi_ke_hoach to role_giaovu;
 grant execute on xem_khm_cua_sv to role_sinhvien;
+grant execute on xem_khm_da_dk to role_sinhvien;
 /
 
 
