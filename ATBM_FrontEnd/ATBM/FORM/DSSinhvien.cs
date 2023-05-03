@@ -55,7 +55,9 @@ namespace ATBM.FORM
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string MSSV_B = MaSVB.Text;
+            ThongTinCaNhan_SinhVien f = new ThongTinCaNhan_SinhVien(MSSV_B);
+            f.ShowDialog();
         }
 
         private void DSSinhvien_Load(object sender, EventArgs e)

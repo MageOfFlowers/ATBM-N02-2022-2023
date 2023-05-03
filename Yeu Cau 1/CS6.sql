@@ -79,8 +79,12 @@ TYPE v_array_type IS VARRAY (20) OF CHAR(8);
 user VARCHAR2(100);
 Begin
 user := SYS_CONTEXT('userenv', 'SESSION_USER');
-SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
-select MAHP bulk collect into mahpArr from Admin_ols1.PHANCONG where MACT = p_MACT;
+for r in (SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = user)
+loop
+    IF r.granted_role = 'ROLE_SINHVIEN' then 
+        begin
+        SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
+        select MAHP bulk collect into mahpArr from Admin_ols1.PHANCONG where MACT = p_MACT;
         if(mahpArr.count>1) then
             begin
             mahp_s:= chr(39)|| mahpArr(1) || chr(39);
@@ -91,31 +95,12 @@ select MAHP bulk collect into mahpArr from Admin_ols1.PHANCONG where MACT = p_MA
             end;
         end if;
         return 'MAHP in (' || mahp_s || ')';
+        end;
+    end if;
+END LOOP;
+return '1=1';
 End;
-/
-Create or replace function xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function2(p_schema varchar2, p_obj varchar2)
-Return varchar2
-As
-p_MACT VARCHAR2(100);
-TYPE v_array_type IS VARRAY (20) OF CHAR(8);
-        mahpArr v_array_type;
-        mahp_s varchar(200);
-user VARCHAR2(100);
-Begin
-user := SYS_CONTEXT('userenv', 'SESSION_USER');
-SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
-select MAHP bulk collect into mahpArr from Admin_ols1.PHANCONG where MACT = p_MACT;
-        if(mahpArr.count>1) then
-            begin
-            mahp_s:= chr(39)|| mahpArr(1) || chr(39);
-                for x in 2..mahpArr.count 
-                loop
-                  mahp_s := mahp_s||','||chr(39)|| mahpArr(x)|| chr(39);
-                end loop;
-            end;
-        end if;
-        return 'MAHP in (' || mahp_s || ')';
-End;
+
 /
 begin
 dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
@@ -138,7 +123,7 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'HOCPHAN',
                             policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy2',
                             function_schema => 'ADMIN_OLS1',
-                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function2',
+                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function',
                             statement_types => 'select');
 end;    
 /       
@@ -165,6 +150,11 @@ TYPE v_array_type IS VARRAY (20) OF CHAR(8);
         mahpArr v_array_type;
         mahp_s varchar(200);
 Begin
+user := SYS_CONTEXT('userenv', 'SESSION_USER');
+for r in (SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = user)
+loop
+    IF r.granted_role = 'ROLE_SINHVIEN' then 
+    begin
 SELECT TRUNC(CURRENT_DATE) into current_date FROM dual;
 first := to_date('1-1-' || TO_CHAR(SYSDATE, 'YYYY'), 'DD-MM-YYYY');
 second := to_date('1-5-' || TO_CHAR(SYSDATE, 'YYYY'), 'DD-MM-YYYY');
@@ -205,6 +195,15 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             policy_function => 'dang_ky_hoc_phan_trong_hoc_ky_nay_function',
                             statement_types => 'insert, delete',
                             update_check => TRUE );
+end;
+/
+begin
+dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'KHMO',
+                            policy_name => 'dang_ky_hoc_phan_trong_hoc_ky_nay_policy',
+                            function_schema => 'ADMIN_OLS1',
+                            policy_function => 'dang_ky_hoc_phan_trong_hoc_ky_nay_function',
+                            statement_types => 'select');
 end;
 /
 /*
