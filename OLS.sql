@@ -1,0 +1,38 @@
+alter session set "_ORACLE_SCRIPT"=true;
+alter session set container = CDB$ROOT;
+
+create pluggable database ATBM_A admin user ADMIN_OLS identified by oracle
+FILE_NAME_CONVERT=('C:\APP\USER\PRODUCT\21C\ORADATA\XE\','C:\APP\USER\PRODUCT\21C\ORADATA\ATBM_1\');
+ALTER PLUGGABLE DATABASE ALL OPEN;
+ALTER PLUGGABLE DATABASE ATBM_A SAVE STATE;
+
+alter session set container = ATBM_A;
+CREATE USER ADMIN_OLS IDENTIFIED BY 123 CONTAINER = CURRENT;
+alter session set container = CDB$ROOT;
+
+GRANT CONNECT, RESOURCE, SELECT_CATALOG_ROLE TO ADMIN_OLS;
+ALTER USER lbacsys IDENTIFIED BY lbacsys ACCOUNT UNLOCK;
+CONN lbacsys/lbacsys
+
+GRANT EXECUTE ON sa_components TO ADMIN_OLS WITH GRANT OPTION;
+GRANT EXECUTE ON sa_user_admin TO ADMIN_OLS WITH GRANT OPTION;
+GRANT EXECUTE ON sa_user_admin TO ADMIN_OLS WITH GRANT OPTION;
+GRANT EXECUTE ON sa_label_admin TO ADMIN_OLS WITH GRANT OPTION;
+GRANT EXECUTE ON sa_policy_admin TO ADMIN_OLS WITH GRANT OPTION;
+GRANT EXECUTE ON sa_audit_admin  TO ADMIN_OLS WITH GRANT OPTION;
+
+GRANT LBAC_DBA TO ADMIN_OLS;
+GRANT EXECUTE ON sa_sysdba TO ADMIN_OLS;
+GRANT EXECUTE ON to_lbac_data_label TO ADMIN_OLS;
+alter session set container = ATBM_A;
+show con_name
+CONN ADMIN_OLS/oracle@//localhost:1521/ATBM_A
+
+BEGIN
+  SA_SYSDBA.CREATE_POLICY(
+    policy_name => 'region_policy',
+    column_name => 'region_label');
+END;
+/
+
+GRANT region_policy_DBA TO ADMIN_OLS;
