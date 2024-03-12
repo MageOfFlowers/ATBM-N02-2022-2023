@@ -1,0 +1,4 @@
+-Chạy từng lệnh của ATBM (Sửa đường dẫn chỗ tạo PDB)
+-Tắt đi mở lại
+-Chạy lệnh đầu của AD(Kết nối tk: ADMIN_OLS1/123, chọn Service name: ATBM_3)
+-Chạy phần còn lại
