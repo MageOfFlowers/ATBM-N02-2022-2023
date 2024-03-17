@@ -112,6 +112,12 @@
     <Compile Include="AddRole.Designer.cs">
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThongTinLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinLopHoc.Designer.cs">
+      <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Privilege.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </Compile>
     <EmbeddedResource Include="Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongTinLopHoc.resx">
+      <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
