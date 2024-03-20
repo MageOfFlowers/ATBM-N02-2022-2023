@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,6 +49,17 @@ namespace ATBM
                 depMedTable.Rows.Add(d.mID, d.name, d.remain);
             }
             depMedTable.CellValidating += new DataGridViewCellValidatingEventHandler(checkNum);
+
+            MaLopCB.DisplayMember = "name";
+            PhanCongBUS bus = new NhaSiBUS();
+            IList<NhaSiDTO> dsNhaSi = bus.layDSNhaSi();
+            dentistName.Text = nhasi.name;
+            assistantCB.Items.AddRange(dsNhaSi.ToArray<NhaSiDTO>());
+            assistantCB.KeyDown += new KeyEventHandler(keydownEvt);
+            if (assistantCB.Items.Count > 0)
+            {
+                assistantCB.SelectedIndex = 0;
+            }
 
         }
         private void label1_Click(object sender, EventArgs e)

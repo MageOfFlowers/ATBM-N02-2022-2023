@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.MaLop = new System.Windows.Forms.TextBox();
             this.ThongTinLopDGV = new System.Windows.Forms.DataGridView();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,10 +41,9 @@
             this.TenLop = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.HocKiTB = new System.Windows.Forms.TextBox();
-            this.NamTB = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.MaLopCB = new System.Windows.Forms.ComboBox();
+            this.HocKiCB = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ThongTinLopDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,16 +57,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Thông tin lớp học";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // MaLop
-            // 
-            this.MaLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.MaLop.Location = new System.Drawing.Point(125, 57);
-            this.MaLop.Name = "MaLop";
-            this.MaLop.ReadOnly = true;
-            this.MaLop.Size = new System.Drawing.Size(151, 28);
-            this.MaLop.TabIndex = 1;
-            this.MaLop.TextChanged += new System.EventHandler(this.TenLop_TextChanged);
             // 
             // ThongTinLopDGV
             // 
@@ -178,56 +166,43 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Tên lớp";
             // 
-            // HocKiTB
-            // 
-            this.HocKiTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.HocKiTB.Location = new System.Drawing.Point(718, 12);
-            this.HocKiTB.Name = "HocKiTB";
-            this.HocKiTB.ReadOnly = true;
-            this.HocKiTB.Size = new System.Drawing.Size(47, 28);
-            this.HocKiTB.TabIndex = 6;
-            // 
-            // NamTB
-            // 
-            this.NamTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.NamTB.Location = new System.Drawing.Point(604, 13);
-            this.NamTB.Name = "NamTB";
-            this.NamTB.ReadOnly = true;
-            this.NamTB.Size = new System.Drawing.Size(68, 28);
-            this.NamTB.TabIndex = 7;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(562, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 16);
+            this.label4.Size = new System.Drawing.Size(78, 16);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Năm";
+            this.label4.Text = "Học kì/Năm";
             // 
-            // label5
+            // MaLopCB
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(681, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 16);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "H.Kì";
+            this.MaLopCB.FormattingEnabled = true;
+            this.MaLopCB.Location = new System.Drawing.Point(127, 61);
+            this.MaLopCB.Name = "MaLopCB";
+            this.MaLopCB.Size = new System.Drawing.Size(151, 24);
+            this.MaLopCB.TabIndex = 10;
+            // 
+            // HocKiCB
+            // 
+            this.HocKiCB.FormattingEnabled = true;
+            this.HocKiCB.Location = new System.Drawing.Point(646, 15);
+            this.HocKiCB.Name = "HocKiCB";
+            this.HocKiCB.Size = new System.Drawing.Size(119, 24);
+            this.HocKiCB.TabIndex = 11;
             // 
             // ThongTinLopHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.HocKiCB);
+            this.Controls.Add(this.MaLopCB);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.NamTB);
-            this.Controls.Add(this.HocKiTB);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TenLop);
             this.Controls.Add(this.ThongTinLopDGV);
-            this.Controls.Add(this.MaLop);
             this.Controls.Add(this.label1);
             this.Name = "ThongTinLopHoc";
             this.Text = "Form2";
@@ -240,7 +215,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox MaLop;
         private System.Windows.Forms.DataGridView ThongTinLopDGV;
         private System.Windows.Forms.TextBox TenLop;
         private System.Windows.Forms.Label label2;
@@ -253,9 +227,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemQT;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemCK;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiemTK;
-        private System.Windows.Forms.TextBox HocKiTB;
-        private System.Windows.Forms.TextBox NamTB;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox MaLopCB;
+        private System.Windows.Forms.ComboBox HocKiCB;
     }
 }
