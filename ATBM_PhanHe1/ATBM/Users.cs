@@ -7,8 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using ATBM.BUS;
 
 namespace ATBM
 {
@@ -21,31 +20,11 @@ namespace ATBM
 
         private void Users_Load(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=LAPTOP-SF4GJF11;User Id=tai211003;Password=tai62506716;";
-            try
-            {
-                using (OracleConnection connection = new OracleConnection(connectionString))
-                {
-                    connection.Open();
-                    string sqlQuery = "select user_id, username from dba_users where account_status = 'OPEN' and user_id >= 116 and username != 'SYSRAC'";
-                    using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
-                    {
-                        // Tạo DataSet để chứa dữ liệu
-                        DataSet dataSet = new DataSet();
 
-                        // Đổ dữ liệu từ OracleDataAdapter vào DataSet
-                        adapter.Fill(dataSet, "dba_users");
+            AdminBUS admin = new AdminBUS();
+            DataSet dataSet = admin.UserList();
+            UserList.DataSource = dataSet.Tables["dba_users"];
 
-                        // Hiển thị dữ liệu trong DataGridView
-                        UserList.DataSource = dataSet.Tables["dba_users"];
-                    }
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
             DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
             editColumn.HeaderText = "";
             editColumn.Text = "Edit";

@@ -26,23 +26,22 @@ namespace ATBM
 
         private void Roles_Load(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=LAPTOP-SF4GJF11;User Id=tai211003;Password=tai62506716;";
             try
             {
-                using (OracleConnection connection = new OracleConnection(connectionString))
+                using (OracleConnection connection = new OracleConnection(Program.connectionString))
                 {
                     connection.Open();
-                    string sqlQuery = "select granted_role as role, count(username) as quantity from user_role_privs group by granted_role";
+                    string sqlQuery = "select granted_role as role, count(grantee) as quantity from dba_role_privs where granted_role in (select granted_role from user_role_privs) group by granted_role";
                     using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
                     {
                         // Tạo DataSet để chứa dữ liệu
                         DataSet dataSet = new DataSet();
 
                         // Đổ dữ liệu từ OracleDataAdapter vào DataSet
-                        adapter.Fill(dataSet, "user_role_privs");
+                        adapter.Fill(dataSet, "dba_role_privs");
 
                         // Hiển thị dữ liệu trong DataGridView
-                        RoleList.DataSource = dataSet.Tables["user_role_privs"];
+                        RoleList.DataSource = dataSet.Tables["dba_role_privs"];
                     }
                     connection.Close();
                 }

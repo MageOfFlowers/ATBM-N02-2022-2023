@@ -24,10 +24,10 @@ namespace ATBM
         {
             string username = Username.Text;
             string password = Password.Text;
-            string connectionString = $"Data Source=LAPTOP-SF4GJF11;User Id={username};Password={password};";
+            Program.connectionString += $"User Id={username};Password={password};";
             try
             {
-                using (OracleConnection connection = new OracleConnection(connectionString))
+                using (OracleConnection connection = new OracleConnection(Program.connectionString))
                 {
                     connection.Open();
                     MessageBox.Show("Login Success");

@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM.BUS
 {
-    internal class NhanSuBUS
+    /*internal class NhanSuBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
 
@@ -268,5 +268,5 @@ namespace ATBM.BUS
             }
             MessageBox.Show("Success");
         }
-    }
+    }*/
 }

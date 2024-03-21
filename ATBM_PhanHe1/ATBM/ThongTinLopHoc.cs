@@ -24,9 +24,9 @@ namespace ATBM
         public ThongTinLopHoc(string MaHP, int HocKi, string Nam)
         {
             InitializeComponent();
-            MaLop.Text = MaHP;
-            HocKiTB.Text = HocKi.ToString();
-            NamTB.Text = Nam;
+            MaLopCB.Text = MaHP;
+            HocKiCB.Text = HocKi.ToString();
+            //NamTB.Text = Nam;
             TenLop.Text = "None";
             this.MaHP = MaHP;
             this.HocKi = HocKi;
@@ -36,12 +36,12 @@ namespace ATBM
         private void ThongTinLopHoc_Load(object sender, EventArgs e)
         {
             loadData();
-            ThongTinLopDGV.CellValueChanged += new DataGridViewCellEventHandler(updateMedDep);
+            //ThongTinLopDGV.CellValueChanged += new DataGridViewCellEventHandler(updateMedDep);
         }
 
         private void loadData()
         {
-            ThongTinLopDGV.Rows.Clear();
+            /*ThongTinLopDGV.Rows.Clear();
             DepartmentBUS departmentBUS = new DepartmentBUS();
             IList<MedDepDTO> ds = departmentBUS.layDSThuoc_CoSo(id);
             foreach (MedDepDTO d in ds)
@@ -59,7 +59,7 @@ namespace ATBM
             if (assistantCB.Items.Count > 0)
             {
                 assistantCB.SelectedIndex = 0;
-            }
+            }*/
 
         }
         private void label1_Click(object sender, EventArgs e)
