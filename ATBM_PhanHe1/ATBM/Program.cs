@@ -8,7 +8,7 @@ namespace ATBM
 {
     internal static class Program
     {
-        public static string connectionString = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ATBM_3)));DBA Privilege=SYSDBA;";
+        public static string connectionString = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=ATBM_3)));";
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

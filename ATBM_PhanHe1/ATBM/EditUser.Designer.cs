@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.QuyenView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.Username = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QuyenView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -48,15 +48,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Privileges";
             // 
-            // dataGridView1
+            // QuyenView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(486, 68);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(178, 356);
-            this.dataGridView1.TabIndex = 1;
+            this.QuyenView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.QuyenView.Location = new System.Drawing.Point(486, 68);
+            this.QuyenView.Name = "QuyenView";
+            this.QuyenView.RowHeadersWidth = 51;
+            this.QuyenView.RowTemplate.Height = 24;
+            this.QuyenView.Size = new System.Drawing.Size(178, 356);
+            this.QuyenView.TabIndex = 1;
             // 
             // label2
             // 
@@ -120,12 +120,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Username);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.QuyenView);
             this.Controls.Add(this.label1);
             this.Name = "EditUser";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.EditUser_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QuyenView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,7 +134,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView QuyenView;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Username;
         private System.Windows.Forms.Label label3;
