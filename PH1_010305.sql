@@ -1,7 +1,7 @@
 SELECT * FROM dba_users;
 
 --01
-create or replace procedure ListUserAccounts (c1 out SYS_REFCURSOR)
+create or replace procedure DS_User (c1 out SYS_REFCURSOR)
 as
 begin
     open c1 for
