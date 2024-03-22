@@ -46,11 +46,7 @@ namespace ATBM
             try
             {
                 DataTable dataTable = adminBUS.UserList();
-<<<<<<< Updated upstream
                 UserList.DataSource = dataTable;
-=======
-                UserList.DataSource = dataTable.Tables["dba_users"];
->>>>>>> Stashed changes
             }
             catch (Exception ex)
             {
