@@ -1,4 +1,4 @@
-SELECT * FROM dba_users;
+--SELECT * FROM dba_users;
 
 --01
 create or replace procedure DS_User (c1 out SYS_REFCURSOR)
@@ -9,7 +9,7 @@ begin
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 //
-EXEC ListUserAccounts;
+--EXEC ListUserAccounts;
 /
 
 --03
@@ -25,7 +25,7 @@ BEGIN
 --    EXECUTE IMMEDIATE(STRSQL);
 END;
 //
-EXEC Tao_User('Jin', '1231');
+--EXEC Tao_User('Jin', '1231');
 /
 
 CREATE OR REPLACE PROCEDURE Tao_Role (Name VARCHAR2)
@@ -40,7 +40,7 @@ BEGIN
 --    EXECUTE IMMEDIATE(STRSQL);
 END;
 //
-EXEC Tao_Role('Role_Jin');
+--EXEC Tao_Role('Role_Jin');
 /
 
 CREATE OR REPLACE PROCEDURE Xoa_User (Name VARCHAR2)
@@ -55,7 +55,7 @@ BEGIN
 --    EXECUTE IMMEDIATE(STRSQL);
 END;
 //
-EXEC Xoa_User('Jin');
+--EXEC Xoa_User('Jin');
 /
 
 CREATE OR REPLACE PROCEDURE Xoa_Role (Name VARCHAR2)
@@ -70,7 +70,7 @@ BEGIN
 --    EXECUTE IMMEDIATE(STRSQL);
 END;
 //
-EXEC Xoa_Role('Role_Jin');
+--EXEC Xoa_Role('Role_Jin');
 /
 
 CREATE OR REPLACE PROCEDURE Doi_MK_User (Name VARCHAR2, newPass VARCHAR2)
@@ -85,7 +85,7 @@ BEGIN
 --    EXECUTE IMMEDIATE(STRSQL);
 END;
 //
-EXEC Doi_MK_User('Jin', '133');
+--EXEC Doi_MK_User('Jin', '133');
 /
 
 CREATE OR REPLACE PROCEDURE Doi_Trangthai_User (Name VARCHAR2, Status VARCHAR2)
@@ -100,7 +100,7 @@ BEGIN
 --    EXECUTE IMMEDIATE(STRSQL);
 END;
 //
-EXEC Doi_Trangthai_User('Jin', 'unlock');
+--EXEC Doi_Trangthai_User('Jin', 'unlock');
 /
 
 --grant Select on NHANSU to Jin;
@@ -122,8 +122,8 @@ BEGIN
 --    EXECUTE IMMEDIATE(STRSQL);
 END;
 //
-EXEC Thu_hoi_quyen_UserRole('SELECT', 'NHANSU', 'Jin');
-EXEC Thu_hoi_quyen_UserRole('SELECT', 'NHANSU', 'Role_Jin');
+--EXEC Thu_hoi_quyen_UserRole('SELECT', 'NHANSU', 'Jin');
+--EXEC Thu_hoi_quyen_UserRole('SELECT', 'NHANSU', 'Role_Jin');
 /
 
 
