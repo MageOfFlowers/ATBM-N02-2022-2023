@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Data.Linq.Mapping;
 
 namespace ATBM.BUS
 {
@@ -18,7 +19,7 @@ namespace ATBM.BUS
         public DataTable UserList()
         {
             DataTable dataTable = new DataTable();
-            string procedureName = "ListUserAccounts";
+            string procedureName = "DS_User";
             using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
                 connection.Open();
@@ -33,66 +34,60 @@ namespace ATBM.BUS
             return dataTable;
         }
 
-        public void AddUser(string username, string password, string role)
+        public void AddUser(string username, string password)
         {
-            connection.Open();
-            string sqlQuery1 = $"create user {username} identified by {password}";
-            string sqlQuery2 = $"grant {role} to {username}";
-            using (OracleCommand command1 = new OracleCommand(sqlQuery1, connection))
+            string procedureName = "Tao_User";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
-                command1.ExecuteNonQuery();
-                if (role != "None")
-                    using (OracleCommand command2 = new OracleCommand(sqlQuery2, connection))
-                    {
-                        command2.ExecuteNonQuery();
-                    }
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("Name", OracleDbType.Varchar2).Value = username;
+                command.Parameters.Add("Pasw", OracleDbType.Varchar2).Value = password;
+
+                command.ExecuteNonQuery();
+                connection.Close();
             }
-            connection.Close();
         }
 
         public void DeleteUser(string username)
         {
-            connection.Open();
-            string sqlQuery1 = "alter session set \"_ORACLE_SCRIPT\"=true";
-            string sqlQuery2 = $"drop user {username}";
-            using (OracleCommand command1 = new OracleCommand(sqlQuery1, connection))
+            string procedureName = "Xoa_User";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
-                command1.ExecuteNonQuery();
-                using (OracleCommand command2 = new OracleCommand(sqlQuery2, connection))
-                {
-                    command2.ExecuteNonQuery();
-                }
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("Name", OracleDbType.Varchar2).Value = username;
+
+                command.ExecuteNonQuery();
+                connection.Close();
             }
-            connection.Close();
         }
 
-        public DataSet RoleList()
+        public DataTable RoleList()
         {
-            DataSet dataSet = new DataSet();
+            DataTable dataTable = new DataTable();
             connection.Open();
             string sqlQuery = "select granted_role as role, count(grantee) as quantity from dba_role_privs where granted_role in (select granted_role from user_role_privs) group by granted_role";
             using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
             {
-                adapter.Fill(dataSet, "roles");
+                adapter.Fill(dataTable);
             }
             connection.Close();
-            return dataSet;
+            return dataTable;
         }
      
         public void AddRole(string role)
         {
-            connection.Open();
-            string sqlQuery1 = "alter session set \"_ORACLE_SCRIPT\"=true";
-            string sqlQuery2 = $"create role {role}";
-            using (OracleCommand command1 = new OracleCommand(sqlQuery1, connection))
+            string procedureName = "Tao_Role";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
-                command1.ExecuteNonQuery();
-                using (OracleCommand command2 = new OracleCommand(sqlQuery2, connection))
-                {
-                    command2.ExecuteNonQuery();
-                }
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("Name", OracleDbType.Varchar2).Value = role;
+
+                command.ExecuteNonQuery();
+                connection.Close();
             }
-            connection.Close();
         }
 
         public DataTable Xem_Quyen(string username)
@@ -116,18 +111,16 @@ namespace ATBM.BUS
 
         public void DeleteRole(string role)
         {
-            connection.Open();
-            string sqlQuery1 = "alter session set \"_ORACLE_SCRIPT\"=true";
-            string sqlQuery2 = $"drop role {role}";
-            using (OracleCommand command1 = new OracleCommand(sqlQuery1, connection))
+            string procedureName = "Xoa_Role";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
-                command1.ExecuteNonQuery();
-                using (OracleCommand command2 = new OracleCommand(sqlQuery2, connection))
-                {
-                    command2.ExecuteNonQuery();
-                }
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("Name", OracleDbType.Varchar2).Value = role;
+
+                command.ExecuteNonQuery();
+                connection.Close();
             }
-            connection.Close();
         }
 
         public DataTable TablesList()
