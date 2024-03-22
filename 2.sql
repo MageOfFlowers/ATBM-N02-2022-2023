@@ -1,5 +1,5 @@
 
-create or replace procedure ADMIN_OLS1.xem_quyen_user (p_user in varchar, c1 out SYS_REFCURSOR)
+create or replace procedure ADMIN_OLS1.xem_ds_table (p_user in varchar, c1 out SYS_REFCURSOR)
 as
 begin
     open c1 for
@@ -9,7 +9,7 @@ begin
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 
-create or replace procedure ADMIN_OLS1.xem_ds_table (p_user in varchar, c1 out SYS_REFCURSOR)
+create or replace procedure ADMIN_OLS1.xem_quyen_user (p_user in varchar, c1 out SYS_REFCURSOR)
 as
 begin
     open c1 for

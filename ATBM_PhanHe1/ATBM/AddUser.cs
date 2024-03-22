@@ -33,6 +33,10 @@ namespace ATBM
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                Close();
+            }
         }
 
         private void AddUser_Load(object sender, EventArgs e)

@@ -21,9 +21,10 @@ namespace ATBM
 
         private void UserList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string username = UserList.Rows[e.RowIndex].Cells["USERNAME"].Value.ToString();
+            
             if (e.RowIndex >= 0)
             {
+                string username = UserList.Rows[e.RowIndex].Cells["USERNAME"].Value.ToString();
                 if (e.ColumnIndex == UserList.Columns["Edit"].Index)
                 {
                     EditUser editUser = new EditUser(username);

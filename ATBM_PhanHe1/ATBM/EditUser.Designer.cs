@@ -53,7 +53,7 @@
             // 
             this.QuyenView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.QuyenView.Location = new System.Drawing.Point(305, 55);
-            this.QuyenView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.QuyenView.Margin = new System.Windows.Forms.Padding(2);
             this.QuyenView.Name = "QuyenView";
             this.QuyenView.RowHeadersWidth = 51;
             this.QuyenView.RowTemplate.Height = 24;
@@ -74,8 +74,9 @@
             // Username
             // 
             this.Username.Location = new System.Drawing.Point(144, 36);
-            this.Username.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Username.Margin = new System.Windows.Forms.Padding(2);
             this.Username.Name = "Username";
+            this.Username.ReadOnly = true;
             this.Username.Size = new System.Drawing.Size(76, 20);
             this.Username.TabIndex = 3;
             // 
@@ -93,7 +94,7 @@
             // 
             this.RoleCB.FormattingEnabled = true;
             this.RoleCB.Location = new System.Drawing.Point(144, 82);
-            this.RoleCB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RoleCB.Margin = new System.Windows.Forms.Padding(2);
             this.RoleCB.Name = "RoleCB";
             this.RoleCB.Size = new System.Drawing.Size(76, 21);
             this.RoleCB.TabIndex = 5;
@@ -101,7 +102,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(86, 258);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 19);
             this.button1.TabIndex = 6;
@@ -112,7 +113,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(103, 292);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(56, 19);
             this.button2.TabIndex = 7;
@@ -132,7 +133,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.QuyenView);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EditUser";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.EditUser_Load);
