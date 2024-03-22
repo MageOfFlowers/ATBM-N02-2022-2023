@@ -39,10 +39,9 @@ namespace ATBM
         {
             Role.Items.Add("None");
             Role.SelectedItem = "None";
-            string connectionString = "Data Source=LAPTOP-SF4GJF11;User Id=tai211003;Password=tai62506716;";
             try
             {
-                using (OracleConnection connection = new OracleConnection(connectionString))
+                using (OracleConnection connection = new OracleConnection(Program.connectionString))
                 {
                     connection.Open();
                     string sqlQuery = "select distinct granted_role from user_role_privs";
