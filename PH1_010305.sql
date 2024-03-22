@@ -1,3 +1,4 @@
+SELECT * FROM dba_users;
 
 --01
 create or replace procedure ListUserAccounts
@@ -8,7 +9,7 @@ begin
     SELECT * FROM dba_users;
     DBMS_SQL.RETURN_RESULT(c1);
 end;
-/
+//
 EXEC ListUserAccounts;
 /
 
@@ -24,7 +25,7 @@ BEGIN
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
     EXECUTE IMMEDIATE(STRSQL);
 END;
-/
+//
 EXEC Tao_User('Jin', '1231');
 /
 
@@ -39,8 +40,8 @@ BEGIN
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
     EXECUTE IMMEDIATE(STRSQL);
 END;
-/
-EXEC Tao_Role('Xem');
+//
+EXEC Tao_Role('Role_Jin');
 /
 
 CREATE OR REPLACE PROCEDURE Xoa_User (Name VARCHAR2)
@@ -54,7 +55,7 @@ BEGIN
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
     EXECUTE IMMEDIATE(STRSQL);
 END;
-/
+//
 EXEC Xoa_User('Jin');
 /
 
@@ -69,8 +70,8 @@ BEGIN
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
     EXECUTE IMMEDIATE(STRSQL);
 END;
-/
-EXEC Xoa_Role('Xem');
+//
+EXEC Xoa_Role('Role_Jin');
 /
 
 CREATE OR REPLACE PROCEDURE Doi_MK_User (Name VARCHAR2, newPass VARCHAR2)
@@ -84,7 +85,7 @@ BEGIN
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
     EXECUTE IMMEDIATE(STRSQL);
 END;
-/
+//
 EXEC Doi_MK_User('Jin', '133');
 /
 
@@ -99,7 +100,7 @@ BEGIN
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
     EXECUTE IMMEDIATE(STRSQL);
 END;
-/
+//
 EXEC Doi_Trangthai_User('Jin', 'lock');
 /
 
@@ -115,8 +116,11 @@ BEGIN
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
     EXECUTE IMMEDIATE(STRSQL);
 END;
+/
+EXEC Thu_hoi_quyen_User('SELECT', 'NHANSU', 'Jin');
+/
 
-CREATE OR REPLACE PROCEDURE Thu_hoi_quyen_User(Privilege VARCHAR2, Object VARCHAR2, Grantee VARCHAR2)
+CREATE OR REPLACE PROCEDURE Thu_hoi_quyen_Role(Privilege VARCHAR2, Grantee VARCHAR2)
 AS
     STRSQL VARCHAR(2000);
 BEGIN
@@ -127,4 +131,7 @@ BEGIN
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
     EXECUTE IMMEDIATE(STRSQL);
 END;
+/
+EXEC Thu_hoi_quyen_Role('SELECT', 'Role_Jin');
+/
 
