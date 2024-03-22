@@ -1,11 +1,19 @@
 --SELECT * FROM dba_users;
+set pagesize 200
+col USERNAME format a25
+col PDB_NAME format a15
+select user_id,USERNAME,a.CON_ID,PDB_NAME,CREATED from CDB_USERS a ,dba_pdbs b
+where 1=1 and user_id > 108 and user_id < 500
+and b.PDB_ID=a.CON_ID
 
 --01
 create or replace procedure DS_User (c1 out SYS_REFCURSOR)
 as
 begin
     open c1 for
-    SELECT USERNAME FROM dba_users;
+    select USERNAME,a.CON_ID,PDB_NAME,CREATED from CDB_USERS a ,dba_pdbs b
+    where 1=1 and user_id > 108 and user_id < 500
+    and b.PDB_ID=a.CON_ID;
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 //
