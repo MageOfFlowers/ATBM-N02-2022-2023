@@ -97,14 +97,16 @@ namespace ATBM.BUS
             using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
                 connection.Open();
+                OracleDataAdapter da = new OracleDataAdapter();
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("p_user", OracleDbType.Varchar2).Value = username;
-                command.ExecuteNonQuery();
-                OracleDataReader reader = ((OracleRefCursor)command.Parameters["c1"].Value).GetDataReader();
-                dataTable.Load(reader);
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+                
+                da.SelectCommand = command;
+                da.Fill(dataTable);
                 connection.Close();
             }
-            return dataTable;
+            return dataTable;  
         }
     }
 }

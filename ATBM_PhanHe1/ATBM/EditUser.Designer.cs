@@ -42,7 +42,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(483, 30);
+            this.label1.Location = new System.Drawing.Point(404, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 0;
@@ -51,11 +51,11 @@
             // QuyenView
             // 
             this.QuyenView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.QuyenView.Location = new System.Drawing.Point(486, 68);
+            this.QuyenView.Location = new System.Drawing.Point(407, 68);
             this.QuyenView.Name = "QuyenView";
             this.QuyenView.RowHeadersWidth = 51;
             this.QuyenView.RowTemplate.Height = 24;
-            this.QuyenView.Size = new System.Drawing.Size(178, 356);
+            this.QuyenView.Size = new System.Drawing.Size(364, 356);
             this.QuyenView.TabIndex = 1;
             // 
             // label2
