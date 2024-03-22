@@ -101,37 +101,30 @@ BEGIN
     EXECUTE IMMEDIATE(STRSQL);
 END;
 //
-EXEC Doi_Trangthai_User('Jin', 'lock');
+EXEC Doi_Trangthai_User('Jin', 'unlock');
 /
+
+--grant Select on NHANSU to Jin;
+--revoke select on NHANSU from Jin;
+
+--Grant select on NHANSU to Role_Jin;
+--revoke select on NHANSU from Role_Jin;
 
 --05
-CREATE OR REPLACE PROCEDURE Thu_hoi_quyen_User(Privilege VARCHAR2, Object VARCHAR2, Grantee VARCHAR2)
+CREATE OR REPLACE PROCEDURE Thu_hoi_quyen_UserRole(Privilege VARCHAR2, Object VARCHAR2, Name VARCHAR2)
 AS
     STRSQL VARCHAR(2000);
 BEGIN
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE';
     EXECUTE IMMEDIATE(STRSQL);
-    STRSQL := 'REVOKE ' || Privilege || ' ON ' || Object || ' FROM ' || Grantee;
+    STRSQL := 'REVOKE '|| Privilege ||' ON '||Object||' FROM '||Name;
     EXECUTE IMMEDIATE(STRSQL);
     STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
     EXECUTE IMMEDIATE(STRSQL);
 END;
-/
-EXEC Thu_hoi_quyen_User('SELECT', 'NHANSU', 'Jin');
+//
+EXEC Thu_hoi_quyen_UserRole('SELECT', 'NHANSU', 'Jin');
+EXEC Thu_hoi_quyen_UserRole('SELECT', 'NHANSU', 'Role_Jin');
 /
 
-CREATE OR REPLACE PROCEDURE Thu_hoi_quyen_Role(Privilege VARCHAR2, Grantee VARCHAR2)
-AS
-    STRSQL VARCHAR(2000);
-BEGIN
-    STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE';
-    EXECUTE IMMEDIATE(STRSQL);
-    STRSQL := 'REVOKE ' || Privilege || ' FROM ' || Grantee;
-    EXECUTE IMMEDIATE(STRSQL);
-    STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
-    EXECUTE IMMEDIATE(STRSQL);
-END;
-/
-EXEC Thu_hoi_quyen_Role('SELECT', 'Role_Jin');
-/
 
