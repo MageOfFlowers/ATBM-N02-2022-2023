@@ -1,12 +1,11 @@
 SELECT * FROM dba_users;
 
 --01
-create or replace procedure ListUserAccounts
+create or replace procedure DS_User (c1 out SYS_REFCURSOR)
 as
-c1 SYS_REFCURSOR; 
 begin
     open c1 for
-    SELECT * FROM dba_users;
+    SELECT USERNAME FROM dba_users;
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 //

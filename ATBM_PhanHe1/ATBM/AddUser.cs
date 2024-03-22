@@ -26,7 +26,7 @@ namespace ATBM
         {
             try
             {
-                adminBUS.AddUser(Username.Text, Password.Text, Role.SelectedItem.ToString());
+                adminBUS.AddUser(Username.Text, Password.Text);
                 MessageBox.Show("Success");
             }
             catch (Exception ex)
@@ -37,25 +37,15 @@ namespace ATBM
 
         private void AddUser_Load(object sender, EventArgs e)
         {
-            Role.Items.Add("None");
-            Role.SelectedItem = "None";
+            RoleCB.Items.Add("None");
+            RoleCB.SelectedItem = "None";
             try
             {
-                using (OracleConnection connection = new OracleConnection(Program.connectionString))
+                DataTable dataTable = adminBUS.RoleList();
+                foreach (DataRow row in dataTable.Rows)
                 {
-                    connection.Open();
-                    string sqlQuery = "select distinct granted_role from user_role_privs";
-                    using (OracleCommand command = new OracleCommand(sqlQuery, connection))
-                    {
-                        using (OracleDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Role.Items.Add(reader["granted_role"].ToString());
-                            }
-                        }
-                    }
-                    connection.Close();
+                    string value = row["granted_role"].ToString();
+                    RoleCB.Items.Add(value);
                 }
             }
             catch (Exception ex)
