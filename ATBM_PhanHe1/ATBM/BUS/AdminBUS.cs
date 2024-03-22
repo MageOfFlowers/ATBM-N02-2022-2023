@@ -124,5 +124,16 @@ namespace ATBM.BUS
             }
             connection.Close();
         }
+
+        public DataTable TablesList()
+        {
+            DataTable dataTable = new DataTable();
+            string sqlQuery = "select table_name from user_tables";
+            using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
+            {
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
     }
 }

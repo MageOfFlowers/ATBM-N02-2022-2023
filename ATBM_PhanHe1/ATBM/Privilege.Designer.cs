@@ -37,7 +37,7 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.TablesCB = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -118,13 +118,13 @@
             this.checkBox1.Text = "With grant option";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // TablesCB
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(315, 199);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 5;
+            this.TablesCB.FormattingEnabled = true;
+            this.TablesCB.Location = new System.Drawing.Point(315, 199);
+            this.TablesCB.Name = "TablesCB";
+            this.TablesCB.Size = new System.Drawing.Size(121, 24);
+            this.TablesCB.TabIndex = 5;
             // 
             // Privilege
             // 
@@ -135,7 +135,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.TablesCB);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
@@ -143,6 +143,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Privilege";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Privilege_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,6 +160,6 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox TablesCB;
     }
 }

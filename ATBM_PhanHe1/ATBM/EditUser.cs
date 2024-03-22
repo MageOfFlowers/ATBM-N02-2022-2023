@@ -44,5 +44,11 @@ namespace ATBM
         {
             
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Privilege privilege = new Privilege();
+            privilege.Show();
+        }
     }
 }
