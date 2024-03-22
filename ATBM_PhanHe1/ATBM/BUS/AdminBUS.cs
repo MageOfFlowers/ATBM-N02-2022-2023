@@ -15,17 +15,22 @@ namespace ATBM.BUS
     {
         public OracleConnection connection = new OracleConnection(Program.connectionString);
         
-        public DataSet UserList()
+        public DataTable UserList()
         {
-            DataSet dataSet = new DataSet();
-            connection.Open();
-            string sqlQuery = "select user_id, username from dba_users where user_id >= 111 and user_id <= 500";
-            using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
+            DataTable dataTable = new DataTable();
+            string procedureName = "ListUserAccounts";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
-                adapter.Fill(dataSet, "dba_users");
+                connection.Open();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                connection.Close();
             }
-            connection.Close();
-            return dataSet;
+            return dataTable;
         }
 
         public void AddUser(string username, string password, string role)
