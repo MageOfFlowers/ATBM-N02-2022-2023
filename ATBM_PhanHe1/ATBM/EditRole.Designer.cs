@@ -31,10 +31,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.QuyenView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QuyenView)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -64,15 +64,15 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Role";
             // 
-            // dataGridView1
+            // QuyenView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(528, 66);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(178, 356);
-            this.dataGridView1.TabIndex = 9;
+            this.QuyenView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.QuyenView.Location = new System.Drawing.Point(528, 66);
+            this.QuyenView.Name = "QuyenView";
+            this.QuyenView.RowHeadersWidth = 51;
+            this.QuyenView.RowTemplate.Height = 24;
+            this.QuyenView.Size = new System.Drawing.Size(178, 356);
+            this.QuyenView.TabIndex = 9;
             // 
             // label1
             // 
@@ -99,11 +99,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.QuyenView);
             this.Controls.Add(this.label1);
             this.Name = "EditRole";
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.EditRole_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.QuyenView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,7 +115,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView QuyenView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
     }
