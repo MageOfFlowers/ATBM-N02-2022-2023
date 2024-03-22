@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM.BUS
@@ -18,7 +19,7 @@ namespace ATBM.BUS
         {
             DataSet dataSet = new DataSet();
             connection.Open();
-            string sqlQuery = "select * from dba_users where user_id >= 111 and user_id <= 500";
+            string sqlQuery = "select user_id, username from dba_users where user_id >= 111 and user_id <= 500";
             using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
             {
                 adapter.Fill(dataSet, "dba_users");
@@ -87,6 +88,23 @@ namespace ATBM.BUS
                 }
             }
             connection.Close();
+        }
+
+        public DataTable Xem_Quyen(string username)
+        {
+            DataTable dataTable = new DataTable();
+            string procedureName = "xem_quyen_user";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("p_user", OracleDbType.Varchar2).Value = username;
+                command.ExecuteNonQuery();
+                OracleDataReader reader = ((OracleRefCursor)command.Parameters["c1"].Value).GetDataReader();
+                dataTable.Load(reader);
+                connection.Close();
+            }
+            return dataTable;
         }
     }
 }
