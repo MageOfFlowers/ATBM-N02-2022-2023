@@ -49,7 +49,7 @@ namespace ATBM
 
         private void RoleList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string role = RoleList.Rows[e.RowIndex].Cells["ROLE"].Value.ToString();
+            string role = RoleList.Rows[e.RowIndex].Cells["GRANTED_ROLE"].Value.ToString();
             if (e.ColumnIndex == RoleList.Columns["Edit"].Index && e.RowIndex >= 0)
             {
                 EditRole editRole = new EditRole(role);
