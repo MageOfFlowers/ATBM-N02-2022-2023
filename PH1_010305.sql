@@ -11,7 +11,7 @@ create or replace procedure DS_User (c1 out SYS_REFCURSOR)
 as
 begin
     open c1 for
-    select USERNAME,a.CON_ID,PDB_NAME,CREATED from CDB_USERS a ,dba_pdbs b
+    select USERNAME,Account_status from CDB_USERS a ,dba_pdbs b
     where 1=1 and user_id > 108 and user_id < 500
     and b.PDB_ID=a.CON_ID;
     DBMS_SQL.RETURN_RESULT(c1);
