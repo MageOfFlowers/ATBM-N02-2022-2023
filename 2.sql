@@ -1,7 +1,6 @@
 
-create or replace procedure ADMIN_OLS1.xem_quyen_user (p_user varchar)
+create or replace procedure ADMIN_OLS1.xem_quyen_user (p_user in varchar, c1 out SYS_REFCURSOR)
 as
-c1 SYS_REFCURSOR; 
 begin
     open c1 for
     SELECT table_name, privilege
