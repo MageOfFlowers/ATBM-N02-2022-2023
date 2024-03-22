@@ -22,21 +22,24 @@ namespace ATBM
         private void UserList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string username = UserList.Rows[e.RowIndex].Cells["USERNAME"].Value.ToString();
-            if (e.ColumnIndex == UserList.Columns["Edit"].Index && e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
-                EditUser editUser = new EditUser(username);
-                editUser.Show();
-            }
-            else
-            {
-                try
+                if (e.ColumnIndex == UserList.Columns["Edit"].Index)
                 {
-                    adminBUS.DeleteUser(username);
-                    MessageBox.Show("Delete success");
+                    EditUser editUser = new EditUser(username);
+                    editUser.Show();
                 }
-                catch (Exception ex)
+                else if (e.ColumnIndex == UserList.Columns["Delete"].Index)
                 {
-                    MessageBox.Show(ex.Message);
+                    try
+                    {
+                        adminBUS.DeleteUser(username);
+                        MessageBox.Show("Delete success");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }

@@ -52,19 +52,22 @@ namespace ATBM
             string role = RoleList.Rows[e.RowIndex].Cells["GRANTED_ROLE"].Value.ToString();
             if (e.ColumnIndex == RoleList.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-                EditRole editRole = new EditRole(role);
-                editRole.Show();
-            }
-            else
-            {
-                try
+                if (e.ColumnIndex == RoleList.Columns["Edit"].Index)
                 {
-                    adminBUS.DeleteRole(role);
-                    MessageBox.Show("Delete success");
+                    EditRole editRole = new EditRole(role);
+                    editRole.Show();
                 }
-                catch (Exception ex)
+                else if (e.ColumnIndex == RoleList.Columns["Delete"].Index)
                 {
-                    MessageBox.Show(ex.Message);
+                    try
+                    {
+                        adminBUS.DeleteRole(role);
+                        MessageBox.Show("Delete success");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }
