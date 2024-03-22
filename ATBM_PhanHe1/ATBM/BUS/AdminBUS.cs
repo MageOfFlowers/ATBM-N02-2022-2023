@@ -65,6 +65,19 @@ namespace ATBM.BUS
             connection.Close();
         }
 
+        public DataSet RoleList()
+        {
+            DataSet dataSet = new DataSet();
+            connection.Open();
+            string sqlQuery = "select granted_role as role, count(grantee) as quantity from dba_role_privs where granted_role in (select granted_role from user_role_privs) group by granted_role";
+            using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
+            {
+                adapter.Fill(dataSet, "roles");
+            }
+            connection.Close();
+            return dataSet;
+        }
+     
         public void AddRole(string role)
         {
             connection.Open();

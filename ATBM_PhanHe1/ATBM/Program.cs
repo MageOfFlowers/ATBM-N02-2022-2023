@@ -8,7 +8,7 @@ namespace ATBM
 {
     internal static class Program
     {
-        public static string connectionString = "Data Source=.;";
+        public static string connectionString = "Data Source=ATBM_3;";
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
