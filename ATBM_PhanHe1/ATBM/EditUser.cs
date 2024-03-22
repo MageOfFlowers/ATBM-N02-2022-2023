@@ -49,7 +49,7 @@ namespace ATBM
                 DataTable dataTable = adminBUS.RoleList();
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    string value = row["role"].ToString();
+                    string value = row["granted_role"].ToString();
                     RoleCB.Items.Add(value);
                 }
             }

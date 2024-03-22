@@ -67,7 +67,7 @@ namespace ATBM.BUS
         {
             DataTable dataTable = new DataTable();
             connection.Open();
-            string sqlQuery = "select granted_role as role, count(grantee) as quantity from dba_role_privs where granted_role in (select granted_role from user_role_privs) group by granted_role";
+            string sqlQuery = "select granted_role, count(grantee) as quantity from dba_role_privs where granted_role in (select granted_role from user_role_privs) group by granted_role";
             using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
             {
                 adapter.Fill(dataTable);
