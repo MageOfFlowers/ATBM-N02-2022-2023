@@ -42,7 +42,21 @@ namespace ATBM
 
         private void EditUser_Load(object sender, EventArgs e)
         {
-            
+            RoleCB.Items.Add("None");
+            RoleCB.SelectedItem = "None";
+            try
+            {
+                DataTable dataTable = adminBUS.RoleList();
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string value = row["role"].ToString();
+                    RoleCB.Items.Add(value);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

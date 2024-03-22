@@ -135,5 +135,16 @@ namespace ATBM.BUS
             }
             return dataTable;
         }
+
+        public DataTable CollumnsList(string table)
+        {
+            DataTable dataTable = new DataTable();
+            string sqlQuery = $"select column_name from user_tab_columns where table_name = '{table}'";
+            using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
+            {
+                adapter.Fill(dataTable);
+            }
+            return dataTable;
+        }
     }
 }

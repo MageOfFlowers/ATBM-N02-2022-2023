@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Username = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.RoleCB = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.QuyenView)).BeginInit();
@@ -85,14 +85,14 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Role";
             // 
-            // comboBox1
+            // RoleCB
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(192, 101);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 24);
-            this.comboBox1.TabIndex = 5;
+            this.RoleCB.FormattingEnabled = true;
+            this.RoleCB.Location = new System.Drawing.Point(192, 101);
+            this.RoleCB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RoleCB.Name = "RoleCB";
+            this.RoleCB.Size = new System.Drawing.Size(100, 24);
+            this.RoleCB.TabIndex = 5;
             // 
             // button1
             // 
@@ -122,7 +122,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.RoleCB);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Username);
             this.Controls.Add(this.label2);
@@ -145,7 +145,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Username;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox RoleCB;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }

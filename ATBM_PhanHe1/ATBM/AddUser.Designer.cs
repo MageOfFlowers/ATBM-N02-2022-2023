@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Role = new System.Windows.Forms.ComboBox();
+            this.RoleCB = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -79,13 +79,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Role";
             // 
-            // Role
+            // RoleCB
             // 
-            this.Role.FormattingEnabled = true;
-            this.Role.Location = new System.Drawing.Point(284, 206);
-            this.Role.Name = "Role";
-            this.Role.Size = new System.Drawing.Size(116, 24);
-            this.Role.TabIndex = 5;
+            this.RoleCB.FormattingEnabled = true;
+            this.RoleCB.Location = new System.Drawing.Point(284, 206);
+            this.RoleCB.Name = "RoleCB";
+            this.RoleCB.Size = new System.Drawing.Size(116, 24);
+            this.RoleCB.TabIndex = 5;
             // 
             // button1
             // 
@@ -103,7 +103,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.Role);
+            this.Controls.Add(this.RoleCB);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.label2);
@@ -124,7 +124,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox Role;
+        private System.Windows.Forms.ComboBox RoleCB;
         private System.Windows.Forms.Button button1;
     }
 }

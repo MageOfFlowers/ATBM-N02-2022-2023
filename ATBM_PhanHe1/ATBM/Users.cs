@@ -45,8 +45,8 @@ namespace ATBM
         {
             try
             {
-                DataSet dataSet = adminBUS.UserList();
-                UserList.DataSource = dataSet.Tables["dba_users"];
+                DataTable dataTable = adminBUS.UserList();
+                UserList.DataSource = dataTable;
             }
             catch (Exception ex)
             {

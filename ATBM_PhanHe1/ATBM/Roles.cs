@@ -28,8 +28,8 @@ namespace ATBM
 
         private void Roles_Load(object sender, EventArgs e)
         {
-            DataSet dataSet = adminBUS.RoleList();
-            RoleList.DataSource = dataSet.Tables["roles"];
+            DataTable dataTable = adminBUS.RoleList();
+            RoleList.DataSource = dataTable;
               
             DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
             editColumn.Name = "Edit";

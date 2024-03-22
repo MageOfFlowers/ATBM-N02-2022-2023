@@ -29,5 +29,20 @@ namespace ATBM
                 TablesCB.Items.Add(value);
             }
         }
+
+        private void TablesCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable dataTable = adminBUS.CollumnsList(TablesCB.SelectedItem.ToString());
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string value = row["column_name"].ToString();
+                CollumnCL.Items.Add(value);
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
