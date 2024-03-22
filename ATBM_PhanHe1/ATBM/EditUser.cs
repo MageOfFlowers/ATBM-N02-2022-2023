@@ -33,6 +33,7 @@ namespace ATBM
             {
                 DataTable dataTable = adminBUS.Xem_Quyen(username);
                 QuyenView.DataSource = dataTable;
+                QuyenView.ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -49,7 +50,7 @@ namespace ATBM
                 DataTable dataTable = adminBUS.RoleList();
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    string value = row["role"].ToString();
+                    string value = row["granted_role"].ToString();
                     RoleCB.Items.Add(value);
                 }
             }
@@ -63,6 +64,11 @@ namespace ATBM
         {
             Privilege privilege = new Privilege();
             privilege.Show();
+        }
+
+        private void QuyenView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

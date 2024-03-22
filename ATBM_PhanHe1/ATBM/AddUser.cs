@@ -26,7 +26,7 @@ namespace ATBM
         {
             try
             {
-                adminBUS.AddUser(Username.Text, Password.Text, RoleCB.SelectedItem.ToString());
+                adminBUS.AddUser(Username.Text, Password.Text);
                 MessageBox.Show("Success");
             }
             catch (Exception ex)
