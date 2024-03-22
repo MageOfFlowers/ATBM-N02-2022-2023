@@ -33,6 +33,7 @@ namespace ATBM
             {
                 DataTable dataTable = adminBUS.Xem_Quyen(username);
                 QuyenView.DataSource = dataTable;
+                QuyenView.ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -63,6 +64,11 @@ namespace ATBM
         {
             Privilege privilege = new Privilege();
             privilege.Show();
+        }
+
+        private void QuyenView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
