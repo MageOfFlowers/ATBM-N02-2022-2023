@@ -14,6 +14,7 @@ namespace ATBM
 {
     public partial class Roles : Form
     {
+        AdminBUS adminBUS = new AdminBUS();
         public Roles()
         {
             InitializeComponent();
@@ -27,22 +28,45 @@ namespace ATBM
 
         private void Roles_Load(object sender, EventArgs e)
         {
-            AdminBUS adminBUS = new AdminBUS();
             DataSet dataSet = adminBUS.RoleList();
             RoleList.DataSource = dataSet.Tables["roles"];
               
             DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
-            editColumn.HeaderText = "";
+            editColumn.Name = "Edit";
             editColumn.Text = "Edit";
             editColumn.UseColumnTextForButtonValue = true;
 
             DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
-            deleteColumn.HeaderText = "";
+            deleteColumn.Name = "Delete";
             deleteColumn.Text = "Delete";
             deleteColumn.UseColumnTextForButtonValue = true;
 
             RoleList.Columns.Add(editColumn);
             RoleList.Columns.Add(deleteColumn);
+
+            RoleList.CellClick += RoleList_CellClick;
+        }
+
+        private void RoleList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string role = RoleList.Rows[e.RowIndex].Cells["ROLE"].Value.ToString();
+            if (e.ColumnIndex == RoleList.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+                EditRole editRole = new EditRole(role);
+                editRole.Show();
+            }
+            else
+            {
+                try
+                {
+                    adminBUS.DeleteRole(role);
+                    MessageBox.Show("Delete success");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

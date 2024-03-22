@@ -108,5 +108,21 @@ namespace ATBM.BUS
             }
             return dataTable;  
         }
+
+        public void DeleteRole(string role)
+        {
+            connection.Open();
+            string sqlQuery1 = "alter session set \"_ORACLE_SCRIPT\"=true";
+            string sqlQuery2 = $"drop role {role}";
+            using (OracleCommand command1 = new OracleCommand(sqlQuery1, connection))
+            {
+                command1.ExecuteNonQuery();
+                using (OracleCommand command2 = new OracleCommand(sqlQuery2, connection))
+                {
+                    command2.ExecuteNonQuery();
+                }
+            }
+            connection.Close();
+        }
     }
 }
