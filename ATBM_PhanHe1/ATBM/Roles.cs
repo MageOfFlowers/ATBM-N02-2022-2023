@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ATBM.BUS;
 using Oracle.ManagedDataAccess.Client;
 
 namespace ATBM
@@ -26,30 +27,10 @@ namespace ATBM
 
         private void Roles_Load(object sender, EventArgs e)
         {
-            try
-            {
-                using (OracleConnection connection = new OracleConnection(Program.connectionString))
-                {
-                    connection.Open();
-                    string sqlQuery = "select granted_role as role, count(grantee) as quantity from dba_role_privs where granted_role in (select granted_role from user_role_privs) group by granted_role";
-                    using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
-                    {
-                        // Tạo DataSet để chứa dữ liệu
-                        DataSet dataSet = new DataSet();
-
-                        // Đổ dữ liệu từ OracleDataAdapter vào DataSet
-                        adapter.Fill(dataSet, "dba_role_privs");
-
-                        // Hiển thị dữ liệu trong DataGridView
-                        RoleList.DataSource = dataSet.Tables["dba_role_privs"];
-                    }
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            AdminBUS adminBUS = new AdminBUS();
+            DataSet dataSet = adminBUS.RoleList();
+            RoleList.DataSource = dataSet.Tables["roles"];
+              
             DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
             editColumn.HeaderText = "";
             editColumn.Text = "Edit";

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ATBM.BUS;
 using Oracle.ManagedDataAccess.Client;
 
 namespace ATBM
@@ -20,25 +21,11 @@ namespace ATBM
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=LAPTOP-SF4GJF11;User Id=tai211003;Password=tai62506716;";
             try
             {
-                using (OracleConnection connection = new OracleConnection(connectionString))
-                {
-                    connection.Open();
-                    string sqlQuery1 = "alter session set \"_ORACLE_SCRIPT\"=true";
-                    string sqlQuery2 = $"create role {RoleName.Text}";
-                    using (OracleCommand command1 = new OracleCommand(sqlQuery1, connection))
-                    {
-                        command1.ExecuteNonQuery();
-                        using (OracleCommand command2 = new OracleCommand(sqlQuery2, connection))
-                        {
-                            command2.ExecuteNonQuery();
-                        }
-                    }
-                    MessageBox.Show("Success");
-                    connection.Close();
-                }
+                AdminBUS adminBUS = new AdminBUS();
+                adminBUS.AddRole(RoleName.Text);
+                MessageBox.Show("Success");
             }
             catch (Exception ex)
             {

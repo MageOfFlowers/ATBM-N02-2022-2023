@@ -13,30 +13,61 @@ namespace ATBM
 {
     public partial class Users : Form
     {
+        AdminBUS adminBUS = new AdminBUS();
         public Users()
         {
             InitializeComponent();
         }
 
+        private void UserList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string username = UserList.Rows[e.RowIndex].Cells["USERNAME"].Value.ToString();
+            if (e.ColumnIndex == UserList.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+                EditUser editUser = new EditUser(username);
+                editUser.Show();
+            }
+            else
+            {
+                try
+                {
+                    adminBUS.DeleteUser(username);
+                    MessageBox.Show("Delete success");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
         private void Users_Load(object sender, EventArgs e)
         {
+            try
+            {
+                DataSet dataSet = adminBUS.UserList();
+                UserList.DataSource = dataSet.Tables["dba_users"];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-            AdminBUS admin = new AdminBUS();
-            DataSet dataSet = admin.UserList();
-            UserList.DataSource = dataSet.Tables["dba_users"];
 
             DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
-            editColumn.HeaderText = "";
+            editColumn.Name = "Edit";
             editColumn.Text = "Edit";
             editColumn.UseColumnTextForButtonValue = true;
 
             DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
-            deleteColumn.HeaderText = "";
+            deleteColumn.Name = "Delete";
             deleteColumn.Text = "Delete";
             deleteColumn.UseColumnTextForButtonValue = true;
 
             UserList.Columns.Add(editColumn);
             UserList.Columns.Add(deleteColumn);
+
+            UserList.CellClick += UserList_CellClick;
         }
 
         private void UserList_CellContentClick(object sender, DataGridViewCellEventArgs e)

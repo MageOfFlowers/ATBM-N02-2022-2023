@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ATBM.BUS;
 using Oracle.ManagedDataAccess.Client;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -15,6 +16,7 @@ namespace ATBM
 {
     public partial class AddUser : Form
     {
+        AdminBUS adminBUS = new AdminBUS();
         public AddUser()
         {
             InitializeComponent();
@@ -22,31 +24,10 @@ namespace ATBM
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=LAPTOP-SF4GJF11;User Id=tai211003;Password=tai62506716;";
             try
             {
-                using (OracleConnection connection = new OracleConnection(connectionString))
-                {
-                    connection.Open();
-                    string sqlQuery1 = "alter session set \"_ORACLE_SCRIPT\"=true";
-                    string sqlQuery2 = $"create user {Username.Text} identified by {Password.Text}";
-                    string sqlQuery3 = $"grant {Role.SelectedItem} to {Username.Text}";
-                    using (OracleCommand command1 = new OracleCommand(sqlQuery1, connection))
-                    {
-                        command1.ExecuteNonQuery();
-                        using (OracleCommand command2 = new OracleCommand(sqlQuery2, connection))
-                        {
-                            command2.ExecuteNonQuery();
-                            if (Role.SelectedItem != "None")
-                                using (OracleCommand command3 = new OracleCommand(sqlQuery3, connection))
-                                {
-                                    command3.ExecuteNonQuery();
-                                }
-                        }
-                    }
-                    MessageBox.Show("Success");
-                    connection.Close();
-                }
+                adminBUS.AddUser(Username.Text, Password.Text, Role.SelectedItem.ToString());
+                MessageBox.Show("Success");
             }
             catch (Exception ex)
             {

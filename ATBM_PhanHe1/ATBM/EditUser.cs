@@ -16,5 +16,16 @@ namespace ATBM
         {
             InitializeComponent();
         }
+
+        public EditUser(string username)
+        {
+            InitializeComponent();
+            Username.Text = username;
+        }
+
+        private void EditUser_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
