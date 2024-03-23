@@ -13,9 +13,14 @@ create or replace procedure ADMIN_OLS1.xem_quyen_user (p_user in varchar, c1 out
 as
 begin
     open c1 for
+    Select distinct table_name, privilege from (
     SELECT table_name, privilege
                     FROM dba_tab_privs 
-                    where owner = 'ADMIN_OLS1' and grantee = upper(p_user);
+                    where owner = 'ADMIN_OLS1' and grantee = upper('A')
+    union
+    SELECT table_name, privilege
+                    FROM dba_tab_privs 
+                    where owner = 'ADMIN_OLS1' and grantee in (select granted_role from USER_ROLE_PRIVS where grantee = upper('A')));
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 

@@ -33,6 +33,16 @@ begin
     execute immediate(STRSQL);
 end;
 /
+create or replace procedure cap_quyen_select_cho_user (username varchar2, tablename varchar2, ten_cac_cot varchar2)
+as
+STRSQL VARCHAR(2000);
+begin
+    STRSQL:='create or replace view '||username||'_'||tablename||' as
+    select '||ten_cac_cot||' from '||tablename;
+    execute immediate(STRSQL);
+    STRSQL:='grant select on view '||username||'_'||tablename||' to '||username;
+    execute immediate(STRSQL);
+end;
 --drop user user1 cascade;
 --create user user1 identified by 123;
 --grant create session to user1;
