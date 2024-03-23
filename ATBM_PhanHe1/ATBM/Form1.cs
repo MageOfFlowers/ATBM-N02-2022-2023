@@ -20,13 +20,13 @@ namespace ATBM
         private void button1_Click(object sender, EventArgs e)
         {
             Users users = new Users();
-            users.Show();
+            users.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Roles roles = new Roles();
-            roles.Show();
+            roles.ShowDialog();
         }
     }
 }

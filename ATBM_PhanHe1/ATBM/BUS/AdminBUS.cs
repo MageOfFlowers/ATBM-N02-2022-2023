@@ -9,6 +9,7 @@ using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Data.Linq.Mapping;
+using System.Data.Linq;
 
 namespace ATBM.BUS
 {
@@ -143,6 +144,120 @@ namespace ATBM.BUS
                 adapter.Fill(dataTable);
             }
             return dataTable;
+        }
+        public void AddPrivToUser(string priv,string table,string username,List<string> col,bool withGrant) 
+        {
+            string procedureName = "cap_quyen_cho_user";
+            if (priv == "UPDATE")
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("quyen", OracleDbType.Varchar2).Value = "SELECT";
+                    command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
+                    command.Parameters.Add("bang", OracleDbType.Varchar2).Value = table;
+                    command.Parameters.Add("tuy_chon", OracleDbType.Boolean).Value = withGrant;
+                    command.Parameters.Add("cot", OracleDbType.Varchar2).Value = "";
+
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+                foreach (var item in col)
+                {
+                    using (OracleCommand command = new OracleCommand(procedureName, connection))
+                    {
+                        connection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("quyen", OracleDbType.Varchar2).Value = priv;
+                        command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
+                        command.Parameters.Add("bang", OracleDbType.Varchar2).Value = table;
+                        command.Parameters.Add("tuy_chon", OracleDbType.Boolean).Value = withGrant;
+                        command.Parameters.Add("cot", OracleDbType.Varchar2).Value = item;
+
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+            }
+            else
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("quyen", OracleDbType.Varchar2).Value = priv;
+                    command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
+                    command.Parameters.Add("bang", OracleDbType.Varchar2).Value = table;
+                    command.Parameters.Add("tuy_chon", OracleDbType.Boolean).Value = withGrant;
+                    command.Parameters.Add("cot", OracleDbType.Varchar2).Value = "";
+
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+        }
+        public void AddPrivToRole(string priv,string table,string role,List<string> col) {
+            string procedureName = "cap_quyen_cho_role";
+            if (priv == "UPDATE")
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("quyen", OracleDbType.Varchar2).Value = "SELECT";
+                    command.Parameters.Add("rolename", OracleDbType.Varchar2).Value = role;
+                    command.Parameters.Add("bang", OracleDbType.Varchar2).Value = table;
+                    command.Parameters.Add("cot", OracleDbType.Varchar2).Value = "";
+
+                    command.ExecuteNonQuery(); 
+                    connection.Close();
+                }
+                foreach (var item in col)
+                {
+                    using (OracleCommand command = new OracleCommand(procedureName, connection))
+                    {
+                        connection.Open();
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("quyen", OracleDbType.Varchar2).Value = priv;
+                        command.Parameters.Add("rolename", OracleDbType.Varchar2).Value = role;
+                        command.Parameters.Add("bang", OracleDbType.Varchar2).Value = table;
+                        command.Parameters.Add("cot", OracleDbType.Varchar2).Value = item;
+
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+            }
+            else
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("quyen", OracleDbType.Varchar2).Value = priv;
+                    command.Parameters.Add("rolename", OracleDbType.Varchar2).Value = role;
+                    command.Parameters.Add("bang", OracleDbType.Varchar2).Value = table;
+                    command.Parameters.Add("cot", OracleDbType.Varchar2).Value = "";
+
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+        }
+        public void AddRoleToUser(string role,string username) 
+        {
+            string procedureName = "cap_role_cho_user";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("rolename", OracleDbType.Varchar2).Value = role;
+                command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
     }
 }

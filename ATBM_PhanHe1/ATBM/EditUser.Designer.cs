@@ -64,7 +64,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 38);
+            this.label2.Location = new System.Drawing.Point(35, 58);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
@@ -73,7 +73,7 @@
             // 
             // Username
             // 
-            this.Username.Location = new System.Drawing.Point(144, 36);
+            this.Username.Location = new System.Drawing.Point(118, 55);
             this.Username.Margin = new System.Windows.Forms.Padding(2);
             this.Username.Name = "Username";
             this.Username.ReadOnly = true;
@@ -83,7 +83,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 84);
+            this.label3.Location = new System.Drawing.Point(61, 106);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
@@ -92,8 +92,9 @@
             // 
             // RoleCB
             // 
+            this.RoleCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RoleCB.FormattingEnabled = true;
-            this.RoleCB.Location = new System.Drawing.Point(144, 82);
+            this.RoleCB.Location = new System.Drawing.Point(118, 104);
             this.RoleCB.Margin = new System.Windows.Forms.Padding(2);
             this.RoleCB.Name = "RoleCB";
             this.RoleCB.Size = new System.Drawing.Size(76, 21);
@@ -101,10 +102,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(86, 258);
+            this.button1.Location = new System.Drawing.Point(488, 17);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 19);
+            this.button1.Size = new System.Drawing.Size(90, 29);
             this.button1.TabIndex = 6;
             this.button1.Text = "Grant privileges";
             this.button1.UseVisualStyleBackColor = true;
@@ -112,13 +113,14 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(103, 292);
+            this.button2.Location = new System.Drawing.Point(76, 160);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(56, 19);
+            this.button2.Size = new System.Drawing.Size(118, 25);
             this.button2.TabIndex = 7;
-            this.button2.Text = "Submit";
+            this.button2.Text = "Add role to user";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // EditUser
             // 

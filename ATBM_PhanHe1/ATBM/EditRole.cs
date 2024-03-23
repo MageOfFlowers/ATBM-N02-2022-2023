@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ATBM.BUS;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM
 {
@@ -22,6 +23,7 @@ namespace ATBM
         public EditRole(string role)
         {
             InitializeComponent();
+            roleName.Text = role;
             LoadQuyen(role);
         }
 
@@ -41,6 +43,21 @@ namespace ATBM
         private void EditRole_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Privilege p= new Privilege(roleName.Text,1);
+            p.FormClosed += P_FormClosed;
+            p.ShowDialog();
+        }
+
+        private void P_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            string role = roleName.Text;
+            Close();
+            EditRole editRole = new EditRole(role);
+            editRole.Show();
         }
     }
 }

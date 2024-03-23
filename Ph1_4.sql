@@ -2,8 +2,8 @@ create or replace procedure cap_quyen_cho_user (quyen varchar2,username varchar2
 as
 STRSQL VARCHAR(2000);
 begin
-    if(quyen='SELECT' or quyen='UPDATE') then
-        STRSQL:='grant '||quyen||'('||cot||')' ||' on '||bang||' to '||username;
+    if(quyen='UPDATE') then
+        STRSQL:='grant update('||cot||') on '||bang||' to '||username;
     else
         STRSQL:='grant '||quyen||' on '||bang||' to '||username;
     end if;
@@ -17,22 +17,19 @@ create or replace procedure cap_quyen_cho_role (quyen varchar2,rolename varchar2
 as
 STRSQL VARCHAR(2000);
 begin
-   if(quyen='SELECT' or quyen='UPDATE') then
-        STRSQL:='grant '||quyen||'('||cot||')' ||' on '||bang||' to '||rolename;
+   if(quyen='UPDATE') then
+        STRSQL:='grant update('||cot||') on '||bang||' to '||rolename;
     else
         STRSQL:='grant '||quyen||' on '||bang||' to '||rolename;
     end if;
     execute immediate(STRSQL);
 end;
 /
-create or replace procedure cap_role_cho_user (rolename varchar2,username varchar2,tuy_chon boolean)
+create or replace procedure cap_role_cho_user (rolename varchar2,username varchar2)
 as
 STRSQL VARCHAR(2000);
 begin
     STRSQL:='grant '||rolename||' to '||username;
-    if(tuy_chon=true) then
-        STRSQL:=STRSQL|| 'with admin option';
-    end if;
     execute immediate(STRSQL);
 end;
 /
@@ -48,4 +45,4 @@ end;
 --exec cap_quyen_cho_role('update','role1','nhansu','MANV');
 --exec cap_quyen_cho_role('delete','role1','nhansu','');
 --
---exec cap_role_cho_user('role1','user1',false);
+--exec cap_role_cho_user('role1','user2',false);

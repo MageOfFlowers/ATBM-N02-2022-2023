@@ -62,13 +62,40 @@ namespace ATBM
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Privilege privilege = new Privilege();
-            privilege.Show();
+            Privilege privilege = new Privilege(Username.Text,0);
+            privilege.FormClosed += Privilege_FormClosed;
+            privilege.ShowDialog();
+            
+        }
+
+        private void Privilege_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            string username=Username.Text;
+            Close();
+            EditUser editUser = new EditUser(username);
+            editUser.Show();
         }
 
         private void QuyenView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string role=RoleCB.SelectedItem.ToString();
+            if(role=="None")
+            {
+                MessageBox.Show("Please choose a role to grant");
+            }
+            else
+            {
+                string username = Username.Text;
+                adminBUS.AddRoleToUser(role, username);
+                Close();
+                EditUser editUser = new EditUser(username);
+                editUser.Show();
+            }
         }
     }
 }

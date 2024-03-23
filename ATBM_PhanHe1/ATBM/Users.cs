@@ -82,7 +82,15 @@ namespace ATBM
         private void button1_Click(object sender, EventArgs e)
         {
             AddUser addUser = new AddUser();
+            addUser.FormClosed += AddUser_FormClosed;
             addUser.Show();
+        }
+
+        private void AddUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
+            Users u=new Users();
+            u.ShowDialog();
         }
     }
 }
