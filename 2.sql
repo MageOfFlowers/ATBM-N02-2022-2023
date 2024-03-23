@@ -23,12 +23,3 @@ begin
                     where owner = 'ADMIN_OLS1' and grantee in (select granted_role from USER_ROLE_PRIVS where grantee = upper('A')));
     DBMS_SQL.RETURN_RESULT(c1);
 end;
-
-exec xem_quyen_user('A');
-
-create role A;
-grant select on ADMIN_OLS1.SINHVIEN to A;
-
-show con_name
-create user t1 IDENTIFIED BY 123;
-grant select on ADMIN_OLS1.SINHVIEN to t1;
