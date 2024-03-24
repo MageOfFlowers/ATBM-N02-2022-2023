@@ -10,6 +10,7 @@ using Oracle.ManagedDataAccess.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Data.Linq.Mapping;
 using System.Data.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ATBM.BUS
 {
@@ -280,6 +281,41 @@ namespace ATBM.BUS
                 command.ExecuteNonQuery();
                 connection.Close();
             }
+        }
+
+        public void RevokePriv(string priv, string table, string name)
+        {
+            string procedureName = "Thu_hoi_quyen_UserRole";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("Privilege", OracleDbType.Varchar2).Value = priv;
+                command.Parameters.Add("Object", OracleDbType.Varchar2).Value = table;
+                command.Parameters.Add("Name", OracleDbType.Varchar2).Value = name;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public DataTable UserRole(string username)
+        {
+            DataTable dataTable = new DataTable();
+            string procedureName = "xem_role_user";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("p_user", OracleDbType.Varchar2).Value = username;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                connection.Close();
+            }
+            return dataTable;
         }
     }
 }

@@ -28,6 +28,7 @@ namespace ATBM
             StatusCB.Items.Add("OPEN");
             StatusCB.SelectedItem = status;
             LoadQuyen(username);
+            LoadRole(username);
             start = false;
         }
 
@@ -43,6 +44,21 @@ namespace ATBM
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void LoadRole(string username)
+        {
+            try
+            {
+                DataTable dataTable = adminBUS.UserRole(username);
+                RoleView.DataSource = dataTable;
+                RoleView.ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void EditUser_Load(object sender, EventArgs e)
@@ -61,6 +77,35 @@ namespace ATBM
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+
+            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
+            deleteColumn.Name = "Delete";
+            deleteColumn.Text = "Delete";
+            deleteColumn.UseColumnTextForButtonValue = true;
+
+            QuyenView.Columns.Add(deleteColumn);
+
+            QuyenView.CellClick += QuyenView_CellClick;
+        }
+
+        private void QuyenView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string table = QuyenView.Rows[e.RowIndex].Cells["TABLE_NAME"].Value.ToString();
+            string priv = QuyenView.Rows[e.RowIndex].Cells["PRIVILEGE"].Value.ToString();
+            string username = Username.Text;
+
+            if (e.ColumnIndex == QuyenView.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                try
+                {
+                    adminBUS.RevokePriv(priv, table, username);
+                    MessageBox.Show("Revoke success");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
