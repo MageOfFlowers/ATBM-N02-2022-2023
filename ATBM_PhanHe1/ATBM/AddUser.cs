@@ -24,9 +24,16 @@ namespace ATBM
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string username = Username.Text;
+            string password = Password.Text;
+            string role = RoleCB.SelectedItem.ToString();
             try
             {
-                adminBUS.AddUser(Username.Text, Password.Text);
+                adminBUS.AddUser(username, password);
+                if (role != "None" ) 
+                {
+                    adminBUS.AddRoleToUser(role, username);
+                }
                 MessageBox.Show("Success");
             }
             catch (Exception ex)

@@ -14,7 +14,7 @@ namespace ATBM
     public partial class EditUser : Form
     {
         AdminBUS adminBUS = new AdminBUS();
-
+        public bool start = true;
         public EditUser()
         {
             InitializeComponent();
@@ -28,6 +28,7 @@ namespace ATBM
             StatusCB.Items.Add("OPEN");
             StatusCB.SelectedItem = status;
             LoadQuyen(username);
+            start = false;
         }
 
         private void LoadQuyen(string username) 
@@ -105,14 +106,19 @@ namespace ATBM
 
         private void StatusCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string a_status = (StatusCB.SelectedItem == "OPEN" ? "UNLOCK" : "LOCK");
-            try
+            if (start == false)
             {
-                adminBUS.ChangeStatus(Username.Text, a_status);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    string a_status = (StatusCB.SelectedItem.ToString() == "OPEN" ? "UNLOCK" : "LOCK");
+                    adminBUS.ChangeStatus(Username.Text, a_status);
+                    MessageBox.Show("Success");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
