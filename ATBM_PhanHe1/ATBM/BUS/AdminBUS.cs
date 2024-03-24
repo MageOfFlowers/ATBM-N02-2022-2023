@@ -91,7 +91,7 @@ namespace ATBM.BUS
             }
         }
 
-        public DataTable Xem_Quyen(string username)
+        public DataTable PrivsList(string username)
         {
             DataTable dataTable = new DataTable();
             string procedureName = "xem_quyen_user";
@@ -127,10 +127,17 @@ namespace ATBM.BUS
         public DataTable TablesList()
         {
             DataTable dataTable = new DataTable();
-            string sqlQuery = "select table_name from user_tables";
-            using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
+            string procedureName = "xem_ds_table";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
-                adapter.Fill(dataTable);
+                connection.Open();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                connection.Close();
             }
             return dataTable;
         }
@@ -254,6 +261,21 @@ namespace ATBM.BUS
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("rolename", OracleDbType.Varchar2).Value = role;
                 command.Parameters.Add("username", OracleDbType.Varchar2).Value = username;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void ChangeStatus(string username, string status) 
+        {
+            string procedureName = "Doi_Trangthai_User";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("Name", OracleDbType.Varchar2).Value = username;
+                command.Parameters.Add("Status", OracleDbType.Varchar2).Value = status;
 
                 command.ExecuteNonQuery();
                 connection.Close();

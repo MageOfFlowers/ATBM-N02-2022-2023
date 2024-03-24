@@ -20,10 +20,13 @@ namespace ATBM
             InitializeComponent();
         }
 
-        public EditUser(string username)
+        public EditUser(string username, string status)
         {
             InitializeComponent();
             Username.Text = username;
+            StatusCB.Items.Add("LOCKED");
+            StatusCB.Items.Add("OPEN");
+            StatusCB.SelectedItem = status;
             LoadQuyen(username);
         }
 
@@ -31,7 +34,7 @@ namespace ATBM
         {
             try
             {
-                DataTable dataTable = adminBUS.Xem_Quyen(username);
+                DataTable dataTable = adminBUS.PrivsList(username);
                 QuyenView.DataSource = dataTable;
                 QuyenView.ReadOnly = true;
             }
@@ -71,8 +74,9 @@ namespace ATBM
         private void Privilege_FormClosed(object sender, FormClosedEventArgs e)
         {
             string username=Username.Text;
+            string status=StatusCB.SelectedItem.ToString();
             Close();
-            EditUser editUser = new EditUser(username);
+            EditUser editUser = new EditUser(username, status);
             editUser.Show();
         }
 
@@ -91,10 +95,24 @@ namespace ATBM
             else
             {
                 string username = Username.Text;
+                string status = StatusCB.SelectedItem.ToString();
                 adminBUS.AddRoleToUser(role, username);
                 Close();
-                EditUser editUser = new EditUser(username);
+                EditUser editUser = new EditUser(username, status);
                 editUser.Show();
+            }
+        }
+
+        private void StatusCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string a_status = (StatusCB.SelectedItem == "OPEN" ? "UNLOCK" : "LOCK");
+            try
+            {
+                adminBUS.ChangeStatus(Username.Text, a_status);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

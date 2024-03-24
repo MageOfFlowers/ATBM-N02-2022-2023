@@ -31,7 +31,7 @@ namespace ATBM
         {
             try
             {
-                DataTable dataTable = adminBUS.Xem_Quyen(role);
+                DataTable dataTable = adminBUS.PrivsList(role);
                 QuyenView.DataSource = dataTable;
             }
             catch (Exception ex)

@@ -55,6 +55,7 @@ BEGIN
     STRSQL := 'DROP ROLE '||Name;
     EXECUTE IMMEDIATE(STRSQL);
 END;
+exec Xoa_Role('TEST_ROLE')
 /
 --Hieu chinh mk user
 CREATE OR REPLACE PROCEDURE Doi_MK_User (Name VARCHAR2, newPass VARCHAR2)
