@@ -103,13 +103,20 @@ namespace ATBM
             {
                 checkedValues.Add(item.ToString());
             }
-            if(type==0)
+            try
             {
-                adminBUS.AddPrivToUser(priv, table, username, checkedValues, withGrant);
+                if (type == 0)
+                {
+                    adminBUS.AddPrivToUser(priv, table, username, checkedValues, withGrant);
+                }
+                else
+                {
+                    adminBUS.AddPrivToRole(priv, table, username, checkedValues);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                adminBUS.AddPrivToRole(priv, table, username, checkedValues);
+                MessageBox.Show(ex.Message);
             }
             Close();
         }

@@ -14,24 +14,29 @@ namespace ATBM
     public partial class EditUser : Form
     {
         AdminBUS adminBUS = new AdminBUS();
-
+        public bool start = true;
         public EditUser()
         {
             InitializeComponent();
         }
 
-        public EditUser(string username)
+        public EditUser(string username, string status)
         {
             InitializeComponent();
             Username.Text = username;
+            StatusCB.Items.Add("LOCKED");
+            StatusCB.Items.Add("OPEN");
+            StatusCB.SelectedItem = status;
             LoadQuyen(username);
+            LoadRole(username);
+            start = false;
         }
 
         private void LoadQuyen(string username) 
         {
             try
             {
-                DataTable dataTable = adminBUS.Xem_Quyen(username);
+                DataTable dataTable = adminBUS.PrivsList(username);
                 QuyenView.DataSource = dataTable;
                 QuyenView.ReadOnly = true;
             }
@@ -39,6 +44,21 @@ namespace ATBM
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void LoadRole(string username)
+        {
+            try
+            {
+                DataTable dataTable = adminBUS.UserRole(username);
+                RoleView.DataSource = dataTable;
+                RoleView.ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void EditUser_Load(object sender, EventArgs e)
@@ -58,6 +78,35 @@ namespace ATBM
             {
                 MessageBox.Show(ex.Message);
             }
+
+            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
+            deleteColumn.Name = "Delete";
+            deleteColumn.Text = "Delete";
+            deleteColumn.UseColumnTextForButtonValue = true;
+
+            QuyenView.Columns.Add(deleteColumn);
+
+            QuyenView.CellClick += QuyenView_CellClick;
+        }
+
+        private void QuyenView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string table = QuyenView.Rows[e.RowIndex].Cells["TABLE_NAME"].Value.ToString();
+            string priv = QuyenView.Rows[e.RowIndex].Cells["PRIVILEGE"].Value.ToString();
+            string username = Username.Text;
+
+            if (e.ColumnIndex == QuyenView.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                try
+                {
+                    adminBUS.RevokePriv(priv, table, username);
+                    MessageBox.Show("Revoke success");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -71,8 +120,9 @@ namespace ATBM
         private void Privilege_FormClosed(object sender, FormClosedEventArgs e)
         {
             string username=Username.Text;
+            string status=StatusCB.SelectedItem.ToString();
             Close();
-            EditUser editUser = new EditUser(username);
+            EditUser editUser = new EditUser(username, status);
             editUser.Show();
         }
 
@@ -91,10 +141,29 @@ namespace ATBM
             else
             {
                 string username = Username.Text;
+                string status = StatusCB.SelectedItem.ToString();
                 adminBUS.AddRoleToUser(role, username);
                 Close();
-                EditUser editUser = new EditUser(username);
+                EditUser editUser = new EditUser(username, status);
                 editUser.Show();
+            }
+        }
+
+        private void StatusCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (start == false)
+            {
+                try
+                {
+                    string a_status = (StatusCB.SelectedItem.ToString() == "OPEN" ? "UNLOCK" : "LOCK");
+                    adminBUS.ChangeStatus(Username.Text, a_status);
+                    MessageBox.Show("Success");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

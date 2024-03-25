@@ -50,7 +50,7 @@ namespace ATBM
         private void RoleList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string role = RoleList.Rows[e.RowIndex].Cells["GRANTED_ROLE"].Value.ToString();
-            if (e.ColumnIndex == RoleList.Columns["Edit"].Index && e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 if (e.ColumnIndex == RoleList.Columns["Edit"].Index)
                 {

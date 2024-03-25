@@ -1,5 +1,5 @@
 
-create or replace procedure ADMIN_OLS1.xem_ds_table (p_user in varchar, c1 out SYS_REFCURSOR)
+create or replace procedure ADMIN_OLS1.xem_ds_table (c1 out SYS_REFCURSOR)
 as
 begin
     open c1 for
@@ -13,17 +13,21 @@ create or replace procedure ADMIN_OLS1.xem_quyen_user (p_user in varchar, c1 out
 as
 begin
     open c1 for
-    SELECT table_name, privilege
+    Select distinct table_name, privilege, grantable from (
+    SELECT table_name, privilege, grantable
                     FROM dba_tab_privs 
-                    where owner = 'ADMIN_OLS1' and grantee = upper(p_user);
+                    where owner = 'ADMIN_OLS1' and grantee = upper(p_user)
+    union
+    SELECT table_name, privilege, grantable
+                    FROM dba_tab_privs 
+                    where owner = 'ADMIN_OLS1' and grantee in (select granted_role from USER_ROLE_PRIVS where grantee = upper(p_user)));
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 
-exec xem_quyen_user('A');
-
-create role A;
-grant select on ADMIN_OLS1.SINHVIEN to A;
-
-show con_name
-create user t1 IDENTIFIED BY 123;
-grant select on ADMIN_OLS1.SINHVIEN to t1;
+create or replace procedure ADMIN_OLS1.xem_role_user (p_user in varchar, c1 out SYS_REFCURSOR)
+as
+begin
+    open c1 for
+    SELECT granted_role FROM DBA_ROLE_PRIVS WHERE grantee = p_user;
+    DBMS_SQL.RETURN_RESULT(c1);
+end;

@@ -25,13 +25,24 @@ namespace ATBM
             if (e.RowIndex >= 0)
             {
                 string username = UserList.Rows[e.RowIndex].Cells["USERNAME"].Value.ToString();
+                string status = UserList.Rows[e.RowIndex].Cells["ACCOUNT_STATUS"].Value.ToString();
                 if (e.ColumnIndex == UserList.Columns["Edit"].Index)
                 {
-                    EditUser editUser = new EditUser(username);
+                    if (username == "ADMIN_OLS1")
+                    {
+                        MessageBox.Show("CANNOT EDIT AN ADMIN!");
+                        return;
+                    }
+                    EditUser editUser = new EditUser(username, status);
                     editUser.Show();
                 }
                 else if (e.ColumnIndex == UserList.Columns["Delete"].Index)
                 {
+                    if (username == "ADMIN_OLS1")
+                    {
+                        MessageBox.Show("CANNOT DELETE AN ADMIN!");
+                        return;
+                    }
                     try
                     {
                         adminBUS.DeleteUser(username);
