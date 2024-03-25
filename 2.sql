@@ -16,11 +16,15 @@ begin
     Select distinct table_name, privilege, grantable from (
     SELECT table_name, privilege, grantable
                     FROM dba_tab_privs 
-                    where owner = 'ADMIN_OLS1' and grantee = upper('test_user')
+                    where owner = 'ADMIN_OLS1' and grantee = upper(p_user)
     union
     SELECT table_name, privilege, grantable
                     FROM dba_tab_privs 
-                    where owner = 'ADMIN_OLS1' and grantee in (select granted_role from DBA_ROLE_PRIVS where grantee = upper('test_user')));
+                    where owner = 'ADMIN_OLS1' and grantee in (select granted_role from DBA_ROLE_PRIVS where grantee = upper(p_user))
+    union
+    SELECT table_name, privilege, grantable
+                    FROM ALL_COL_PRIVS
+                    where grantor = 'ADMIN_OLS1' and grantee = p_user);
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 
