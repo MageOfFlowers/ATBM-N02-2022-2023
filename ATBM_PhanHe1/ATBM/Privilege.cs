@@ -104,10 +104,6 @@ namespace ATBM
                 checkedValues += $"{item.ToString()},";
             }
             checkedValues = checkedValues.Substring(0, checkedValues.Length - 1);
-            MessageBox.Show(username);
-            MessageBox.Show(priv);
-            MessageBox.Show(table);
-            MessageBox.Show(checkedValues);
             try
             {
                 adminBUS.AddPrivToUser(priv, table, username, checkedValues, withGrant);
