@@ -47,6 +47,10 @@ namespace ATBM
                     {
                         adminBUS.DeleteUser(username);
                         MessageBox.Show("Delete success");
+                        Close();
+                        Users u = new Users();
+                        u.ShowDialog();
+
                     }
                     catch (Exception ex)
                     {

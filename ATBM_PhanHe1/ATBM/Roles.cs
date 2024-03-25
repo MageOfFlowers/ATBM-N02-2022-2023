@@ -23,7 +23,15 @@ namespace ATBM
         private void button1_Click(object sender, EventArgs e)
         {
             AddRole addRole = new AddRole();
+            addRole.FormClosed += AddRole_FormClosed;
             addRole.Show();
+        }
+
+        private void AddRole_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
+            Roles r = new Roles();
+            r.ShowDialog();
         }
 
         private void Roles_Load(object sender, EventArgs e)
@@ -63,6 +71,9 @@ namespace ATBM
                     {
                         adminBUS.DeleteRole(role);
                         MessageBox.Show("Delete success");
+                        Close();
+                        Roles r = new Roles();
+                        r.ShowDialog();
                     }
                     catch (Exception ex)
                     {

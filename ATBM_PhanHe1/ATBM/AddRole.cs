@@ -31,6 +31,10 @@ namespace ATBM
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                Close();
+            }
         }
 
         private void AddRole_Load(object sender, EventArgs e)

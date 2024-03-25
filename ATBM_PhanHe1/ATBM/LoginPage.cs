@@ -32,8 +32,8 @@ namespace ATBM
                     connection.Open();
                     MessageBox.Show("Login Success");
                     connection.Close();
-                    Form1 form1 = new Form1();
-                    form1.Show();
+                    Form1 f = new Form1();
+                    f.ShowDialog();
                 }
             }
             catch (Exception ex) 
