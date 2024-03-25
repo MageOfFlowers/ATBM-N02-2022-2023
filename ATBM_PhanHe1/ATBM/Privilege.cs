@@ -98,21 +98,19 @@ namespace ATBM
             string priv=privCB.SelectedItem.ToString();
             string table=TablesCB.SelectedItem.ToString();
             bool withGrant = WithGrant.Checked;
-            List<string> checkedValues = new List<string>();
+            string checkedValues = "";
             foreach (var item in CollumnCL.CheckedItems)
             {
-                checkedValues.Add(item.ToString());
+                checkedValues += $"{item.ToString()},";
             }
+            checkedValues = checkedValues.Substring(0, checkedValues.Length - 1);
+            MessageBox.Show(username);
+            MessageBox.Show(priv);
+            MessageBox.Show(table);
+            MessageBox.Show(checkedValues);
             try
             {
-                if (type == 0)
-                {
-                    adminBUS.AddPrivToUser(priv, table, username, checkedValues, withGrant);
-                }
-                else
-                {
-                    adminBUS.AddPrivToRole(priv, table, username, checkedValues);
-                }
+                adminBUS.AddPrivToUser(priv, table, username, checkedValues, withGrant);
             }
             catch (Exception ex)
             {
