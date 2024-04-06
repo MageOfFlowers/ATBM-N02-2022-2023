@@ -2,58 +2,84 @@ alter session set "_ORACLE_SCRIPT"=true;
 
 CREATE ROLE ROLE_SINHVIEN
 NOT IDENTIFIED;
+/
 
-Create function xem_cua_chinh_minh_function(p_schema varchar2, p_obj varchar2)
+Create or replace function xem_cua_chinh_minh_function(p_schema varchar2, p_obj varchar2)
 Return varchar2
 As
 user VARCHAR2(100);
+role varchar2(100);
 Begin
-user := SYS_CONTEXT(‘userenv’, ‘SESSION_USER’);
-return ‘MASV = ‘ || user;
+user := SYS_CONTEXT('userenv', 'SESSION_USER');
+for r in (SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = user)
+loop
+    IF r.granted_role = 'ROLE_SINHVIEN' then 
+        return 'MASV = ''' || user ||'''';
+    end if;
+END LOOP;
+    return '1=1';
 End;
-
-execute dbms_rls.add_policy (object_schema => ‘ROLE_SINHVIEN’,
-                            object_name => ‘SINHVIEN’,
-                            policy_name => ‘xem_cua_chinh_minh_policy’,
-                            function_schema => ‘sec_mgr’,
-                            policy_function => ‘xem_cua_chinh_minh_function’,
-                            statement_types => ‘select’,
-                            update_check => TRUE );
-                            
-execute dbms_rls.add_policy (object_schema => ‘ROLE_SINHVIEN’,
-                            object_name => ‘SINHVIEN’,
-                            policy_name => ‘sua_cua_chinh_minh_policy’,
-                            function_schema => ‘sec_mgr’,
-                            policy_function => ‘xem_cua_chinh_minh_function’,
-                            sec_relevant_cols => ‘DCHI’, 'DT');
-
-Create function xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function(p_schema varchar2, p_obj varchar2)
+/
+begin
+dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'SINHVIEN',
+                            policy_name => 'xem_cua_chinh_minh_policy',
+                            function_schema => 'ADMIN_OLS1',
+                            policy_function => 'xem_cua_chinh_minh_function',
+                            statement_types => 'select');
+end;
+/
+begin
+dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'SINHVIEN',
+                            policy_name => 'sua_cua_chinh_minh_policy',
+                            function_schema => 'ADMIN_OLS1',
+                            policy_function => 'xem_cua_chinh_minh_function',
+                            statement_types => 'update',
+                            sec_relevant_cols => 'DCHI, DT',
+                            update_check => true);
+end;
+--begin
+--dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
+--                            object_name => 'SINHVIEN',
+--                            policy_name => 'sua_cua_chinh_minh_policy');
+--end;
+/
+Create or replace function xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function(p_schema varchar2, p_obj varchar2)
 Return varchar2
 As
 p_MACT VARCHAR2(100);
-p_MAMH VARCHAR2(100);
+p_MAHP VARCHAR2(100);
 user VARCHAR2(100);
 Begin
-user := SYS_CONTEXT(‘userenv’, ‘SESSION_USER’);
-SELECT MACT INTO p_MACT FROM SINHVIEN WHERE MASV = SYS_CONTEXT(‘userenv’, ‘SESSION_USER’);
-SELECT MAMH INTO p_MAMH FROM KHMO WHERE MACT = p_MACT;
-return ‘MAMH = ‘ || p_MAMH;
+user := SYS_CONTEXT('userenv', 'SESSION_USER');
+SELECT MACT INTO p_MACT FROM SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
+SELECT MAHP INTO p_MAHP FROM KHMO WHERE MACT = p_MACT;
+return 'MAPH = ''' || p_MAHP || '''';
 End;
-
-execute dbms_rls.add_policy (object_schema => ‘ROLE_SINHVIEN’,
-                            object_name => ‘KHMO’, 'HOCPHAN',
-                            policy_name => ‘xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy’,
-                            function_schema => ‘sec_mgr’,
-                            policy_function => ‘xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function’,
-                            statement_types => ‘select’,
-                            update_check => TRUE );
-         
-                         
-Create function dang_ky_hoc_phan_trong_hoc_ky_nay_function(p_schema varchar2, p_obj varchar2)
+/
+begin
+dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'KHMO',
+                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy',
+                            function_schema => 'ADMIN_OLS1',
+                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function',
+                            statement_types => 'select');
+end;       
+begin
+dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'HOCPHAN',
+                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy2',
+                            function_schema => 'ADMIN_OLS1',
+                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function',
+                            statement_types => 'select');
+end;    
+/                    
+Create or replace function dang_ky_hoc_phan_trong_hoc_ky_nay_function(p_schema varchar2, p_obj varchar2)
 Return varchar2
 As
 p_MACT VARCHAR2(100);
-p_MAMH VARCHAR2(100);
+p_MAHP VARCHAR2(100);
 p_NAM INTEGER;
 p_HK INTEGER;
 user VARCHAR2(100);
@@ -62,7 +88,7 @@ first date;
 second date;
 third date;
 Begin
-SELECT TRUNC(CURRENT_DATE) AS current_date FROM dual;
+SELECT TRUNC(CURRENT_DATE) into current_date FROM dual;
 first := to_date('1-JAN');
 second := to_date('1-MAY');
 third := to_date('1-SEP');
@@ -79,24 +105,27 @@ ELSIF EXTRACT(DAY FROM CURRENT_DATE) BETWEEN EXTRACT(DAY FROM third+14) AND EXTR
 ELSE
     p_HK := 0;
 END IF;
-user := SYS_CONTEXT(‘userenv’, ‘SESSION_USER’);
-SELECT MACT INTO p_MACT FROM SINHVIEN WHERE MASV = SYS_CONTEXT(‘userenv’, ‘SESSION_USER’);
-SELECT MAMH INTO p_MAMH FROM KHMO WHERE MACT = p_MACT;
-return ‘NAM = ‘ || p_NAM AND 'HK = ' || p_HK AND 'MASV = ' || user;
+user := SYS_CONTEXT('userenv', 'SESSION_USER');
+SELECT MACT INTO p_MACT FROM SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
+SELECT MAHP INTO p_MAHP FROM KHMO WHERE MACT = p_MACT;
+return 'NAM = ''' || p_NAM ||''' AND HK = ''' || p_HK || ''' AND MASV = ''' || user || ''' AND MAHP = ''' || p_MAHP || '''';
 End;                                                    
-
-execute dbms_rls.add_policy (object_schema => ‘ROLE_SINHVIEN’,
-                            object_name => ‘DANGKY’,
-                            policy_name => ‘dang_ky_hoc_phan_trong_hoc_ky_nay_policy’,
-                            function_schema => ‘sec_mgr’,
-                            policy_function => ‘dang_ky_hoc_phan_trong_hoc_ky_nay_function’,
-                            statement_types => ‘insert’, 'delete',
+/
+begin
+dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'DANGKY',
+                            policy_name => 'dang_ky_hoc_phan_trong_hoc_ky_nay_policy',
+                            function_schema => 'ADMIN_OLS1',
+                            policy_function => 'dang_ky_hoc_phan_trong_hoc_ky_nay_function',
+                            statement_types => 'insert, delete, update',
                             update_check => TRUE );
-                            
-execute dbms_rls.add_policy (object_schema => ‘ROLE_SINHVIEN’,
-                            object_name => ‘DANGKY’,
-                            policy_name => ‘xem_hoc_phan_trong_hoc_ky_nay_policy’,
-                            function_schema => ‘sec_mgr’,
-                            policy_function => ‘xem_cua_chinh_minh_function’,
-                            statement_types => ‘select’,
+end;
+begin
+dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'DANGKY',
+                            policy_name => 'xem_hoc_phan_trong_hoc_ky_nay_policy',
+                            function_schema => 'ADMIN_OLS1',
+                            policy_function => 'xem_cua_chinh_minh_function',
+                            statement_types => 'select',
                             update_check => TRUE );
+end;
