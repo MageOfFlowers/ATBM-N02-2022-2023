@@ -115,37 +115,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BUS\AdminBUS.cs" />
-    <Compile Include="BUS\NhanSuBUS.cs" />
-    <Compile Include="DTO\NhanSuDTO.cs" />
+    <Compile Include="Admin\BUS\AdminBUS.cs" />
+    <Compile Include="Admin\BUS\NhanSuBUS.cs" />
+    <Compile Include="Admin\DTO\NhanSuDTO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditUser.cs">
+    <Compile Include="Admin\EditUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditUser.Designer.cs">
+    <Compile Include="Admin\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditRole.cs">
+    <Compile Include="Admin\EditRole.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditRole.Designer.cs">
+    <Compile Include="Admin\EditRole.Designer.cs">
       <DependentUpon>EditRole.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddUser.cs">
+    <Compile Include="Admin\AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddUser.Designer.cs">
+    <Compile Include="Admin\AddUser.Designer.cs">
       <DependentUpon>AddUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddRole.cs">
+    <Compile Include="Admin\AddRole.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddRole.Designer.cs">
+    <Compile Include="Admin\AddRole.Designer.cs">
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
     <Compile Include="ThongTinLopHoc.cs">
@@ -154,51 +154,51 @@
     <Compile Include="ThongTinLopHoc.Designer.cs">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Privilege.cs">
+    <Compile Include="Admin\Privilege.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Privilege.Designer.cs">
+    <Compile Include="Admin\Privilege.Designer.cs">
       <DependentUpon>Privilege.cs</DependentUpon>
     </Compile>
-    <Compile Include="Roles.cs">
+    <Compile Include="Admin\Roles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Roles.Designer.cs">
+    <Compile Include="Admin\Roles.Designer.cs">
       <DependentUpon>Roles.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs">
+    <Compile Include="Admin\Users.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users.Designer.cs">
+    <Compile Include="Admin\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.cs">
+    <Compile Include="Admin\LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginPage.Designer.cs">
+    <Compile Include="Admin\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddRole.resx">
+    <EmbeddedResource Include="Admin\AddRole.resx">
       <DependentUpon>AddRole.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddUser.resx">
+    <EmbeddedResource Include="Admin\AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditRole.resx">
+    <EmbeddedResource Include="Admin\EditRole.resx">
       <DependentUpon>EditRole.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditUser.resx">
+    <EmbeddedResource Include="Admin\EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginPage.resx">
+    <EmbeddedResource Include="Admin\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Privilege.resx">
+    <EmbeddedResource Include="Admin\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -210,13 +210,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Roles.resx">
+    <EmbeddedResource Include="Admin\Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThongTinLopHoc.resx">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users.resx">
+    <EmbeddedResource Include="Admin\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ATBM_TemporaryKey.pfx" />
