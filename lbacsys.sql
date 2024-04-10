@@ -274,6 +274,7 @@ execute sa_label_admin.create_label (policy_name=>'region_policy2', label_tag=>'
 execute sa_label_admin.create_label (policy_name=>'region_policy2', label_tag=>'662', label_value=>'SV:MMT:CS2');
 
 /
+-------------------------------------------------
 begin
 SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
  POLICY_NAME => 'region_policy2',

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PROCEDURE Cap_quyen_a (name in varchar2)
 is
 begin
-    SA_USER_ADMIN.SET_USER_LABELS('region_policy',name,'TK: HTTT, CNPM, KHMT, CNTT, TGMT, MMT: CS1, CS2'); 
+    SA_USER_ADMIN.SET_USER_LABELS('region_policy2',name,'TK: HTTT, CNPM, KHMT, CNTT, TGMT, MMT: CS1, CS2'); 
 end;
 /
 CREATE OR REPLACE PROCEDURE USP_Cap_quyen_hang_loat_a
@@ -19,7 +19,7 @@ BEGIN
         EXIT WHEN CUR%NOTFOUND;
         
         begin
-            SA_USER_ADMIN.SET_USER_LABELS('region_policy',USR,'TK: HTTT, CNPM, KHMT, CNTT, TGMT, MMT: CS1, CS2'); 
+            SA_USER_ADMIN.SET_USER_LABELS('region_policy2',USR,'TK: HTTT, CNPM, KHMT, CNTT, TGMT, MMT: CS1, CS2'); 
         end;
     END LOOP;
     CLOSE CUR;
