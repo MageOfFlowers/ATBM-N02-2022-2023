@@ -156,3 +156,7 @@ C:\KHTN\n3_hk2\ATBM\DoAn\script\src\ATBM-N02-2022-2023\ATBM_PhanHe1\ATBM\bin\Deb
 C:\KHTN\n3_hk2\ATBM\DoAn\script\src\ATBM-N02-2022-2023\ATBM_PhanHe1\ATBM\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\KHTN\n3_hk2\ATBM\DoAn\script\src\ATBM-N02-2022-2023\ATBM_PhanHe1\ATBM\bin\Debug\System.ValueTuple.xml
 C:\KHTN\n3_hk2\ATBM\DoAn\script\src\ATBM-N02-2022-2023\ATBM_PhanHe1\ATBM\obj\Debug\ATBM.csproj.CopyComplete
+C:\KHTN\n3_hk2\ATBM\DoAn\script\src\ATBM-N02-2022-2023\ATBM_PhanHe1\ATBM\bin\Debug\ATBM.exe.manifest
+C:\KHTN\n3_hk2\ATBM\DoAn\script\src\ATBM-N02-2022-2023\ATBM_PhanHe1\ATBM\bin\Debug\ATBM.application
+C:\KHTN\n3_hk2\ATBM\DoAn\script\src\ATBM-N02-2022-2023\ATBM_PhanHe1\ATBM\obj\Debug\ATBM.exe.manifest
+C:\KHTN\n3_hk2\ATBM\DoAn\script\src\ATBM-N02-2022-2023\ATBM_PhanHe1\ATBM\obj\Debug\ATBM.application
