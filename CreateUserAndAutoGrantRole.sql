@@ -8,8 +8,8 @@ AS
     USR VARCHAR2(5);
 BEGIN
     OPEN CUR;
-    STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE';
-    EXECUTE IMMEDIATE(STRSQL);
+--    STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE';
+--    EXECUTE IMMEDIATE(STRSQL);
     LOOP
         FETCH CUR INTO USR;
         EXIT WHEN CUR%NOTFOUND;
@@ -19,11 +19,19 @@ BEGIN
         STRSQL := 'GRANT CONNECT TO '||USR;
         EXECUTE IMMEDIATE(STRSQL);
     END LOOP;
-    STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
-    EXECUTE IMMEDIATE(STRSQL);
+--    STRSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT" = FALSE';
+--    EXECUTE IMMEDIATE(STRSQL);
     CLOSE CUR;
 END;
-
+/
+exec USP_CREATEUSER;
+/
+create role role_giaovu;
+create role role_giangvien;
+create role role_truongkhoa;
+create role role_nhanvien;
+create role role_truongdonvi;
+/
 CREATE OR REPLACE PROCEDURE USP_ADDUSRMEM
 AS
     CURSOR CUR IS (SELECT ns.MANV, ns.VAITRO, dv.TRGDV, dv.TENDV
@@ -38,19 +46,21 @@ AS
 BEGIN
     OPEN CUR;
     LOOP
-        FETCH CUR INTO USR, USR2;
+        FETCH CUR INTO USR, USR2, USR3, USR4;
         EXIT WHEN CUR%NOTFOUND;
         IF USR2 = 'Giao vu' THEN
-            STRSQL := 'GRANT GVu TO '||USR;
+            STRSQL := 'GRANT role_giaovu TO '||USR;
         ELSIF USR2 = 'Nhan vien co ban' THEN
-            STRSQL := 'GRANT NV TO '||USR;
+            STRSQL := 'GRANT role_nhanvien TO '||USR;
         ELSIF USR3 = USR AND USR4 = 'Van phong khoa' THEN
-            STRSQL := 'GRANT TK TO '||USR;
+            STRSQL := 'GRANT role_truongkhoa TO '||USR;
         ELSIF USR3 = USR THEN
-            STRSQL := 'GRANT TDV TO '||USR; 
-        ELSE STRSQL := 'GRANT GVien TO '||USR;
+            STRSQL := 'GRANT role_truongdonvi TO '||USR; 
+        ELSE STRSQL := 'GRANT role_giangvien TO '||USR;
         END IF;
         EXECUTE IMMEDIATE (STRSQL);
     END LOOP;
     CLOSE CUR;
 END;
+/
+exec USP_ADDUSRMEM;
