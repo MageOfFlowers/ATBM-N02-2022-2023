@@ -27,7 +27,8 @@ show con_name;
 --alter session set container = CDB$ROOT;
 ALTER USER lbacsys IDENTIFIED BY lbacsys ACCOUNT UNLOCK;
 alter session set container = ATBM_3;
-
+grant execute on sa_audit_admin TO ADMIN_OLS1;
+grant region_policy2_DBA TO ADMIN_OLS1;
 GRANT EXECUTE ON LBACSYS.SA_COMPONENTS TO ADMIN_OLS1 WITH GRANT OPTION;
 GRANT EXECUTE ON LBACSYS.sa_user_admin TO ADMIN_OLS1 WITH GRANT OPTION;
 GRANT EXECUTE ON LBACSYS.sa_label_admin TO ADMIN_OLS1 WITH GRANT OPTION;
