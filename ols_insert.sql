@@ -53,6 +53,7 @@ end;
 --SET region_label2 = CHAR_TO_LABEL('REGION_POLICY2','SV:'); 
 
 set serveroutput on;
+exec tao_thongbao('Thong bao nay danh cho sinh vien HTTT o CS1','SV','HTTT','CS1');
 exec tao_thongbao('Thong bao nay danh cho truong bo mon phu trach co so 1','TDV',null,'CS1');
 exec tao_thongbao('Thong bao nay danh cho truong bo mon phu trach co so 2','TDV',null,'CS2');
 exec tao_thongbao('Thong bao nay danh cho truong khoa','TK',null,null);

@@ -296,11 +296,11 @@ SA_USER_ADMIN.SET_USER_LABELS('region_policy2','NV002','Gvien:HTTT,CNPM,KHMT,CNT
 end;  
     BEGIN
         SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('REGION_POLICY2','ADMIN_OLS1','THONGBAO');
-        SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
-         policy_name => 'REGION_POLICY2',
-         schema_name => 'ADMIN_OLS1',
-         table_name => 'THONGBAO',
-         table_options => 'READ_CONTROL'
-        );
+--        SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
+--         policy_name => 'REGION_POLICY2',
+--         schema_name => 'ADMIN_OLS1',
+--         table_name => 'THONGBAO',
+--         table_options => 'READ_CONTROL'
+       -- );
     END;
     
