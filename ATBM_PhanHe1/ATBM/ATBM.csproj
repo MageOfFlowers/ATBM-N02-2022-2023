@@ -154,6 +154,12 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThongTinCaNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinCaNhan.Designer.cs">
+      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThongTinLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </Compile>
     <EmbeddedResource Include="Admin\Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongTinCaNhan.resx">
+      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThongTinLopHoc.resx">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
