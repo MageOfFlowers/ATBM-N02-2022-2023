@@ -115,13 +115,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\BUS\AdminBUS.cs" />
-    <Compile Include="Admin\BUS\NhanSuBUS.cs" />
-    <Compile Include="Admin\DTO\NhanSuDTO.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="BUS\AdminBUS.cs" />
+    <Compile Include="BUS\NhanSuBUS.cs" />
+    <Compile Include="DTO\NhanSuDTO.cs" />
+    <Compile Include="Admin\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Admin\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\EditUser.cs">
@@ -148,11 +148,11 @@
     <Compile Include="Admin\AddRole.Designer.cs">
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThongTinCaNhan.cs">
+    <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongTinCaNhan.Designer.cs">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="ThongTinLopHoc.cs">
       <SubType>Form</SubType>
@@ -178,10 +178,10 @@
     <Compile Include="Admin\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\LoginPage.cs">
+    <Compile Include="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\LoginPage.Designer.cs">
+    <Compile Include="LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -198,10 +198,10 @@
     <EmbeddedResource Include="Admin\EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Admin\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\LoginPage.resx">
+    <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Privilege.resx">
@@ -218,9 +218,6 @@
     </Compile>
     <EmbeddedResource Include="Admin\Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ThongTinCaNhan.resx">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThongTinLopHoc.resx">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
@@ -260,6 +257,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FORM\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
