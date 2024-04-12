@@ -116,7 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\AdminBUS.cs" />
+    <Compile Include="BUS\KHMBUS.cs" />
     <Compile Include="BUS\NhanSuBUS.cs" />
+    <Compile Include="DTO\KHMDTO.cs" />
     <Compile Include="DTO\NhanSuDTO.cs" />
     <Compile Include="Admin\Form1.cs">
       <SubType>Form</SubType>
@@ -220,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\KeHoachMo.resx">
       <DependentUpon>KeHoachMo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -205,7 +205,7 @@
             this.Controls.Add(this.ThongTinLopDGV);
             this.Controls.Add(this.label1);
             this.Name = "ThongTinLopHoc";
-            this.Text = "Form2";
+            this.Text = "Thông tin lớp học";
             ((System.ComponentModel.ISupportInitialize)(this.ThongTinLopDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

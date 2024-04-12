@@ -16,5 +16,15 @@ namespace ATBM.FORM
         {
             InitializeComponent();
         }
+
+        private void dgvKHM_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void KeHoachMo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
