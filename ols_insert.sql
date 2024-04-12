@@ -68,7 +68,7 @@ SET region_label2 = CHAR_TO_LABEL('REGION_POLICY2','SV::')
 where noidung = 'ha';
 
 exec tao_user('SV001','123');
-
+grant select on thongbao to NV001;
 
 BEGIN
  SA_USER_ADMIN.SET_USER_LABELS('region_policy2','SV001','SV:HTTT:CS1');
@@ -76,5 +76,9 @@ END;
 create role role_sinhvien;
 grant role_sinhvien to SV001;
 grant select on thongbao to role_sinhvien;
-grant select on thongbao to SV001;
+grant select on thongbao to NV002;
 /
+
+SELECT table_name, privilege, grantable
+                    FROM dba_tab_privs 
+                    where grantee = 'ADMIN_OLS1';
