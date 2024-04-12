@@ -13,9 +13,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM
 {
-    public partial class LoginPage : Form
+    public partial class DangNhap : Form
     {
-        public LoginPage()
+        public DangNhap()
         {
             InitializeComponent();
         }

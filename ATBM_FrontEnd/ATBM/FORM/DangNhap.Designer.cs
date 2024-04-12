@@ -1,6 +1,6 @@
 ﻿namespace ATBM
 {
-    partial class LoginPage
+    partial class DangNhap
     {
         /// <summary>
         /// Required designer variable.
