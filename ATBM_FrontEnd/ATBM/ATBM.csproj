@@ -148,10 +148,16 @@
     <Compile Include="Admin\AddRole.Designer.cs">
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu.cs">
+    <Compile Include="FORM\KeHoachMo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenu.Designer.cs">
+    <Compile Include="FORM\KeHoachMo.Designer.cs">
+      <DependentUpon>KeHoachMo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="ThongTinCaNhan.cs">
@@ -160,10 +166,9 @@
     <Compile Include="ThongTinCaNhan.Designer.cs">
       <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThongTinLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongTinLopHoc.Designer.cs">
+    <Compile Include="FORM\ThongTinLopHoc.Designer.cs">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Privilege.cs">
@@ -184,11 +189,11 @@
     <Compile Include="Admin\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.cs">
+    <Compile Include="FORM\DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginPage.Designer.cs">
-      <DependentUpon>LoginPage.cs</DependentUpon>
+    <Compile Include="FORM\DangNhap.Designer.cs">
+      <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -207,11 +212,14 @@
     <EmbeddedResource Include="Admin\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginPage.resx">
-      <DependentUpon>LoginPage.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\DangNhap.resx">
+      <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\KeHoachMo.resx">
+      <DependentUpon>KeHoachMo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -228,7 +236,7 @@
     <EmbeddedResource Include="ThongTinCaNhan.resx">
       <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongTinLopHoc.resx">
+    <EmbeddedResource Include="FORM\ThongTinLopHoc.resx">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Users.resx">
@@ -267,9 +275,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FORM\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
