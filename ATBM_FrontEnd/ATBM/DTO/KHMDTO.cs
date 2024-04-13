@@ -10,8 +10,8 @@ namespace ATBM.DTO
     {
         public string MAHP { get; set; }
         public string TENHP { get; set; }
-        public string HOCKY { get; set; }
-        public string NAM { get; set; }
+        public int HOCKY { get; set; }
+        public int NAM { get; set; }
         public string MACT{ get; set; }
     }
 }

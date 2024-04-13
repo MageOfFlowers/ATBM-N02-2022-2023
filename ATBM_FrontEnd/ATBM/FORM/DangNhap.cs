@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Oracle.ManagedDataAccess.Client;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using ATBM.FORM.KeHoachMo;
 
 namespace ATBM
 {
@@ -32,7 +33,7 @@ namespace ATBM
                     connection.Open();
                     MessageBox.Show("Login Success");
                     connection.Close();
-                    Form1 f = new Form1();
+                    KeHoachMo f = new KeHoachMo();
                     f.ShowDialog();
                 }
             }

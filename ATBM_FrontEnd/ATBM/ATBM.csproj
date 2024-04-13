@@ -116,8 +116,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\AdminBUS.cs" />
+    <Compile Include="BUS\HocPhanBUS.cs" />
     <Compile Include="BUS\KHMBUS.cs" />
     <Compile Include="BUS\NhanSuBUS.cs" />
+    <Compile Include="DTO\HocPhanDTO.cs" />
     <Compile Include="DTO\KHMDTO.cs" />
     <Compile Include="DTO\NhanSuDTO.cs" />
     <Compile Include="Admin\Form1.cs">
@@ -150,10 +152,16 @@
     <Compile Include="Admin\AddRole.Designer.cs">
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\KeHoachMo.cs">
+    <Compile Include="FORM\KeHoachMo\ThemKHM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\KeHoachMo.Designer.cs">
+    <Compile Include="FORM\KeHoachMo\ThemKHM.Designer.cs">
+      <DependentUpon>ThemKHM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\KeHoachMo\KeHoachMo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\KeHoachMo\KeHoachMo.Designer.cs">
       <DependentUpon>KeHoachMo.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\MainMenu.cs">
@@ -221,8 +229,11 @@
     <EmbeddedResource Include="Admin\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\KeHoachMo.resx">
+    <EmbeddedResource Include="FORM\KeHoachMo\KeHoachMo.resx">
       <DependentUpon>KeHoachMo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\KeHoachMo\ThemKHM.resx">
+      <DependentUpon>ThemKHM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

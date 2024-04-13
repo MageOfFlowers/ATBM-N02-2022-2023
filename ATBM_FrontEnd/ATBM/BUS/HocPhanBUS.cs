@@ -5,21 +5,19 @@ using Oracle.ManagedDataAccess.Client;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ATBM.DTO;
 using System.Windows.Forms;
-using System.Data.Linq.Mapping;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using ATBM.DTO;
 
 namespace ATBM.BUS
 {
-    internal class KHMBUS
+    internal class HocPhanBUS
     {
         public OracleConnection connection = new OracleConnection(Program.connectionString);
-
-        public IList<KHMDTO> ds_KHM()
+        public IList<HocPhanDTO> dsHocPhan()
         {
-            string procedureName = "xem_ds_ke_hoach_mo";
-            IList<KHMDTO> ds = new List<KHMDTO>();
+
+            string procedureName = "xem_ds_hoc_phan";
+            IList<HocPhanDTO> ds = new List<HocPhanDTO>();
             try
             {
                 using (OracleCommand command = new OracleCommand(procedureName, connection))
@@ -35,12 +33,14 @@ namespace ATBM.BUS
 
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        KHMDTO obj = new KHMDTO();
+                        HocPhanDTO obj = new HocPhanDTO();
                         obj.MAHP = row["mahp"].ToString();
                         obj.TENHP = row["tenhp"].ToString();
-                        obj.HOCKY = Convert.ToInt32(row["hk"]);
-                        obj.NAM = Convert.ToInt32(row["nam"]);
-                        obj.MACT = row["mact"].ToString();
+                        obj.SOTC = Convert.ToInt32(row["sotc"]);
+                        obj.STLT = Convert.ToInt32(row["stlt"]);
+                        obj.STTH = Convert.ToInt32(row["stth"]);
+                        obj.SOSVTD = Convert.ToInt32(row["sosvtd"]);
+                        obj.MADV = row["madv"].ToString();
 
                         ds.Add(obj);
                     }
@@ -50,28 +50,11 @@ namespace ATBM.BUS
             {
                 MessageBox.Show(ex.Message);
             }
-            finally 
+            finally
             {
-                connection.Close(); 
-            }
-            return ds;
-        }
-
-        public void themKHM(KHMDTO khm)
-        {
-            string procedureName = "them_ke_hoach";
-            using (OracleCommand command = new OracleCommand(procedureName, connection))
-            {
-                connection.Open();
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("mahp", OracleDbType.Varchar2).Value = khm.MAHP;
-                command.Parameters.Add("hk", OracleDbType.Int32).Value = khm.HOCKY;
-                command.Parameters.Add("nam", OracleDbType.Varchar2).Value = khm.NAM;
-                command.Parameters.Add("mact", OracleDbType.Varchar2).Value = khm.MACT;
-
-                command.ExecuteNonQuery();
                 connection.Close();
             }
+            return ds;
         }
     }
 }
