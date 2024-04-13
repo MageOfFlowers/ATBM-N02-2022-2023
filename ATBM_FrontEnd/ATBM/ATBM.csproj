@@ -118,9 +118,12 @@
     <Compile Include="BUS\AdminBUS.cs" />
     <Compile Include="BUS\HocPhanBUS.cs" />
     <Compile Include="BUS\KHMBUS.cs" />
+    <Compile Include="BUS\LopBUS.cs" />
     <Compile Include="BUS\NhanSuBUS.cs" />
+    <Compile Include="BUS\TTHSTrongLopBUS.cs" />
     <Compile Include="DTO\HocPhanDTO.cs" />
     <Compile Include="DTO\KHMDTO.cs" />
+    <Compile Include="DTO\LopDTO.cs" />
     <Compile Include="DTO\NhanSuDTO.cs" />
     <Compile Include="Admin\Form1.cs">
       <SubType>Form</SubType>
@@ -152,6 +155,7 @@
     <Compile Include="Admin\AddRole.Designer.cs">
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\TTHSTrongLopDTO.cs" />
     <Compile Include="FORM\KeHoachMo\ThemKHM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,17 +174,17 @@
     <Compile Include="FORM\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\ThongTinLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\ThongTinLopHoc.designer.cs">
+      <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThongTinCaNhan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ThongTinCaNhan.Designer.cs">
       <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FORM\ThongTinLopHoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FORM\ThongTinLopHoc.Designer.cs">
-      <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Privilege.cs">
       <SubType>Form</SubType>
@@ -238,6 +242,9 @@
     <EmbeddedResource Include="FORM\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM\ThongTinLopHoc.resx">
+      <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -252,9 +259,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ThongTinCaNhan.resx">
       <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FORM\ThongTinLopHoc.resx">
-      <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>

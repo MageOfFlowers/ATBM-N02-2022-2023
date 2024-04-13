@@ -66,7 +66,7 @@ namespace ATBM.BUS
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("mahp", OracleDbType.Varchar2).Value = khm.MAHP;
                 command.Parameters.Add("hk", OracleDbType.Int32).Value = khm.HOCKY;
-                command.Parameters.Add("nam", OracleDbType.Varchar2).Value = khm.NAM;
+                command.Parameters.Add("nam", OracleDbType.Int32).Value = khm.NAM;
                 command.Parameters.Add("mact", OracleDbType.Varchar2).Value = khm.MACT;
 
                 command.ExecuteNonQuery();
