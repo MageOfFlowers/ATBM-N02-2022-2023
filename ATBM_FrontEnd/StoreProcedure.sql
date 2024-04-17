@@ -23,6 +23,12 @@ begin
     execute immediate 'insert into admin_ols1.khmo values(''' || m_mahp || ''',' || m_hk || ',' || m_nam || ',''' || m_mact || ''')';
 end;
 /
+create or replace procedure thay_doi_ke_hoach (m_mahp varchar2, m_hk integer, m_nam integer, m_mact varchar2)
+as
+begin
+    execute immediate 'update admin_ols1.khmo set hk = ' || m_hk || ', nam = ' || m_nam || ', mact = ''' || m_mact || ''' where mahp = ''' || m_mahp || '';
+end;
+/
 create or replace procedure lay_thong_tin_lop_hoc(pMAHP in varchar2, pHK in number, pNAM in number, pMACT in varchar2, c1 out SYS_REFCURSOR)
 as
 begin
