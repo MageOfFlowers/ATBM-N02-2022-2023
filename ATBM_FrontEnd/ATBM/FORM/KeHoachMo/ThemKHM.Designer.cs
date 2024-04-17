@@ -128,9 +128,9 @@
             // 
             this.Them_btn.Location = new System.Drawing.Point(249, 355);
             this.Them_btn.Name = "Them_btn";
-            this.Them_btn.Size = new System.Drawing.Size(75, 23);
+            this.Them_btn.Size = new System.Drawing.Size(121, 23);
             this.Them_btn.TabIndex = 8;
-            this.Them_btn.Text = "Submit";
+            this.Them_btn.Text = "Thêm";
             this.Them_btn.UseVisualStyleBackColor = true;
             this.Them_btn.Click += new System.EventHandler(this.Them_btn_Click);
             // 

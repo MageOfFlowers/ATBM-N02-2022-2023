@@ -41,6 +41,27 @@ namespace ATBM.FORM.KeHoachMo
             editColumn.Text = "Edit";
             editColumn.UseColumnTextForButtonValue = true;
             KHM_dvg.Columns.Add(editColumn);
+
+            KHM_dvg.CellClick += KHM_dvg_CellClick;
+        }
+
+        private void KHM_dvg_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            KHMDTO khm = new KHMDTO();
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == KHM_dvg.Columns["Edit"].Index)
+                {
+                    khm.MAHP = KHM_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
+                    khm.TENHP = KHM_dvg.Rows[e.RowIndex].Cells["TENHP"].Value.ToString();
+                    khm.HOCKY = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["HOCKY"].Value);
+                    khm.NAM = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
+                    khm.MACT = KHM_dvg.Rows[e.RowIndex].Cells["MACT"].Value.ToString();
+                    ThemKHM t = new ThemKHM(khm);
+                    t.FormClosed += t_FormClosed;
+                    t.ShowDialog();
+                }
+            }
         }
 
         private void AddPlan_btn_Click(object sender, EventArgs e)

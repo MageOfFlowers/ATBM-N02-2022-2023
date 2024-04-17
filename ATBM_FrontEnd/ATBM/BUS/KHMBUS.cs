@@ -64,10 +64,26 @@ namespace ATBM.BUS
             {
                 connection.Open();
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("mahp", OracleDbType.Varchar2).Value = khm.MAHP;
-                command.Parameters.Add("hk", OracleDbType.Int32).Value = khm.HOCKY;
-                command.Parameters.Add("nam", OracleDbType.Int32).Value = khm.NAM;
-                command.Parameters.Add("mact", OracleDbType.Varchar2).Value = khm.MACT;
+                command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = khm.MAHP;
+                command.Parameters.Add("m_hk", OracleDbType.Int32).Value = khm.HOCKY;
+                command.Parameters.Add("m_nam", OracleDbType.Int32).Value = khm.NAM;
+                command.Parameters.Add("m_mact", OracleDbType.Varchar2).Value = khm.MACT;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        public void capNhatKHM(KHMDTO khm)
+        {
+            string procedureName = "thay_doi_ke_hoach";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = khm.MAHP;
+                command.Parameters.Add("m_hk", OracleDbType.Int32).Value = khm.HOCKY;
+                command.Parameters.Add("m_nam", OracleDbType.Int32).Value = khm.NAM;
+                command.Parameters.Add("m_mact", OracleDbType.Varchar2).Value = khm.MACT;
 
                 command.ExecuteNonQuery();
                 connection.Close();

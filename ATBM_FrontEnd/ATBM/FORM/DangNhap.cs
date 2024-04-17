@@ -33,7 +33,7 @@ namespace ATBM
                     connection.Open();
                     MessageBox.Show("Login Success");
                     connection.Close();
-                    ThongTinLopHoc f = new ThongTinLopHoc();
+                    KeHoachMo f = new KeHoachMo();
                     f.ShowDialog();
                 }
             }
