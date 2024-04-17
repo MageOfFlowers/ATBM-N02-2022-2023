@@ -16,5 +16,16 @@ namespace ATBM
         {
             InitializeComponent();
         }
+
+        public MainMenu(string user)
+        {
+            InitializeComponent();
+            Label.Text = $"Xin chào {user}";
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

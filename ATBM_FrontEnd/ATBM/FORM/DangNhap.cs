@@ -33,7 +33,7 @@ namespace ATBM
                     connection.Open();
                     MessageBox.Show("Login Success");
                     connection.Close();
-                    KeHoachMo f = new KeHoachMo();
+                    MainMenu f = new MainMenu(username);
                     f.ShowDialog();
                 }
             }
