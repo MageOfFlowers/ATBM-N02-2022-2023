@@ -18,7 +18,7 @@ namespace ATBM.Admin.BUS
 {
     internal class TTHSTrongLopBUS
     {
-        public OracleConnection connection = new OracleConnection(Program.connectionString);
+        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
 
         public DataTable LayThongTinHocSinhTrongLop(string pMAHP, int pHK, int pNAM , string pMACT)
         {

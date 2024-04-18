@@ -19,7 +19,7 @@ namespace ATBM.Admin.BUS
 {
     internal class LopBUS
     {
-        public OracleConnection connection = new OracleConnection(Program.connectionString);
+        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
 
         public IList<LopDTO> layDSLop()
         {

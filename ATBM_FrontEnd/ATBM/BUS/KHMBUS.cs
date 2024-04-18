@@ -14,7 +14,7 @@ namespace ATBM.BUS
 {
     internal class KHMBUS
     {
-        public OracleConnection connection = new OracleConnection(Program.connectionString);
+        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
 
         public IList<KHMDTO> ds_KHM()
         {

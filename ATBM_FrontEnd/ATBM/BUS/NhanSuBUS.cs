@@ -13,11 +13,32 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM.BUS
 {
-    /*internal class NhanSuBUS
+    internal class NhanSuBUS
     {
-        readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
+        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
 
-        public IList<NhanSuDTO> layDSNhanSu()
+        public string lay_vai_tro()
+        {
+            string procedureName = "admin_ols1.xem_vai_tro";
+            string vai_tro = "";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                OracleDataAdapter da = new OracleDataAdapter();
+                DataTable dataTable = new DataTable();
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+
+                vai_tro = dataTable.Rows[0].ItemArray[0].ToString();
+                connection.Close();
+            }
+            return vai_tro;
+        }
+
+        /*public IList<NhanSuDTO> layDSNhanSu()
         {
             List<NhanSuDTO> dsNhanSu = new List<NhanSuDTO>();
             using (OracleConnection connection = new OracleConnection(connStr))
@@ -267,6 +288,6 @@ namespace ATBM.BUS
                 }
             }
             MessageBox.Show("Success");
-        }
-    }*/
+        }*/
+    }
 }

@@ -16,7 +16,7 @@ namespace ATBM.BUS
 {
     public class AdminBUS
     {
-        public OracleConnection connection = new OracleConnection(Program.connectionString);
+        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
         
         public DataTable UserList()
         {

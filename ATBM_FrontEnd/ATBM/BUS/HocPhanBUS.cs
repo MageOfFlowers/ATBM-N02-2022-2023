@@ -12,7 +12,7 @@ namespace ATBM.BUS
 {
     internal class HocPhanBUS
     {
-        public OracleConnection connection = new OracleConnection(Program.connectionString);
+        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
         public IList<HocPhanDTO> dsHocPhan()
         {
 

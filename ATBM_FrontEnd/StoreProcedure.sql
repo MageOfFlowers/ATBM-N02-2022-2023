@@ -66,3 +66,11 @@ update admin_ols1.dangky
 set DIEMTH = pTH, DIEMQT = pQT, DIEMCK = pCK, DIEMTK = pTK
 where MASV = pMASV and MAHP = pMAHP and HK = pHK and NAM = pNAM and MACT = pMACT;
 end;
+/
+create or replace procedure xem_vai_tro(c1 out SYS_REFCURSOR)
+as
+begin
+open c1 for
+    select vaitro from admin_ols1.nhansu where manv = sys_context('userenv', 'session_user');
+DBMS_SQL.RETURN_RESULT(c1);
+end;

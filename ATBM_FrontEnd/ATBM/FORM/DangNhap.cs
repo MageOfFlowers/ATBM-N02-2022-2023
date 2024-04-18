@@ -11,6 +11,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using ATBM.FORM.KeHoachMo;
+using ATBM.BUS;
 
 namespace ATBM
 {
@@ -28,16 +29,14 @@ namespace ATBM
             Program.connectionString += $"User Id={username};Password={password};";
             try
             {
-                using (OracleConnection connection = new OracleConnection(Program.connectionString))
-                {
-                    connection.Open();
-                    MessageBox.Show("Login Success");
-                    connection.Close();
-                    MainMenu f = new MainMenu(username);
-                    f.ShowDialog();
-                }
+                NhanSuBUS ns = new NhanSuBUS();
+                string vai_tro = ns.lay_vai_tro();
+                MessageBox.Show("Đăng nhập thành công!");
+                MessageBox.Show(vai_tro);
+                MainMenu f = new MainMenu(username);
+                f.ShowDialog();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
