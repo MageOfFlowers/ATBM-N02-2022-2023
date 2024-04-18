@@ -18,7 +18,7 @@ namespace ATBM.BUS
 
         public IList<KHMDTO> ds_KHM()
         {
-            string procedureName = "xem_ds_ke_hoach_mo";
+            string procedureName = "admin_ols1.xem_ds_ke_hoach_mo";
             IList<KHMDTO> ds = new List<KHMDTO>();
             try
             {
@@ -59,7 +59,7 @@ namespace ATBM.BUS
 
         public void themKHM(KHMDTO khm)
         {
-            string procedureName = "them_ke_hoach";
+            string procedureName = "admin_ols1.them_ke_hoach";
             using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
                 connection.Open();
@@ -75,7 +75,7 @@ namespace ATBM.BUS
         }
         public void capNhatKHM(KHMDTO khm)
         {
-            string procedureName = "thay_doi_ke_hoach";
+            string procedureName = "admin_ols1.thay_doi_ke_hoach";
             using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
                 connection.Open();

@@ -16,5 +16,10 @@ namespace ATBM
         {
             InitializeComponent();
         }
+
+        private void ThongTinCaNhan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

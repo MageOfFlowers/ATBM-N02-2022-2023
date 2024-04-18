@@ -17,10 +17,11 @@ namespace ATBM.BUS
     {
         readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
 
-        public string lay_vai_tro()
+        public int lay_vai_tro()
         {
             string procedureName = "admin_ols1.xem_vai_tro";
-            string vai_tro = "";
+            string vai_tro_str = "";
+            int vai_tro = 0;
             using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
                 connection.Open();
@@ -32,9 +33,20 @@ namespace ATBM.BUS
                 da.SelectCommand = command;
                 da.Fill(dataTable);
 
-                vai_tro = dataTable.Rows[0].ItemArray[0].ToString();
+                vai_tro_str = dataTable.Rows[0].ItemArray[0].ToString();
                 connection.Close();
             }
+            if (vai_tro_str == "Nhan vien co ban")
+                vai_tro = 1;
+            else if (vai_tro_str == "Giang vien")
+                vai_tro = 2;
+            else if (vai_tro_str == "Giao vu")
+                vai_tro = 3;
+            else if (vai_tro_str == "Truong don vi")
+                vai_tro = 4;
+            else if (vai_tro_str == "Truong khoa")
+                vai_tro = 5;
+
             return vai_tro;
         }
 

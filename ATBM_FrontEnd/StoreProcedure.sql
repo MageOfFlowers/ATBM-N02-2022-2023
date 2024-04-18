@@ -3,7 +3,7 @@ as
 begin
     open c1 for
     select k.mahp, h.tenhp, k.hk, k.nam, k.mact 
-    from khmo k join hocphan h
+    from admin_ols1.khmo k join admin_ols1.hocphan h
     on k.mahp = h.mahp;
     DBMS_SQL.RETURN_RESULT(c1);
 end;
@@ -13,7 +13,7 @@ as
 begin
     open c1 for
     select *
-    from hocphan;
+    from admin_ols1.hocphan;
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
@@ -74,3 +74,13 @@ open c1 for
     select vaitro from admin_ols1.nhansu where manv = sys_context('userenv', 'session_user');
 DBMS_SQL.RETURN_RESULT(c1);
 end;
+/
+grant execute on xem_ds_ke_hoach_mo to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
+grant execute on xem_ds_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
+grant execute on them_ke_hoach to role_giaovu;
+grant execute on thay_doi_ke_hoach to role_giaovu;
+grant execute on lay_thong_tin_lop_hoc to role_giangvien, role_truongdonvi, role_truongkhoa;
+grant execute on lay_thong_tin_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
+grant execute on lay_ds_lop to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
+grant execute on cap_nhat_diem to role_giangvien, role_truongdonvi, role_truongkhoa;
+grant execute on xem_vai_tro to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;

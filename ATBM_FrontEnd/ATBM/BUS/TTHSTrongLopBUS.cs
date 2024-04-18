@@ -23,7 +23,7 @@ namespace ATBM.Admin.BUS
         public DataTable LayThongTinHocSinhTrongLop(string pMAHP, int pHK, int pNAM , string pMACT)
         {
             DataTable dataTable = new DataTable();
-            string procedureName = "lay_thong_tin_lop_hoc";
+            string procedureName = "admin_ols1.lay_thong_tin_lop_hoc";
             using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
                 connection.Open();
@@ -44,7 +44,7 @@ namespace ATBM.Admin.BUS
 
         public void CapNhatDiem(DataTable dt, LopDTO Lop)
         {
-            string procedureName = "cap_nhat_diem";
+            string procedureName = "admin_ols1.cap_nhat_diem";
             using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
                 connection.Open();

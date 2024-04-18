@@ -20,6 +20,13 @@ namespace ATBM.FORM.KeHoachMo
             InitializeComponent();
         }
 
+        public KeHoachMo(int role)
+        {
+            InitializeComponent();
+            if (role == 2)
+                AddPlan_btn.Hide();
+        }
+
         private void dgvKHM_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

@@ -16,7 +16,7 @@ namespace ATBM.BUS
         public IList<HocPhanDTO> dsHocPhan()
         {
 
-            string procedureName = "xem_ds_hoc_phan";
+            string procedureName = "admin_ols1.xem_ds_hoc_phan";
             IList<HocPhanDTO> ds = new List<HocPhanDTO>();
             try
             {

@@ -24,7 +24,7 @@ namespace ATBM.Admin.BUS
         public IList<LopDTO> layDSLop()
         {
             List<LopDTO> dsLop = new List<LopDTO>();
-            string procedureName = "lay_ds_lop";
+            string procedureName = "admin_ols1.lay_ds_lop";
             using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
                 connection.Open();

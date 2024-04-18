@@ -29,11 +29,16 @@ namespace ATBM
             Program.connectionString += $"User Id={username};Password={password};";
             try
             {
-                NhanSuBUS ns = new NhanSuBUS();
-                string vai_tro = ns.lay_vai_tro();
+                int vai_tro = 0;
+                if (username.Equals("admin_ols1", StringComparison.OrdinalIgnoreCase))
+                    vai_tro = -1;
+                else
+                {
+                    NhanSuBUS ns = new NhanSuBUS();
+                    vai_tro = ns.lay_vai_tro();
+                }
                 MessageBox.Show("Đăng nhập thành công!");
-                MessageBox.Show(vai_tro);
-                MainMenu f = new MainMenu(username);
+                MainMenu f = new MainMenu(username, vai_tro);
                 f.ShowDialog();
             }
             catch (Exception ex)
