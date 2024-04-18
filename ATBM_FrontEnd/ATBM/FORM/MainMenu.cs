@@ -49,5 +49,11 @@ namespace ATBM
             KeHoachMo f = new KeHoachMo(role);
             f.ShowDialog();
         }
+
+        private void ThongTinLopHoc_btn_Click(object sender, EventArgs e)
+        {
+            ThongTinLopHoc f = new ThongTinLopHoc();
+            f.ShowDialog();
+        }
     }
 }

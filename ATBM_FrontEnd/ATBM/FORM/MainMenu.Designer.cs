@@ -113,6 +113,7 @@
             this.ThongTinLopHoc_btn.TabIndex = 10;
             this.ThongTinLopHoc_btn.Text = "Thông tin lớp học";
             this.ThongTinLopHoc_btn.UseVisualStyleBackColor = true;
+            this.ThongTinLopHoc_btn.Click += new System.EventHandler(this.ThongTinLopHoc_btn_Click);
             // 
             // ThoiKhoaBieu_btn
             // 

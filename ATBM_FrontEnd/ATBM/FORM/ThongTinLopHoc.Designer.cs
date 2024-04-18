@@ -180,6 +180,8 @@
             this.Controls.Add(this.label1);
             this.Name = "ThongTinLopHoc";
             this.Text = "Thông tin lớp học";
+            this.Load += new System.EventHandler(this.ThongTinLopHoc_Load_2);
+            ((System.ComponentModel.ISupportInitialize)(this.ThongTinLopDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

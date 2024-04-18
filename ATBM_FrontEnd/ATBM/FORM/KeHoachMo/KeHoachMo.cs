@@ -15,15 +15,17 @@ namespace ATBM.FORM.KeHoachMo
     public partial class KeHoachMo : Form
     {
         KHMBUS khm = new KHMBUS();
+        int role;
         public KeHoachMo()
         {
             InitializeComponent();
         }
 
-        public KeHoachMo(int role)
+        public KeHoachMo(int m_role)
         {
             InitializeComponent();
-            if (role == 2)
+            role = m_role;
+            if (role >= 0 && role != 3)
                 AddPlan_btn.Hide();
         }
 
@@ -42,13 +44,15 @@ namespace ATBM.FORM.KeHoachMo
             KHM_dvg.Columns[3].HeaderText = "Năm học";
             KHM_dvg.Columns[4].HeaderText = "Chương trình";
 
-            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
-            editColumn.Name = "Edit";
-            editColumn.HeaderText = "Sửa";
-            editColumn.Text = "Edit";
-            editColumn.UseColumnTextForButtonValue = true;
-            KHM_dvg.Columns.Add(editColumn);
-
+            if (role == 3 || role == -1)
+            {
+                DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
+                editColumn.Name = "Edit";
+                editColumn.HeaderText = "Sửa";
+                editColumn.Text = "Edit";
+                editColumn.UseColumnTextForButtonValue = true;
+                KHM_dvg.Columns.Add(editColumn);
+            }
             KHM_dvg.CellClick += KHM_dvg_CellClick;
         }
 
@@ -57,16 +61,22 @@ namespace ATBM.FORM.KeHoachMo
             KHMDTO khm = new KHMDTO();
             if (e.RowIndex >= 0)
             {
+                khm.MAHP = KHM_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
+                khm.TENHP = KHM_dvg.Rows[e.RowIndex].Cells["TENHP"].Value.ToString();
+                khm.HOCKY = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["HOCKY"].Value);
+                khm.NAM = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
+                khm.MACT = KHM_dvg.Rows[e.RowIndex].Cells["MACT"].Value.ToString();
+
                 if (e.ColumnIndex == KHM_dvg.Columns["Edit"].Index)
                 {
-                    khm.MAHP = KHM_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
-                    khm.TENHP = KHM_dvg.Rows[e.RowIndex].Cells["TENHP"].Value.ToString();
-                    khm.HOCKY = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["HOCKY"].Value);
-                    khm.NAM = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
-                    khm.MACT = KHM_dvg.Rows[e.RowIndex].Cells["MACT"].Value.ToString();
                     ThemKHM t = new ThemKHM(khm);
                     t.FormClosed += t_FormClosed;
                     t.ShowDialog();
+                }
+                else if (role == 3 || role == -1)
+                {
+                    ThongTinLopHoc f = new ThongTinLopHoc(khm);
+                    f.ShowDialog();
                 }
             }
         }

@@ -28,7 +28,16 @@ namespace ATBM
         {
             InitializeComponent();
             LayDsLop();
+        }
 
+        public ThongTinLopHoc(KHMDTO khm)
+        {
+            InitializeComponent();
+            LayDsLop();
+            MaLopCB.SelectedItem = khm.MAHP;
+            HocKiCB.SelectedItem = khm.HOCKY;
+            NamCB.SelectedItem = khm.NAM;
+            ChuongTrinhCB.SelectedItem = khm.MACT;
         }
 
         private void LayDsLop()
@@ -458,6 +467,11 @@ namespace ATBM
             {
                 MessageBox.Show(exceptionObj.Message.ToString());
             }
+        }
+
+        private void ThongTinLopHoc_Load_2(object sender, EventArgs e)
+        {
+
         }
     }
 }
