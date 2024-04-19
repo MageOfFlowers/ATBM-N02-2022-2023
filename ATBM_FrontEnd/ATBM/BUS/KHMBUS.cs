@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ATBM.DTO;
 using System.Windows.Forms;
-using System.Data.Linq.Mapping;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM.BUS
 {

@@ -3,6 +3,10 @@ AS
     CURSOR CUR IS (SELECT MANV
                     FROM ADMIN_OLS1.NHANSU
                     WHERE MANV NOT IN (SELECT USERNAME
+                                        FROM ALL_USERS)
+                    UNION SELECT MASV
+                    FROM ADMIN_OLS1.sinhvien
+                    WHERE MASV NOT IN (SELECT USERNAME
                                         FROM ALL_USERS));
     STRSQL VARCHAR(2000);
     USR VARCHAR2(5);
@@ -31,6 +35,7 @@ create role role_giangvien;
 create role role_truongkhoa;
 create role role_nhanvien;
 create role role_truongdonvi;
+create role role_sinhvien;
 /
 CREATE OR REPLACE PROCEDURE USP_ADDUSRMEM
 AS
@@ -63,4 +68,23 @@ BEGIN
     CLOSE CUR;
 END;
 /
+CREATE OR REPLACE PROCEDURE USP_ADDUSRSTU
+AS
+    CURSOR CUR IS (SELECT MASV
+                   FROM ADMIN_OLS1.SINHVIEN
+                   WHERE MASV IN (SELECT USERNAME
+                                  FROM ALL_USERS));
+    USR VARCHAR2(5); 
+BEGIN
+    OPEN CUR;
+    LOOP
+        FETCH CUR INTO USR;
+        EXIT WHEN CUR%NOTFOUND;
+        EXECUTE IMMEDIATE 'GRANT role_sinhvien TO ' || USR;
+    END LOOP;
+    CLOSE CUR;
+END;
+/
 exec USP_ADDUSRMEM;
+/
+exec USP_ADDUSRSTU;
