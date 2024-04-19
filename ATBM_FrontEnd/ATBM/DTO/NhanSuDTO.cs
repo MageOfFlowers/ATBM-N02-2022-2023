@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ATBM.DTO
 {
@@ -16,5 +17,9 @@ namespace ATBM.DTO
         public string DT { get; set; }
         public string VAITRO { get; set; }
         public string MADV { get; set; }
+        public string display
+        {
+            get { return $"{MANV} - {HOTEN}"; }
+        }
     }
 }

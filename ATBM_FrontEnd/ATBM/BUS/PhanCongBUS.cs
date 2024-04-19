@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ATBM.DTO;
 using System.Windows.Forms;
+using ATBM.Admin.DTO;
 
 namespace ATBM.BUS
 {
@@ -36,7 +37,7 @@ namespace ATBM.BUS
                         PhanCongDTO obj = new PhanCongDTO();
                         obj.MAGV = row["magv"].ToString();
                         obj.MAHP = row["mahp"].ToString();
-                        obj.HOCKY = Convert.ToInt32(row["hk"]);
+                        obj.HK = Convert.ToInt32(row["hk"]);
                         obj.NAM = Convert.ToInt32(row["nam"]);
                         obj.MACT = row["mact"].ToString();
 
@@ -53,6 +54,35 @@ namespace ATBM.BUS
                 connection.Close();
             }
             return ds;
+        }
+
+        public void them_phan_cong(PhanCongDTO pc)
+        {
+            string procedureName = "admin_ols1.them_phan_cong";
+            try
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("m_magv", OracleDbType.Varchar2).Value = pc.MAGV;
+                    command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = pc.MAHP;
+                    command.Parameters.Add("m_hk", OracleDbType.Int32).Value = pc.HK;
+                    command.Parameters.Add("m_nam", OracleDbType.Int32).Value = pc.NAM;
+                    command.Parameters.Add("m_mact", OracleDbType.Varchar2).Value = pc.MACT;
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Thêm thành công");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally 
+            {
+                connection.Close(); 
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using Oracle.ManagedDataAccess.Client;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using ATBM.Admin.DTO;
 
 namespace ATBM.BUS
 {
@@ -52,50 +53,52 @@ namespace ATBM.BUS
             return vai_tro;
         }
 
-        /*public IList<NhanSuDTO> layDSNhanSu()
+        public IList<NhanSuDTO> LayDSNhanSu()
         {
-            List<NhanSuDTO> dsNhanSu = new List<NhanSuDTO>();
-            using (OracleConnection connection = new OracleConnection(connStr))
+            string procedureName = "admin_ols1.lay_ds_nhan_su";
+            List <NhanSuDTO> dsNhanSu = new List<NhanSuDTO>();
+            try
             {
-                try
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
                 {
                     connection.Open();
-                    using (OracleCommand command = new OracleCommand("LayDSNhanSu", connection))
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    DataTable dataTable = new DataTable();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    da.SelectCommand = command;
+                    da.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-                        using (OracleDataReader Reader = command.ExecuteReader())
-                        {
-                            while (Reader.Read())
-                            {
-                                dsNhanSu.Add(new NhanSuDTO()
-                                {
-                                    PHUCAP = Convert.ToDouble(Reader["PHUCAP"]),
-                                    NGSINH = DateTime.Parse(Reader["date"].ToString()),
-                                    MANV = Reader["MANV"].ToString(),
-                                    HOTEN = Reader["HOTEN"].ToString(),
-                                    PHAI = Reader["PHAI"].ToString(),
-                                    DT = Reader["DT"].ToString(),
-                                    VAITRO = Reader["VAITRO"].ToString(),
-                                    MADV = Reader["MADV"].ToString(),
-                                });
-                            }
-                        }
+                        NhanSuDTO obj = new NhanSuDTO();
+                        obj.MANV = row["manv"].ToString();
+                        obj.HOTEN = row["hoten"].ToString();
+                        obj.PHAI = row["phai"].ToString(); ;
+                        obj.NGSINH = Convert.ToDateTime(row["ngsinh"]);
+                        obj.PHUCAP = Convert.ToDouble(row["phucap"]);
+                        obj.DT = row["dt"].ToString();
+                        obj.VAITRO = row["vaitro"].ToString();
+                        obj.MADV = row["madv"].ToString();
+
+                        dsNhanSu.Add(obj);
                     }
                 }
-                catch (Exception ex)
-                {
-                    // Xử lý các ngoại lệ nếu có
-                    MessageBox.Show("Error");
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý các ngoại lệ nếu có
+                MessageBox.Show("Error");
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
             }
             return dsNhanSu;
         }
-
+        /*
         public IList<NhanSuDTO> locNhanVien_Ten(string name)
         {
             List<NhanSuDTO> dsNhanVien = new List<NhanSuDTO>();

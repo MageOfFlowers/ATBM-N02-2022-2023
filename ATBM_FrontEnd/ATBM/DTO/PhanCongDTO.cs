@@ -11,7 +11,7 @@ namespace ATBM.DTO
         public string MAGV {  get; set; }
         public string MAHP { get; set; }
 
-        public int HOCKY { get; set; }
+        public int HK { get; set; }
         public int NAM { get; set; }
         public string MACT { get; set; }
     }

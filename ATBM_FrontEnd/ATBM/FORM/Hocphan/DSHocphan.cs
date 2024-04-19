@@ -16,5 +16,10 @@ namespace ATBM.FORM
         {
             InitializeComponent();
         }
+
+        private void DSHocphan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

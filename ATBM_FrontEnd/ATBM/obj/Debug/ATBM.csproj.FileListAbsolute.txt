@@ -311,3 +311,11 @@ D:\GitHub\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.application
 D:\GitHub\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.csproj.CopyComplete
 D:\GitHub\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.exe
 D:\GitHub\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.pdb
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.DSDonvi.resources
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.Donvi.ThongtinNhansu.resources
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.DSSinhvien.resources
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.ChitietHocphan.resources
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.Hocphan.DangkyHocphan.resources
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.DSHocphan.resources
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.PhanCong.PhanCong.resources
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.PhanCong.ThemPhanCong.resources

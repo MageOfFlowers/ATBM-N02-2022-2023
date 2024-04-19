@@ -62,6 +62,7 @@
             this.ThemPC_btn.TabIndex = 5;
             this.ThemPC_btn.Text = "Thêm phân công";
             this.ThemPC_btn.UseVisualStyleBackColor = true;
+            this.ThemPC_btn.Visible = false;
             this.ThemPC_btn.Click += new System.EventHandler(this.ThemPC_btn_Click);
             // 
             // PhanCong

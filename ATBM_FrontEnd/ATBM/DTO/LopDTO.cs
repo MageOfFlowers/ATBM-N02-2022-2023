@@ -13,6 +13,11 @@ namespace ATBM.Admin.DTO
         public int HK { get; set; }
         public int NAM { get; set; }
         public string MACT { get; set; }
+        public string display
+        {
+            get { return $"{MAHP} - {TENHP}"; }
+        }
+
         public Boolean check = true;
     }
 }

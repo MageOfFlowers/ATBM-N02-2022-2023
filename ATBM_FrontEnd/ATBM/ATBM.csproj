@@ -120,9 +120,9 @@
     <Compile Include="BUS\KHMBUS.cs" />
     <Compile Include="BUS\LopBUS.cs" />
     <Compile Include="BUS\NhanSuBUS.cs" />
+    <Compile Include="BUS\PhanCongBUS.cs" />
     <Compile Include="BUS\TTHSTrongLopBUS.cs" />
     <Compile Include="DTO\HocPhanDTO.cs" />
-    <Compile Include="DTO\KHMDTO.cs" />
     <Compile Include="DTO\LopDTO.cs" />
     <Compile Include="DTO\NhanSuDTO.cs" />
     <Compile Include="Admin\Form1.cs">
@@ -155,6 +155,7 @@
     <Compile Include="Admin\AddRole.Designer.cs">
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\PhanCongDTO.cs" />
     <Compile Include="DTO\TTHSTrongLopDTO.cs" />
     <Compile Include="FORM\Donvi\ThongtinNhansu.cs">
       <SubType>Form</SubType>
@@ -209,6 +210,18 @@
     </Compile>
     <Compile Include="FORM\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\PhanCong\PhanCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\PhanCong\PhanCong.Designer.cs">
+      <DependentUpon>PhanCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\PhanCong\ThemPhanCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\PhanCong\ThemPhanCong.Designer.cs">
+      <DependentUpon>ThemPhanCong.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\ThongTinLopHoc.cs">
       <SubType>Form</SubType>
@@ -295,6 +308,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\PhanCong\PhanCong.resx">
+      <DependentUpon>PhanCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\PhanCong\ThemPhanCong.resx">
+      <DependentUpon>ThemPhanCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\ThongTinLopHoc.resx">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>

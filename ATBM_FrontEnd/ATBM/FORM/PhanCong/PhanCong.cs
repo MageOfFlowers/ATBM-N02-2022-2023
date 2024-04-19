@@ -16,7 +16,8 @@ namespace ATBM.FORM.PhanCong
 {
     public partial class PhanCong : Form
     {
-        PhanCongBUS pc = new PhanCongBUS();
+        static PhanCongBUS pc = new PhanCongBUS();
+        IList<PhanCongDTO> ds = pc.xem_phan_cong();
         int role;
         public PhanCong()
         {
@@ -26,18 +27,32 @@ namespace ATBM.FORM.PhanCong
         public PhanCong(int m_role)
         {
             InitializeComponent();
-            loadDS();
             role = m_role;
-            if (role == -1 || role == 4 || role == 5)
-            {
-
-            }
+            loadDS();
         }
 
         private void loadDS()
         {
-            IList<PhanCongDTO> ds = pc.xem_phan_cong();
             PhanCong_dvg.DataSource = ds;
+
+            if (role >= 3 || role == -1)
+            {
+                ThemPC_btn.Visible = true;
+
+                DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
+                editColumn.Name = "Edit";
+                editColumn.HeaderText = "Sửa";
+                editColumn.Text = "Edit";
+                editColumn.UseColumnTextForButtonValue = true;
+                PhanCong_dvg.Columns.Add(editColumn);
+
+                DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
+                deleteColumn.Name = "Delete";
+                deleteColumn.HeaderText = "Xóa";
+                deleteColumn.Text = "Delete";
+                deleteColumn.UseColumnTextForButtonValue = true;
+                PhanCong_dvg.Columns.Add(deleteColumn);
+            }
         }
 
         private void PhanCong_Load(object sender, EventArgs e)
@@ -47,7 +62,7 @@ namespace ATBM.FORM.PhanCong
 
         private void ThemPC_btn_Click(object sender, EventArgs e)
         {
-            ThemPhanCong f = new ThemPhanCong();
+            ThemPhanCong f = new ThemPhanCong(ds);
             f.FormClosed += f_FormClosed;
             f.ShowDialog();
         }
@@ -55,7 +70,7 @@ namespace ATBM.FORM.PhanCong
         private void f_FormClosed(object sender, FormClosedEventArgs e)
         {
             Close();
-            PhanCong f = new PhanCong();
+            PhanCong f = new PhanCong(role);
             f.ShowDialog();
         }
     }
