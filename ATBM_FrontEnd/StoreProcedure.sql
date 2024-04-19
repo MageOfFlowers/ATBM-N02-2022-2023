@@ -66,3 +66,37 @@ update admin_ols1.dangky
 set DIEMTH = pTH, DIEMQT = pQT, DIEMCK = pCK, DIEMTK = pTK
 where MASV = pMASV and MAHP = pMAHP and HK = pHK and NAM = pNAM and MACT = pMACT;
 end;
+/
+create or replace procedure lay_thong_tin_nhan_su(pMANV in varchar2, c1 out SYS_REFCURSOR)
+as
+begin
+open c1 for
+    Select hoten,phai,ngsinh,phucap,dt,vaitro,tendv
+    from admin_ols1.nhansu n join admin_ols1.donvi d on n.madv=d.madv
+    where manv=pMANV;
+DBMS_SQL.RETURN_RESULT(c1);
+end;
+/
+create or replace procedure cap_nhat_sdt_nhan_su(pMANV in varchar2,sdt in varchar2)
+as
+begin
+    update admin_ols1.nhansu set dt=sdt where manv=pMANV;
+end;
+/
+create or replace procedure lay_thong_tin_sinh_vien(pMASV in varchar2, c1 out SYS_REFCURSOR)
+as
+begin
+open c1 for
+    Select hoten,phai,ngsinh,dchi,dt,mact,manganh,sotctl,dtbtl
+    from admin_ols1.sinhvien s
+    where masv=pMASV;
+DBMS_SQL.RETURN_RESULT(c1);
+end;
+/
+create or replace procedure cap_nhat_dia_chi_va_sdt_sinh_vien(pMASV in varchar2, diachi in varchar2,sdt in varchar2)
+as
+begin
+    update admin_ols1.sinhvien set dchi=diachi, dt=sdt
+    where masv=pMASV;
+end;
+/

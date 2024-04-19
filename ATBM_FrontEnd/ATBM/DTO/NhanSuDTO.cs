@@ -16,5 +16,6 @@ namespace ATBM.DTO
         public string DT { get; set; }
         public string VAITRO { get; set; }
         public string MADV { get; set; }
+        public string TENDV { get; set; }
     }
 }

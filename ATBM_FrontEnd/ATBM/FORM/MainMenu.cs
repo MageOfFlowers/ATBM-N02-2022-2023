@@ -27,5 +27,12 @@ namespace ATBM
         {
 
         }
+
+        private void BtnTTCaNhan_Click(object sender, EventArgs e)
+        {
+            //nho truyen ma nhan vien / ma sinh vien vao
+            ThongTinCaNhan_NhanSu _NhanSu = new ThongTinCaNhan_NhanSu("NV001");
+            _NhanSu.Show();
+        }
     }
 }

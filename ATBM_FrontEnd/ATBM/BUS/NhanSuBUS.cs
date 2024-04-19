@@ -1,18 +1,78 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ATBM.DTO;
 using System.Windows.Forms;
-using System.Drawing;
+using ATBM.DTO;
 using Oracle.ManagedDataAccess.Client;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ATBM.BUS
 {
+    internal class NhanSuBUS
+    {
+        OracleConnection connection = new OracleConnection(Program.connectionString);
+        public NhanSuDTO LayTTNhanSu(string pMANV)
+        {
+            string procedureName = "lay_thong_tin_nhan_su";
+            NhanSuDTO nhanSu = new NhanSuDTO();
+            try
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    DataTable dataTable = new DataTable();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("pMANV", OracleDbType.Varchar2).Value = pMANV.Trim('\'').Trim('-');
+                    command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    da.SelectCommand = command;
+                    da.Fill(dataTable);
+                    DataRow row = dataTable.Rows[0];
+                    nhanSu.HOTEN = row["hoten"].ToString();
+                    nhanSu.PHAI = row["phai"].ToString()=="M"?"Nam":"Nữ";
+                    nhanSu.NGSINH = Convert.ToDateTime(row["ngsinh"]);
+                    nhanSu.PHUCAP = Convert.ToInt32(row["phucap"]);
+                    nhanSu.DT = row["dt"].ToString();
+                    nhanSu.VAITRO = row["vaitro"].ToString();
+                    nhanSu.TENDV = row["tendv"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return nhanSu;
+        }
+        public void CapNhatSDT(string pMANV,string sdt)
+        {
+            string procedureName = "cap_nhat_sdt_nhan_su";
+            try
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    DataTable dataTable = new DataTable();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("pMANV", OracleDbType.Varchar2).Value = pMANV;
+                    command.Parameters.Add("sdt", OracleDbType.Varchar2).Value = sdt;
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            MessageBox.Show("Đã cập nhật số điện thoại");
+        }
+    }
     /*internal class NhanSuBUS
     {
         readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;

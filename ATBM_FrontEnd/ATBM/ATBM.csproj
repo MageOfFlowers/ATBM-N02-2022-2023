@@ -120,6 +120,7 @@
     <Compile Include="BUS\KHMBUS.cs" />
     <Compile Include="BUS\LopBUS.cs" />
     <Compile Include="BUS\NhanSuBUS.cs" />
+    <Compile Include="BUS\SinhVienBUS.cs" />
     <Compile Include="BUS\TTHSTrongLopBUS.cs" />
     <Compile Include="DTO\HocPhanDTO.cs" />
     <Compile Include="DTO\KHMDTO.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Admin\AddRole.Designer.cs">
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\SinhVienDTO.cs" />
     <Compile Include="DTO\TTHSTrongLopDTO.cs" />
     <Compile Include="FORM\KeHoachMo\ThemKHM.cs">
       <SubType>Form</SubType>
@@ -174,17 +176,23 @@
     <Compile Include="FORM\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\ThongTinCaNhan_SinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\ThongTinCaNhan_SinhVien.Designer.cs">
+      <DependentUpon>ThongTinCaNhan_SinhVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\ThongTinLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FORM\ThongTinLopHoc.designer.cs">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThongTinCaNhan.cs">
+    <Compile Include="FORM\ThongTinCaNhan_NhanSu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongTinCaNhan.Designer.cs">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    <Compile Include="FORM\ThongTinCaNhan_NhanSu.Designer.cs">
+      <DependentUpon>ThongTinCaNhan_NhanSu.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Privilege.cs">
       <SubType>Form</SubType>
@@ -257,8 +265,8 @@
     <EmbeddedResource Include="Admin\Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongTinCaNhan.resx">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    <EmbeddedResource Include="FORM\ThongTinCaNhan_NhanSu.resx">
+      <DependentUpon>ThongTinCaNhan_NhanSu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>

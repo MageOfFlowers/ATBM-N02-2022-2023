@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ATBM
+namespace ATBM.FORM
 {
-    public partial class ThongTinCaNhan : Form
+    public partial class ThongTinCaNhan_SinhVien : Form
     {
-        public ThongTinCaNhan()
+        readonly string maSV;
+        public ThongTinCaNhan_SinhVien(string maSV)
         {
             InitializeComponent();
         }
