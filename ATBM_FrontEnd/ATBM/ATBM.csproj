@@ -116,11 +116,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\AdminBUS.cs" />
+    <Compile Include="BUS\PhanCongBUS.cs" />
     <Compile Include="BUS\HocPhanBUS.cs" />
     <Compile Include="BUS\KHMBUS.cs" />
     <Compile Include="BUS\LopBUS.cs" />
     <Compile Include="BUS\NhanSuBUS.cs" />
     <Compile Include="BUS\TTHSTrongLopBUS.cs" />
+    <Compile Include="DTO\PhanCongDTO.cs" />
     <Compile Include="DTO\HocPhanDTO.cs" />
     <Compile Include="DTO\KHMDTO.cs" />
     <Compile Include="DTO\LopDTO.cs" />
@@ -156,6 +158,12 @@
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\TTHSTrongLopDTO.cs" />
+    <Compile Include="FORM\PhanCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\PhanCong.Designer.cs">
+      <DependentUpon>PhanCong.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\KeHoachMo\ThemKHM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\PhanCong.resx">
+      <DependentUpon>PhanCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\ThongTinLopHoc.resx">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>

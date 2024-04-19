@@ -36,8 +36,8 @@
             this.DanhSac = new System.Windows.Forms.Button();
             this.DanhSachDonVi_btn = new System.Windows.Forms.Button();
             this.ThongTinLopHoc_btn = new System.Windows.Forms.Button();
-            this.ThoiKhoaBieu_btn = new System.Windows.Forms.Button();
             this.HocPhanDangKy_btn = new System.Windows.Forms.Button();
+            this.PhanCong_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Label
@@ -115,15 +115,6 @@
             this.ThongTinLopHoc_btn.UseVisualStyleBackColor = true;
             this.ThongTinLopHoc_btn.Click += new System.EventHandler(this.ThongTinLopHoc_btn_Click);
             // 
-            // ThoiKhoaBieu_btn
-            // 
-            this.ThoiKhoaBieu_btn.Location = new System.Drawing.Point(531, 211);
-            this.ThoiKhoaBieu_btn.Name = "ThoiKhoaBieu_btn";
-            this.ThoiKhoaBieu_btn.Size = new System.Drawing.Size(166, 23);
-            this.ThoiKhoaBieu_btn.TabIndex = 11;
-            this.ThoiKhoaBieu_btn.Text = "Thời khóa biểu";
-            this.ThoiKhoaBieu_btn.UseVisualStyleBackColor = true;
-            // 
             // HocPhanDangKy_btn
             // 
             this.HocPhanDangKy_btn.Location = new System.Drawing.Point(274, 210);
@@ -133,13 +124,23 @@
             this.HocPhanDangKy_btn.Text = "Kết quả đăng ký học phần";
             this.HocPhanDangKy_btn.UseVisualStyleBackColor = true;
             // 
+            // PhanCong_btn
+            // 
+            this.PhanCong_btn.Location = new System.Drawing.Point(531, 210);
+            this.PhanCong_btn.Name = "PhanCong_btn";
+            this.PhanCong_btn.Size = new System.Drawing.Size(166, 23);
+            this.PhanCong_btn.TabIndex = 13;
+            this.PhanCong_btn.Text = "Danh sách phân công";
+            this.PhanCong_btn.UseVisualStyleBackColor = true;
+            this.PhanCong_btn.Click += new System.EventHandler(this.PhanCong_btn_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.PhanCong_btn);
             this.Controls.Add(this.HocPhanDangKy_btn);
-            this.Controls.Add(this.ThoiKhoaBieu_btn);
             this.Controls.Add(this.ThongTinLopHoc_btn);
             this.Controls.Add(this.DanhSachDonVi_btn);
             this.Controls.Add(this.DanhSac);
@@ -166,7 +167,7 @@
         private System.Windows.Forms.Button DanhSac;
         private System.Windows.Forms.Button DanhSachDonVi_btn;
         private System.Windows.Forms.Button ThongTinLopHoc_btn;
-        private System.Windows.Forms.Button ThoiKhoaBieu_btn;
         private System.Windows.Forms.Button HocPhanDangKy_btn;
+        private System.Windows.Forms.Button PhanCong_btn;
     }
 }

@@ -69,13 +69,24 @@ end;
 /
 create or replace procedure xem_vai_tro(c1 out SYS_REFCURSOR)
 as
+role varchar2(100);
+c_temp SYS_REFCURSOR;
 begin
-open c1 for
-    select vaitro from admin_ols1.nhansu where manv = sys_context('userenv', 'session_user');
+open c_temp for
+    select vaitro from admin_ols1.nhansu
+    where manv = sys_context('userenv', 'session_user');
+fetch c_temp into role;
+if role is not null then
+    close c_temp;
+    open c1 for select role as vaitro from dual;
+else
+    close c_temp;
+    open c1 for select 'Sinh vien' as vaitro from dual;
+end if;
 DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
-create or replace procedure xem_thoi_khoa_bieu(c1 out SYS_REFCURSOR)
+create or replace procedure xem_phan_cong(c1 out SYS_REFCURSOR)
 as
 begin
 open c1 for
@@ -91,5 +102,5 @@ grant execute on lay_thong_tin_lop_hoc to role_giangvien, role_truongdonvi, role
 grant execute on lay_thong_tin_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on lay_ds_lop to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on cap_nhat_diem to role_giangvien, role_truongdonvi, role_truongkhoa;
-grant execute on xem_vai_tro to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
-grant execute on xem_thoi_khoa_bieu to role_giangvien, role_truongdonvi, role_truongkhoa;
+grant execute on xem_vai_tro to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
+grant execute on xem_phan_cong to role_giangvien, role_truongdonvi, role_truongkhoa;

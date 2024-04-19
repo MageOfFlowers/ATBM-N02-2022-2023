@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ATBM.FORM.KeHoachMo;
+using ATBM.FORM;
 
 namespace ATBM
 {
@@ -34,7 +28,8 @@ namespace ATBM
                 if (role == 0 || role == 1 || role == 3)
                 {
                     ThongTinLopHoc_btn.Hide();
-                    ThoiKhoaBieu_btn.Hide();
+                    PhanCong_btn.Hide();
+                    DanhSachDonVi_btn.Hide();
                 }
             }
         }
@@ -53,6 +48,12 @@ namespace ATBM
         private void ThongTinLopHoc_btn_Click(object sender, EventArgs e)
         {
             ThongTinLopHoc f = new ThongTinLopHoc();
+            f.ShowDialog();
+        }
+
+        private void PhanCong_btn_Click(object sender, EventArgs e)
+        {
+            PhanCong f = new PhanCong(role);
             f.ShowDialog();
         }
     }

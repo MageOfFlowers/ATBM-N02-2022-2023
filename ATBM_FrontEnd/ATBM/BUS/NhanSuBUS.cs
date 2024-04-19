@@ -36,7 +36,9 @@ namespace ATBM.BUS
                 vai_tro_str = dataTable.Rows[0].ItemArray[0].ToString();
                 connection.Close();
             }
-            if (vai_tro_str == "Nhan vien co ban")
+            if (vai_tro_str == "Sinh vien")
+                vai_tro = 0;
+            else if (vai_tro_str == "Nhan vien co ban")
                 vai_tro = 1;
             else if (vai_tro_str == "Giang vien")
                 vai_tro = 2;
