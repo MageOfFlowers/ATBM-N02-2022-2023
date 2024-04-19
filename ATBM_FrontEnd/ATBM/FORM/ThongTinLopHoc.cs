@@ -1,19 +1,8 @@
 ﻿using ATBM.Admin.BUS;
 using ATBM.Admin.DTO;
-using ATBM.BUS;
-using ATBM.DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Linq.Mapping;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ATBM
@@ -30,12 +19,12 @@ namespace ATBM
             LayDsLop();
         }
 
-        public ThongTinLopHoc(KHMDTO khm)
+        public ThongTinLopHoc(LopDTO khm)
         {
             InitializeComponent();
             LayDsLop();
             MaLopCB.SelectedItem = khm.MAHP;
-            HocKiCB.SelectedItem = khm.HOCKY;
+            HocKiCB.SelectedItem = khm.HK;
             NamCB.SelectedItem = khm.NAM;
             ChuongTrinhCB.SelectedItem = khm.MACT;
         }

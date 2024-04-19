@@ -8,14 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ATBM.Admin.DTO;
+using ATBM.Admin.BUS;
 using ATBM.BUS;
-using ATBM.DTO;
 
 namespace ATBM.FORM.KeHoachMo
 {
     public partial class ThemKHM : Form
     {
-        HocPhanBUS hp = new HocPhanBUS();
+        LopBUS lop = new LopBUS();
         KHMBUS khm = new KHMBUS();
         public ThemKHM()
         {
@@ -23,14 +24,14 @@ namespace ATBM.FORM.KeHoachMo
             loadHP();
         }
 
-        public ThemKHM(KHMDTO khm)
+        public ThemKHM(LopDTO khm)
         {
             InitializeComponent();
             loadHP();
             Them_btn.Text = "Cập nhật";
             HocPhan_cb.SelectedValue= khm.MAHP;
             HocPhan_cb.Enabled = false;
-            HocKy_cb.SelectedItem = khm.HOCKY.ToString();
+            HocKy_cb.SelectedItem = khm.HK.ToString();
             NamHoc_cb.SelectedItem = khm.NAM.ToString();
             ChuongTrinh_cb.SelectedItem = khm.MACT;
         }
@@ -42,23 +43,23 @@ namespace ATBM.FORM.KeHoachMo
 
         private void loadHP()
         {
-            IList<HocPhanDTO> ds_hp = hp.dsHocPhan();
-            ds_hp.Insert(0, new HocPhanDTO());
-            HocPhan_cb.DataSource = ds_hp;
+            IList<LopDTO> ds = lop.layDSLop();
+            ds.Insert(0, new LopDTO());
+            HocPhan_cb.DataSource = ds;
             HocPhan_cb.DisplayMember = "TENHP";
             HocPhan_cb.ValueMember = "MAHP";
         }
 
         private void Them_btn_Click(object sender, EventArgs e)
         {
-            KHMDTO k = new KHMDTO();
+            LopDTO k = new LopDTO();
             k.MAHP = HocPhan_cb.SelectedValue.ToString();
             k.TENHP = HocPhan_cb.Text;
-            k.HOCKY = Convert.ToInt32(HocKy_cb.SelectedItem);
+            k.HK = Convert.ToInt32(HocKy_cb.SelectedItem);
             k.NAM = Convert.ToInt32(NamHoc_cb.SelectedItem);
             k.MACT = ChuongTrinh_cb.Text;
 
-            if (k.MAHP != null && k.TENHP != null && k.HOCKY != 0 && k.NAM != 0 && k.MACT != null)
+            if (k.MAHP != null && k.TENHP != null && k.HK != 0 && k.NAM != 0 && k.MACT != null)
             {
                 try
                 {

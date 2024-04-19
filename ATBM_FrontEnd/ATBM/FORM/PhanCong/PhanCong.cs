@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ATBM.BUS;
 using ATBM.DTO;
+using ATBM.FORM;
+using ATBM.FORM.PhanCong;
 
-namespace ATBM.FORM
+namespace ATBM.FORM.PhanCong
 {
     public partial class PhanCong : Form
     {
@@ -41,6 +43,20 @@ namespace ATBM.FORM
         private void PhanCong_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ThemPC_btn_Click(object sender, EventArgs e)
+        {
+            ThemPhanCong f = new ThemPhanCong();
+            f.FormClosed += f_FormClosed;
+            f.ShowDialog();
+        }
+
+        private void f_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
+            PhanCong f = new PhanCong();
+            f.ShowDialog();
         }
     }
 }

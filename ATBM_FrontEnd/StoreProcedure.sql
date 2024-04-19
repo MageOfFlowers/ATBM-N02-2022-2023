@@ -8,15 +8,6 @@ begin
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
-create or replace procedure xem_ds_hoc_phan (c1 out SYS_REFCURSOR)
-as
-begin
-    open c1 for
-    select *
-    from admin_ols1.hocphan;
-    DBMS_SQL.RETURN_RESULT(c1);
-end;
-/
 create or replace procedure them_ke_hoach (m_mahp varchar2, m_hk integer, m_nam integer, m_mact varchar2)
 as
 begin
@@ -95,7 +86,6 @@ DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
 grant execute on xem_ds_ke_hoach_mo to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
-grant execute on xem_ds_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on them_ke_hoach to role_giaovu;
 grant execute on thay_doi_ke_hoach to role_giaovu;
 grant execute on lay_thong_tin_lop_hoc to role_giangvien, role_truongdonvi, role_truongkhoa;

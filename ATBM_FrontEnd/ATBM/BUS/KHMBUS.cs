@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
-using ATBM.DTO;
 using System.Windows.Forms;
+using ATBM.Admin.DTO;
 
 namespace ATBM.BUS
 {
@@ -11,10 +11,10 @@ namespace ATBM.BUS
     {
         readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
 
-        public IList<KHMDTO> ds_KHM()
+        public IList<LopDTO> ds_KHM()
         {
             string procedureName = "admin_ols1.xem_ds_ke_hoach_mo";
-            IList<KHMDTO> ds = new List<KHMDTO>();
+            IList<LopDTO> ds = new List<LopDTO>();
             try
             {
                 using (OracleCommand command = new OracleCommand(procedureName, connection))
@@ -30,10 +30,10 @@ namespace ATBM.BUS
 
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        KHMDTO obj = new KHMDTO();
+                        LopDTO obj = new LopDTO();
                         obj.MAHP = row["mahp"].ToString();
                         obj.TENHP = row["tenhp"].ToString();
-                        obj.HOCKY = Convert.ToInt32(row["hk"]);
+                        obj.HK = Convert.ToInt32(row["hk"]);
                         obj.NAM = Convert.ToInt32(row["nam"]);
                         obj.MACT = row["mact"].ToString();
 
@@ -52,7 +52,7 @@ namespace ATBM.BUS
             return ds;
         }
 
-        public void themKHM(KHMDTO khm)
+        public void themKHM(LopDTO khm)
         {
             string procedureName = "admin_ols1.them_ke_hoach";
             using (OracleCommand command = new OracleCommand(procedureName, connection))
@@ -60,7 +60,7 @@ namespace ATBM.BUS
                 connection.Open();
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = khm.MAHP;
-                command.Parameters.Add("m_hk", OracleDbType.Int32).Value = khm.HOCKY;
+                command.Parameters.Add("m_hk", OracleDbType.Int32).Value = khm.HK;
                 command.Parameters.Add("m_nam", OracleDbType.Int32).Value = khm.NAM;
                 command.Parameters.Add("m_mact", OracleDbType.Varchar2).Value = khm.MACT;
 
@@ -68,7 +68,7 @@ namespace ATBM.BUS
                 connection.Close();
             }
         }
-        public void capNhatKHM(KHMDTO khm)
+        public void capNhatKHM(LopDTO khm)
         {
             string procedureName = "admin_ols1.thay_doi_ke_hoach";
             using (OracleCommand command = new OracleCommand(procedureName, connection))
@@ -76,7 +76,7 @@ namespace ATBM.BUS
                 connection.Open();
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = khm.MAHP;
-                command.Parameters.Add("m_hk", OracleDbType.Int32).Value = khm.HOCKY;
+                command.Parameters.Add("m_hk", OracleDbType.Int32).Value = khm.HK;
                 command.Parameters.Add("m_nam", OracleDbType.Int32).Value = khm.NAM;
                 command.Parameters.Add("m_mact", OracleDbType.Varchar2).Value = khm.MACT;
 

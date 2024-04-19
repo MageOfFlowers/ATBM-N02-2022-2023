@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ATBM.FORM.KeHoachMo;
+using ATBM.FORM.PhanCong;
 using ATBM.FORM;
 
 namespace ATBM

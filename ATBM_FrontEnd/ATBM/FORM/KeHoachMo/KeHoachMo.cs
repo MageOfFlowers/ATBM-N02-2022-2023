@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ATBM.BUS;
-using ATBM.DTO;
+using ATBM.Admin.DTO;
 
 namespace ATBM.FORM.KeHoachMo
 {
@@ -36,7 +36,7 @@ namespace ATBM.FORM.KeHoachMo
 
         private void KeHoachMo_Load(object sender, EventArgs e)
         {
-            IList<KHMDTO> ds = khm.ds_KHM();
+            IList<LopDTO> ds = khm.ds_KHM();
             KHM_dvg.DataSource = ds;
             KHM_dvg.Columns[0].HeaderText = "Mã học phần";
             KHM_dvg.Columns[1].HeaderText = "Tên học phần";
@@ -58,24 +58,24 @@ namespace ATBM.FORM.KeHoachMo
 
         private void KHM_dvg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            KHMDTO khm = new KHMDTO();
+            LopDTO lop = new LopDTO();
             if (e.RowIndex >= 0)
             {
-                khm.MAHP = KHM_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
-                khm.TENHP = KHM_dvg.Rows[e.RowIndex].Cells["TENHP"].Value.ToString();
-                khm.HOCKY = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["HOCKY"].Value);
-                khm.NAM = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
-                khm.MACT = KHM_dvg.Rows[e.RowIndex].Cells["MACT"].Value.ToString();
+                lop.MAHP = KHM_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
+                lop.TENHP = KHM_dvg.Rows[e.RowIndex].Cells["TENHP"].Value.ToString();
+                lop.HK = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["HK"].Value);
+                lop.NAM = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
+                lop.MACT = KHM_dvg.Rows[e.RowIndex].Cells["MACT"].Value.ToString();
 
                 if (e.ColumnIndex == KHM_dvg.Columns["Edit"].Index)
                 {
-                    ThemKHM t = new ThemKHM(khm);
+                    ThemKHM t = new ThemKHM(lop);
                     t.FormClosed += t_FormClosed;
                     t.ShowDialog();
                 }
                 else if (role == 3 || role == -1)
                 {
-                    ThongTinLopHoc f = new ThongTinLopHoc(khm);
+                    ThongTinLopHoc f = new ThongTinLopHoc(lop);
                     f.ShowDialog();
                 }
             }

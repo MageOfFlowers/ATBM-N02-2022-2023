@@ -256,4 +256,5 @@ C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.exe
 C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.pdb
 C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.KeHoachMo.KeHoachMo.resources
 C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.KeHoachMo.ThemKHM.resources
-C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.PhanCong.resources
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.PhanCong.PhanCong.resources
+C:\Users\ACER\Desktop\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.PhanCong.ThemPhanCong.resources
