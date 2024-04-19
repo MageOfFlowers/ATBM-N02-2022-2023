@@ -156,6 +156,42 @@
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\TTHSTrongLopDTO.cs" />
+    <Compile Include="FORM\Donvi\ThongtinNhansu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Donvi\ThongtinNhansu.Designer.cs">
+      <DependentUpon>ThongtinNhansu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Hocphan\ChitietHocphan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Hocphan\ChitietHocphan.Designer.cs">
+      <DependentUpon>ChitietHocphan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Donvi\DSDonvi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Donvi\DSDonvi.Designer.cs">
+      <DependentUpon>DSDonvi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Hocphan\DangkyHocphan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Hocphan\DangkyHocphan.Designer.cs">
+      <DependentUpon>DangkyHocphan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Hocphan\DSHocphan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Hocphan\DSHocphan.Designer.cs">
+      <DependentUpon>DSHocphan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\DSSinhvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\DSSinhvien.Designer.cs">
+      <DependentUpon>DSSinhvien.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\KeHoachMo\ThemKHM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +268,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Donvi\DSDonvi.resx">
+      <DependentUpon>DSDonvi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Donvi\ThongtinNhansu.resx">
+      <DependentUpon>ThongtinNhansu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\DSSinhvien.resx">
+      <DependentUpon>DSSinhvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Hocphan\ChitietHocphan.resx">
+      <DependentUpon>ChitietHocphan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Hocphan\DangkyHocphan.resx">
+      <DependentUpon>DangkyHocphan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Hocphan\DSHocphan.resx">
+      <DependentUpon>DSHocphan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\KeHoachMo\KeHoachMo.resx">
       <DependentUpon>KeHoachMo.cs</DependentUpon>
