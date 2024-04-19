@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.Label = new System.Windows.Forms.Label();
-            this.BtnTTCaNhan = new System.Windows.Forms.Button();
             this.ThongTinCaNhan_btn = new System.Windows.Forms.Button();
             this.ChiTietThongBao_btn = new System.Windows.Forms.Button();
             this.DanhSachSinhVien_btn = new System.Windows.Forms.Button();
@@ -52,15 +51,6 @@
             this.Label.TabIndex = 2;
             this.Label.Text = "MAIN MENU";
             // 
-            // BtnTTCaNhan
-            // 
-            this.BtnTTCaNhan.Location = new System.Drawing.Point(41, 69);
-            this.BtnTTCaNhan.Name = "BtnTTCaNhan";
-            this.BtnTTCaNhan.Size = new System.Drawing.Size(110, 23);
-            this.BtnTTCaNhan.TabIndex = 3;
-            this.BtnTTCaNhan.Text = "Thông tin cá nhân";
-            this.BtnTTCaNhan.UseVisualStyleBackColor = true;
-            this.BtnTTCaNhan.Click += new System.EventHandler(this.BtnTTCaNhan_Click);
             // ThongTinCaNhan_btn
             // 
             this.ThongTinCaNhan_btn.Location = new System.Drawing.Point(66, 90);
@@ -69,6 +59,7 @@
             this.ThongTinCaNhan_btn.TabIndex = 3;
             this.ThongTinCaNhan_btn.Text = "Thông tin cá nhân";
             this.ThongTinCaNhan_btn.UseVisualStyleBackColor = true;
+            this.ThongTinCaNhan_btn.Click += new System.EventHandler(this.ThongTinCaNhan_btn_Click);
             // 
             // ChiTietThongBao_btn
             // 
@@ -150,7 +141,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.BtnTTCaNhan);
             this.Controls.Add(this.PhanCong_btn);
             this.Controls.Add(this.HocPhanDangKy_btn);
             this.Controls.Add(this.ThongTinLopHoc_btn);
@@ -161,7 +151,7 @@
             this.Controls.Add(this.ChiTietThongBao_btn);
             this.Controls.Add(this.ThongTinCaNhan_btn);
             this.Controls.Add(this.Label);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainMenu";
             this.Text = "Main menu";
             this.Load += new System.EventHandler(this.MainMenu_Load);
@@ -173,7 +163,6 @@
         #endregion
 
         private System.Windows.Forms.Label Label;
-        private System.Windows.Forms.Button BtnTTCaNhan;
         private System.Windows.Forms.Button ThongTinCaNhan_btn;
         private System.Windows.Forms.Button ChiTietThongBao_btn;
         private System.Windows.Forms.Button DanhSachSinhVien_btn;

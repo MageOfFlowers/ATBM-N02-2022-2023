@@ -243,12 +243,6 @@
     <Compile Include="FORM\ThongTinCaNhan_NhanSu.Designer.cs">
       <DependentUpon>ThongTinCaNhan_NhanSu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\ThongTinCaNhan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FORM\ThongTinCaNhan.Designer.cs">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Privilege.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,6 +323,9 @@
     <EmbeddedResource Include="FORM\PhanCong\ThemPhanCong.resx">
       <DependentUpon>ThemPhanCong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM\ThongTinCaNhan_SinhVien.resx">
+      <DependentUpon>ThongTinCaNhan_SinhVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORM\ThongTinLopHoc.resx">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -346,9 +343,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\ThongTinCaNhan_NhanSu.resx">
       <DependentUpon>ThongTinCaNhan_NhanSu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FORM\ThongTinCaNhan.resx">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>

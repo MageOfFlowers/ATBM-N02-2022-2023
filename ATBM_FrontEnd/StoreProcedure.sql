@@ -152,3 +152,7 @@ grant execute on xem_phan_cong to role_giangvien, role_truongdonvi, role_truongk
 grant execute on lay_ds_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
 grant execute on lay_ds_nhan_su to role_truongdonvi, role_truongkhoa;
 grant execute on them_phan_cong to role_truongdonvi, role_truongkhoa;
+grant execute on lay_thong_tin_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
+grant execute on cap_nhat_sdt_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
+grant execute on lay_thong_tin_sinh_vien to role_sinhvien;
+grant execute on cap_nhat_dia_chi_va_sdt_sinh_vien to role_sinhvien;

@@ -5,6 +5,7 @@ using ATBM.DTO;
 using Oracle.ManagedDataAccess.Client;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using ATBM.Admin.DTO;
+using System.Collections.Generic;
 
 namespace ATBM.BUS
 {
@@ -13,7 +14,7 @@ namespace ATBM.BUS
         OracleConnection connection = new OracleConnection(Program.connectionString);
         public NhanSuDTO LayTTNhanSu(string pMANV)
         {
-            string procedureName = "lay_thong_tin_nhan_su";
+            string procedureName = "admin_ols1.lay_thong_tin_nhan_su";
             NhanSuDTO nhanSu = new NhanSuDTO();
             try
             {
@@ -50,7 +51,7 @@ namespace ATBM.BUS
         }
         public void CapNhatSDT(string pMANV,string sdt)
         {
-            string procedureName = "cap_nhat_sdt_nhan_su";
+            string procedureName = "admin_ols1.cap_nhat_sdt_nhan_su";
             try
             {
                 using (OracleCommand command = new OracleCommand(procedureName, connection))
@@ -72,13 +73,8 @@ namespace ATBM.BUS
             {
                 connection.Close();
             }
-            MessageBox.Show("Đã cập nhật số điện thoại");
+            MessageBox.Show("Đã lưu");
         }
-    }
-    /*internal class NhanSuBUS
-    {
-        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
-
         public int lay_vai_tro()
         {
             string procedureName = "admin_ols1.xem_vai_tro";
@@ -89,7 +85,7 @@ namespace ATBM.BUS
                 connection.Open();
                 OracleDataAdapter da = new OracleDataAdapter();
                 DataTable dataTable = new DataTable();
-                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
                 da.SelectCommand = command;
@@ -117,7 +113,7 @@ namespace ATBM.BUS
         public IList<NhanSuDTO> LayDSNhanSu()
         {
             string procedureName = "admin_ols1.lay_ds_nhan_su";
-            List <NhanSuDTO> dsNhanSu = new List<NhanSuDTO>();
+            List<NhanSuDTO> dsNhanSu = new List<NhanSuDTO>();
             try
             {
                 using (OracleCommand command = new OracleCommand(procedureName, connection))
@@ -159,6 +155,9 @@ namespace ATBM.BUS
             }
             return dsNhanSu;
         }
+    }
+    /*internal class NhanSuBUS
+    {
         /*
         public IList<NhanSuDTO> locNhanVien_Ten(string name)
         {

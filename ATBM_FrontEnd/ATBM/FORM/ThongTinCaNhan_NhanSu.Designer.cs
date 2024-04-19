@@ -104,7 +104,7 @@
             // 
             // BtnLuu
             // 
-            this.BtnLuu.Location = new System.Drawing.Point(303, 358);
+            this.BtnLuu.Location = new System.Drawing.Point(295, 356);
             this.BtnLuu.Name = "BtnLuu";
             this.BtnLuu.Size = new System.Drawing.Size(75, 23);
             this.BtnLuu.TabIndex = 5;
@@ -195,7 +195,7 @@
             // 
             // BtnQuayLai
             // 
-            this.BtnQuayLai.Location = new System.Drawing.Point(155, 358);
+            this.BtnQuayLai.Location = new System.Drawing.Point(149, 356);
             this.BtnQuayLai.Name = "BtnQuayLai";
             this.BtnQuayLai.Size = new System.Drawing.Size(75, 23);
             this.BtnQuayLai.TabIndex = 16;

@@ -9,6 +9,7 @@ namespace ATBM
     public partial class MainMenu : Form
     {
         int role = 0;
+        string username;
         public MainMenu()
         {
             InitializeComponent();
@@ -18,6 +19,7 @@ namespace ATBM
         {
             InitializeComponent();
             Label.Text = $"Xin chào {user}";
+            username = user;
             role = m_role;
 
             if (role >= 0)
@@ -39,13 +41,6 @@ namespace ATBM
         {
 
         }
-
-        private void BtnTTCaNhan_Click(object sender, EventArgs e)
-        {
-            //nho truyen ma nhan vien / ma sinh vien vao
-            ThongTinCaNhan_NhanSu _NhanSu = new ThongTinCaNhan_NhanSu("NV001");
-            _NhanSu.Show();
-        }
         private void KeHoachMo_btn_Click(object sender, EventArgs e)
         {
             KeHoachMo f = new KeHoachMo(role);
@@ -62,6 +57,20 @@ namespace ATBM
         {
             PhanCong f = new PhanCong(role);
             f.ShowDialog();
+        }
+
+        private void ThongTinCaNhan_btn_Click(object sender, EventArgs e)
+        {
+            if(role!= 0)
+            {
+                ThongTinCaNhan_NhanSu _NhanSu = new ThongTinCaNhan_NhanSu(username);
+                _NhanSu.Show();
+            }
+            else
+            {
+                ThongTinCaNhan_SinhVien _SinhVien = new ThongTinCaNhan_SinhVien(username);
+                _SinhVien.Show();
+            }
         }
     }
 }
