@@ -8,12 +8,12 @@ namespace ATBM.DTO
 {
     public class HocPhanDTO
     {
-        public String MAHP { get; set; }
-        public String TENHP { get; set; }
+        public string MAHP {  get; set; }
+        public string TENHP { get; set; }
         public int SOTC { get; set; }
         public int STLT { get; set; }
         public int STTH { get; set; }
         public int SOSVTD { get; set; }
-        public String MADV { get; set; }
+        public string MADV { get; set; }
     }
 }

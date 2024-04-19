@@ -3,6 +3,8 @@ using System.Data;
 using System.Windows.Forms;
 using ATBM.DTO;
 using Oracle.ManagedDataAccess.Client;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using ATBM.Admin.DTO;
 
 namespace ATBM.BUS
 {
@@ -75,52 +77,89 @@ namespace ATBM.BUS
     }
     /*internal class NhanSuBUS
     {
-        readonly string connStr = ConfigurationManager.ConnectionStrings["YourNameHere"].ConnectionString;
+        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
 
-        public IList<NhanSuDTO> layDSNhanSu()
+        public int lay_vai_tro()
         {
-            List<NhanSuDTO> dsNhanSu = new List<NhanSuDTO>();
-            using (OracleConnection connection = new OracleConnection(connStr))
+            string procedureName = "admin_ols1.xem_vai_tro";
+            string vai_tro_str = "";
+            int vai_tro = 0;
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
             {
-                try
+                connection.Open();
+                OracleDataAdapter da = new OracleDataAdapter();
+                DataTable dataTable = new DataTable();
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+
+                vai_tro_str = dataTable.Rows[0].ItemArray[0].ToString();
+                connection.Close();
+            }
+            if (vai_tro_str == "Sinh vien")
+                vai_tro = 0;
+            else if (vai_tro_str == "Nhan vien co ban")
+                vai_tro = 1;
+            else if (vai_tro_str == "Giang vien")
+                vai_tro = 2;
+            else if (vai_tro_str == "Giao vu")
+                vai_tro = 3;
+            else if (vai_tro_str == "Truong don vi")
+                vai_tro = 4;
+            else if (vai_tro_str == "Truong khoa")
+                vai_tro = 5;
+
+            return vai_tro;
+        }
+
+        public IList<NhanSuDTO> LayDSNhanSu()
+        {
+            string procedureName = "admin_ols1.lay_ds_nhan_su";
+            List <NhanSuDTO> dsNhanSu = new List<NhanSuDTO>();
+            try
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
                 {
                     connection.Open();
-                    using (OracleCommand command = new OracleCommand("LayDSNhanSu", connection))
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    DataTable dataTable = new DataTable();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    da.SelectCommand = command;
+                    da.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-                        using (OracleDataReader Reader = command.ExecuteReader())
-                        {
-                            while (Reader.Read())
-                            {
-                                dsNhanSu.Add(new NhanSuDTO()
-                                {
-                                    PHUCAP = Convert.ToDouble(Reader["PHUCAP"]),
-                                    NGSINH = DateTime.Parse(Reader["date"].ToString()),
-                                    MANV = Reader["MANV"].ToString(),
-                                    HOTEN = Reader["HOTEN"].ToString(),
-                                    PHAI = Reader["PHAI"].ToString(),
-                                    DT = Reader["DT"].ToString(),
-                                    VAITRO = Reader["VAITRO"].ToString(),
-                                    MADV = Reader["MADV"].ToString(),
-                                });
-                            }
-                        }
+                        NhanSuDTO obj = new NhanSuDTO();
+                        obj.MANV = row["manv"].ToString();
+                        obj.HOTEN = row["hoten"].ToString();
+                        obj.PHAI = row["phai"].ToString(); ;
+                        obj.NGSINH = Convert.ToDateTime(row["ngsinh"]);
+                        obj.PHUCAP = Convert.ToDouble(row["phucap"]);
+                        obj.DT = row["dt"].ToString();
+                        obj.VAITRO = row["vaitro"].ToString();
+                        obj.MADV = row["madv"].ToString();
+
+                        dsNhanSu.Add(obj);
                     }
                 }
-                catch (Exception ex)
-                {
-                    // Xử lý các ngoại lệ nếu có
-                    MessageBox.Show("Error");
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý các ngoại lệ nếu có
+                MessageBox.Show("Error");
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
             }
             return dsNhanSu;
         }
-
+        /*
         public IList<NhanSuDTO> locNhanVien_Ten(string name)
         {
             List<NhanSuDTO> dsNhanVien = new List<NhanSuDTO>();

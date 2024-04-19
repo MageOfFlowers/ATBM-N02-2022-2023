@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace ATBM.DTO
 {
-    public class KHMDTO
+    public class PhanCongDTO
     {
+        public string MAGV {  get; set; }
         public string MAHP { get; set; }
-        public string TENHP { get; set; }
-        public int HOCKY { get; set; }
+
+        public int HK { get; set; }
         public int NAM { get; set; }
-        public string MACT{ get; set; }
+        public string MACT { get; set; }
     }
 }

@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ATBM.Admin.DTO;
 using ATBM.DTO;
 
 namespace ATBM.BUS
 {
     internal class HocPhanBUS
     {
-        public OracleConnection connection = new OracleConnection(Program.connectionString);
-        public IList<HocPhanDTO> dsHocPhan()
+        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
+        public IList<HocPhanDTO> layDSHocPhan()
         {
-
-            string procedureName = "xem_ds_hoc_phan";
             IList<HocPhanDTO> ds = new List<HocPhanDTO>();
+            string procedureName = "admin_ols1.xem_ds_ke_hoach_mo";
+
             try
             {
                 using (OracleCommand command = new OracleCommand(procedureName, connection))

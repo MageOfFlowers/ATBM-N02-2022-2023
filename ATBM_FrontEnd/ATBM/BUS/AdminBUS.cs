@@ -11,13 +11,109 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Data.Linq.Mapping;
 using System.Data.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ATBM.DTO;
 
 namespace ATBM.BUS
 {
     public class AdminBUS
     {
-        public OracleConnection connection = new OracleConnection(Program.connectionString);
+        readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
         
+        public IList<string> UserList2()
+        {
+            List<string> ds = new List<string>();          
+            string procedureName = "DS_User";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string tmp = row["USERNAME"].ToString();
+                    ds.Add(tmp);
+                }
+                    connection.Close();
+            }
+            return ds;
+        }
+
+        public IList<string> TablesList2()
+        {
+            List<string> ds = new List<string>();
+            string procedureName = "xem_ds_table";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string tmp = row["table_name"].ToString();
+                    ds.Add(tmp);
+                }
+                connection.Close();
+            }
+            return ds;
+        }
+
+        public IList<string> ProcList()
+        {
+            List<string> ds = new List<string>();
+            string procedureName = "DS_Proc";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string tmp = row["object_name"].ToString();
+                    ds.Add(tmp);
+                }
+                connection.Close();
+            }
+            return ds;
+        }
+        public IList<string> ViewList()
+        {
+            List<string> ds = new List<string>();
+            string procedureName = "DS_View";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string tmp = row["view_name"].ToString();
+                    ds.Add(tmp);
+                }
+                connection.Close();
+            }
+            return ds;
+        }
+
         public DataTable UserList()
         {
             DataTable dataTable = new DataTable();
@@ -34,6 +130,23 @@ namespace ATBM.BUS
                 connection.Close();
             }
             return dataTable;
+        }
+
+        public void ThemThongBao(string noidung, string level, string compartment, string group)
+        {
+            string procedureName = "tao_thongbao";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("noidung", OracleDbType.Varchar2).Value = noidung;
+                command.Parameters.Add("level", OracleDbType.Varchar2).Value = level;
+                command.Parameters.Add("compartment", OracleDbType.Varchar2).Value = compartment;
+                command.Parameters.Add("p_group", OracleDbType.Varchar2).Value = group;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
         public void AddUser(string username, string password)

@@ -30,6 +30,15 @@
         {
             this.Label = new System.Windows.Forms.Label();
             this.BtnTTCaNhan = new System.Windows.Forms.Button();
+            this.ThongTinCaNhan_btn = new System.Windows.Forms.Button();
+            this.ChiTietThongBao_btn = new System.Windows.Forms.Button();
+            this.DanhSachSinhVien_btn = new System.Windows.Forms.Button();
+            this.KeHoachMo_btn = new System.Windows.Forms.Button();
+            this.DanhSac = new System.Windows.Forms.Button();
+            this.DanhSachDonVi_btn = new System.Windows.Forms.Button();
+            this.ThongTinLopHoc_btn = new System.Windows.Forms.Button();
+            this.HocPhanDangKy_btn = new System.Windows.Forms.Button();
+            this.PhanCong_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Label
@@ -52,13 +61,105 @@
             this.BtnTTCaNhan.Text = "Thông tin cá nhân";
             this.BtnTTCaNhan.UseVisualStyleBackColor = true;
             this.BtnTTCaNhan.Click += new System.EventHandler(this.BtnTTCaNhan_Click);
+            // ThongTinCaNhan_btn
+            // 
+            this.ThongTinCaNhan_btn.Location = new System.Drawing.Point(66, 90);
+            this.ThongTinCaNhan_btn.Name = "ThongTinCaNhan_btn";
+            this.ThongTinCaNhan_btn.Size = new System.Drawing.Size(173, 23);
+            this.ThongTinCaNhan_btn.TabIndex = 3;
+            this.ThongTinCaNhan_btn.Text = "Thông tin cá nhân";
+            this.ThongTinCaNhan_btn.UseVisualStyleBackColor = true;
+            // 
+            // ChiTietThongBao_btn
+            // 
+            this.ChiTietThongBao_btn.Location = new System.Drawing.Point(531, 90);
+            this.ChiTietThongBao_btn.Name = "ChiTietThongBao_btn";
+            this.ChiTietThongBao_btn.Size = new System.Drawing.Size(166, 24);
+            this.ChiTietThongBao_btn.TabIndex = 4;
+            this.ChiTietThongBao_btn.Text = "Chi tiết thông báo";
+            this.ChiTietThongBao_btn.UseVisualStyleBackColor = true;
+            // 
+            // DanhSachSinhVien_btn
+            // 
+            this.DanhSachSinhVien_btn.Location = new System.Drawing.Point(299, 91);
+            this.DanhSachSinhVien_btn.Name = "DanhSachSinhVien_btn";
+            this.DanhSachSinhVien_btn.Size = new System.Drawing.Size(163, 23);
+            this.DanhSachSinhVien_btn.TabIndex = 5;
+            this.DanhSachSinhVien_btn.Text = "Danh sách sinh viên";
+            this.DanhSachSinhVien_btn.UseVisualStyleBackColor = true;
+            // 
+            // KeHoachMo_btn
+            // 
+            this.KeHoachMo_btn.Location = new System.Drawing.Point(66, 340);
+            this.KeHoachMo_btn.Name = "KeHoachMo_btn";
+            this.KeHoachMo_btn.Size = new System.Drawing.Size(173, 23);
+            this.KeHoachMo_btn.TabIndex = 6;
+            this.KeHoachMo_btn.Text = "Kế hoạch mở môn học";
+            this.KeHoachMo_btn.UseVisualStyleBackColor = true;
+            this.KeHoachMo_btn.Click += new System.EventHandler(this.KeHoachMo_btn_Click);
+            // 
+            // DanhSac
+            // 
+            this.DanhSac.Location = new System.Drawing.Point(531, 340);
+            this.DanhSac.Name = "DanhSac";
+            this.DanhSac.Size = new System.Drawing.Size(166, 23);
+            this.DanhSac.TabIndex = 7;
+            this.DanhSac.Text = "Danh sách học phần";
+            this.DanhSac.UseVisualStyleBackColor = true;
+            // 
+            // DanhSachDonVi_btn
+            // 
+            this.DanhSachDonVi_btn.Location = new System.Drawing.Point(299, 340);
+            this.DanhSachDonVi_btn.Name = "DanhSachDonVi_btn";
+            this.DanhSachDonVi_btn.Size = new System.Drawing.Size(163, 23);
+            this.DanhSachDonVi_btn.TabIndex = 8;
+            this.DanhSachDonVi_btn.Text = "Danh sách đơn vị";
+            this.DanhSachDonVi_btn.UseVisualStyleBackColor = true;
+            // 
+            // ThongTinLopHoc_btn
+            // 
+            this.ThongTinLopHoc_btn.Location = new System.Drawing.Point(66, 211);
+            this.ThongTinLopHoc_btn.Name = "ThongTinLopHoc_btn";
+            this.ThongTinLopHoc_btn.Size = new System.Drawing.Size(173, 23);
+            this.ThongTinLopHoc_btn.TabIndex = 10;
+            this.ThongTinLopHoc_btn.Text = "Thông tin lớp học";
+            this.ThongTinLopHoc_btn.UseVisualStyleBackColor = true;
+            this.ThongTinLopHoc_btn.Click += new System.EventHandler(this.ThongTinLopHoc_btn_Click);
+            // 
+            // HocPhanDangKy_btn
+            // 
+            this.HocPhanDangKy_btn.Location = new System.Drawing.Point(274, 210);
+            this.HocPhanDangKy_btn.Name = "HocPhanDangKy_btn";
+            this.HocPhanDangKy_btn.Size = new System.Drawing.Size(204, 23);
+            this.HocPhanDangKy_btn.TabIndex = 12;
+            this.HocPhanDangKy_btn.Text = "Kết quả đăng ký học phần";
+            this.HocPhanDangKy_btn.UseVisualStyleBackColor = true;
+            // 
+            // PhanCong_btn
+            // 
+            this.PhanCong_btn.Location = new System.Drawing.Point(531, 210);
+            this.PhanCong_btn.Name = "PhanCong_btn";
+            this.PhanCong_btn.Size = new System.Drawing.Size(166, 23);
+            this.PhanCong_btn.TabIndex = 13;
+            this.PhanCong_btn.Text = "Danh sách phân công";
+            this.PhanCong_btn.UseVisualStyleBackColor = true;
+            this.PhanCong_btn.Click += new System.EventHandler(this.PhanCong_btn_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.BtnTTCaNhan);
+            this.Controls.Add(this.PhanCong_btn);
+            this.Controls.Add(this.HocPhanDangKy_btn);
+            this.Controls.Add(this.ThongTinLopHoc_btn);
+            this.Controls.Add(this.DanhSachDonVi_btn);
+            this.Controls.Add(this.DanhSac);
+            this.Controls.Add(this.KeHoachMo_btn);
+            this.Controls.Add(this.DanhSachSinhVien_btn);
+            this.Controls.Add(this.ChiTietThongBao_btn);
+            this.Controls.Add(this.ThongTinCaNhan_btn);
             this.Controls.Add(this.Label);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainMenu";
@@ -73,5 +174,14 @@
 
         private System.Windows.Forms.Label Label;
         private System.Windows.Forms.Button BtnTTCaNhan;
+        private System.Windows.Forms.Button ThongTinCaNhan_btn;
+        private System.Windows.Forms.Button ChiTietThongBao_btn;
+        private System.Windows.Forms.Button DanhSachSinhVien_btn;
+        private System.Windows.Forms.Button KeHoachMo_btn;
+        private System.Windows.Forms.Button DanhSac;
+        private System.Windows.Forms.Button DanhSachDonVi_btn;
+        private System.Windows.Forms.Button ThongTinLopHoc_btn;
+        private System.Windows.Forms.Button HocPhanDangKy_btn;
+        private System.Windows.Forms.Button PhanCong_btn;
     }
 }

@@ -8,16 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ATBM.BUS;
-using ATBM.DTO;
+using ATBM.Admin.DTO;
 
 namespace ATBM.FORM.KeHoachMo
 {
     public partial class KeHoachMo : Form
     {
         KHMBUS khm = new KHMBUS();
+        int role;
         public KeHoachMo()
         {
             InitializeComponent();
+        }
+
+        public KeHoachMo(int m_role)
+        {
+            InitializeComponent();
+            role = m_role;
+            if (role >= 0 && role != 3)
+                AddPlan_btn.Hide();
         }
 
         private void dgvKHM_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -27,7 +36,7 @@ namespace ATBM.FORM.KeHoachMo
 
         private void KeHoachMo_Load(object sender, EventArgs e)
         {
-            IList<KHMDTO> ds = khm.ds_KHM();
+            IList<LopDTO> ds = khm.ds_KHM();
             KHM_dvg.DataSource = ds;
             KHM_dvg.Columns[0].HeaderText = "Mã học phần";
             KHM_dvg.Columns[1].HeaderText = "Tên học phần";
@@ -35,31 +44,39 @@ namespace ATBM.FORM.KeHoachMo
             KHM_dvg.Columns[3].HeaderText = "Năm học";
             KHM_dvg.Columns[4].HeaderText = "Chương trình";
 
-            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
-            editColumn.Name = "Edit";
-            editColumn.HeaderText = "Sửa";
-            editColumn.Text = "Edit";
-            editColumn.UseColumnTextForButtonValue = true;
-            KHM_dvg.Columns.Add(editColumn);
-
+            if (role == 3 || role == -1)
+            {
+                DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
+                editColumn.Name = "Edit";
+                editColumn.HeaderText = "Sửa";
+                editColumn.Text = "Edit";
+                editColumn.UseColumnTextForButtonValue = true;
+                KHM_dvg.Columns.Add(editColumn);
+            }
             KHM_dvg.CellClick += KHM_dvg_CellClick;
         }
 
         private void KHM_dvg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            KHMDTO khm = new KHMDTO();
+            LopDTO lop = new LopDTO();
             if (e.RowIndex >= 0)
             {
+                lop.MAHP = KHM_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
+                lop.TENHP = KHM_dvg.Rows[e.RowIndex].Cells["TENHP"].Value.ToString();
+                lop.HK = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["HK"].Value);
+                lop.NAM = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
+                lop.MACT = KHM_dvg.Rows[e.RowIndex].Cells["MACT"].Value.ToString();
+
                 if (e.ColumnIndex == KHM_dvg.Columns["Edit"].Index)
                 {
-                    khm.MAHP = KHM_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
-                    khm.TENHP = KHM_dvg.Rows[e.RowIndex].Cells["TENHP"].Value.ToString();
-                    khm.HOCKY = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["HOCKY"].Value);
-                    khm.NAM = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
-                    khm.MACT = KHM_dvg.Rows[e.RowIndex].Cells["MACT"].Value.ToString();
-                    ThemKHM t = new ThemKHM(khm);
+                    ThemKHM t = new ThemKHM(lop);
                     t.FormClosed += t_FormClosed;
                     t.ShowDialog();
+                }
+                else if (role == 3 || role == -1)
+                {
+                    ThongTinLopHoc f = new ThongTinLopHoc(lop);
+                    f.ShowDialog();
                 }
             }
         }

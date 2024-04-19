@@ -121,9 +121,9 @@
     <Compile Include="BUS\LopBUS.cs" />
     <Compile Include="BUS\NhanSuBUS.cs" />
     <Compile Include="BUS\SinhVienBUS.cs" />
+    <Compile Include="BUS\PhanCongBUS.cs" />
     <Compile Include="BUS\TTHSTrongLopBUS.cs" />
     <Compile Include="DTO\HocPhanDTO.cs" />
-    <Compile Include="DTO\KHMDTO.cs" />
     <Compile Include="DTO\LopDTO.cs" />
     <Compile Include="DTO\NhanSuDTO.cs" />
     <Compile Include="Admin\Form1.cs">
@@ -157,7 +157,44 @@
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\SinhVienDTO.cs" />
+    <Compile Include="DTO\PhanCongDTO.cs" />
     <Compile Include="DTO\TTHSTrongLopDTO.cs" />
+    <Compile Include="FORM\Donvi\ThongtinNhansu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Donvi\ThongtinNhansu.Designer.cs">
+      <DependentUpon>ThongtinNhansu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Hocphan\ChitietHocphan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Hocphan\ChitietHocphan.Designer.cs">
+      <DependentUpon>ChitietHocphan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Donvi\DSDonvi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Donvi\DSDonvi.Designer.cs">
+      <DependentUpon>DSDonvi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Hocphan\DangkyHocphan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Hocphan\DangkyHocphan.Designer.cs">
+      <DependentUpon>DangkyHocphan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Hocphan\DSHocphan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Hocphan\DSHocphan.Designer.cs">
+      <DependentUpon>DSHocphan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\DSSinhvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\DSSinhvien.Designer.cs">
+      <DependentUpon>DSSinhvien.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\KeHoachMo\ThemKHM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +219,18 @@
     <Compile Include="FORM\ThongTinCaNhan_SinhVien.Designer.cs">
       <DependentUpon>ThongTinCaNhan_SinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\PhanCong\PhanCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\PhanCong\PhanCong.Designer.cs">
+      <DependentUpon>PhanCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\PhanCong\ThemPhanCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\PhanCong\ThemPhanCong.Designer.cs">
+      <DependentUpon>ThemPhanCong.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\ThongTinLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +242,12 @@
     </Compile>
     <Compile Include="FORM\ThongTinCaNhan_NhanSu.Designer.cs">
       <DependentUpon>ThongTinCaNhan_NhanSu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\ThongTinCaNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\ThongTinCaNhan.Designer.cs">
+      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Privilege.cs">
       <SubType>Form</SubType>
@@ -241,6 +296,24 @@
     <EmbeddedResource Include="Admin\Privilege.resx">
       <DependentUpon>Privilege.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Donvi\DSDonvi.resx">
+      <DependentUpon>DSDonvi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Donvi\ThongtinNhansu.resx">
+      <DependentUpon>ThongtinNhansu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\DSSinhvien.resx">
+      <DependentUpon>DSSinhvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Hocphan\ChitietHocphan.resx">
+      <DependentUpon>ChitietHocphan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Hocphan\DangkyHocphan.resx">
+      <DependentUpon>DangkyHocphan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Hocphan\DSHocphan.resx">
+      <DependentUpon>DSHocphan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORM\KeHoachMo\KeHoachMo.resx">
       <DependentUpon>KeHoachMo.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +322,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\PhanCong\PhanCong.resx">
+      <DependentUpon>PhanCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\PhanCong\ThemPhanCong.resx">
+      <DependentUpon>ThemPhanCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\ThongTinLopHoc.resx">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
@@ -267,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\ThongTinCaNhan_NhanSu.resx">
       <DependentUpon>ThongTinCaNhan_NhanSu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\ThongTinCaNhan.resx">
+      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>

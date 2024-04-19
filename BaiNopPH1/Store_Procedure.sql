@@ -10,7 +10,7 @@ begin
 end;
 /
 --Xem ds table
-create or replace procedure ADMIN_OLS1.xem_ds_table (p_user in varchar, c1 out SYS_REFCURSOR)
+create or replace procedure ADMIN_OLS1.xem_ds_table (c1 out SYS_REFCURSOR)
 as
 begin
     open c1 for
@@ -157,4 +157,17 @@ BEGIN
 END;
 /
 
-
+create or replace procedure DS_Proc (c1 out SYS_REFCURSOR)
+as
+begin
+    open c1 for
+    SELECT object_name FROM user_procedures WHERE object_type = 'PROCEDURE';
+    DBMS_SQL.RETURN_RESULT(c1);
+end;
+create or replace procedure DS_View (c1 out SYS_REFCURSOR)
+as
+begin
+    open c1 for
+    SELECT view_name FROM all_views where owner = 'ADMIN_OLS1';
+    DBMS_SQL.RETURN_RESULT(c1);
+end;
