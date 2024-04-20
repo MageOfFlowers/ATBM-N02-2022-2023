@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ATBM.Admin.DTO;
 using ATBM.BUS;
 using ATBM.DTO;
 using ATBM.FORM;
+using ATBM.FORM.KeHoachMo;
 using ATBM.FORM.PhanCong;
 
 namespace ATBM.FORM.PhanCong
@@ -52,6 +54,27 @@ namespace ATBM.FORM.PhanCong
                 deleteColumn.Text = "Delete";
                 deleteColumn.UseColumnTextForButtonValue = true;
                 PhanCong_dvg.Columns.Add(deleteColumn);
+
+                PhanCong_dvg.CellClick += PhanCong_dvg_CellClick;
+            }
+        }
+
+        private void PhanCong_dvg_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            PhanCongDTO ph = new PhanCongDTO();
+            if (e.RowIndex >= 0)
+            {
+                ph.MAGV = PhanCong_dvg.Rows[e.RowIndex].Cells["MAGV"].Value.ToString();
+                ph.MAHP = PhanCong_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
+                ph.HK = Convert.ToInt32(PhanCong_dvg.Rows[e.RowIndex].Cells["HK"].Value);
+                ph.NAM = Convert.ToInt32(PhanCong_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
+                ph.MACT = PhanCong_dvg.Rows[e.RowIndex].Cells["MACT"].Value.ToString();
+
+                if (e.ColumnIndex == PhanCong_dvg.Columns["Delete"].Index)
+                {
+                    pc.xoa_phan_cong(ph);
+                    formreset();
+                }
             }
         }
 
@@ -68,6 +91,11 @@ namespace ATBM.FORM.PhanCong
         }
 
         private void f_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            formreset();
+        }
+
+        private void formreset()
         {
             Close();
             PhanCong f = new PhanCong(role);
