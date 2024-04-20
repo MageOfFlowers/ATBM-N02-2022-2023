@@ -9,14 +9,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ATBM.exe.manifest" size="11807">
+    <dependentAssembly dependencyType="install" codebase="ATBM.exe.manifest" size="11808">
       <assemblyIdentity name="ATBM.exe" version="1.0.0.8" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yCptE0HiAHk11jwt2sQ90XxBUqFpqLxe8UBwEymRmKU=</dsig:DigestValue>
+        <dsig:DigestValue>qmwXPB91t5shhh4Jzx4Ems70UR8zBjAkZktqdjA8cRo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -113,5 +113,35 @@ namespace ATBM.BUS
                 connection.Close();
             }
         }
+
+        public void sua_phan_cong(PhanCongDTO pc, string magv)
+        {
+            string procedureName = "admin_ols1.sua_phan_cong";
+            try
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("m_magv_cu", OracleDbType.Varchar2).Value = pc.MAGV;
+                    command.Parameters.Add("m_magv_moi", OracleDbType.Varchar2).Value = magv;
+                    command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = pc.MAHP;
+                    command.Parameters.Add("m_hk", OracleDbType.Int32).Value = pc.HK;
+                    command.Parameters.Add("m_nam", OracleDbType.Int32).Value = pc.NAM;
+                    command.Parameters.Add("m_mact", OracleDbType.Varchar2).Value = pc.MACT;
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Thay đổi thành công");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

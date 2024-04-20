@@ -31,7 +31,13 @@
             this.Label = new System.Windows.Forms.Label();
             this.PhanCong_dvg = new System.Windows.Forms.DataGridView();
             this.ThemPC_btn = new System.Windows.Forms.Button();
+            this.DoiGV = new System.Windows.Forms.Panel();
+            this.Huy_btn = new System.Windows.Forms.Button();
+            this.DoiGV_btn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.GiangVienCB = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.PhanCong_dvg)).BeginInit();
+            this.DoiGV.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label
@@ -65,11 +71,61 @@
             this.ThemPC_btn.Visible = false;
             this.ThemPC_btn.Click += new System.EventHandler(this.ThemPC_btn_Click);
             // 
+            // DoiGV
+            // 
+            this.DoiGV.Controls.Add(this.Huy_btn);
+            this.DoiGV.Controls.Add(this.DoiGV_btn);
+            this.DoiGV.Controls.Add(this.label1);
+            this.DoiGV.Controls.Add(this.GiangVienCB);
+            this.DoiGV.Location = new System.Drawing.Point(238, 135);
+            this.DoiGV.Name = "DoiGV";
+            this.DoiGV.Size = new System.Drawing.Size(302, 153);
+            this.DoiGV.TabIndex = 6;
+            this.DoiGV.Visible = false;
+            // 
+            // Huy_btn
+            // 
+            this.Huy_btn.Location = new System.Drawing.Point(161, 106);
+            this.Huy_btn.Name = "Huy_btn";
+            this.Huy_btn.Size = new System.Drawing.Size(104, 23);
+            this.Huy_btn.TabIndex = 9;
+            this.Huy_btn.Text = "Hủy bỏ";
+            this.Huy_btn.UseVisualStyleBackColor = true;
+            this.Huy_btn.Click += new System.EventHandler(this.Huy_btn_Click);
+            // 
+            // DoiGV_btn
+            // 
+            this.DoiGV_btn.Location = new System.Drawing.Point(43, 106);
+            this.DoiGV_btn.Name = "DoiGV_btn";
+            this.DoiGV_btn.Size = new System.Drawing.Size(104, 23);
+            this.DoiGV_btn.TabIndex = 8;
+            this.DoiGV_btn.Text = "Xác nhận";
+            this.DoiGV_btn.UseVisualStyleBackColor = true;
+            this.DoiGV_btn.Click += new System.EventHandler(this.DoiGV_btn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(59, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 16);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Thay đổi giảng viên phụ trách";
+            // 
+            // GiangVienCB
+            // 
+            this.GiangVienCB.FormattingEnabled = true;
+            this.GiangVienCB.Location = new System.Drawing.Point(43, 52);
+            this.GiangVienCB.Name = "GiangVienCB";
+            this.GiangVienCB.Size = new System.Drawing.Size(222, 24);
+            this.GiangVienCB.TabIndex = 0;
+            // 
             // PhanCong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DoiGV);
             this.Controls.Add(this.ThemPC_btn);
             this.Controls.Add(this.PhanCong_dvg);
             this.Controls.Add(this.Label);
@@ -77,6 +133,8 @@
             this.Text = "Phân Công";
             this.Load += new System.EventHandler(this.PhanCong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PhanCong_dvg)).EndInit();
+            this.DoiGV.ResumeLayout(false);
+            this.DoiGV.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,5 +145,10 @@
         private System.Windows.Forms.Label Label;
         private System.Windows.Forms.DataGridView PhanCong_dvg;
         private System.Windows.Forms.Button ThemPC_btn;
+        private System.Windows.Forms.Panel DoiGV;
+        private System.Windows.Forms.ComboBox GiangVienCB;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button DoiGV_btn;
+        private System.Windows.Forms.Button Huy_btn;
     }
 }
