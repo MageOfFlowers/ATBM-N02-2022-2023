@@ -3,7 +3,7 @@
   <assemblyIdentity name="ATBM.application" version="1.0.0.8" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <description asmv2:publisher="ATBM" asmv2:product="ATBM" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true">
-    <deploymentProvider codebase="http://laptop-du2gd9fn/ATBM/ATBM.application" />
+    <deploymentProvider codebase="http://laptop-sf4gjf11/ATBM/ATBM.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
@@ -16,7 +16,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Xe/y+bDZguJ76x9KZpPD3Bm3hIbwQnx/WLPlSsqOYdk=</dsig:DigestValue>
+        <dsig:DigestValue>g8rPG8NVu/7XjqfyJV3h3dWJU8vndpu7VVKbT3Eeyhs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
