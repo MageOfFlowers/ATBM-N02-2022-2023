@@ -1,0 +1,127 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|d:\\github\\atbm-n02-2022-2023\\atbm_frontend\\atbm\\form\\phancong\\phancong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|solutionrelative:atbm\\form\\phancong\\phancong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\atbm\\bus\\phancongbus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|solutionrelative:atbm\\bus\\phancongbus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\atbm\\form\\phancong\\themphancong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|solutionrelative:atbm\\form\\phancong\\themphancong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\atbm\\form\\phancong\\phancong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|solutionrelative:atbm\\form\\phancong\\phancong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\atbm\\form\\phancong\\themphancong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|solutionrelative:atbm\\form\\phancong\\themphancong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\atbm\\form\\kehoachmo\\kehoachmo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|solutionrelative:atbm\\form\\kehoachmo\\kehoachmo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\atbm\\form\\kehoachmo\\kehoachmo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC5663FD-2462-418B-B066-ACCD24EE4855}|ATBM\\ATBM.csproj|solutionrelative:atbm\\form\\kehoachmo\\kehoachmo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PhanCong.cs",
+              "DocumentMoniker": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\PhanCong\\PhanCong.cs",
+              "RelativeDocumentMoniker": "ATBM\\FORM\\PhanCong\\PhanCong.cs",
+              "ToolTip": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\PhanCong\\PhanCong.cs",
+              "RelativeToolTip": "ATBM\\FORM\\PhanCong\\PhanCong.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAwH8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T08:57:58.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PhanCong.cs [Design]",
+              "DocumentMoniker": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\PhanCong\\PhanCong.cs",
+              "RelativeDocumentMoniker": "ATBM\\FORM\\PhanCong\\PhanCong.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\PhanCong\\PhanCong.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2024-04-21T08:57:59.295Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ThemPhanCong.cs",
+              "DocumentMoniker": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\PhanCong\\ThemPhanCong.cs",
+              "RelativeDocumentMoniker": "ATBM\\FORM\\PhanCong\\ThemPhanCong.cs",
+              "ToolTip": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\PhanCong\\ThemPhanCong.cs",
+              "RelativeToolTip": "ATBM\\FORM\\PhanCong\\ThemPhanCong.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAuwEMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2024-04-21T08:57:59.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ThemPhanCong.cs [Design]",
+              "DocumentMoniker": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\PhanCong\\ThemPhanCong.cs",
+              "RelativeDocumentMoniker": "ATBM\\FORM\\PhanCong\\ThemPhanCong.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\PhanCong\\ThemPhanCong.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2024-04-21T08:57:59.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PhanCongBUS.cs",
+              "DocumentMoniker": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\BUS\\PhanCongBUS.cs",
+              "RelativeDocumentMoniker": "ATBM\\BUS\\PhanCongBUS.cs",
+              "ToolTip": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\BUS\\PhanCongBUS.cs",
+              "RelativeToolTip": "ATBM\\BUS\\PhanCongBUS.cs",
+              "ViewState": "AQIAAHEAAAAAAAAAAAAiwIUAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T08:57:59.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "KeHoachMo.cs",
+              "DocumentMoniker": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\KeHoachMo\\KeHoachMo.cs",
+              "RelativeDocumentMoniker": "ATBM\\FORM\\KeHoachMo\\KeHoachMo.cs",
+              "ToolTip": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\KeHoachMo\\KeHoachMo.cs",
+              "RelativeToolTip": "ATBM\\FORM\\KeHoachMo\\KeHoachMo.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAvwFEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2024-04-21T08:57:59.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "KeHoachMo.cs [Design]",
+              "DocumentMoniker": "D:\\GitHub\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\KeHoachMo\\KeHoachMo.cs",
+              "RelativeDocumentMoniker": "ATBM\\FORM\\KeHoachMo\\KeHoachMo.cs",
+              "ToolTip": "C:\\Users\\ACER\\Desktop\\ATBM-N02-2022-2023\\ATBM_FrontEnd\\ATBM\\FORM\\KeHoachMo\\KeHoachMo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003525|",
+              "WhenOpened": "2024-04-21T08:57:59.311Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
