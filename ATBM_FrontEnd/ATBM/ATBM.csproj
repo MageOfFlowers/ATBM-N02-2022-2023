@@ -123,6 +123,7 @@
     <Compile Include="BUS\NhanSuBUS.cs" />
     <Compile Include="BUS\SinhVienBUS.cs" />
     <Compile Include="BUS\PhanCongBUS.cs" />
+    <Compile Include="BUS\ThongBaoBUS.cs" />
     <Compile Include="BUS\TTHSTrongLopBUS.cs" />
     <Compile Include="DTO\HocPhanDTO.cs" />
     <Compile Include="DTO\LopDTO.cs" />
@@ -219,6 +220,12 @@
     </Compile>
     <Compile Include="FORM\SinhVien\TTSinhVien.Designer.cs">
       <DependentUpon>TTSinhVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\ThongBao\XemThongBao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\ThongBao\XemThongBao.Designer.cs">
+      <DependentUpon>XemThongBao.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\TTcaNhan\ThongTinCaNhan_SinhVien.cs">
       <SubType>Form</SubType>
@@ -332,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\SinhVien\TTSinhVien.resx">
       <DependentUpon>TTSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\ThongBao\XemThongBao.resx">
+      <DependentUpon>XemThongBao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\TTcaNhan\ThongTinCaNhan_SinhVien.resx">
       <DependentUpon>ThongTinCaNhan_SinhVien.cs</DependentUpon>

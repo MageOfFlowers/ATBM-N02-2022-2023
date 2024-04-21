@@ -69,6 +69,7 @@
             this.ChiTietThongBao_btn.TabIndex = 4;
             this.ChiTietThongBao_btn.Text = "Chi tiết thông báo";
             this.ChiTietThongBao_btn.UseVisualStyleBackColor = true;
+            this.ChiTietThongBao_btn.Click += new System.EventHandler(this.ChiTietThongBao_btn_Click);
             // 
             // DanhSachSinhVien_btn
             // 
