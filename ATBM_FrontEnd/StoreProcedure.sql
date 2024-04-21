@@ -155,7 +155,19 @@ begin
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
-grant execute on lay_ds_don_vi to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
+
+create or replace procedure xoa_phan_cong(m_magv varchar2, m_mahp varchar2, m_hk number, m_nam number, m_mact varchar2)
+as
+begin
+    execute immediate 'delete from admin_ols1.phancong where magv = ''' ||m_magv|| ''' and mahp = ''' ||m_mahp|| ''' and hk = ' ||m_hk|| ' and nam = ' ||m_nam|| ' and mact = ''' ||m_mact|| '''';
+end;
+/
+create or replace procedure sua_phan_cong(m_magv_cu varchar2, m_magv_moi varchar2, m_mahp varchar2, m_hk number, m_nam number, m_mact varchar2)
+as
+begin
+    execute immediate 'update admin_ols1.phancong set magv = ''' ||m_magv_moi|| ''' where magv = ''' ||m_magv_cu|| ''' and mahp = ''' ||m_mahp|| ''' and hk = ' ||m_hk|| ' and nam = ' ||m_nam|| ' and mact = ''' ||m_mact|| '''';
+end;
+/
 grant execute on xem_ds_ke_hoach_mo to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on them_ke_hoach to role_giaovu;
 grant execute on thay_doi_ke_hoach to role_giaovu;
@@ -168,8 +180,11 @@ grant execute on xem_phan_cong to role_giangvien, role_truongdonvi, role_truongk
 grant execute on lay_ds_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
 grant execute on lay_ds_nhan_su to role_truongdonvi, role_truongkhoa;
 grant execute on them_phan_cong to role_truongdonvi, role_truongkhoa;
+grant execute on xoa_phan_cong to role_truongdonvi, role_truongkhoa;
+grant execute on sua_phan_cong to role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_tin_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on cap_nhat_sdt_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_tin_sinh_vien to role_sinhvien;
 grant execute on cap_nhat_dia_chi_va_sdt_sinh_vien to role_sinhvien;
 grant execute on cap_nhat_tt_sinh_vien to role_giao_vu
+grant execute on lay_ds_don_vi to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;

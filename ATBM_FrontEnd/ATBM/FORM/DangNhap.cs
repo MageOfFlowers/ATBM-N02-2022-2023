@@ -31,7 +31,12 @@ namespace ATBM
             {
                 int vai_tro = 0;
                 if (username.Equals("admin_ols1", StringComparison.OrdinalIgnoreCase))
+                {
                     vai_tro = -1;
+                    OracleConnection connection = new OracleConnection(Program.connectionString);
+                    connection.Open();
+                    connection.Close();
+                }
                 else
                 {
                     NhanSuBUS ns = new NhanSuBUS();

@@ -27,6 +27,7 @@ namespace ATBM.FORM.PhanCong
             ds_phancong = ds;
             DSGiangVien();
             LoadData();
+            RefreshData(GiangVienCB.SelectedValue.ToString());
         }
 
         private void RefreshData(string magv)
