@@ -140,6 +140,22 @@ begin
     execute immediate 'insert into admin_ols1.phancong values (''' ||m_magv|| ''', ''' ||m_mahp|| ''', ' ||m_hk|| ', ' ||m_nam|| ', ''' ||m_mact|| ''')';
 end;
 /
+create or replace procedure cap_nhat_tt_sinh_vien(pMASV in varchar2,hotensv in nvarchar2,phaisv in char,ngsinhsv in date, dchisv in nvarchar2,dtsv in varchar2,mactsv in varchar2,manganhsv in varchar2,sotctlsv in number,dtbtlsv in number)
+as
+begin
+    update admin_ols1.sinhvien set HOTEN=hotensv,PHAI=phaisv,NGSINH=ngsinhsv,DCHI=dchisv, DT=dtsv,MACT=mactsv,MANGANH=manganhsv,SOTCTL=sotctlsv,DTBTL=dtbtlsv
+    where masv=pMASV;
+end;
+/
+create or replace procedure lay_ds_don_vi(c1 out SYS_REFCURSOR)
+as
+begin
+    open c1 for
+    select madv from admin_ols1.donvi;
+    DBMS_SQL.RETURN_RESULT(c1);
+end;
+/
+grant execute on lay_ds_don_vi to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on xem_ds_ke_hoach_mo to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on them_ke_hoach to role_giaovu;
 grant execute on thay_doi_ke_hoach to role_giaovu;
@@ -156,3 +172,4 @@ grant execute on lay_thong_tin_nhan_su to role_nhanvien, role_giangvien, role_gi
 grant execute on cap_nhat_sdt_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_tin_sinh_vien to role_sinhvien;
 grant execute on cap_nhat_dia_chi_va_sdt_sinh_vien to role_sinhvien;
+grant execute on cap_nhat_tt_sinh_vien to role_giao_vu

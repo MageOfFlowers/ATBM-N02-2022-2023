@@ -23,20 +23,6 @@ namespace ATBM.FORM
             masv = maSV;
         }
 
-        private void ThongTinCaNhan_Load(object sender, EventArgs e)
-        {
-            SinhVienDTO sinhVien = new SinhVienDTO();
-            lblHoTen.Text = sinhVien.HOTEN;
-            lblPhai.Text = sinhVien.PHAI;
-            lblNgaySinh.Text = sinhVien.NGSINH.ToString("dd/MM/yyyy"); ;
-            diaChi.Text = sinhVien.DCHI;
-            sdt.Text = sinhVien.DT;
-            lblMaCT.Text = sinhVien.MACT;
-            lblMaNganh.Text = sinhVien.MANGANH;
-            lblSTCTL.Text = sinhVien.SOTCTL.ToString();
-            lblDTBTL.Text = sinhVien.DTBTL.ToString();
-        }
-
         private void BtnLuu_Click(object sender, EventArgs e)
         {
             string dchi=diaChi.Text;
@@ -65,6 +51,24 @@ namespace ATBM.FORM
             {
                 Close();
             }
+        }
+
+        private void ThongTinCaNhan_SinhVien_Load(object sender, EventArgs e)
+        {
+            SinhVienDTO sinhVien = sinhVienBUS.layTTSinhVien(masv);
+            if (sinhVien == null)
+            {
+                Close();
+            }
+            lblHoTen.Text = sinhVien.HOTEN;
+            lblPhai.Text = sinhVien.PHAI;
+            lblNgaySinh.Text = sinhVien.NGSINH.ToString("dd/MM/yyyy"); ;
+            diaChi.Text = sinhVien.DCHI;
+            sdt.Text = sinhVien.DT;
+            lblMaCT.Text = sinhVien.MACT;
+            lblMaNganh.Text = sinhVien.MANGANH;
+            lblSTCTL.Text = sinhVien.SOTCTL.ToString();
+            lblDTBTL.Text = sinhVien.DTBTL.ToString();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ATBM.BUS
                     da.Fill(dataTable);
                     if(dataTable.Rows.Count !=1 )
                     {
-                        MessageBox.Show("Nice try");
+                        MessageBox.Show("Ugh");
                         return null;
                     }
                     DataRow row = dataTable.Rows[0];
@@ -62,7 +62,6 @@ namespace ATBM.BUS
                 {
                     connection.Open();
                     OracleDataAdapter da = new OracleDataAdapter();
-                    DataTable dataTable = new DataTable();
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add("pMASV", OracleDbType.Varchar2).Value = pMASV;
                     command.Parameters.Add("diachi", OracleDbType.Varchar2).Value = diachi.Trim().Trim('=');
@@ -78,7 +77,40 @@ namespace ATBM.BUS
             {
                 connection.Close();
             }
-            MessageBox.Show("Đã lưu");
+            MessageBox.Show("Đã lưu","Thông báo");
+        }
+        public void cap_nhat_tt_sinh_vien(SinhVienDTO sinhVien)
+        {
+            string procedureName = "admin_ols1.cap_nhat_tt_sinh_vien";
+            try
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("pMASV", OracleDbType.Varchar2).Value = sinhVien.MASV;
+                    command.Parameters.Add("hotensv", OracleDbType.NVarchar2).Value = sinhVien.HOTEN;
+                    command.Parameters.Add("phaisv", OracleDbType.Char).Value = sinhVien.PHAI;
+                    command.Parameters.Add("ngsinhsv", OracleDbType.Date).Value = sinhVien.NGSINH;
+                    command.Parameters.Add("dchisv", OracleDbType.NVarchar2).Value = sinhVien.DCHI;
+                    command.Parameters.Add("dtsv", OracleDbType.Varchar2).Value = sinhVien.DT;
+                    command.Parameters.Add("mactsv", OracleDbType.Varchar2).Value = sinhVien.MACT;
+                    command.Parameters.Add("manganhsv", OracleDbType.Varchar2).Value = sinhVien.MANGANH;
+                    command.Parameters.Add("sotctlsv", OracleDbType.Int32).Value = sinhVien.SOTCTL;
+                    command.Parameters.Add("dtbtlsv", OracleDbType.Decimal).Value = sinhVien.DTBTL;
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            MessageBox.Show("Đã cập nhật", "Thông báo");
         }
     }
 }

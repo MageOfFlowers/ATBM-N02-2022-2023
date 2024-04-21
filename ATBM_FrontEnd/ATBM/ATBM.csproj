@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\AdminBUS.cs" />
+    <Compile Include="BUS\DonViBUS.cs" />
     <Compile Include="BUS\HocPhanBUS.cs" />
     <Compile Include="BUS\KHMBUS.cs" />
     <Compile Include="BUS\LopBUS.cs" />
@@ -213,10 +214,16 @@
     <Compile Include="FORM\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\ThongTinCaNhan_SinhVien.cs">
+    <Compile Include="FORM\SinhVien\TTSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\ThongTinCaNhan_SinhVien.Designer.cs">
+    <Compile Include="FORM\SinhVien\TTSinhVien.Designer.cs">
+      <DependentUpon>TTSinhVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\TTcaNhan\ThongTinCaNhan_SinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\TTcaNhan\ThongTinCaNhan_SinhVien.Designer.cs">
       <DependentUpon>ThongTinCaNhan_SinhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\PhanCong\PhanCong.cs">
@@ -237,10 +244,10 @@
     <Compile Include="FORM\ThongTinLopHoc.designer.cs">
       <DependentUpon>ThongTinLopHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="FORM\ThongTinCaNhan_NhanSu.cs">
+    <Compile Include="FORM\TTcaNhan\ThongTinCaNhan_NhanSu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORM\ThongTinCaNhan_NhanSu.Designer.cs">
+    <Compile Include="FORM\TTcaNhan\ThongTinCaNhan_NhanSu.Designer.cs">
       <DependentUpon>ThongTinCaNhan_NhanSu.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Privilege.cs">
@@ -323,7 +330,10 @@
     <EmbeddedResource Include="FORM\PhanCong\ThemPhanCong.resx">
       <DependentUpon>ThemPhanCong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\ThongTinCaNhan_SinhVien.resx">
+    <EmbeddedResource Include="FORM\SinhVien\TTSinhVien.resx">
+      <DependentUpon>TTSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\TTcaNhan\ThongTinCaNhan_SinhVien.resx">
       <DependentUpon>ThongTinCaNhan_SinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\ThongTinLopHoc.resx">
@@ -341,7 +351,7 @@
     <EmbeddedResource Include="Admin\Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORM\ThongTinCaNhan_NhanSu.resx">
+    <EmbeddedResource Include="FORM\TTcaNhan\ThongTinCaNhan_NhanSu.resx">
       <DependentUpon>ThongTinCaNhan_NhanSu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Users.resx">

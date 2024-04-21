@@ -26,6 +26,10 @@ namespace ATBM
         private void ThongTinCaNhan_NhanSu_Load(object sender, EventArgs e)
         {
             NhanSuDTO NhanSu=NhanSuBUS.LayTTNhanSu(manv);
+            if(NhanSu==null)
+            {
+                Close();
+            }
             lblHoTen.Text = NhanSu.HOTEN;
             sdt.Text = NhanSu.DT;
             lblPhai.Text = NhanSu.PHAI;

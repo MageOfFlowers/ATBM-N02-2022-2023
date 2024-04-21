@@ -379,3 +379,4 @@ C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATB
 C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.application
 C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.csproj.CopyComplete
 C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.ThongTinCaNhan_SinhVien.resources
+C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.FORM.SinhVien.TTSinhVien.resources
