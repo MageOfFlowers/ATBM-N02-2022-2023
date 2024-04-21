@@ -125,62 +125,69 @@
             // lblHoTen
             // 
             this.lblHoTen.AutoSize = true;
+            this.lblHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoTen.Location = new System.Drawing.Point(275, 84);
             this.lblHoTen.Name = "lblHoTen";
-            this.lblHoTen.Size = new System.Drawing.Size(76, 13);
+            this.lblHoTen.Size = new System.Drawing.Size(93, 16);
             this.lblHoTen.TabIndex = 8;
             this.lblHoTen.Text = "Nguyễn Văn A";
             // 
             // lblPhai
             // 
             this.lblPhai.AutoSize = true;
+            this.lblPhai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhai.Location = new System.Drawing.Point(275, 162);
             this.lblPhai.Name = "lblPhai";
-            this.lblPhai.Size = new System.Drawing.Size(29, 13);
+            this.lblPhai.Size = new System.Drawing.Size(36, 16);
             this.lblPhai.TabIndex = 9;
             this.lblPhai.Text = "Nam";
             // 
             // lblNgaySinh
             // 
             this.lblNgaySinh.AutoSize = true;
+            this.lblNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgaySinh.Location = new System.Drawing.Point(275, 192);
             this.lblNgaySinh.Name = "lblNgaySinh";
-            this.lblNgaySinh.Size = new System.Drawing.Size(53, 13);
+            this.lblNgaySinh.Size = new System.Drawing.Size(57, 16);
             this.lblNgaySinh.TabIndex = 10;
             this.lblNgaySinh.Text = "1/1/1980";
             // 
             // lblPhuCap
             // 
             this.lblPhuCap.AutoSize = true;
+            this.lblPhuCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhuCap.Location = new System.Drawing.Point(275, 227);
             this.lblPhuCap.Name = "lblPhuCap";
-            this.lblPhuCap.Size = new System.Drawing.Size(43, 13);
+            this.lblPhuCap.Size = new System.Drawing.Size(49, 16);
             this.lblPhuCap.TabIndex = 11;
             this.lblPhuCap.Text = "100000";
             // 
             // lblVaitro
             // 
             this.lblVaitro.AutoSize = true;
+            this.lblVaitro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVaitro.Location = new System.Drawing.Point(275, 262);
             this.lblVaitro.Name = "lblVaitro";
-            this.lblVaitro.Size = new System.Drawing.Size(74, 13);
+            this.lblVaitro.Size = new System.Drawing.Size(89, 16);
             this.lblVaitro.TabIndex = 12;
             this.lblVaitro.Text = "Trưởng đơn vị";
             // 
             // lblDonVi
             // 
             this.lblDonVi.AutoSize = true;
+            this.lblDonVi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDonVi.Location = new System.Drawing.Point(275, 300);
             this.lblDonVi.Name = "lblDonVi";
-            this.lblDonVi.Size = new System.Drawing.Size(95, 13);
+            this.lblDonVi.Size = new System.Drawing.Size(113, 16);
             this.lblDonVi.TabIndex = 13;
             this.lblDonVi.Text = "Hệ thống thông tin";
             // 
             // sdt
             // 
+            this.sdt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sdt.Location = new System.Drawing.Point(278, 118);
             this.sdt.Name = "sdt";
-            this.sdt.Size = new System.Drawing.Size(100, 20);
+            this.sdt.Size = new System.Drawing.Size(100, 22);
             this.sdt.TabIndex = 14;
             // 
             // label8

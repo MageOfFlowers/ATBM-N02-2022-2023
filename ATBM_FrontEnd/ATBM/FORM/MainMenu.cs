@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using ATBM.FORM.KeHoachMo;
 using ATBM.FORM.PhanCong;
 using ATBM.FORM;
+using ATBM.FORM.SinhVien;
 
 namespace ATBM
 {
@@ -61,16 +62,18 @@ namespace ATBM
 
         private void ThongTinCaNhan_btn_Click(object sender, EventArgs e)
         {
-            if(role!= 0)
-            {
-                ThongTinCaNhan_NhanSu _NhanSu = new ThongTinCaNhan_NhanSu(username);
-                _NhanSu.Show();
-            }
-            else
-            {
-                ThongTinCaNhan_SinhVien _SinhVien = new ThongTinCaNhan_SinhVien(username);
-                _SinhVien.Show();
-            }
+            TTSinhVien sinhVien = new TTSinhVien("SV001",3);
+            sinhVien.Show();
+            //if (role>0)
+            //{
+            //    ThongTinCaNhan_NhanSu _NhanSu = new ThongTinCaNhan_NhanSu(username);
+            //    _NhanSu.Show();
+            //}
+            //else if (role==0)
+            //{
+            //    ThongTinCaNhan_SinhVien _SinhVien = new ThongTinCaNhan_SinhVien(username);
+            //    _SinhVien.Show();
+            //}
         }
     }
 }
