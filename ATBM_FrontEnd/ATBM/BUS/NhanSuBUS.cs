@@ -73,7 +73,7 @@ namespace ATBM.BUS
             {
                 connection.Close();
             }
-            MessageBox.Show("Đã lưu");
+            MessageBox.Show("Đã lưu", "Thông báo");
         }
         public int lay_vai_tro()
         {
