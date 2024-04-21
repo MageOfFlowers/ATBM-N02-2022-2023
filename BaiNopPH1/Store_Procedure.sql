@@ -164,6 +164,7 @@ begin
     SELECT object_name FROM user_procedures WHERE object_type = 'PROCEDURE';
     DBMS_SQL.RETURN_RESULT(c1);
 end;
+/
 create or replace procedure DS_View (c1 out SYS_REFCURSOR)
 as
 begin
