@@ -226,3 +226,10 @@ insert into phancong values ('NV013','CSC16001',2,2023,'VP');
 insert into phancong values ('NV013','CSC16004',3,2023,'CTTT');
 insert into phancong values ('NV014','CSC11002',3,2023,'VP');
 insert into phancong values ('NV014','CSC11005',3,2023,'CLC');
+
+ALTER TABLE nhansu ENABLE ROW MOVEMENT;
+insert into nhansu values ('VV000','Ngo Chi Nam','M',DATE '1981-03-16',400,'0549768255','Giang vien',null);
+select * from nhansu;
+
+flashback pluggable database ATBM_3 to timestamp (systimestamp - interval '5' minute);
+SELECT CURRENT_TIMESTAMP FROM dual;

@@ -1,0 +1,30 @@
+-window search 'edit the enviroment variable'
+-advances -> environment variables -> path -> edit
+-search trong máy folder instantclient -> copy path
+-new path đã copy
+----------------------------
+-chạy cmd
++sqlplus
++sqlplus / as sysdba (k mật khẩu)
++shutdown immediate;
++startup mount;
++alter database archivelog;
++ALTER DATABASE OPEN;
+-tạo folder backup
++alter system set log_archive_dest_1='location=<path đến backup>';
++alter system set log_archive_dest_state_1=enable;
++ALTER SYSTEM SET DB_RECOVERY_FILE_DEST_SIZE = 50G SCOPE=BOTH;
++ALTER SYSTEM SET DB_RECOVERY_FILE_DEST = '<path đến backup>';
++ALTER SYSTEM SET DB_RECOVERY_FILE_DEST = '<path đến backup>' SCOPE=BOTH;
++ALTER DATABASE FLASHBACK ON;
++alter system set db_flashback_retention_target= 2880; (1 ngày = 1440p)
+-------------------------------
+-trên table
++ALTER TABLE nhansu ENABLE ROW MOVEMENT;
++ALTER TABLE table_name FLASHBACK ON;
+*flashback pluggable database ATBM_3 to timestamp (systimestamp - interval '5' minute);
+*FLASHBACK TABLE test2 TO TIMESTAMP TO_TIMESTAMP('2017-07-12 16:30:00', 'YYYY-MM-DD HH24:MI:SS');
+-trên database
+
+-trên pdb
+https://dbaclass.com/article/performance-flashback-pluggable-databasepdb-oracle-12-2/
