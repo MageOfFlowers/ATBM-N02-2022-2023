@@ -181,7 +181,7 @@ grant execute on them_ke_hoach to role_giaovu;
 grant execute on thay_doi_ke_hoach to role_giaovu;
 grant execute on lay_thong_tin_lop_hoc to role_giangvien, role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_tin_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
-grant execute on lay_ds_lop to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
+grant execute on lay_ds_lop to role_sinhvien, role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on cap_nhat_diem to role_giangvien, role_truongdonvi, role_truongkhoa;
 grant execute on xem_vai_tro to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
 grant execute on xem_phan_cong to role_giangvien, role_truongdonvi, role_truongkhoa;
@@ -194,6 +194,6 @@ grant execute on lay_thong_tin_nhan_su to role_nhanvien, role_giangvien, role_gi
 grant execute on cap_nhat_sdt_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_tin_sinh_vien to role_sinhvien;
 grant execute on cap_nhat_dia_chi_va_sdt_sinh_vien to role_sinhvien;
-grant execute on cap_nhat_tt_sinh_vien to role_giao_vu
+grant execute on cap_nhat_tt_sinh_vien to role_giaovu;
 grant execute on lay_ds_don_vi to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_bao to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;

@@ -1,9 +1,8 @@
-alter session set "_ORACLE_SCRIPT"=true;
-
-CREATE ROLE ROLE_SINHVIEN
-NOT IDENTIFIED;
+grant select, insert, delete on dangky to role_sinhvien;
+grant select on hocphan to role_sinhvien;
+grant select on khmo to role_sinhvien;
+grant select, update(dchi, dt) on sinhvien to role_sinhvien;
 /
-
 Create or replace function xem_cua_chinh_minh_function(p_schema varchar2, p_obj varchar2)
 Return varchar2
 As

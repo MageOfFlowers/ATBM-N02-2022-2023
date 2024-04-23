@@ -215,6 +215,12 @@
     <Compile Include="FORM\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\SinhVien\KQ_Dang_Ky_HP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\SinhVien\KQ_Dang_Ky_HP.Designer.cs">
+      <DependentUpon>KQ_Dang_Ky_HP.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\SinhVien\TTSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\PhanCong\ThemPhanCong.resx">
       <DependentUpon>ThemPhanCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\SinhVien\KQ_Dang_Ky_HP.resx">
+      <DependentUpon>KQ_Dang_Ky_HP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\SinhVien\TTSinhVien.resx">
       <DependentUpon>TTSinhVien.cs</DependentUpon>

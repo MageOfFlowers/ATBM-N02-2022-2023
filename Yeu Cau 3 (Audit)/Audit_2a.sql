@@ -1,15 +1,23 @@
 GRANT create session, audit_admin, audit_viewer TO admin_ols1;
 /
-CREATE OR REPLACE FUNCTION lay_ds_giang_vien
-RETURN NUMBER
-IS
-  emp_count NUMBER;
+CREATE OR REPLACE FUNCTION check_giang_vien
+RETURN BOOLEAN
+AS
+USER VARCHAR2(100) := SYS_CONTEXT('USERENV', 'SESSION_USER');
+is_not_gv BOOLEAN := TRUE;
+CURSOR gv_cursor IS
+    SELECT MANV
+    from  ADMIN_OLS1.NHANSU
+    where VAITRO = 'Giang vien';
 BEGIN
-  SELECT COUNT(*) INTO emp_count
-  FROM EMPLOYEES
-  WHERE DEPARTMENT_ID = dept_id;
-
-  RETURN emp_count;
+    FOR gv IN gv_cursor LOOP
+        IF gv.MANV = user THEN
+            is_not_gv := false;
+            EXIT;
+        END IF;
+    END LOOP;
+    
+    RETURN is_not_gv;
 END;
 /
 BEGIN
@@ -17,7 +25,7 @@ BEGIN
     object_schema   => 'ADMIN_OLS1',
     object_name     => 'DANGKY',
     policy_name     => 'AUDIT_2A',
-    audit_condition => '(select granted_role from dba_role_privs where grantee = SYS_CONTEXT(''USERENV'', ''SESSION_USER'')) != ''ROLE_GIANGVIEN''',
+    audit_condition => 'check_giang_vien()',
     audit_column    => 'DIEMTH, DIEMQT, DIEMCK, DIEMTK',        
     enable          => TRUE,
     statement_types => 'UPDATE'

@@ -45,20 +45,20 @@ namespace ATBM
         }
         private void KeHoachMo_btn_Click(object sender, EventArgs e)
         {
-            KeHoachMo f = new KeHoachMo(role);
-            f.ShowDialog();
+            KeHoachMo keHoachMo = new KeHoachMo(role);
+            keHoachMo.ShowDialog();
         }
 
         private void ThongTinLopHoc_btn_Click(object sender, EventArgs e)
         {
-            ThongTinLopHoc f = new ThongTinLopHoc();
-            f.ShowDialog();
+            ThongTinLopHoc thongTinLopHoc = new ThongTinLopHoc();
+            thongTinLopHoc.ShowDialog();
         }
 
         private void PhanCong_btn_Click(object sender, EventArgs e)
         {
-            PhanCong f = new PhanCong(role);
-            f.ShowDialog();
+            PhanCong phanCong = new PhanCong(role);
+            phanCong.ShowDialog();
         }
 
         private void ThongTinCaNhan_btn_Click(object sender, EventArgs e)
@@ -79,6 +79,12 @@ namespace ATBM
         {
             XemThongBao xemThongBao = new XemThongBao();
             xemThongBao.Show();
+        }
+
+        private void HocPhanDangKy_btn_Click(object sender, EventArgs e)
+        {
+            KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP();
+            kq_Dang_Ky_HP.Show();
         }
     }
 }
