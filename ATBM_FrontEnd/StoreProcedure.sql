@@ -45,7 +45,7 @@ as
 begin
 open c1 for
     Select dk.MAHP, hp.TENHP, dk.HK, dk.NAM, dk.MACT
-    from admin_ols1.dangky dk join admin_ols1.hocphan hp on dk.MAHP = hp.MAHP;
+    from admin_ols1.khmo dk join admin_ols1.hocphan hp on dk.MAHP = hp.MAHP;
 DBMS_SQL.RETURN_RESULT(c1);
 end;
 /

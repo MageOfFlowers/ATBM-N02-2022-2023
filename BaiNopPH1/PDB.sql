@@ -5,7 +5,11 @@ alter session set "_ORACLE_SCRIPT"=true;
 alter session set container = CDB$ROOT;
 /
 create pluggable database ATBM_3 admin user ATBM_OLS identified by 123
+<<<<<<< Updated upstream
 FILE_NAME_CONVERT=('C:\APP\ACER\PRODUCT\21C\ORADATA\XE\','C:\APP\ACER\PRODUCT\21C\ORADATA\ATBM_OLS3\');
+=======
+FILE_NAME_CONVERT=('E:\Oracle\ORADATA\XE\','E:\Oracle\ORADATA\ATBM_OLS3\');
+>>>>>>> Stashed changes
 /
 ALTER PLUGGABLE DATABASE ALL OPEN;
 ALTER PLUGGABLE DATABASE ATBM_3 SAVE STATE;
@@ -49,14 +53,9 @@ EXEC LBACSYS.CONFIGURE_OLS;
 EXEC LBACSYS.OLS_ENFORCEMENT.ENABLE_OLS;
 --SHUTDOWN IMMEDIATE;
 --STARTUP; 
-
-shutdown immediate;
-startup mount;
-
-alter database archivelog;
-
-alter database open;
-alter database close;
+ select *
+ from user_objects;
+flashback table admin_ols1.nhansu to timestamp to_timestamp('12-DEC-2022 11.14.50','dd-MON-YY hh24.MI.SS');
 
 SELECT log_mode FROM v$database;
 

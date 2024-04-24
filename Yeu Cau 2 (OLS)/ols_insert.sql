@@ -13,15 +13,15 @@ create or replace procedure tao_thongbao (noidung nvarchar2, level varchar2, com
 as 
 STRSQL VARCHAR(2000);
 begin
-    BEGIN
-        SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('REGION_POLICY2','ADMIN_OLS1','THONGBAO');
-        SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
-         policy_name => 'REGION_POLICY2',
-         schema_name => 'ADMIN_OLS1',
-         table_name => 'THONGBAO',
-         table_options => 'NO_CONTROL'
-        );
-    END;
+--    BEGIN
+--        SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('REGION_POLICY2','ADMIN_OLS1','THONGBAO');
+--        SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
+--         policy_name => 'REGION_POLICY2',
+--         schema_name => 'ADMIN_OLS1',
+--         table_name => 'THONGBAO',
+--         table_options => 'NO_CONTROL'
+--        );
+--    END;
     STRSQL:='insert into thongbao(noidung) values ('''|| noidung ||''')'; 
 --    dbms_output.put_line(STRSQL);
     EXECUTE IMMEDIATE (STRSQL);
@@ -36,16 +36,16 @@ begin
     STRSQL:=STRSQL||''') where noidung = '''||noidung||'''';
 --    dbms_output.put_line(STRSQL);
     EXECUTE IMMEDIATE (STRSQL);
-    BEGIN
-        SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('REGION_POLICY2','ADMIN_OLS1','THONGBAO');
-        SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
-         policy_name => 'REGION_POLICY2',
-         schema_name => 'ADMIN_OLS1',
-         table_name => 'THONGBAO',
-         table_options => 'READ_CONTROL',
-        predicate => NULL
-        );
-    END;
+--    BEGIN
+--        SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('REGION_POLICY2','ADMIN_OLS1','THONGBAO');
+--        SA_POLICY_ADMIN.APPLY_TABLE_POLICY (
+--         policy_name => 'REGION_POLICY2',
+--         schema_name => 'ADMIN_OLS1',
+--         table_name => 'THONGBAO',
+--         table_options => 'READ_CONTROL',
+--        predicate => NULL
+--        );
+--    END;
 end;
 /
 
