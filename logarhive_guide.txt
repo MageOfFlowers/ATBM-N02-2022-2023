@@ -1,0 +1,43 @@
+-window search 'edit the enviroment variable'
+-advances -> environment variables -> path -> edit
+-search trong máy folder instantclient -> copy path
+-new path đã copy
+----------------------------
+-chạy cmd
++sqlplus
++sqlplus / as sysdba (k mật khẩu)
++shutdown immediate;
++startup mount;
++alter database archivelog;
++ALTER DATABASE OPEN;
+-tạo folder backup
++alter system set log_archive_dest_1='location=<path đến backup>';
++alter system set log_archive_dest_state_1=enable;
++ALTER SYSTEM SET DB_RECOVERY_FILE_DEST_SIZE = 50G SCOPE=BOTH;
++ALTER SYSTEM SET DB_RECOVERY_FILE_DEST = '<path đến backup>';
++ALTER SYSTEM SET DB_RECOVERY_FILE_DEST = '<path đến backup>' SCOPE=BOTH;
++ALTER DATABASE FLASHBACK ON;
++alter system set db_flashback_retention_target= 2880; (1 ngày = 1440p)
+-------------------------------
+-trên table(chạy trên sql developer)
++ALTER TABLE nhansu ENABLE ROW MOVEMENT;
++ALTER TABLE table_name FLASHBACK ON;
+*flashback TABLE test2 to timestamp (systimestamp - interval '5' minute);
+*FLASHBACK TABLE test2 TO TIMESTAMP TO_TIMESTAMP('2017-07-12 16:30:00', 'YYYY-MM-DD HH24:MI:SS');
+-trên database
++create restore point CHECKPOINT_1 guarantee flashback database;
++shutdown immediate;
++startup mount;
++flashback database to restore point CHECKPOINT_1;
++alter database open resetlogs; 
+-trên pdb
++alter session set container=ATBM_3;
++create restore point CHECKPOINT_1 guarantee flashback database;
++alter pluggable database ATBM_3 close;
++flashback pluggable database ATBM_3 to restore point checkpoint_1;
++alter pluggable database ATBM_3 open resetlogs;
+
+--------------
+Có 2 cách flashback
+1/Chọn timestamp(vd table)
+2/Tự lưu checkpoint thủ công
