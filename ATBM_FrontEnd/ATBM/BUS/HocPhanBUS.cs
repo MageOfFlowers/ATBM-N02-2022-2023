@@ -54,5 +54,22 @@ namespace ATBM.BUS
             }
             return ds;
         }
+
+        public void huy_dang_ky(string masv, LopDTO lop)
+        {
+            string procedureName = "admin_ols1.huy_dang_ky_hoc_phan";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("m_masv", OracleDbType.Varchar2).Value = masv;
+                command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = lop.MAHP;
+                command.Parameters.Add("m_hk", OracleDbType.Int32).Value = lop.HK;
+                command.Parameters.Add("m_nam", OracleDbType.Int32).Value = lop.NAM;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@ alter session set "_ORACLE_SCRIPT"=true;
 alter session set container = CDB$ROOT;
 /
 create pluggable database ATBM_3 admin user ATBM_OLS identified by 123
-FILE_NAME_CONVERT=('C:\APP\ADMIN\PRODUCT\21C\ORADATA\XE\','C:\APP\ADMIN\PRODUCT\21C\ORADATA\ATBM_OLS3\');
+FILE_NAME_CONVERT=('C:\APP\ACER\PRODUCT\21C\ORADATA\XE\','C:\APP\ACER\PRODUCT\21C\ORADATA\ATBM_OLS3\');
 /
 ALTER PLUGGABLE DATABASE ALL OPEN;
 ALTER PLUGGABLE DATABASE ATBM_3 SAVE STATE;
@@ -57,4 +57,6 @@ alter database archivelog;
 
 alter database open;
 alter database close;
+
+SELECT log_mode FROM v$database;
 

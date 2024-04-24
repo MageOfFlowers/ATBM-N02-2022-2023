@@ -1,4 +1,3 @@
-grant role_nhanvien to role_giangvien;
 grant select on phancong to role_giangvien;
 grant select, update(diemth, diemqt, diemck, diemtk) on dangky to role_giangvien;
 /

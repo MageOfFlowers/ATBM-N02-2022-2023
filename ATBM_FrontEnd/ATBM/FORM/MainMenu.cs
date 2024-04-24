@@ -4,6 +4,7 @@ using ATBM.FORM.KeHoachMo;
 using ATBM.FORM.PhanCong;
 using ATBM.FORM;
 using ATBM.FORM.SinhVien;
+using ATBM.FORM.ThongBao;
 
 namespace ATBM
 {
@@ -44,36 +45,46 @@ namespace ATBM
         }
         private void KeHoachMo_btn_Click(object sender, EventArgs e)
         {
-            KeHoachMo f = new KeHoachMo(role);
-            f.ShowDialog();
+            KeHoachMo keHoachMo = new KeHoachMo(role);
+            keHoachMo.ShowDialog();
         }
 
         private void ThongTinLopHoc_btn_Click(object sender, EventArgs e)
         {
-            ThongTinLopHoc f = new ThongTinLopHoc();
-            f.ShowDialog();
+            ThongTinLopHoc thongTinLopHoc = new ThongTinLopHoc();
+            thongTinLopHoc.ShowDialog();
         }
 
         private void PhanCong_btn_Click(object sender, EventArgs e)
         {
-            PhanCong f = new PhanCong(role);
-            f.ShowDialog();
+            PhanCong phanCong = new PhanCong(role);
+            phanCong.ShowDialog();
         }
 
         private void ThongTinCaNhan_btn_Click(object sender, EventArgs e)
         {
-            TTSinhVien sinhVien = new TTSinhVien("SV001",3);
-            sinhVien.Show();
-            //if (role>0)
-            //{
-            //    ThongTinCaNhan_NhanSu _NhanSu = new ThongTinCaNhan_NhanSu(username);
-            //    _NhanSu.Show();
-            //}
-            //else if (role==0)
-            //{
-            //    ThongTinCaNhan_SinhVien _SinhVien = new ThongTinCaNhan_SinhVien(username);
-            //    _SinhVien.Show();
-            //}
+            if (role > 0)
+            {
+                ThongTinCaNhan_NhanSu _NhanSu = new ThongTinCaNhan_NhanSu(username);
+                _NhanSu.Show();
+            }
+            else if (role == 0)
+            {
+                ThongTinCaNhan_SinhVien _SinhVien = new ThongTinCaNhan_SinhVien(username);
+                _SinhVien.Show();
+            }
+        }
+
+        private void ChiTietThongBao_btn_Click(object sender, EventArgs e)
+        {
+            XemThongBao xemThongBao = new XemThongBao();
+            xemThongBao.Show();
+        }
+
+        private void HocPhanDangKy_btn_Click(object sender, EventArgs e)
+        {
+            KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP(username);
+            kq_Dang_Ky_HP.Show();
         }
     }
 }
