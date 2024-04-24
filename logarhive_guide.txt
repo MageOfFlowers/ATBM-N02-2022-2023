@@ -19,12 +19,25 @@
 +ALTER DATABASE FLASHBACK ON;
 +alter system set db_flashback_retention_target= 2880; (1 ngày = 1440p)
 -------------------------------
--trên table
+-trên table(chạy trên sql developer)
 +ALTER TABLE nhansu ENABLE ROW MOVEMENT;
 +ALTER TABLE table_name FLASHBACK ON;
-*flashback pluggable database ATBM_3 to timestamp (systimestamp - interval '5' minute);
+*flashback TABLE test2 to timestamp (systimestamp - interval '5' minute);
 *FLASHBACK TABLE test2 TO TIMESTAMP TO_TIMESTAMP('2017-07-12 16:30:00', 'YYYY-MM-DD HH24:MI:SS');
 -trên database
-
++create restore point CHECKPOINT_1 guarantee flashback database;
++shutdown immediate;
++startup mount;
++flashback database to restore point CHECKPOINT_1;
++alter database open resetlogs; 
 -trên pdb
-https://dbaclass.com/article/performance-flashback-pluggable-databasepdb-oracle-12-2/
++alter session set container=ATBM_3;
++create restore point CHECKPOINT_1 guarantee flashback database;
++alter pluggable database ATBM_3 close;
++flashback pluggable database ATBM_3 to restore point checkpoint_1;
++alter pluggable database ATBM_3 open resetlogs;
+
+--------------
+Có 2 cách flashback
+1/Chọn timestamp(vd table)
+2/Tự lưu checkpoint thủ công

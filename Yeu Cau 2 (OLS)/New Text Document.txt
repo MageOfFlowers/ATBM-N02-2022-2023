@@ -1,0 +1,3 @@
++Gán nhãn cho nhân viên để có thể đọc toàn bộ thông báo của sinh viên bất kể khoa nào của cơ sở đó
++Gán nhãn cho 1 nhân viên để có thể đọc toàn bộ thông báo của nhân viên của cơ sở đó
++Gán nhãn cho trưởng đơn vị HTTT để có thể đọc toàn bộ thông báo của Trưởng đơn vị bất kể khoa nào
