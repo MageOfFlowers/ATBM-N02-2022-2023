@@ -30,11 +30,11 @@ namespace ATBM.FORM
         private void InitializeComponent()
         {
             this.MaSVLB = new System.Windows.Forms.Label();
-            this.DSSinhvienDGV = new System.Windows.Forms.DataGridView();
-            this.TimBTN = new System.Windows.Forms.Button();
+            this.SinhVien_dgv = new System.Windows.Forms.DataGridView();
+            this.ChonBTN_01 = new System.Windows.Forms.Button();
             this.MaSVB = new System.Windows.Forms.TextBox();
             this.DSSinhvienLB = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.DSSinhvienDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SinhVien_dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // MaSVLB
@@ -47,23 +47,24 @@ namespace ATBM.FORM
             this.MaSVLB.Text = "Mã sinh viên";
             this.MaSVLB.Click += new System.EventHandler(this.label1_Click);
             // 
-            // DSSinhvienDGV
+            // SinhVien_dgv
             // 
-            this.DSSinhvienDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DSSinhvienDGV.Location = new System.Drawing.Point(28, 122);
-            this.DSSinhvienDGV.Name = "DSSinhvienDGV";
-            this.DSSinhvienDGV.Size = new System.Drawing.Size(741, 298);
-            this.DSSinhvienDGV.TabIndex = 2;
+            this.SinhVien_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SinhVien_dgv.Location = new System.Drawing.Point(28, 122);
+            this.SinhVien_dgv.Name = "SinhVien_dgv";
+            this.SinhVien_dgv.RowHeadersWidth = 51;
+            this.SinhVien_dgv.Size = new System.Drawing.Size(741, 298);
+            this.SinhVien_dgv.TabIndex = 2;
             // 
-            // TimBTN
+            // ChonBTN_01
             // 
-            this.TimBTN.Location = new System.Drawing.Point(694, 75);
-            this.TimBTN.Name = "TimBTN";
-            this.TimBTN.Size = new System.Drawing.Size(75, 23);
-            this.TimBTN.TabIndex = 4;
-            this.TimBTN.Text = "Tìm";
-            this.TimBTN.UseVisualStyleBackColor = true;
-            this.TimBTN.Click += new System.EventHandler(this.button1_Click);
+            this.ChonBTN_01.Location = new System.Drawing.Point(694, 75);
+            this.ChonBTN_01.Name = "ChonBTN_01";
+            this.ChonBTN_01.Size = new System.Drawing.Size(75, 23);
+            this.ChonBTN_01.TabIndex = 4;
+            this.ChonBTN_01.Text = "Chọn";
+            this.ChonBTN_01.UseVisualStyleBackColor = true;
+            this.ChonBTN_01.Click += new System.EventHandler(this.button1_Click);
             // 
             // MaSVB
             // 
@@ -89,13 +90,13 @@ namespace ATBM.FORM
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.DSSinhvienLB);
             this.Controls.Add(this.MaSVB);
-            this.Controls.Add(this.TimBTN);
-            this.Controls.Add(this.DSSinhvienDGV);
+            this.Controls.Add(this.ChonBTN_01);
+            this.Controls.Add(this.SinhVien_dgv);
             this.Controls.Add(this.MaSVLB);
             this.Name = "DSSinhvien";
             this.Text = "DSSinhvien";
             this.Load += new System.EventHandler(this.DSSinhvien_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DSSinhvienDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SinhVien_dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,8 +105,8 @@ namespace ATBM.FORM
         #endregion
 
         private System.Windows.Forms.Label MaSVLB;
-        private System.Windows.Forms.DataGridView DSSinhvienDGV;
-        private System.Windows.Forms.Button TimBTN;
+        private System.Windows.Forms.DataGridView SinhVien_dgv;
+        private System.Windows.Forms.Button ChonBTN_01;
         private System.Windows.Forms.TextBox MaSVB;
         private System.Windows.Forms.Label DSSinhvienLB;
     }
