@@ -38,7 +38,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(624, 22);
+            this.button1.Location = new System.Drawing.Point(893, 22);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 36);
@@ -65,7 +65,7 @@
             this.QuyenView.ReadOnly = true;
             this.QuyenView.RowHeadersWidth = 51;
             this.QuyenView.RowTemplate.Height = 24;
-            this.QuyenView.Size = new System.Drawing.Size(332, 356);
+            this.QuyenView.Size = new System.Drawing.Size(601, 356);
             this.QuyenView.TabIndex = 9;
             this.QuyenView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.QuyenView_CellContentClick);
             // 
@@ -91,7 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1145, 450);
             this.Controls.Add(this.roleName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);

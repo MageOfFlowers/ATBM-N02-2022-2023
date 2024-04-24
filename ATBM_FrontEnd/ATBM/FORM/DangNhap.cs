@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using ATBM.FORM.KeHoachMo;
 using ATBM.BUS;
+using ATBM.Admin;
+
 
 namespace ATBM
 {
@@ -27,13 +29,13 @@ namespace ATBM
             string username = Username.Text;
             string password = Password.Text;
             Program.connectionString += $"User Id={username};Password={password};";
+            OracleConnection connection = new OracleConnection(Program.connectionString);
             try
             {
                 int vai_tro = 0;
                 if (username.Equals("admin_ols1", StringComparison.OrdinalIgnoreCase))
                 {
                     vai_tro = -1;
-                    OracleConnection connection = new OracleConnection(Program.connectionString);
                     connection.Open();
                     connection.Close();
                 }
@@ -43,8 +45,17 @@ namespace ATBM
                     vai_tro = ns.lay_vai_tro();
                 }
                 MessageBox.Show("Đăng nhập thành công!");
-                MainMenu f = new MainMenu(username, vai_tro);
-                f.ShowDialog();
+                if (vai_tro == -1)
+                {
+                    Form1 m = new Form1();
+                    m.ShowDialog();
+                }
+                else
+                {
+                    MainMenu m = new MainMenu(username, vai_tro);
+                    m.ShowDialog();
+                }
+                
             }
             catch (Exception ex)
             {
