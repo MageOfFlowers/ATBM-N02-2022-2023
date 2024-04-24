@@ -52,7 +52,7 @@ namespace ATBM.FORM.Donvi
             this.TTNhansu_BTN.Name = "TTNhansu_BTN";
             this.TTNhansu_BTN.Size = new System.Drawing.Size(75, 23);
             this.TTNhansu_BTN.TabIndex = 8;
-            this.TTNhansu_BTN.Text = "Tìm";
+            this.TTNhansu_BTN.Text = "Chọn";
             this.TTNhansu_BTN.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -92,6 +92,7 @@ namespace ATBM.FORM.Donvi
             this.Controls.Add(this.MaNV_LB);
             this.Name = "ThongtinNhansu";
             this.Text = "ThongtinNhansu";
+            this.Load += new System.EventHandler(this.ThongtinNhansu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TTNhansu_DGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

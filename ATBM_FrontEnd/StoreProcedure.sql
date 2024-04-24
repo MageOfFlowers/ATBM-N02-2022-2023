@@ -176,6 +176,12 @@ begin
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
+create or replace procedure huy_dang_ky_hoc_phan(m_masv varchar2, m_mahp varchar2, m_hk number, m_nam number)
+as
+begin
+    execute immediate 'delete from admin_ols1.dangky where masv = ''' || m_masv || ''' and mahp = ''' || m_mahp || ''' and hk = ' || m_hk || 'and nam = ' || m_nam;
+end;
+/
 grant execute on xem_ds_ke_hoach_mo to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on them_ke_hoach to role_giaovu;
 grant execute on thay_doi_ke_hoach to role_giaovu;
@@ -197,3 +203,4 @@ grant execute on cap_nhat_dia_chi_va_sdt_sinh_vien to role_sinhvien;
 grant execute on cap_nhat_tt_sinh_vien to role_giaovu;
 grant execute on lay_ds_don_vi to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_bao to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
+grant execute on huy_dang_ky_hoc_phan to role_sinhvien, role_giaovu;

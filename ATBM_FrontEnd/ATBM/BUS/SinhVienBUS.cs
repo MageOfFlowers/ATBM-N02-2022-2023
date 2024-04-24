@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using ATBM.DTO;
@@ -9,6 +10,54 @@ namespace ATBM.BUS
     internal class SinhVienBUS
     {
         readonly OracleConnection connection = new OracleConnection(Program.connectionString);
+
+        public IList<SinhVienDTO> lay_danh_sach_sinh_vien()
+        {
+            string procedureName = "admin_ols1.lay_danh_sach_sinh_vien";
+            IList<SinhVienDTO> ds = new List<SinhVienDTO>();
+            try
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    DataTable dataTable = new DataTable();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    da.SelectCommand = command;
+                    da.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        SinhVienDTO obj = new SinhVienDTO();
+
+                        obj.MASV = row["masv"].ToString();
+                        obj.HOTEN = row["hoten"].ToString();
+                        obj.PHAI = row["phai"].ToString() == "M" ? "Nam" : "Nữ";
+                        obj.NGSINH = Convert.ToDateTime(row["ngsinh"]);
+                        obj.DCHI = row["dchi"].ToString();
+                        obj.DT = row["dt"].ToString();
+                        obj.MACT = row["mact"].ToString();
+                        obj.MANGANH = row["manganh"].ToString();
+                        obj.SOTCTL = Convert.ToInt32(row["sotctl"]);
+                        obj.DTBTL = Convert.ToDouble(row["dtbtl"]);
+
+                        ds.Add(obj);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ds;
+        }
+
         public SinhVienDTO layTTSinhVien(string pMASV)
         {
             string procedureName = "admin_ols1.lay_thong_tin_sinh_vien";

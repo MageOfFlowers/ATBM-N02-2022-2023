@@ -83,7 +83,7 @@ namespace ATBM
 
         private void HocPhanDangKy_btn_Click(object sender, EventArgs e)
         {
-            KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP();
+            KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP(username);
             kq_Dang_Ky_HP.Show();
         }
     }

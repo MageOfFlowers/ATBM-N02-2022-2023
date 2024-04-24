@@ -31,10 +31,10 @@ namespace ATBM.FORM
         {
             this.DanhsachdonviLB = new System.Windows.Forms.Label();
             this.MaDVLB = new System.Windows.Forms.Label();
-            this.MaDVB = new System.Windows.Forms.TextBox();
+            this.MsDV_B = new System.Windows.Forms.TextBox();
             this.DSDonviBTN = new System.Windows.Forms.Button();
-            this.DSDonviDGV = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.DSDonviDGV)).BeginInit();
+            this.DonVi_dgv = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DonVi_dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // DanhsachdonviLB
@@ -56,12 +56,12 @@ namespace ATBM.FORM
             this.MaDVLB.TabIndex = 1;
             this.MaDVLB.Text = "Mã đơn vị";
             // 
-            // MaDVB
+            // MsDV_B
             // 
-            this.MaDVB.Location = new System.Drawing.Point(132, 81);
-            this.MaDVB.Name = "MaDVB";
-            this.MaDVB.Size = new System.Drawing.Size(100, 20);
-            this.MaDVB.TabIndex = 2;
+            this.MsDV_B.Location = new System.Drawing.Point(132, 81);
+            this.MsDV_B.Name = "MsDV_B";
+            this.MsDV_B.Size = new System.Drawing.Size(100, 20);
+            this.MsDV_B.TabIndex = 2;
             // 
             // DSDonviBTN
             // 
@@ -69,30 +69,31 @@ namespace ATBM.FORM
             this.DSDonviBTN.Name = "DSDonviBTN";
             this.DSDonviBTN.Size = new System.Drawing.Size(75, 23);
             this.DSDonviBTN.TabIndex = 3;
-            this.DSDonviBTN.Text = "Tìm";
+            this.DSDonviBTN.Text = "Chọn";
             this.DSDonviBTN.UseVisualStyleBackColor = true;
             // 
-            // DSDonviDGV
+            // DonVi_dgv
             // 
-            this.DSDonviDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DSDonviDGV.Location = new System.Drawing.Point(54, 127);
-            this.DSDonviDGV.Name = "DSDonviDGV";
-            this.DSDonviDGV.Size = new System.Drawing.Size(693, 291);
-            this.DSDonviDGV.TabIndex = 4;
+            this.DonVi_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DonVi_dgv.Location = new System.Drawing.Point(54, 127);
+            this.DonVi_dgv.Name = "DonVi_dgv";
+            this.DonVi_dgv.Size = new System.Drawing.Size(693, 291);
+            this.DonVi_dgv.TabIndex = 4;
             // 
             // DSDonvi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.DSDonviDGV);
+            this.Controls.Add(this.DonVi_dgv);
             this.Controls.Add(this.DSDonviBTN);
-            this.Controls.Add(this.MaDVB);
+            this.Controls.Add(this.MsDV_B);
             this.Controls.Add(this.MaDVLB);
             this.Controls.Add(this.DanhsachdonviLB);
             this.Name = "DSDonvi";
             this.Text = "DSDonvi";
-            ((System.ComponentModel.ISupportInitialize)(this.DSDonviDGV)).EndInit();
+            this.Load += new System.EventHandler(this.DSDonvi_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DonVi_dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,8 +103,8 @@ namespace ATBM.FORM
 
         private System.Windows.Forms.Label DanhsachdonviLB;
         private System.Windows.Forms.Label MaDVLB;
-        private System.Windows.Forms.TextBox MaDVB;
+        private System.Windows.Forms.TextBox MsDV_B;
         private System.Windows.Forms.Button DSDonviBTN;
-        private System.Windows.Forms.DataGridView DSDonviDGV;
+        private System.Windows.Forms.DataGridView DonVi_dgv;
     }
 }

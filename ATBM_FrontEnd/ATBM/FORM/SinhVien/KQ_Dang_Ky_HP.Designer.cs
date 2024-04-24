@@ -73,6 +73,7 @@
             this.HocKyCB.Name = "HocKyCB";
             this.HocKyCB.Size = new System.Drawing.Size(121, 24);
             this.HocKyCB.TabIndex = 5;
+            this.HocKyCB.SelectedIndexChanged += new System.EventHandler(this.HocKyCB_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -90,6 +91,7 @@
             this.NamCB.Name = "NamCB";
             this.NamCB.Size = new System.Drawing.Size(121, 24);
             this.NamCB.TabIndex = 7;
+            this.NamCB.SelectedIndexChanged += new System.EventHandler(this.NamCB_SelectedIndexChanged);
             // 
             // KQ_Dang_Ky_HP
             // 

@@ -30,6 +30,15 @@ end;
 /
 begin
 dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'DANGKY',
+                            policy_name => 'xem_cua_chinh_minh_policy',
+                            function_schema => 'ADMIN_OLS1',
+                            policy_function => 'xem_cua_chinh_minh_function',
+                            statement_types => 'select');
+end;
+/
+begin
+dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'SINHVIEN',
                             policy_name => 'sua_cua_chinh_minh_policy',
                             function_schema => 'ADMIN_OLS1',
