@@ -16,5 +16,10 @@ namespace ATBM.FORM.Donvi
         {
             InitializeComponent();
         }
+
+        private void ThongtinNhansu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
