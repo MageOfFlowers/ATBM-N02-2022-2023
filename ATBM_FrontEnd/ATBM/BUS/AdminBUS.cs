@@ -90,6 +90,19 @@ namespace ATBM.BUS
             }
             return ds;
         }
+
+        public DataTable RoleList2()
+        {
+            DataTable dataTable = new DataTable();
+            connection.Open();
+            string sqlQuery = "select granted_role, count(grantee) as quantity from dba_role_privs where granted_role in (select granted_role from user_role_privs) group by granted_role";
+            using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
+            {
+                adapter.Fill(dataTable);
+            }
+            connection.Close();
+            return dataTable;
+        }
         public IList<string> ViewList()
         {
             List<string> ds = new List<string>();
@@ -160,6 +173,29 @@ namespace ATBM.BUS
                 command.Parameters.Add("level", OracleDbType.Varchar2).Value = level;
                 command.Parameters.Add("compartment", OracleDbType.Varchar2).Value = compartment;
                 command.Parameters.Add("p_group", OracleDbType.Varchar2).Value = group;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void BatGhiNhatKy(string doituong, string nguoidung, string hanhdong, string trangthai, string cachghi)
+        {
+            string procedureName = "bat_ghi_nhat_ky";
+            if (hanhdong == "To Table/View") { hanhdong = "all"; }
+            if (trangthai == "Mọi lúc") { trangthai = "all"; }
+            else if (trangthai == "Thành công") { trangthai = "whenever successful"; }
+            else if (trangthai == "Thất bại") { trangthai = "whenever not successful"; }
+
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("doituong", OracleDbType.Varchar2).Value = doituong;
+                command.Parameters.Add("nguoidung", OracleDbType.Varchar2).Value = nguoidung;
+                command.Parameters.Add("hanhdong", OracleDbType.Varchar2).Value = hanhdong;
+                command.Parameters.Add("trangthai", OracleDbType.Varchar2).Value = trangthai;
+                command.Parameters.Add("cachghi", OracleDbType.Varchar2).Value = cachghi;
 
                 command.ExecuteNonQuery();
                 connection.Close();

@@ -1,5 +1,6 @@
 select value from v$option where parameter = 'Unified Auditing';
 /
+alter session set container = ATBM_3;
 GRANT create session, audit_admin, audit_viewer TO admin_ols1;
 /
 create audit policy role_audit_pol_test
@@ -24,17 +25,43 @@ ORDER BY event_timestamp;
 
 select * from thongbao;
 
-create or replace procedure bat_ghi_nhat_ky(a boolean, b boolean, c boolean)
+create or replace procedure bat_ghi_nhat_ky(doituong varchar2, nguoidung varchar2, hanhdong varchar2, trangthai varchar2, cachghi varchar2)
 as
     STRSQL VARCHAR(2000);
+    pol varchar(2000);
 begin
-if (a=true) then
-    STRSQL := 'AUDIT SELECT ON thongbao BY ACCESS WHENEVER SUCCESSFUL';
+    pol := doituong||nguoidung||hanhdong||'_policy';
+    if (trangthai='whenever successful')then pol :=pol||'1'; 
+    elsif (trangthai='whenever not successful')then pol :=pol||'0';
+    else pol :=pol||'2'; end if;
+    if (cachghi='by access')then pol :=pol||'3'; 
+    else pol:=pol||'4'; end if;
+    
+    STRSQL := 'CREATE AUDIT POLICY '||pol||' ACTIONS '||hanhdong||' ON '||doituong;
+    DBMS_OUTPUT.PUT_LINE(STRSQL);
     EXECUTE IMMEDIATE(STRSQL);
-end if;
+    STRSQL := 'AUDIT POLICY '||pol||' '||cachghi;
+    
+    if (nguoidung is not null) then
+        STRSQL := STRSQL||' BY '||nguoidung;
+    end if;
+    if (trangthai!='all') then
+        STRSQL := STRSQL||' '||trangthai;
+    end if;
+    dbms_output.put_line(STRSQL);
+    EXECUTE IMMEDIATE(STRSQL);
+--EXCEPTION
+--WHEN OTHERS THEN
+--    DBMS_OUTPUT.PUT_LINE('An error occurred');
 end;
 
-exec bat_ghi_nhat_ky(true,false,false);
+set serveroutput on;
+grant execute on admin_ols1.bat_ghi_nhat_ky to sys;
+exec admin_ols1.bat_ghi_nhat_ky('thongbao','NV001','select','whenever successful','by access');
+
+SELECT policy_name, enabled_option, entity_name
+  FROM audit_unified_enabled_policies
+
 
 create or replace procedure xem_nhat_ky(c1 out SYS_REFCURSOR)
 as

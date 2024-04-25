@@ -303,6 +303,7 @@
             this.Controls.Add(this.BatGhiNhatKy);
             this.Name = "NhatKyHeThong";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.NhatKyHeThong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NhatKyDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

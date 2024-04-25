@@ -16,6 +16,7 @@ ALTER PLUGGABLE DATABASE ATBM_3 SAVE STATE;
 /
 alter session set container = ATBM_3;
 CREATE USER ADMIN_OLS1 IDENTIFIED BY 123 CONTAINER = CURRENT; 
+
 /
 grant dba to ADMIN_OLS1;
 GRANT EXECUTE ANY PROCEDURE TO ADMIN_OLS1; 
@@ -42,7 +43,9 @@ GRANT EXECUTE ON LBACSYS.sa_user_admin TO ADMIN_OLS1 WITH GRANT OPTION;
 GRANT EXECUTE ON LBACSYS.sa_label_admin TO ADMIN_OLS1 WITH GRANT OPTION;
 GRANT EXECUTE ON sa_policy_admin TO ADMIN_OLS1 WITH GRANT OPTION;
 GRANT EXECUTE ON char_to_label TO ADMIN_OLS1 WITH GRANT OPTION;
-
+grant select on dba_sa_user_levels to admin_ols1;
+grant select on dba_sa_user_compartments to admin_ols1;
+grant select on dba_sa_user_groups to admin_ols1;
 grant alter database to ADMIN_OLS1;
 GRANT LBAC_DBA TO ADMIN_OLS1;
 GRANT EXECUTE ON sa_sysdba TO ADMIN_OLS1;

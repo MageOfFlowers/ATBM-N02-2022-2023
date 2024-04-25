@@ -84,10 +84,10 @@ namespace ATBM.Admin
                 HanhDongCB2.Items.Add("Execute");
                 HanhDongCB2.SelectedItem = "To Table/View";
 
-                TrangThaiCB2.Items.Add("Tất cả");
+                TrangThaiCB2.Items.Add("Mọi lúc");
                 TrangThaiCB2.Items.Add("Thành công");
                 TrangThaiCB2.Items.Add("Thất bại");                
-                TrangThaiCB2.SelectedItem = "Tất cả";
+                TrangThaiCB2.SelectedItem = "Mọi lúc";
 
                 CachGhiCB.Items.Add("By Access");
                 CachGhiCB.Items.Add("By Session");
@@ -540,7 +540,21 @@ namespace ATBM.Admin
         }
         private void BatGhiNhatKy_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string doituong = DoiTuongCB2.SelectedItem.ToString();
+                string nguoidung = NguoiDungCB2.SelectedItem.ToString();
+                string hanhdong = HanhDongCB2.SelectedItem.ToString();
+                string trangthai = TrangThaiCB2.SelectedItem.ToString();
+                string cachghi = CachGhiCB.SelectedItem.ToString();
 
+                AdminBUS.BatGhiNhatKy(doituong, nguoidung, hanhdong, trangthai, cachghi);
+                MessageBox.Show("Cài đặt thành công");
+            }
+            catch
+            {
+                MessageBox.Show("Không thể cài đặt");
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -644,6 +658,11 @@ namespace ATBM.Admin
                     DoiTuongCB2.Items.Add(s);
                 }
             }
+
+        }
+
+        private void NhatKyHeThong_Load(object sender, EventArgs e)
+        {
 
         }
     }
