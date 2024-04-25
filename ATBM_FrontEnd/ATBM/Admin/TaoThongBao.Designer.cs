@@ -35,9 +35,9 @@
             this.NoiDung = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Tao = new System.Windows.Forms.Button();
-            this.LevelCLB = new System.Windows.Forms.CheckedListBox();
             this.CompartmentCLB = new System.Windows.Forms.CheckedListBox();
             this.GroupCLB = new System.Windows.Forms.CheckedListBox();
+            this.LevelCB = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -106,15 +106,6 @@
             this.Tao.UseVisualStyleBackColor = true;
             this.Tao.Click += new System.EventHandler(this.Tao_Click);
             // 
-            // LevelCLB
-            // 
-            this.LevelCLB.FormattingEnabled = true;
-            this.LevelCLB.Location = new System.Drawing.Point(104, 86);
-            this.LevelCLB.Name = "LevelCLB";
-            this.LevelCLB.Size = new System.Drawing.Size(142, 106);
-            this.LevelCLB.TabIndex = 10;
-            this.LevelCLB.SelectedIndexChanged += new System.EventHandler(this.LevelCLB_SelectedIndexChanged);
-            // 
             // CompartmentCLB
             // 
             this.CompartmentCLB.FormattingEnabled = true;
@@ -131,14 +122,22 @@
             this.GroupCLB.Size = new System.Drawing.Size(142, 106);
             this.GroupCLB.TabIndex = 12;
             // 
+            // LevelCB
+            // 
+            this.LevelCB.FormattingEnabled = true;
+            this.LevelCB.Location = new System.Drawing.Point(104, 83);
+            this.LevelCB.Name = "LevelCB";
+            this.LevelCB.Size = new System.Drawing.Size(153, 24);
+            this.LevelCB.TabIndex = 13;
+            // 
             // TaoThongBao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.LevelCB);
             this.Controls.Add(this.GroupCLB);
             this.Controls.Add(this.CompartmentCLB);
-            this.Controls.Add(this.LevelCLB);
             this.Controls.Add(this.Tao);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.NoiDung);
@@ -163,8 +162,8 @@
         private System.Windows.Forms.RichTextBox NoiDung;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Tao;
-        private System.Windows.Forms.CheckedListBox LevelCLB;
         private System.Windows.Forms.CheckedListBox CompartmentCLB;
         private System.Windows.Forms.CheckedListBox GroupCLB;
+        private System.Windows.Forms.ComboBox LevelCB;
     }
 }

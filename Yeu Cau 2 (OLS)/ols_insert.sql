@@ -83,3 +83,40 @@ grant select on thongbao to NV002;
 SELECT table_name, privilege, grantable
                     FROM dba_tab_privs 
                     where grantee = 'ADMIN_OLS1';
+--alter session set container = ATBM_3;
+
+--create or replace view nhan_ols
+--as
+--select * from dba_sa_user_levels where policy_name = 'REGION_POLICY2';
+
+create or replace procedure xem_user_level(p_user in varchar2,c1 out SYS_REFCURSOR)
+as
+begin
+open c1 for
+select row_level from dba_sa_user_levels where policy_name = 'REGION_POLICY2' and user_name = p_user;
+DBMS_SQL.RETURN_RESULT(c1);
+end;
+/
+create or replace procedure xem_user_compartment(p_user in varchar2,c1 out SYS_REFCURSOR)
+as
+begin
+open c1 for
+select comp from dba_sa_user_compartments where policy_name = 'REGION_POLICY2' and user_name = p_user;
+DBMS_SQL.RETURN_RESULT(c1);
+end;
+/
+create or replace procedure xem_user_group(p_user in varchar2,c1 out SYS_REFCURSOR)
+as
+begin
+open c1 for
+select grp from dba_sa_user_groups where policy_name = 'REGION_POLICY2' and user_name = p_user;
+DBMS_SQL.RETURN_RESULT(c1);
+end;
+/
+create or replace procedure xem_user_group(p_user in varchar2,c1 out SYS_REFCURSOR)
+as
+begin
+open c1 for
+select grp from dba_sa_user_groups where policy_name = 'REGION_POLICY2' and user_name = p_user;
+DBMS_SQL.RETURN_RESULT(c1);
+end;

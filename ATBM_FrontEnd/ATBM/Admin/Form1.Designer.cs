@@ -31,6 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.GanNhan = new System.Windows.Forms.Button();
+            this.TaoThongBao = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -62,11 +64,33 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // GanNhan
+            // 
+            this.GanNhan.Location = new System.Drawing.Point(192, 201);
+            this.GanNhan.Name = "GanNhan";
+            this.GanNhan.Size = new System.Drawing.Size(158, 30);
+            this.GanNhan.TabIndex = 3;
+            this.GanNhan.Text = "Gán Nhãn Người dùng";
+            this.GanNhan.UseVisualStyleBackColor = true;
+            this.GanNhan.Click += new System.EventHandler(this.GanNhan_Click);
+            // 
+            // TaoThongBao
+            // 
+            this.TaoThongBao.Location = new System.Drawing.Point(400, 201);
+            this.TaoThongBao.Name = "TaoThongBao";
+            this.TaoThongBao.Size = new System.Drawing.Size(158, 30);
+            this.TaoThongBao.TabIndex = 4;
+            this.TaoThongBao.Text = "Tạo thông báo";
+            this.TaoThongBao.UseVisualStyleBackColor = true;
+            this.TaoThongBao.Click += new System.EventHandler(this.TaoThongBao_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TaoThongBao);
+            this.Controls.Add(this.GanNhan);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -82,5 +106,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button GanNhan;
+        private System.Windows.Forms.Button TaoThongBao;
     }
 }

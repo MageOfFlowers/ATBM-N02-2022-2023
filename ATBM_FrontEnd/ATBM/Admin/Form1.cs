@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATBM.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +28,18 @@ namespace ATBM
         {
             Roles roles = new Roles();
             roles.ShowDialog();
+        }
+
+        private void GanNhan_Click(object sender, EventArgs e)
+        {
+            GanNhan g = new GanNhan();
+            g.ShowDialog();
+        }
+
+        private void TaoThongBao_Click(object sender, EventArgs e)
+        {
+            TaoThongBao t = new TaoThongBao();
+            t.ShowDialog();
         }
     }
 }

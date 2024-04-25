@@ -15,55 +15,76 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace ATBM.Admin
 {
-    public partial class TaoThongBao : Form
+    public partial class GanNhan : Form
     {
         AdminBUS AdminBUS = new AdminBUS();
-        public TaoThongBao()
+        public GanNhan()
         {
             InitializeComponent();
             string[] ds = { "Trưởng khoa", "Trưởng đơn vị", "Giảng viên", "Giáo vụ", "Nhân viên", "Sinh viên" };
             LevelCB.Items.AddRange(ds);
             string[] ds2 = { "HTTT", "CNPM", "KHMT", "CNTT", "TGMT", "MMT" };
             CompartmentCLB.Items.AddRange(ds2);
-            string[] ds3 = { "Cơ sở 1", "Cơ sở 2"};
+            string[] ds3 = { "Cơ sở 1", "Cơ sở 2" };
             GroupCLB.Items.AddRange(ds3);
+            IList<string> ds1 = AdminBUS.UserList2();
+            foreach (string item in ds1)
+            {
+                NguoiDungCB.Items.Add(item);
+            }
 
             CompartmentCLB.CheckOnClick = true;
             GroupCLB.CheckOnClick = true;
+
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void GanNhan_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void NguoiDungCB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string selectedItems = NguoiDungCB.SelectedItem.ToString();
+            string level = AdminBUS.LevelLabel(selectedItems);
+            int i = LevelCB.FindStringExact(level);
 
-        }
+            if (i != -1)
+            {
+                LevelCB.SelectedIndex = i;
+            }
+            IList<string> ds = AdminBUS.CompartmentLabel(selectedItems);
+            IList<string> ds2 = AdminBUS.GroupLabel(selectedItems);
+            foreach (string item in ds)
+            {
+                int index = CompartmentCLB.Items.IndexOf(item);
+                if (index != -1)
+                {
+                    CompartmentCLB.SetItemChecked(index, true);
+                }
+            }
+            foreach (string item in ds2)
+            {
+                int index = GroupCLB.Items.IndexOf(item);
+                if (index != -1)
+                {
+                    GroupCLB.SetItemChecked(index, true);
+                }
+            }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TaoThongBao_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LevelCLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
         }
 
         private void Tao_Click(object sender, EventArgs e)
         {
             string selectedItems = LevelCB.SelectedItem.ToString();
-            
-            if (LevelCB.SelectedItem != null) {
+
+            if (LevelCB.SelectedItem != null)
+            {
                 string level = "";
 
                 string tmp = "";
@@ -74,7 +95,7 @@ namespace ATBM.Admin
                 else if (selectedItems == "Nhân viên") { tmp = "NV"; }
                 else if (selectedItems == "Sinh viên") { tmp = "SV"; }
 
-                level += tmp;       
+                level += tmp;
 
                 CheckedListBox.CheckedItemCollection selectedItems2 = CompartmentCLB.CheckedItems;
                 string compartment = "";
@@ -103,16 +124,14 @@ namespace ATBM.Admin
                 }
                 if (compartment == "") { compartment = null; }
                 if (group == "") { group = null; }
-                string noidung = NoiDung.Text;
-                AdminBUS.ThemThongBao(noidung, level, compartment, group);
+                string NguoiDung = NguoiDungCB.SelectedItem.ToString();
+                AdminBUS.GanNhan(NguoiDung, level, compartment, group);
                 MessageBox.Show("Thành công!");
-
             }
             else
             {
                 MessageBox.Show("Phải chọn Level");
             }
-            
         }
     }
 }

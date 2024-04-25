@@ -149,6 +149,23 @@ namespace ATBM.BUS
             }
         }
 
+        public void GanNhan(string noidung, string level, string compartment, string group)
+        {
+            string procedureName = "gan_nhan";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("user", OracleDbType.Varchar2).Value = noidung;
+                command.Parameters.Add("level", OracleDbType.Varchar2).Value = level;
+                command.Parameters.Add("compartment", OracleDbType.Varchar2).Value = compartment;
+                command.Parameters.Add("p_group", OracleDbType.Varchar2).Value = group;
+
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
         public void AddUser(string username, string password)
         {
             string procedureName = "Tao_User";
@@ -366,6 +383,88 @@ namespace ATBM.BUS
                 connection.Close();
             }
             return dataTable;
+        }
+
+        public string LevelLabel(string p_user)
+        {
+            string ds = "";
+            string procedureName = "xem_user_level";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("p_user", OracleDbType.Varchar2).Value = p_user;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    ds = row["row_level"].ToString();
+                    if (ds == "TK") { ds = "Trưởng khoa"; }
+                    else if (ds == "TDV") { ds = "Trưởng đơn vị"; }
+                    else if (ds == "GVien") { ds = "Giảng viên"; }
+                    else if (ds == "GVu") { ds = "Giáo vụ"; }
+                    else if (ds == "NV") { ds = "Nhân viên"; }
+                    else if (ds == "SV") { ds = "Sinh viên"; }
+                }
+                connection.Close();
+            }
+            return ds;
+        }
+
+        public IList<string> CompartmentLabel(string p_user)
+        {
+            List<string> ds = new List<string>();
+            string procedureName = "xem_user_compartment";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("p_user", OracleDbType.Varchar2).Value = p_user;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string tmp = row["comp"].ToString();
+                    ds.Add(tmp);
+                }
+                connection.Close();
+            }
+            return ds;
+        }
+
+        public IList<string> GroupLabel(string p_user)
+        {
+            List<string> ds = new List<string>();
+            string procedureName = "xem_user_group";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                DataTable dataTable = new DataTable();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("p_user", OracleDbType.Varchar2).Value = p_user;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string tmp = row["grp"].ToString();
+                    if (tmp == "CS1") { tmp = "Cơ sở 1"; }
+                    else if (tmp == "CS2") { tmp = "Cơ sở 2"; }
+                    ds.Add(tmp);
+                }
+                connection.Close();
+            }
+            return ds;
         }
     }
 }
