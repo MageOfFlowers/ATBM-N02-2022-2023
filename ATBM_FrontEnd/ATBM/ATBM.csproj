@@ -115,6 +115,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\GanNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\GanNhan.Designer.cs">
+      <DependentUpon>GanNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TaoThongBao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\TaoThongBao.Designer.cs">
+      <DependentUpon>TaoThongBao.cs</DependentUpon>
+    </Compile>
     <Compile Include="BUS\AdminBUS.cs" />
     <Compile Include="BUS\DonViBUS.cs" />
     <Compile Include="BUS\HocPhanBUS.cs" />
@@ -125,6 +137,7 @@
     <Compile Include="BUS\PhanCongBUS.cs" />
     <Compile Include="BUS\ThongBaoBUS.cs" />
     <Compile Include="BUS\TTHSTrongLopBUS.cs" />
+    <Compile Include="DTO\DonViDTO.cs" />
     <Compile Include="DTO\HocPhanDTO.cs" />
     <Compile Include="DTO\LopDTO.cs" />
     <Compile Include="DTO\NhanSuDTO.cs" />

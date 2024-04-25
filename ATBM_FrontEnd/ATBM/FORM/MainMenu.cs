@@ -5,6 +5,7 @@ using ATBM.FORM.PhanCong;
 using ATBM.FORM;
 using ATBM.FORM.SinhVien;
 using ATBM.FORM.ThongBao;
+using ATBM.FORM.Hocphan;
 
 namespace ATBM
 {
@@ -46,19 +47,19 @@ namespace ATBM
         private void KeHoachMo_btn_Click(object sender, EventArgs e)
         {
             KeHoachMo keHoachMo = new KeHoachMo(role);
-            keHoachMo.ShowDialog();
+            keHoachMo.Show();
         }
 
         private void ThongTinLopHoc_btn_Click(object sender, EventArgs e)
         {
             ThongTinLopHoc thongTinLopHoc = new ThongTinLopHoc();
-            thongTinLopHoc.ShowDialog();
+            thongTinLopHoc.Show();
         }
 
         private void PhanCong_btn_Click(object sender, EventArgs e)
         {
             PhanCong phanCong = new PhanCong(role);
-            phanCong.ShowDialog();
+            phanCong.Show();
         }
 
         private void ThongTinCaNhan_btn_Click(object sender, EventArgs e)
@@ -85,6 +86,12 @@ namespace ATBM
         {
             KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP(username);
             kq_Dang_Ky_HP.Show();
+        }
+
+        private void DKHP_btn_Click(object sender, EventArgs e)
+        {
+            DangkyHocphan dangkyHocphan = new DangkyHocphan();
+            dangkyHocphan.Show();
         }
     }
 }

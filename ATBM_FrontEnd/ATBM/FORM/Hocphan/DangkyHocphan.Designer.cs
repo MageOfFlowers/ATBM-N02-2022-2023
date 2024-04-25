@@ -29,103 +29,63 @@ namespace ATBM.FORM.Hocphan
         /// </summary>
         private void InitializeComponent()
         {
-            this.DSHocphanBTN = new System.Windows.Forms.Button();
-            this.MaHPB = new System.Windows.Forms.TextBox();
             this.MaHPLB = new System.Windows.Forms.Label();
             this.DSHocphanDGV = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.Thaydoi_BTN = new System.Windows.Forms.Button();
-            this.TTDangky_CBB = new System.Windows.Forms.ComboBox();
-            this.TTDangky_LB = new System.Windows.Forms.Label();
+            this.HocPhanCB = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DSHocphanDGV)).BeginInit();
             this.SuspendLayout();
-            // 
-            // DSHocphanBTN
-            // 
-            this.DSHocphanBTN.Location = new System.Drawing.Point(666, 55);
-            this.DSHocphanBTN.Name = "DSHocphanBTN";
-            this.DSHocphanBTN.Size = new System.Drawing.Size(75, 23);
-            this.DSHocphanBTN.TabIndex = 9;
-            this.DSHocphanBTN.Text = "Tìm";
-            this.DSHocphanBTN.UseVisualStyleBackColor = true;
-            // 
-            // MaHPB
-            // 
-            this.MaHPB.Location = new System.Drawing.Point(175, 74);
-            this.MaHPB.Name = "MaHPB";
-            this.MaHPB.Size = new System.Drawing.Size(100, 20);
-            this.MaHPB.TabIndex = 8;
             // 
             // MaHPLB
             // 
             this.MaHPLB.AutoSize = true;
-            this.MaHPLB.Location = new System.Drawing.Point(90, 77);
+            this.MaHPLB.Location = new System.Drawing.Point(175, 95);
+            this.MaHPLB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MaHPLB.Name = "MaHPLB";
-            this.MaHPLB.Size = new System.Drawing.Size(70, 13);
+            this.MaHPLB.Size = new System.Drawing.Size(84, 16);
             this.MaHPLB.TabIndex = 7;
             this.MaHPLB.Text = "Mã học phần";
             // 
             // DSHocphanDGV
             // 
             this.DSHocphanDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DSHocphanDGV.Location = new System.Drawing.Point(59, 126);
+            this.DSHocphanDGV.Location = new System.Drawing.Point(79, 155);
+            this.DSHocphanDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DSHocphanDGV.Name = "DSHocphanDGV";
-            this.DSHocphanDGV.Size = new System.Drawing.Size(682, 305);
+            this.DSHocphanDGV.RowHeadersWidth = 51;
+            this.DSHocphanDGV.Size = new System.Drawing.Size(909, 375);
             this.DSHocphanDGV.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(283, 19);
+            this.label1.Location = new System.Drawing.Point(377, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 25);
+            this.label1.Size = new System.Drawing.Size(280, 31);
             this.label1.TabIndex = 5;
             this.label1.Text = "Danh sách học phần";
             // 
-            // Thaydoi_BTN
+            // HocPhanCB
             // 
-            this.Thaydoi_BTN.Location = new System.Drawing.Point(666, 84);
-            this.Thaydoi_BTN.Name = "Thaydoi_BTN";
-            this.Thaydoi_BTN.Size = new System.Drawing.Size(75, 23);
-            this.Thaydoi_BTN.TabIndex = 10;
-            this.Thaydoi_BTN.Text = "Thay đổi";
-            this.Thaydoi_BTN.UseVisualStyleBackColor = true;
-            // 
-            // TTDangky_CBB
-            // 
-            this.TTDangky_CBB.FormattingEnabled = true;
-            this.TTDangky_CBB.Items.AddRange(new object[] {
-            "Đăng ký",
-            "Hủy đăng ký"});
-            this.TTDangky_CBB.Location = new System.Drawing.Point(468, 74);
-            this.TTDangky_CBB.Name = "TTDangky_CBB";
-            this.TTDangky_CBB.Size = new System.Drawing.Size(121, 21);
-            this.TTDangky_CBB.TabIndex = 11;
-            this.TTDangky_CBB.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // TTDangky_LB
-            // 
-            this.TTDangky_LB.AutoSize = true;
-            this.TTDangky_LB.Location = new System.Drawing.Point(394, 77);
-            this.TTDangky_LB.Name = "TTDangky_LB";
-            this.TTDangky_LB.Size = new System.Drawing.Size(55, 13);
-            this.TTDangky_LB.TabIndex = 12;
-            this.TTDangky_LB.Text = "Trạng thái";
+            this.HocPhanCB.FormattingEnabled = true;
+            this.HocPhanCB.Location = new System.Drawing.Point(303, 92);
+            this.HocPhanCB.Name = "HocPhanCB";
+            this.HocPhanCB.Size = new System.Drawing.Size(135, 24);
+            this.HocPhanCB.TabIndex = 13;
+            this.HocPhanCB.SelectedIndexChanged += new System.EventHandler(this.HocPhanCB_SelectedIndexChanged);
             // 
             // DangkyHocphan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.TTDangky_LB);
-            this.Controls.Add(this.TTDangky_CBB);
-            this.Controls.Add(this.Thaydoi_BTN);
-            this.Controls.Add(this.DSHocphanBTN);
-            this.Controls.Add(this.MaHPB);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.HocPhanCB);
             this.Controls.Add(this.MaHPLB);
             this.Controls.Add(this.DSHocphanDGV);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DangkyHocphan";
             this.Text = "DangkyHocphan";
             this.Load += new System.EventHandler(this.DangkyHocphan_Load);
@@ -136,14 +96,9 @@ namespace ATBM.FORM.Hocphan
         }
 
         #endregion
-
-        private System.Windows.Forms.Button DSHocphanBTN;
-        private System.Windows.Forms.TextBox MaHPB;
         private System.Windows.Forms.Label MaHPLB;
         private System.Windows.Forms.DataGridView DSHocphanDGV;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Thaydoi_BTN;
-        private System.Windows.Forms.ComboBox TTDangky_CBB;
-        private System.Windows.Forms.Label TTDangky_LB;
+        private System.Windows.Forms.ComboBox HocPhanCB;
     }
 }

@@ -38,6 +38,7 @@
             this.ThongTinLopHoc_btn = new System.Windows.Forms.Button();
             this.HocPhanDangKy_btn = new System.Windows.Forms.Button();
             this.PhanCong_btn = new System.Windows.Forms.Button();
+            this.DKHP_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Label
@@ -53,7 +54,7 @@
             // ThongTinCaNhan_btn
             // 
             this.ThongTinCaNhan_btn.Location = new System.Drawing.Point(88, 111);
-            this.ThongTinCaNhan_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ThongTinCaNhan_btn.Margin = new System.Windows.Forms.Padding(4);
             this.ThongTinCaNhan_btn.Name = "ThongTinCaNhan_btn";
             this.ThongTinCaNhan_btn.Size = new System.Drawing.Size(231, 28);
             this.ThongTinCaNhan_btn.TabIndex = 3;
@@ -64,7 +65,7 @@
             // ChiTietThongBao_btn
             // 
             this.ChiTietThongBao_btn.Location = new System.Drawing.Point(708, 111);
-            this.ChiTietThongBao_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChiTietThongBao_btn.Margin = new System.Windows.Forms.Padding(4);
             this.ChiTietThongBao_btn.Name = "ChiTietThongBao_btn";
             this.ChiTietThongBao_btn.Size = new System.Drawing.Size(221, 30);
             this.ChiTietThongBao_btn.TabIndex = 4;
@@ -75,7 +76,7 @@
             // DanhSachSinhVien_btn
             // 
             this.DanhSachSinhVien_btn.Location = new System.Drawing.Point(399, 112);
-            this.DanhSachSinhVien_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DanhSachSinhVien_btn.Margin = new System.Windows.Forms.Padding(4);
             this.DanhSachSinhVien_btn.Name = "DanhSachSinhVien_btn";
             this.DanhSachSinhVien_btn.Size = new System.Drawing.Size(217, 28);
             this.DanhSachSinhVien_btn.TabIndex = 5;
@@ -85,7 +86,7 @@
             // KeHoachMo_btn
             // 
             this.KeHoachMo_btn.Location = new System.Drawing.Point(88, 418);
-            this.KeHoachMo_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KeHoachMo_btn.Margin = new System.Windows.Forms.Padding(4);
             this.KeHoachMo_btn.Name = "KeHoachMo_btn";
             this.KeHoachMo_btn.Size = new System.Drawing.Size(231, 28);
             this.KeHoachMo_btn.TabIndex = 6;
@@ -96,7 +97,7 @@
             // DanhSac
             // 
             this.DanhSac.Location = new System.Drawing.Point(708, 418);
-            this.DanhSac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DanhSac.Margin = new System.Windows.Forms.Padding(4);
             this.DanhSac.Name = "DanhSac";
             this.DanhSac.Size = new System.Drawing.Size(221, 28);
             this.DanhSac.TabIndex = 7;
@@ -106,7 +107,7 @@
             // DanhSachDonVi_btn
             // 
             this.DanhSachDonVi_btn.Location = new System.Drawing.Point(399, 418);
-            this.DanhSachDonVi_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DanhSachDonVi_btn.Margin = new System.Windows.Forms.Padding(4);
             this.DanhSachDonVi_btn.Name = "DanhSachDonVi_btn";
             this.DanhSachDonVi_btn.Size = new System.Drawing.Size(217, 28);
             this.DanhSachDonVi_btn.TabIndex = 8;
@@ -116,7 +117,7 @@
             // ThongTinLopHoc_btn
             // 
             this.ThongTinLopHoc_btn.Location = new System.Drawing.Point(88, 260);
-            this.ThongTinLopHoc_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ThongTinLopHoc_btn.Margin = new System.Windows.Forms.Padding(4);
             this.ThongTinLopHoc_btn.Name = "ThongTinLopHoc_btn";
             this.ThongTinLopHoc_btn.Size = new System.Drawing.Size(231, 28);
             this.ThongTinLopHoc_btn.TabIndex = 10;
@@ -127,7 +128,7 @@
             // HocPhanDangKy_btn
             // 
             this.HocPhanDangKy_btn.Location = new System.Drawing.Point(365, 258);
-            this.HocPhanDangKy_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HocPhanDangKy_btn.Margin = new System.Windows.Forms.Padding(4);
             this.HocPhanDangKy_btn.Name = "HocPhanDangKy_btn";
             this.HocPhanDangKy_btn.Size = new System.Drawing.Size(272, 28);
             this.HocPhanDangKy_btn.TabIndex = 12;
@@ -138,7 +139,7 @@
             // PhanCong_btn
             // 
             this.PhanCong_btn.Location = new System.Drawing.Point(708, 258);
-            this.PhanCong_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PhanCong_btn.Margin = new System.Windows.Forms.Padding(4);
             this.PhanCong_btn.Name = "PhanCong_btn";
             this.PhanCong_btn.Size = new System.Drawing.Size(221, 28);
             this.PhanCong_btn.TabIndex = 13;
@@ -146,11 +147,22 @@
             this.PhanCong_btn.UseVisualStyleBackColor = true;
             this.PhanCong_btn.Click += new System.EventHandler(this.PhanCong_btn_Click);
             // 
+            // DKHP_btn
+            // 
+            this.DKHP_btn.Location = new System.Drawing.Point(399, 348);
+            this.DKHP_btn.Name = "DKHP_btn";
+            this.DKHP_btn.Size = new System.Drawing.Size(217, 23);
+            this.DKHP_btn.TabIndex = 14;
+            this.DKHP_btn.Text = "Đăng ký học phần";
+            this.DKHP_btn.UseVisualStyleBackColor = true;
+            this.DKHP_btn.Click += new System.EventHandler(this.DKHP_btn_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.DKHP_btn);
             this.Controls.Add(this.PhanCong_btn);
             this.Controls.Add(this.HocPhanDangKy_btn);
             this.Controls.Add(this.ThongTinLopHoc_btn);
@@ -182,5 +194,6 @@
         private System.Windows.Forms.Button ThongTinLopHoc_btn;
         private System.Windows.Forms.Button HocPhanDangKy_btn;
         private System.Windows.Forms.Button PhanCong_btn;
+        private System.Windows.Forms.Button DKHP_btn;
     }
 }
