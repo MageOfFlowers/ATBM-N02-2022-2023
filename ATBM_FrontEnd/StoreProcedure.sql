@@ -19,6 +19,13 @@ DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
 
+create or replace procedure dang_ky_hoc_phan(m_masv varchar2, m_mahp varchar2, m_hk number, m_nam number, m_mact varchar2)
+as
+begin
+    execute immediate 'insert into admin_ols1.dangky values (''' || m_masv || ''', ''' || m_mahp || ''', ' || m_hk || ', ' || m_nam || ', ''' || m_mact || ''', null, null, null, null)';
+end;
+/
+
 create or replace procedure huy_dang_ky_hoc_phan(m_masv varchar2, m_mahp varchar2, m_hk number, m_nam number)
 as
 begin
@@ -28,6 +35,7 @@ end;
 
 grant execute on lay_ds_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
 grant execute on lay_thong_tin_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
+grant execute on dang_ky_hoc_phan to role_sinhvien;
 grant execute on huy_dang_ky_hoc_phan to role_sinhvien, role_giaovu;
 /
 
@@ -95,9 +103,27 @@ begin
 end;
 /
 
+create or replace procedure xem_khm_cua_sv (m_masv in varchar2, c1 out SYS_REFCURSOR)
+as
+begin
+    open c1 for
+    select k.mahp, h.tenhp, k.hk, k.nam, k.mact 
+    from admin_ols1.khmo k join admin_ols1.hocphan h
+    on k.mahp = h.mahp
+    where nam = EXTRACT(YEAR FROM SYSDATE)
+    except
+    select k.mahp, h.tenhp, k.hk, k.nam, k.mact 
+    from admin_ols1.dangky k join admin_ols1.hocphan h
+    on k.mahp = h.mahp
+    where k.masv = m_masv;
+    DBMS_SQL.RETURN_RESULT(c1);
+end;
+/
+
 grant execute on xem_ds_ke_hoach_mo to role_sinhvien, role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on them_ke_hoach to role_giaovu;
 grant execute on thay_doi_ke_hoach to role_giaovu;
+grant execute on xem_khm_cua_sv to role_sinhvien;
 /
 
 

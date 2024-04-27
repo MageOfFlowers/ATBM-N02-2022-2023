@@ -90,7 +90,7 @@ namespace ATBM
 
         private void DKHP_btn_Click(object sender, EventArgs e)
         {
-            DangkyHocphan dangkyHocphan = new DangkyHocphan();
+            DangkyHocphan dangkyHocphan = new DangkyHocphan(username);
             dangkyHocphan.Show();
         }
     }
