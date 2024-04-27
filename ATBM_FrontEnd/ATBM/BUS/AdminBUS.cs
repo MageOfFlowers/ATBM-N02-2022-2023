@@ -12,6 +12,7 @@ using System.Data.Linq.Mapping;
 using System.Data.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ATBM.DTO;
+using System.CodeDom.Compiler;
 
 namespace ATBM.BUS
 {
@@ -181,22 +182,38 @@ namespace ATBM.BUS
 
         public void BatGhiNhatKy(string doituong, string nguoidung, string hanhdong, string trangthai, string cachghi)
         {
-            string procedureName = "bat_ghi_nhat_ky";
             if (hanhdong == "To Table/View") { hanhdong = "all"; }
             if (trangthai == "Mọi lúc") { trangthai = "all"; }
             else if (trangthai == "Thành công") { trangthai = "whenever successful"; }
             else if (trangthai == "Thất bại") { trangthai = "whenever not successful"; }
 
-            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            string pol = doituong + nguoidung + hanhdong + "_policy";
+            if (trangthai == "whenever successful") { pol += "1"; }
+            else if (trangthai == "whenever not successful") { pol += "0"; }
+            else { pol += "2"; }
+
+            if (cachghi == "by access") { pol += "3"; }
+            else { pol += "4"; }
+
+
+            string STRSQL = "CREATE AUDIT POLICY " + pol + " ACTIONS " + hanhdong + " ON " + doituong;
+
+            string STRSQL2 = "AUDIT POLICY " + pol + " " + cachghi;
+            if (nguoidung != "") { 
+                STRSQL2 += " BY " + nguoidung; }
+            if (trangthai != "all") {
+                STRSQL2 += ' ' + trangthai; }
+            Console.WriteLine(STRSQL);
+            using (OracleCommand command = new OracleCommand(STRSQL, connection))
             {
                 connection.Open();
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("doituong", OracleDbType.Varchar2).Value = doituong;
-                command.Parameters.Add("nguoidung", OracleDbType.Varchar2).Value = nguoidung;
-                command.Parameters.Add("hanhdong", OracleDbType.Varchar2).Value = hanhdong;
-                command.Parameters.Add("trangthai", OracleDbType.Varchar2).Value = trangthai;
-                command.Parameters.Add("cachghi", OracleDbType.Varchar2).Value = cachghi;
-
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+            Console.WriteLine(STRSQL2);
+            using (OracleCommand command = new OracleCommand(STRSQL2, connection))
+            {
+                connection.Open();
                 command.ExecuteNonQuery();
                 connection.Close();
             }

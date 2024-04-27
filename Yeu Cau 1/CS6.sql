@@ -125,7 +125,7 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             policy_name => 'dang_ky_hoc_phan_trong_hoc_ky_nay_policy',
                             function_schema => 'ADMIN_OLS1',
                             policy_function => 'dang_ky_hoc_phan_trong_hoc_ky_nay_function',
-                            statement_types => 'insert, delete, update',
+                            statement_types => 'insert, delete',
                             update_check => TRUE );
 end;
 begin

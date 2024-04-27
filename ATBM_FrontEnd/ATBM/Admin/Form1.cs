@@ -41,5 +41,11 @@ namespace ATBM
             TaoThongBao t = new TaoThongBao();
             t.ShowDialog();
         }
+
+        private void NhatKyHeThong_Click(object sender, EventArgs e)
+        {
+            NhatKyHeThong t = new NhatKyHeThong();
+            t.ShowDialog();
+        }
     }
 }

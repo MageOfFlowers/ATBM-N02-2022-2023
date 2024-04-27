@@ -37,8 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.LoaiCB = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.DoiTuongCB2 = new System.Windows.Forms.ComboBox();
@@ -78,7 +76,7 @@
             // NguoiDungCB
             // 
             this.NguoiDungCB.FormattingEnabled = true;
-            this.NguoiDungCB.Location = new System.Drawing.Point(172, 152);
+            this.NguoiDungCB.Location = new System.Drawing.Point(172, 112);
             this.NguoiDungCB.Name = "NguoiDungCB";
             this.NguoiDungCB.Size = new System.Drawing.Size(304, 24);
             this.NguoiDungCB.TabIndex = 3;
@@ -87,7 +85,7 @@
             // TrangThaiCB
             // 
             this.TrangThaiCB.FormattingEnabled = true;
-            this.TrangThaiCB.Location = new System.Drawing.Point(172, 228);
+            this.TrangThaiCB.Location = new System.Drawing.Point(172, 188);
             this.TrangThaiCB.Name = "TrangThaiCB";
             this.TrangThaiCB.Size = new System.Drawing.Size(304, 24);
             this.TrangThaiCB.TabIndex = 4;
@@ -96,7 +94,7 @@
             // DoiTuongCB
             // 
             this.DoiTuongCB.FormattingEnabled = true;
-            this.DoiTuongCB.Location = new System.Drawing.Point(172, 188);
+            this.DoiTuongCB.Location = new System.Drawing.Point(172, 148);
             this.DoiTuongCB.Name = "DoiTuongCB";
             this.DoiTuongCB.Size = new System.Drawing.Size(304, 24);
             this.DoiTuongCB.TabIndex = 5;
@@ -116,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 152);
+            this.label2.Location = new System.Drawing.Point(47, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 16);
             this.label2.TabIndex = 9;
@@ -125,7 +123,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 188);
+            this.label3.Location = new System.Drawing.Point(47, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 16);
             this.label3.TabIndex = 10;
@@ -134,29 +132,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 228);
+            this.label4.Location = new System.Drawing.Point(47, 188);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 16);
             this.label4.TabIndex = 11;
             this.label4.Text = "Trạng thái";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(47, 113);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 16);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Loại";
-            // 
-            // LoaiCB
-            // 
-            this.LoaiCB.FormattingEnabled = true;
-            this.LoaiCB.Location = new System.Drawing.Point(172, 113);
-            this.LoaiCB.Name = "LoaiCB";
-            this.LoaiCB.Size = new System.Drawing.Size(304, 24);
-            this.LoaiCB.TabIndex = 12;
-            this.LoaiCB.SelectedIndexChanged += new System.EventHandler(this.LoaiCB_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -222,7 +202,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(47, 268);
+            this.label9.Location = new System.Drawing.Point(47, 228);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 16);
             this.label9.TabIndex = 22;
@@ -231,7 +211,7 @@
             // HanhDongCB
             // 
             this.HanhDongCB.FormattingEnabled = true;
-            this.HanhDongCB.Location = new System.Drawing.Point(172, 268);
+            this.HanhDongCB.Location = new System.Drawing.Point(172, 228);
             this.HanhDongCB.Name = "HanhDongCB";
             this.HanhDongCB.Size = new System.Drawing.Size(304, 24);
             this.HanhDongCB.TabIndex = 21;
@@ -290,8 +270,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.DoiTuongCB2);
             this.Controls.Add(this.NguoiDungCB2);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.LoaiCB);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -321,8 +299,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox LoaiCB;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox DoiTuongCB2;

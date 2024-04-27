@@ -51,8 +51,6 @@ namespace ATBM.Admin
                     if (!HanhDongCB.Items.Contains(HanhDong))
                         HanhDongCB.Items.Add(HanhDong);
                 }
-                LoaiCB.Items.Add("Standard");
-                LoaiCB.Items.Add("Unified");
                 TrangThaiCB.Items.Add("Thành công");
                 TrangThaiCB.Items.Add("Thất bại");
             }
@@ -100,16 +98,6 @@ namespace ATBM.Admin
             }
         }
 
-        private void keydownEvt(object sender, KeyEventArgs e)
-        {
-            NguoiDungCB.DroppedDown = false;
-            DoiTuongCB.DroppedDown = false;
-            NguoiDungCB2.DroppedDown = false;
-            DoiTuongCB2.DroppedDown = false;
-            LoaiCB.DroppedDown = false;
-            TrangThaiCB.DroppedDown = false;
-        }
-
         public void NguoiDungCB_Refresh()
         {
             string DoiTuong;
@@ -120,15 +108,6 @@ namespace ATBM.Admin
             else
             {
                 DoiTuong = "";
-            }
-            string Loai;
-            if (LoaiCB.SelectedItem != null)
-            {
-                Loai = LoaiCB.SelectedItem.ToString();
-            }
-            else
-            {
-                Loai = "";
             }
             string TrangThai;
             if (TrangThaiCB.SelectedItem != null)
@@ -150,17 +129,15 @@ namespace ATBM.Admin
             }
 
             bool flag1 = DoiTuongCB.SelectedItem == null;
-            bool flag2 = LoaiCB.SelectedItem == null;
             bool flag3 = TrangThaiCB.SelectedItem == null;
             bool flag4 = HanhDongCB.SelectedItem == null;
 
             for (int i = 0; i < dsNhatKy.Count; i++)
             {
                 bool FlagDT = (flag1 || dsNhatKy[i].object_name == DoiTuong);
-                bool FlagL = (flag2 || dsNhatKy[i].unified_audit_policies == Loai);
                 bool FlagTT = (flag3 || dsNhatKy[i].return_code == TrangThai);
                 bool FlagHD = (flag4 || dsNhatKy[i].action_name == HanhDong);
-                if (FlagDT && FlagL && FlagTT && FlagHD)
+                if (FlagDT && FlagTT && FlagHD)
                 {
                     dsNhatKy[i].check = true;
                 }
@@ -197,15 +174,7 @@ namespace ATBM.Admin
             {
                 NguoiDung = "";
             }
-            string Loai;
-            if (LoaiCB.SelectedItem != null)
-            {
-                Loai = LoaiCB.SelectedItem.ToString();
-            }
-            else
-            {
-                Loai = "";
-            }
+
             string TrangThai;
             if (TrangThaiCB.SelectedItem != null)
             {
@@ -227,17 +196,15 @@ namespace ATBM.Admin
 
 
             bool flag1 = NguoiDungCB.SelectedItem == null;
-            bool flag2 = LoaiCB.SelectedItem == null;
             bool flag3 = TrangThaiCB.SelectedItem == null;
             bool flag4 = HanhDongCB.SelectedItem == null;
 
             for (int i = 0; i < dsNhatKy.Count; i++)
             {
                 bool FlagDT = (flag1 || dsNhatKy[i].dbusername == NguoiDung);
-                bool FlagL = (flag2 || dsNhatKy[i].unified_audit_policies == Loai);
                 bool FlagTT = (flag3 || dsNhatKy[i].return_code == TrangThai);
                 bool FlagHD = (flag4 || dsNhatKy[i].action_name == HanhDong);
-                if (FlagDT && FlagL && FlagTT && FlagHD)
+                if (FlagDT && FlagTT && FlagHD)
                 {
                     dsNhatKy[i].check = true;
                 }
@@ -258,88 +225,6 @@ namespace ATBM.Admin
                 if (!NguoiDungCB.Items.Contains(NguoiDung))
                 {
                     NguoiDungCB.Items.Add(NguoiDung);
-                }
-            }
-        }
-
-        public void LoaiCB_Refresh()
-        {
-            string NguoiDung;
-            if (NguoiDungCB.SelectedItem != null)
-            {
-                NguoiDung = NguoiDungCB.SelectedItem.ToString();
-            }
-            else
-            {
-                NguoiDung = "";
-            }
-            string DoiTuong;
-            if (DoiTuongCB.SelectedItem != null)
-            {
-                DoiTuong = DoiTuongCB.SelectedItem.ToString();
-            }
-            else
-            {
-                DoiTuong = "";
-            }
-            string TrangThai;
-            if (TrangThaiCB.SelectedItem != null)
-            {
-                TrangThai = TrangThaiCB.SelectedItem.ToString();
-            }
-            else
-            {
-                TrangThai = "";
-            }
-            string HanhDong;
-            if (HanhDongCB.SelectedItem != null)
-            {
-                HanhDong = HanhDongCB.SelectedItem.ToString();
-            }
-            else
-            {
-                HanhDong = "";
-            }
-
-
-            bool flag1 = NguoiDungCB.SelectedItem == null;
-            bool flag2 = DoiTuongCB.SelectedItem == null;
-            bool flag3 = TrangThaiCB.SelectedItem == null;
-            bool flag4 = HanhDongCB.SelectedItem == null;
-
-            for (int i = 0; i < dsNhatKy.Count; i++)
-            {
-                bool FlagDT = (flag1 || dsNhatKy[i].dbusername == NguoiDung);
-                bool FlagL = (flag2 || dsNhatKy[i].object_name == DoiTuong);
-                bool FlagTT = (flag3 || dsNhatKy[i].return_code == TrangThai);
-                bool FlagHD = (flag4 || dsNhatKy[i].action_name == HanhDong);
-                if (FlagDT && FlagL && FlagTT && FlagHD)
-                {
-                    dsNhatKy[i].check = true;
-                }
-                else dsNhatKy[i].check = false;
-            }
-            if (flag1) NguoiDungCB.Items.Clear();
-            if (flag2) DoiTuongCB.Items.Clear();
-            if (flag4) HanhDongCB.Items.Clear();
-
-            for (int intCount = 0; intCount < dsNhatKy.Count; intCount++)
-            {
-                var val = dsNhatKy[intCount];
-                NguoiDung = val.dbusername;
-                DoiTuong = val.object_name;
-                HanhDong = val.action_name;
-                if (!HanhDongCB.Items.Contains(HanhDong))
-                {
-                    HanhDongCB.Items.Add(HanhDong);
-                }
-                if (!NguoiDungCB.Items.Contains(NguoiDung))
-                {
-                    NguoiDungCB.Items.Add(NguoiDung);
-                }
-                if (!DoiTuongCB.Items.Contains(DoiTuong))
-                {
-                    DoiTuongCB.Items.Add(DoiTuong);
                 }
             }
         }
@@ -364,15 +249,6 @@ namespace ATBM.Admin
             {
                 DoiTuong = "";
             }
-            string Loai;
-            if (LoaiCB.SelectedItem != null)
-            {
-                Loai = LoaiCB.SelectedItem.ToString();
-            }
-            else
-            {
-                Loai = "";
-            }
             string HanhDong;
             if (HanhDongCB.SelectedItem != null)
             {
@@ -386,16 +262,14 @@ namespace ATBM.Admin
 
             bool flag1 = NguoiDungCB.SelectedItem == null;
             bool flag2 = DoiTuongCB.SelectedItem == null;
-            bool flag3 = LoaiCB.SelectedItem == null;
             bool flag4 = HanhDongCB.SelectedItem == null;
 
             for (int i = 0; i < dsNhatKy.Count; i++)
             {
                 bool FlagDT = (flag1 || dsNhatKy[i].dbusername == NguoiDung);
                 bool FlagL = (flag2 || dsNhatKy[i].object_name == DoiTuong);
-                bool FlagTT = (flag3 || dsNhatKy[i].unified_audit_policies == Loai);
                 bool FlagHD = (flag4 || dsNhatKy[i].action_name == HanhDong);
-                if (FlagDT && FlagL && FlagTT && FlagHD)
+                if (FlagDT && FlagL && FlagHD)
                 {
                     dsNhatKy[i].check = true;
                 }
@@ -445,15 +319,6 @@ namespace ATBM.Admin
             {
                 DoiTuong = "";
             }
-            string Loai;
-            if (LoaiCB.SelectedItem != null)
-            {
-                Loai = LoaiCB.SelectedItem.ToString();
-            }
-            else
-            {
-                Loai = "";
-            }
             string TrangThai;
             if (TrangThaiCB.SelectedItem != null)
             {
@@ -467,16 +332,14 @@ namespace ATBM.Admin
 
             bool flag1 = NguoiDungCB.SelectedItem == null;
             bool flag2 = DoiTuongCB.SelectedItem == null;
-            bool flag3 = LoaiCB.SelectedItem == null;
             bool flag4 = TrangThaiCB.SelectedItem == null;
 
             for (int i = 0; i < dsNhatKy.Count; i++)
             {
                 bool FlagDT = (flag1 || dsNhatKy[i].dbusername == NguoiDung);
                 bool FlagL = (flag2 || dsNhatKy[i].object_name == DoiTuong);
-                bool FlagTT = (flag3 || dsNhatKy[i].unified_audit_policies == Loai);
                 bool FlagHD = (flag4 || dsNhatKy[i].return_code == TrangThai);
-                if (FlagDT && FlagL && FlagTT && FlagHD)
+                if (FlagDT && FlagL && FlagHD)
                 {
                     dsNhatKy[i].check = true;
                 }
@@ -562,18 +425,9 @@ namespace ATBM.Admin
 
         }
 
-        private void LoaiCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (NguoiDungCB.SelectedItem == null) { NguoiDungCB_Refresh(); }
-            if (DoiTuongCB.SelectedItem == null) { DoiTuongCB_Refresh(); }
-            if (TrangThaiCB.SelectedItem == null) { TrangThaiCB_Refresh(); }
-            if (HanhDongCB.SelectedItem == null) { HanhDongCB_Refresh(); }
-            LoadData();
-        }
 
         private void NguoiDungCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (LoaiCB.SelectedItem == null) { LoaiCB_Refresh(); }
             if (DoiTuongCB.SelectedItem == null) { DoiTuongCB_Refresh(); }
             if (TrangThaiCB.SelectedItem == null) { TrangThaiCB_Refresh(); }
             if (HanhDongCB.SelectedItem == null) { HanhDongCB_Refresh(); }
@@ -583,7 +437,6 @@ namespace ATBM.Admin
         private void DoiTuongCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (NguoiDungCB.SelectedItem == null) { NguoiDungCB_Refresh(); }
-            if (LoaiCB.SelectedItem == null) { LoaiCB_Refresh(); }
             if (TrangThaiCB.SelectedItem == null) { TrangThaiCB_Refresh(); }
             if (HanhDongCB.SelectedItem == null) { HanhDongCB_Refresh(); }
             LoadData();
@@ -592,7 +445,6 @@ namespace ATBM.Admin
         private void TrangThaiCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (NguoiDungCB.SelectedItem == null) {NguoiDungCB_Refresh(); }
-            if (LoaiCB.SelectedItem == null){ LoaiCB_Refresh(); }
             if (DoiTuongCB.SelectedItem == null){ DoiTuongCB_Refresh(); }
             if (HanhDongCB.SelectedItem == null) { HanhDongCB_Refresh(); }
             LoadData();
@@ -602,7 +454,6 @@ namespace ATBM.Admin
         {
             if (NguoiDungCB.SelectedItem == null) { NguoiDungCB_Refresh(); }
             if (DoiTuongCB.SelectedItem == null) { DoiTuongCB_Refresh(); }
-            if (LoaiCB.SelectedItem == null) { LoaiCB_Refresh(); }
             if (TrangThaiCB.SelectedItem == null) { TrangThaiCB_Refresh(); }
             LoadData();
         }
@@ -612,8 +463,6 @@ namespace ATBM.Admin
             NguoiDungCB.ResetText();
             NguoiDungCB2.Items.Clear();
             NguoiDungCB2.ResetText();
-            LoaiCB.Items.Clear();
-            LoaiCB.ResetText();
             DoiTuongCB.Items.Clear();
             DoiTuongCB.ResetText();
             DoiTuongCB2.Items.Clear();

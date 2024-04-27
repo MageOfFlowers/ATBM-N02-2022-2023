@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.GanNhan = new System.Windows.Forms.Button();
             this.TaoThongBao = new System.Windows.Forms.Button();
+            this.NhatKyHeThong = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -84,11 +85,22 @@
             this.TaoThongBao.UseVisualStyleBackColor = true;
             this.TaoThongBao.Click += new System.EventHandler(this.TaoThongBao_Click);
             // 
+            // NhatKyHeThong
+            // 
+            this.NhatKyHeThong.Location = new System.Drawing.Point(192, 290);
+            this.NhatKyHeThong.Name = "NhatKyHeThong";
+            this.NhatKyHeThong.Size = new System.Drawing.Size(158, 30);
+            this.NhatKyHeThong.TabIndex = 5;
+            this.NhatKyHeThong.Text = "Nhật kí hệ thống";
+            this.NhatKyHeThong.UseVisualStyleBackColor = true;
+            this.NhatKyHeThong.Click += new System.EventHandler(this.NhatKyHeThong_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.NhatKyHeThong);
             this.Controls.Add(this.TaoThongBao);
             this.Controls.Add(this.GanNhan);
             this.Controls.Add(this.button2);
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button GanNhan;
         private System.Windows.Forms.Button TaoThongBao;
+        private System.Windows.Forms.Button NhatKyHeThong;
     }
 }
