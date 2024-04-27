@@ -87,43 +87,13 @@ namespace ATBM.FORM.Hocphan
         private void loadHP(IList<LopDTO> ds)
         {
             IList<LopDTO> temp = ds;
-
-            DateTime today = DateTime.Now;
-
-            if (today.Day >= 16)
-            {            
-                switch (today.Month)
-                {
-                    case 4:
-                        temp = temp.Where(hp => hp.HK == 2).ToList();
-                        break;
-                    case 8:
-                        temp = temp.Where(hp => hp.HK == 3).ToList();
-                        break;
-                    case 12:
-                        temp = temp.Where(hp => hp.HK == 1).ToList();
-                        break;
-                    default:
-                        temp = new List<LopDTO>();
-                        DSHocphanDGV.DataSource = temp;
-                        MessageBox.Show("Chưa đến ngày đăng ký học phần");
-                        DSHocphanDGV.Columns["display"].Visible = false;
-                        return;
-                }
-                string mahp = HocPhanCB.SelectedValue.ToString();
-                if (mahp != "Tất cả")
-                {
-                    temp = ds.Where(hp => hp.MAHP == mahp).ToList();
-                }
-            }
-            else
+            
+            string mahp = HocPhanCB.SelectedValue.ToString();
+            if (mahp != "Tất cả")
             {
-                temp = new List<LopDTO>();
-                MessageBox.Show("Chưa đến ngày đăng ký học phần");
-                DSHocphanDGV.Columns["display"].Visible = false;
-                return;
+                temp = ds.Where(hp => hp.MAHP == mahp).ToList();
             }
-
+            
             DSHocphanDGV.DataSource = temp;
             DSHocphanDGV.Columns["display"].Visible = false;
         }
@@ -135,8 +105,15 @@ namespace ATBM.FORM.Hocphan
 
         private void HocPhanCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ds = hp.ds_HocPhanDangKy(masv);
-            loadHP(ds);
+            try
+            {
+                ds = hp.ds_HocPhanDangKy(masv);
+                loadHP(ds);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void KetQua_btn_Click(object sender, EventArgs e)

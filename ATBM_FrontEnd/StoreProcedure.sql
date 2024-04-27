@@ -110,7 +110,6 @@ begin
     select k.mahp, h.tenhp, k.hk, k.nam, k.mact 
     from admin_ols1.khmo k join admin_ols1.hocphan h
     on k.mahp = h.mahp
-    where nam = EXTRACT(YEAR FROM SYSDATE)
     except
     select k.mahp, h.tenhp, k.hk, k.nam, k.mact 
     from admin_ols1.dangky k join admin_ols1.hocphan h
