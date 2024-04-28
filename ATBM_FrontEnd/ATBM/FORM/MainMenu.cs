@@ -6,6 +6,7 @@ using ATBM.FORM;
 using ATBM.FORM.SinhVien;
 using ATBM.FORM.ThongBao;
 using ATBM.FORM.Hocphan;
+using System.Security.Cryptography;
 
 namespace ATBM
 {
@@ -27,15 +28,22 @@ namespace ATBM
 
             if (role >= 0)
             {
-                if (role != 0)
+                if (role > 0)
                 {
-                    HocPhanDangKy_btn.Hide();
+                    if (role != 3)
+                    {
+                        HocPhanDangKy_btn.Hide();
+                    }
+                    DKHP_btn.Hide();
                 }
                 if (role == 0 || role == 1 || role == 3)
                 {
                     ThongTinLopHoc_btn.Hide();
                     PhanCong_btn.Hide();
-                    DanhSachDonVi_btn.Hide();
+                    if (role == 0)
+                    {
+                        DanhSachDonVi_btn.Hide();
+                    }
                 }
             }
         }
@@ -92,6 +100,18 @@ namespace ATBM
         {
             DangkyHocphan dangkyHocphan = new DangkyHocphan(username);
             dangkyHocphan.Show();
+        }
+
+        private void DanhSac_Click(object sender, EventArgs e)
+        {
+            DSHocphan dsHocPhan = new DSHocphan();
+            dsHocPhan.Show();
+        }
+
+        private void DanhSachDonVi_btn_Click(object sender, EventArgs e)
+        {
+            DSDonvi dSDonvi = new DSDonvi(role);
+            dSDonvi.Show();
         }
     }
 }

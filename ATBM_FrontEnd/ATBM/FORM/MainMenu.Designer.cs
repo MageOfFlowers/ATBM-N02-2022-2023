@@ -103,6 +103,7 @@
             this.DanhSac.TabIndex = 7;
             this.DanhSac.Text = "Danh sách học phần";
             this.DanhSac.UseVisualStyleBackColor = true;
+            this.DanhSac.Click += new System.EventHandler(this.DanhSac_Click);
             // 
             // DanhSachDonVi_btn
             // 
@@ -113,6 +114,7 @@
             this.DanhSachDonVi_btn.TabIndex = 8;
             this.DanhSachDonVi_btn.Text = "Danh sách đơn vị";
             this.DanhSachDonVi_btn.UseVisualStyleBackColor = true;
+            this.DanhSachDonVi_btn.Click += new System.EventHandler(this.DanhSachDonVi_btn_Click);
             // 
             // ThongTinLopHoc_btn
             // 
@@ -149,7 +151,7 @@
             // 
             // DKHP_btn
             // 
-            this.DKHP_btn.Location = new System.Drawing.Point(399, 348);
+            this.DKHP_btn.Location = new System.Drawing.Point(399, 401);
             this.DKHP_btn.Name = "DKHP_btn";
             this.DKHP_btn.Size = new System.Drawing.Size(217, 23);
             this.DKHP_btn.TabIndex = 14;

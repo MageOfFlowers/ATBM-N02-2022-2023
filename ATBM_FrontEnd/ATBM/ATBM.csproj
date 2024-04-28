@@ -121,6 +121,12 @@
     <Compile Include="Admin\GanNhan.Designer.cs">
       <DependentUpon>GanNhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\NhatKyHeThong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\NhatKyHeThong.Designer.cs">
+      <DependentUpon>NhatKyHeThong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\TaoThongBao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,7 @@
     <Compile Include="BUS\KHMBUS.cs" />
     <Compile Include="BUS\LopBUS.cs" />
     <Compile Include="BUS\NhanSuBUS.cs" />
+    <Compile Include="BUS\NhatKyBUS.cs" />
     <Compile Include="BUS\SinhVienBUS.cs" />
     <Compile Include="BUS\PhanCongBUS.cs" />
     <Compile Include="BUS\ThongBaoBUS.cs" />
@@ -171,6 +178,7 @@
     <Compile Include="Admin\AddRole.Designer.cs">
       <DependentUpon>AddRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\NhatKyDTO.cs" />
     <Compile Include="DTO\SinhVienDTO.cs" />
     <Compile Include="DTO\PhanCongDTO.cs" />
     <Compile Include="DTO\TTHSTrongLopDTO.cs" />

@@ -39,6 +39,7 @@
             this.KHM_dvg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.KHM_dvg.Location = new System.Drawing.Point(31, 101);
             this.KHM_dvg.Name = "KHM_dvg";
+            this.KHM_dvg.ReadOnly = true;
             this.KHM_dvg.RowHeadersWidth = 51;
             this.KHM_dvg.RowTemplate.Height = 24;
             this.KHM_dvg.Size = new System.Drawing.Size(733, 323);

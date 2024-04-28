@@ -38,6 +38,7 @@ namespace ATBM.FORM.KeHoachMo
         {
             IList<LopDTO> ds = khm.ds_KHM();
             KHM_dvg.DataSource = ds;
+            KHM_dvg.Columns["display"].Visible = false;
             KHM_dvg.Columns[0].HeaderText = "Mã học phần";
             KHM_dvg.Columns[1].HeaderText = "Tên học phần";
             KHM_dvg.Columns[2].HeaderText = "Học kỳ";
@@ -67,16 +68,14 @@ namespace ATBM.FORM.KeHoachMo
                 lop.NAM = Convert.ToInt32(KHM_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
                 lop.MACT = KHM_dvg.Rows[e.RowIndex].Cells["MACT"].Value.ToString();
 
-                if (e.ColumnIndex == KHM_dvg.Columns["Edit"].Index)
+                if (role == 3 || role == -1)
                 {
-                    ThemKHM t = new ThemKHM(lop);
-                    t.FormClosed += t_FormClosed;
-                    t.ShowDialog();
-                }
-                else if (role == 3 || role == -1)
-                {
-                    ThongTinLopHoc f = new ThongTinLopHoc(lop);
-                    f.ShowDialog();
+                    if (e.ColumnIndex == KHM_dvg.Columns["Edit"].Index)
+                    {
+                        ThemKHM t = new ThemKHM(lop);
+                        t.FormClosed += t_FormClosed;
+                        t.ShowDialog();
+                    }
                 }
             }
         }
