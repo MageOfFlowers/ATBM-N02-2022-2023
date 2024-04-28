@@ -4,6 +4,7 @@ grant select on sinhvien to role_nhanvien;
 grant select on donvi to role_nhanvien;
 grant select on hocphan to role_nhanvien;
 grant select on khmo to role_nhanvien;
+revoke role_nhanvien from admin_ols1;
 /
 create or replace function ADMIN_OLS1.xemBT_nhansu(p_schema varchar2, p_obj varchar2)
 return varchar2

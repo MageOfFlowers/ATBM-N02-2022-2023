@@ -40,8 +40,8 @@ namespace ATBM.BUS
                         DonViDTO obj = new DonViDTO();
 
                         obj.MADV = row["madv"].ToString();
-                        obj.MADV = row["tendv"].ToString();
-                        obj.MADV = row["trgdv"].ToString();
+                        obj.TENDV = row["tendv"].ToString();
+                        obj.TRGDV = row["trgdv"].ToString();
 
                         dsDonVi.Add(obj);
                     }

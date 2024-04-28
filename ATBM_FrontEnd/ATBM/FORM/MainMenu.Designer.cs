@@ -82,6 +82,7 @@
             this.DanhSachSinhVien_btn.TabIndex = 5;
             this.DanhSachSinhVien_btn.Text = "Danh sách sinh viên";
             this.DanhSachSinhVien_btn.UseVisualStyleBackColor = true;
+            this.DanhSachSinhVien_btn.Click += new System.EventHandler(this.DanhSachSinhVien_btn_Click);
             // 
             // KeHoachMo_btn
             // 

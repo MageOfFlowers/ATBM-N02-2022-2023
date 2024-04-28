@@ -113,5 +113,11 @@ namespace ATBM
             DSDonvi dSDonvi = new DSDonvi(role);
             dSDonvi.Show();
         }
+
+        private void DanhSachSinhVien_btn_Click(object sender, EventArgs e)
+        {
+            DSSinhvien dSSinhvien = new DSSinhvien(role);
+            dSSinhvien.Show();
+        }
     }
 }

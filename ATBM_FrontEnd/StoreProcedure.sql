@@ -180,6 +180,15 @@ grant execute on cap_nhat_sdt_nhan_su to role_nhanvien, role_giangvien, role_gia
 grant execute on xem_vai_tro to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
 
 --Sinh vien
+create or replace procedure lay_danh_sach_sinh_vien(c1 out SYS_REFCURSOR)
+as
+begin
+open c1 for
+    Select *
+    from admin_ols1.sinhvien;
+DBMS_SQL.RETURN_RESULT(c1);
+end;
+/
 create or replace procedure lay_thong_tin_sinh_vien(pMASV in varchar2, c1 out SYS_REFCURSOR)
 as
 begin
@@ -207,6 +216,7 @@ begin
 end;
 /
 
+grant execute on lay_danh_sach_sinh_vien to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_tin_sinh_vien to role_sinhvien;
 grant execute on cap_nhat_dia_chi_va_sdt_sinh_vien to role_sinhvien;
 grant execute on cap_nhat_tt_sinh_vien to role_giaovu;
@@ -254,7 +264,7 @@ create or replace procedure lay_ds_don_vi(c1 out SYS_REFCURSOR)
 as
 begin
     open c1 for
-    select madv from admin_ols1.donvi;
+    select * from admin_ols1.donvi;
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
