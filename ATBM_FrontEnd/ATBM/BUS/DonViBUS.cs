@@ -18,10 +18,10 @@ namespace ATBM.BUS
     internal class DonViBUS
     {
         readonly public OracleConnection connection = new OracleConnection(Program.connectionString);
-        public IList<DonViDTO> lay_ds_don_vi()
+        public List<DonViDTO> lay_ds_don_vi()
         {
             string procedureName = "admin_ols1.lay_ds_don_vi";
-            IList<DonViDTO> dsDonVi = new List<DonViDTO>();
+            List<DonViDTO> dsDonVi = new List<DonViDTO>();
             try
             {
                 using (OracleCommand command = new OracleCommand(procedureName, connection))
@@ -37,11 +37,12 @@ namespace ATBM.BUS
 
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        DonViDTO obj = new DonViDTO();
-
-                        obj.MADV = row["madv"].ToString();
-                        obj.TENDV = row["tendv"].ToString();
-                        obj.TRGDV = row["trgdv"].ToString();
+                        DonViDTO obj = new DonViDTO
+                        {
+                            MADV = row["madv"].ToString(),
+                            TENDV = row["tendv"].ToString(),
+                            TRGDV = row["trgdv"].ToString()
+                        };
 
                         dsDonVi.Add(obj);
                     }

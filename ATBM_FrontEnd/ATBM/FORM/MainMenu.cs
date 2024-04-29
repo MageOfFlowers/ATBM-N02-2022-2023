@@ -104,7 +104,7 @@ namespace ATBM
 
         private void DanhSac_Click(object sender, EventArgs e)
         {
-            DSHocphan dsHocPhan = new DSHocphan();
+            DSHocphan dsHocPhan = new DSHocphan(role);
             dsHocPhan.Show();
         }
 

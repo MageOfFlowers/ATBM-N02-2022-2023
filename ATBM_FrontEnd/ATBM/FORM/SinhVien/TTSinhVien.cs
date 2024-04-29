@@ -49,12 +49,12 @@ namespace ATBM.FORM.SinhVien
             cbMaCT.SelectedIndex = cbMaCT.FindStringExact(sinhVien.MACT);
 
             cbMaNganh.Items.Clear();
-            cbMaNganh.Items.Add("HTTT");
-            cbMaNganh.Items.Add("CNPM");
-            cbMaNganh.Items.Add("KHMT");
-            cbMaNganh.Items.Add("CNTT");
-            cbMaNganh.Items.Add("TGMT");
-            cbMaNganh.Items.Add("MMT");
+            List<DonViDTO> dsDonVi = donViBUS.lay_ds_don_vi();
+            foreach (DonViDTO d in dsDonVi)
+            {
+                if (d.MADV == "VPK") continue;
+                cbMaNganh.Items.Add(d.MADV);
+            }
             cbMaNganh.SelectedIndex = cbMaNganh.FindStringExact(sinhVien.MANGANH);
 
             numSTCTL.Value = sinhVien.SOTCTL;
