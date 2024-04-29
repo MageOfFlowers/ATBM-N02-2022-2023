@@ -180,7 +180,7 @@ namespace ATBM.BUS
             }
         }
 
-        public void BatGhiNhatKy(string doituong, string nguoidung, string hanhdong, string trangthai, string cachghi)
+        public void BatGhiNhatKy(string doituong, string nguoidung, string hanhdong, string trangthai)
         {
             if (hanhdong == "To Table/View") { hanhdong = "all"; }
             if (trangthai == "Mọi lúc") { trangthai = "all"; }
@@ -192,13 +192,11 @@ namespace ATBM.BUS
             else if (trangthai == "whenever not successful") { pol += "0"; }
             else { pol += "2"; }
 
-            if (cachghi == "by access") { pol += "3"; }
-            else { pol += "4"; }
 
 
             string STRSQL = "CREATE AUDIT POLICY " + pol + " ACTIONS " + hanhdong + " ON " + doituong;
 
-            string STRSQL2 = "AUDIT POLICY " + pol + " " + cachghi;
+            string STRSQL2 = "AUDIT POLICY " + pol;
             if (nguoidung != "") { 
                 STRSQL2 += " BY " + nguoidung; }
             if (trangthai != "all") {

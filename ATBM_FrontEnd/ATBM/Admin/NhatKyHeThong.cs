@@ -87,10 +87,6 @@ namespace ATBM.Admin
                 TrangThaiCB2.Items.Add("Thất bại");                
                 TrangThaiCB2.SelectedItem = "Mọi lúc";
 
-                CachGhiCB.Items.Add("By Access");
-                CachGhiCB.Items.Add("By Session");
-                CachGhiCB.SelectedItem = "By Access";
-
             }
             catch (Exception ex)
             {
@@ -409,9 +405,8 @@ namespace ATBM.Admin
                 string nguoidung = NguoiDungCB2.SelectedItem.ToString();
                 string hanhdong = HanhDongCB2.SelectedItem.ToString();
                 string trangthai = TrangThaiCB2.SelectedItem.ToString();
-                string cachghi = CachGhiCB.SelectedItem.ToString();
 
-                AdminBUS.BatGhiNhatKy(doituong, nguoidung, hanhdong, trangthai, cachghi);
+                AdminBUS.BatGhiNhatKy(doituong, nguoidung, hanhdong, trangthai);
                 MessageBox.Show("Cài đặt thành công");
             }
             catch
