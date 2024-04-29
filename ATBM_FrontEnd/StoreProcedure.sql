@@ -38,6 +38,7 @@ begin
     update hocphan set tenhp=m_tenhp, sotc=m_sotc, stlt=m_stlt, stth=m_stth, sosvtd=m_sosvtd, madv=m_madv
     where mahp=m_mahp;
 end;
+/
 grant execute on lay_ds_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
 grant execute on lay_thong_tin_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on dang_ky_hoc_phan to role_sinhvien;
