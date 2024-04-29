@@ -32,11 +32,18 @@ begin
     execute immediate 'delete from admin_ols1.dangky where masv = ''' || m_masv || ''' and mahp = ''' || m_mahp || ''' and hk = ' || m_hk || 'and nam = ' || m_nam;
 end;
 /
-
+create or replace procedure cap_nhat_hoc_phan(m_mahp in char, m_tenhp in nvarchar2, m_sotc in int, m_stlt in int, m_stth in int, m_sosvtd in int, m_madv in char)
+as
+begin
+    update hocphan set tenhp=m_tenhp, sotc=m_sotc, stlt=m_stlt, stth=m_stth, sosvtd=m_sosvtd, madv=m_madv
+    where mahp=m_mahp;
+end;
+/
 grant execute on lay_ds_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
 grant execute on lay_thong_tin_hoc_phan to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on dang_ky_hoc_phan to role_sinhvien;
 grant execute on huy_dang_ky_hoc_phan to role_sinhvien, role_giaovu;
+grant execute on cap_nhat_hoc_phan to role_giaovu;
 /
 
 

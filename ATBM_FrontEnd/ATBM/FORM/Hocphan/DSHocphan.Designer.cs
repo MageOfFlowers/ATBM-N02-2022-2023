@@ -41,62 +41,60 @@ namespace ATBM.FORM
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(371, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(436, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 31);
+            this.label1.Size = new System.Drawing.Size(228, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Danh sách học phần";
             // 
             // DSHocphanDGV
             // 
+            this.DSHocphanDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DSHocphanDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DSHocphanDGV.Location = new System.Drawing.Point(72, 143);
-            this.DSHocphanDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DSHocphanDGV.Location = new System.Drawing.Point(42, 115);
             this.DSHocphanDGV.Name = "DSHocphanDGV";
-            this.DSHocphanDGV.RowHeadersWidth = 51;
-            this.DSHocphanDGV.Size = new System.Drawing.Size(909, 375);
+            this.DSHocphanDGV.ReadOnly = true;
+            this.DSHocphanDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.DSHocphanDGV.Size = new System.Drawing.Size(1014, 425);
             this.DSHocphanDGV.TabIndex = 1;
+            this.DSHocphanDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DSHocphanDGV_CellContentClick);
             // 
             // MaHPLB
             // 
             this.MaHPLB.AutoSize = true;
-            this.MaHPLB.Location = new System.Drawing.Point(113, 82);
-            this.MaHPLB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.MaHPLB.Location = new System.Drawing.Point(387, 68);
             this.MaHPLB.Name = "MaHPLB";
-            this.MaHPLB.Size = new System.Drawing.Size(84, 16);
+            this.MaHPLB.Size = new System.Drawing.Size(70, 13);
             this.MaHPLB.TabIndex = 2;
             this.MaHPLB.Text = "Mã học phần";
             // 
             // MaHPB
             // 
-            this.MaHPB.Location = new System.Drawing.Point(227, 79);
-            this.MaHPB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaHPB.Location = new System.Drawing.Point(472, 65);
             this.MaHPB.Name = "MaHPB";
-            this.MaHPB.Size = new System.Drawing.Size(132, 22);
+            this.MaHPB.Size = new System.Drawing.Size(100, 20);
             this.MaHPB.TabIndex = 3;
             // 
             // DSHocphanBTN
             // 
-            this.DSHocphanBTN.Location = new System.Drawing.Point(881, 79);
-            this.DSHocphanBTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DSHocphanBTN.Location = new System.Drawing.Point(601, 65);
             this.DSHocphanBTN.Name = "DSHocphanBTN";
-            this.DSHocphanBTN.Size = new System.Drawing.Size(100, 28);
+            this.DSHocphanBTN.Size = new System.Drawing.Size(86, 20);
             this.DSHocphanBTN.TabIndex = 4;
             this.DSHocphanBTN.Text = "Tìm";
             this.DSHocphanBTN.UseVisualStyleBackColor = true;
+            this.DSHocphanBTN.Click += new System.EventHandler(this.DSHocphanBTN_Click);
             // 
             // DSHocphan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1097, 570);
             this.Controls.Add(this.DSHocphanBTN);
             this.Controls.Add(this.MaHPB);
             this.Controls.Add(this.MaHPLB);
             this.Controls.Add(this.DSHocphanDGV);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DSHocphan";
             this.Text = "DSHocphan";
             this.Load += new System.EventHandler(this.DSHocphan_Load);
