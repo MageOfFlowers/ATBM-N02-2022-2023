@@ -68,7 +68,6 @@ open c1 for
     DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
-
 create or replace procedure cap_nhat_diem(pMAHP in varchar2, pHK in number, pNAM in number,pMACT in varchar2, pMASV in varchar2, 
                         pTH in number , pQT in number, pCK in number, pTK in number)
 as

@@ -152,7 +152,7 @@
             // 
             // DKHP_btn
             // 
-            this.DKHP_btn.Location = new System.Drawing.Point(399, 401);
+            this.DKHP_btn.Location = new System.Drawing.Point(399, 423);
             this.DKHP_btn.Name = "DKHP_btn";
             this.DKHP_btn.Size = new System.Drawing.Size(217, 23);
             this.DKHP_btn.TabIndex = 14;
