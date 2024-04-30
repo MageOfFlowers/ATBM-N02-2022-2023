@@ -81,12 +81,10 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '7.0.x'
-    - name: Find Path
-      run: cd ATBM_FrontEnd/ATBM
     - name: Restore NuGet packages
       run: dotnet restore ATBM_FrontEnd/ATBM
     - name: Build the project
-      run: dotnet msbuild ATBM.csproj /p:Configuration=Release
+      run: dotnet msbuild ATBM_FrontEnd/ATBM/ATBM.csproj /p:Configuration=Release
     - name: Run tests
       run: dotnet test --configuration Release
 
