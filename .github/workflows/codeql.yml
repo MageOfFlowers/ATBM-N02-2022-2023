@@ -81,12 +81,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '7.0.x'
-    - name: Install .NET Framework Developer Pack 4.7.2
-      run: |
-        $url = "https://download.visualstudio.microsoft.com/download/pr/39d32e8e-2872-4c96-b2c5-7ba8d1c73955/dotnet-framework-4.7.2-devpack.exe"
-        $installerPath = "$env:TEMP\dotnet-framework-4.7.2-devpack.exe"
-        Invoke-WebRequest -Uri $url -OutFile $installerPath
-        Start-Process -FilePath $installerPath -ArgumentList "/q" -Wait
     - name: Restore NuGet packages
       run: dotnet restore ATBM_FrontEnd/ATBM
     - name: Build the project
