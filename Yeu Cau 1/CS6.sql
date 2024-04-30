@@ -2,6 +2,7 @@ grant select, insert, delete on dangky to role_sinhvien;
 grant select on hocphan to role_sinhvien;
 grant select on khmo to role_sinhvien;
 grant select, update(dchi, dt) on sinhvien to role_sinhvien;
+grant role_sinhvien to SV001;
 /
 Create or replace function xem_cua_chinh_minh_function(p_schema varchar2, p_obj varchar2)
 Return varchar2
@@ -63,7 +64,7 @@ user VARCHAR2(100);
 Begin
 user := SYS_CONTEXT('userenv', 'SESSION_USER');
 SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
-select MAHP bulk collect into mahpArr from Admin_ols1.HOCPHAN;
+select MAHP bulk collect into mahpArr from Admin_ols1.PHANCONG where MACT = p_MACT;
         if(mahpArr.count>1) then
             begin
             mahp_s:= chr(39)|| mahpArr(1) || chr(39);
@@ -73,7 +74,7 @@ select MAHP bulk collect into mahpArr from Admin_ols1.HOCPHAN;
                 end loop;
             end;
         end if;
-        return 'MAHP in (' || mahp_s || ') and MACT = '||p_MACT;
+        return 'MAHP in (' || mahp_s || ')';
 End;
 /
 Create or replace function xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function2(p_schema varchar2, p_obj varchar2)
@@ -87,7 +88,7 @@ user VARCHAR2(100);
 Begin
 user := SYS_CONTEXT('userenv', 'SESSION_USER');
 SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
-select MAHP bulk collect into mahpArr from Admin_ols1.KHMO where MACT = p_MACT;
+select MAHP bulk collect into mahpArr from Admin_ols1.PHANCONG where MACT = p_MACT;
         if(mahpArr.count>1) then
             begin
             mahp_s:= chr(39)|| mahpArr(1) || chr(39);
@@ -105,14 +106,14 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'KHMO',
                             policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy',
                             function_schema => 'ADMIN_OLS1',
-                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function2',
+                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function',
                             statement_types => 'select');
 end;       
 /*
 begin
 dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'KHMO',
-                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy2');
+                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy');
 end;
 */
 begin
@@ -120,7 +121,7 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'HOCPHAN',
                             policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy2',
                             function_schema => 'ADMIN_OLS1',
-                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function',
+                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function2',
                             statement_types => 'select');
 end;    
 /       
