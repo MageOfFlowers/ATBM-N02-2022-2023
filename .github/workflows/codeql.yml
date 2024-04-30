@@ -77,22 +77,18 @@ jobs:
     # to build your code.
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
-    - name: Setup .NET Core
-      run: |
-        using: 'node20'
-        main: 'main.js'
-    - name: Setup .NET Framework
-      uses: actions/setup-dotnet@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 4.7.2
-    - name: Build Code Manually
-      run: |
-        cd ATBM_FrontEnd/ATBM
-        dotnet restore
-        dotnet msbuild ATBM.csproj /p:Configuration=Release
-        if [ -d "TestProject" ]; then
-          dotnet test --no-build --configuration Release
-        fi
+        dotnet-version: '7.0.x'
+    - name: Find Path
+      run: cd ATBM_FrontEnd/ATBM
+    - name: Restore NuGet packages
+      run: dotnet restore
+    - name: Build the project
+      run: dotnet msbuild ATBM.csproj /p:Configuration=Release
+    - name: Run tests
+      run: dotnet test --configuration Release
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
