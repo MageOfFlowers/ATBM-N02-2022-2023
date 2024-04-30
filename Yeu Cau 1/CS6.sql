@@ -62,7 +62,7 @@ Begin
 user := SYS_CONTEXT('userenv', 'SESSION_USER');
 SELECT MACT INTO p_MACT FROM SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
 SELECT MAHP INTO p_MAHP FROM KHMO WHERE MACT = p_MACT;
-return 'MAPH = ''' || p_MAHP || '''';
+return 'MAHP = ''' || p_MAHP || '''';
 End;
 /
 begin
@@ -73,6 +73,13 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function',
                             statement_types => 'select');
 end;       
+/*
+begin
+dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'KHMO',
+                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy');
+end;
+*/
 begin
 dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'HOCPHAN',
@@ -81,7 +88,14 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function',
                             statement_types => 'select');
 end;    
-/                    
+/       
+/*
+begin
+dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'HOCPHAN',
+                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy2');
+end;
+*/
 Create or replace function dang_ky_hoc_phan_trong_hoc_ky_nay_function(p_schema varchar2, p_obj varchar2)
 Return varchar2
 As
