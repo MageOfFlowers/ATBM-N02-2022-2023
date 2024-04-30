@@ -71,6 +71,7 @@ namespace ATBM.FORM
             this.DSDonviBTN.TabIndex = 3;
             this.DSDonviBTN.Text = "Chọn";
             this.DSDonviBTN.UseVisualStyleBackColor = true;
+            this.DSDonviBTN.Click += new System.EventHandler(this.DSDonviBTN_Click_1);
             // 
             // DonVi_dgv
             // 

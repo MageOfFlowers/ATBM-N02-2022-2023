@@ -21,5 +21,10 @@ namespace ATBM.FORM.Donvi
         {
 
         }
+
+        private void TTNhansu_BTN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
