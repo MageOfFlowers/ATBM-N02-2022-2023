@@ -20,8 +20,6 @@ on:
     - cron: '21 21 * * 3'
 
 jobs:
-  build:
-    runs-on: windows-latest
   analyze:
     name: Analyze (${{ matrix.language }})
     # Runner size impacts CodeQL analysis time. To learn more, please see:
