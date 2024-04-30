@@ -34,9 +34,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.HocPhan_cb = new System.Windows.Forms.ComboBox();
             this.HocKy_cb = new System.Windows.Forms.ComboBox();
-            this.NamHoc_cb = new System.Windows.Forms.ComboBox();
             this.ChuongTrinh_cb = new System.Windows.Forms.ComboBox();
             this.Them_btn = new System.Windows.Forms.Button();
+            this.NamHoc_txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -95,22 +95,6 @@
             this.HocKy_cb.Size = new System.Drawing.Size(121, 24);
             this.HocKy_cb.TabIndex = 5;
             // 
-            // NamHoc_cb
-            // 
-            this.NamHoc_cb.FormattingEnabled = true;
-            this.NamHoc_cb.Items.AddRange(new object[] {
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-            "2024",
-            "2025",
-            "2026"});
-            this.NamHoc_cb.Location = new System.Drawing.Point(249, 196);
-            this.NamHoc_cb.Name = "NamHoc_cb";
-            this.NamHoc_cb.Size = new System.Drawing.Size(121, 24);
-            this.NamHoc_cb.TabIndex = 6;
-            // 
             // ChuongTrinh_cb
             // 
             this.ChuongTrinh_cb.FormattingEnabled = true;
@@ -134,14 +118,22 @@
             this.Them_btn.UseVisualStyleBackColor = true;
             this.Them_btn.Click += new System.EventHandler(this.Them_btn_Click);
             // 
+            // NamHoc_txt
+            // 
+            this.NamHoc_txt.Location = new System.Drawing.Point(249, 196);
+            this.NamHoc_txt.Name = "NamHoc_txt";
+            this.NamHoc_txt.Size = new System.Drawing.Size(100, 22);
+            this.NamHoc_txt.TabIndex = 9;
+            this.NamHoc_txt.TextChanged += new System.EventHandler(this.NamHoc_txt_TextChanged);
+            // 
             // ThemKHM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.NamHoc_txt);
             this.Controls.Add(this.Them_btn);
             this.Controls.Add(this.ChuongTrinh_cb);
-            this.Controls.Add(this.NamHoc_cb);
             this.Controls.Add(this.HocKy_cb);
             this.Controls.Add(this.HocPhan_cb);
             this.Controls.Add(this.label4);
@@ -164,8 +156,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox HocPhan_cb;
         private System.Windows.Forms.ComboBox HocKy_cb;
-        private System.Windows.Forms.ComboBox NamHoc_cb;
         private System.Windows.Forms.ComboBox ChuongTrinh_cb;
         private System.Windows.Forms.Button Them_btn;
+        private System.Windows.Forms.TextBox NamHoc_txt;
     }
 }

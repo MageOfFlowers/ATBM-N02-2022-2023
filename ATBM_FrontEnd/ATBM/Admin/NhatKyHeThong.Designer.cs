@@ -48,8 +48,6 @@
             this.HanhDongCB = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.HanhDongCB2 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.CachGhiCB = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.NhatKyDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,30 +233,11 @@
             this.HanhDongCB2.TabIndex = 23;
             this.HanhDongCB2.SelectedIndexChanged += new System.EventHandler(this.HanhDongCB2_SelectedIndexChanged);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(47, 551);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 16);
-            this.label11.TabIndex = 26;
-            this.label11.Text = "Cách ghi";
-            // 
-            // CachGhiCB
-            // 
-            this.CachGhiCB.FormattingEnabled = true;
-            this.CachGhiCB.Location = new System.Drawing.Point(172, 551);
-            this.CachGhiCB.Name = "CachGhiCB";
-            this.CachGhiCB.Size = new System.Drawing.Size(304, 24);
-            this.CachGhiCB.TabIndex = 25;
-            // 
             // NhatKyHeThong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 629);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.CachGhiCB);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.HanhDongCB2);
             this.Controls.Add(this.label9);
@@ -310,7 +289,5 @@
         private System.Windows.Forms.ComboBox HanhDongCB;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox HanhDongCB2;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox CachGhiCB;
     }
 }

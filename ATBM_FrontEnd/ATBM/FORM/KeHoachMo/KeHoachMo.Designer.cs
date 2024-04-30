@@ -31,6 +31,8 @@
             this.KHM_dvg = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.AddPlan_btn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.KHM_dvg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,11 +68,31 @@
             this.AddPlan_btn.UseVisualStyleBackColor = true;
             this.AddPlan_btn.Click += new System.EventHandler(this.AddPlan_btn_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(53, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Học kỳ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(295, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Năm";
+            // 
             // KeHoachMo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.AddPlan_btn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.KHM_dvg);
@@ -87,5 +109,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView KHM_dvg;
         private System.Windows.Forms.Button AddPlan_btn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
