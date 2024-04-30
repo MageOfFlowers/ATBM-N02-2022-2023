@@ -81,6 +81,8 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '7.0.x'
+    - name: Install .NET Framework
+      run: Install-WindowsFeature -Name "NET-Framework-45-Feature"
     - name: Restore NuGet packages
       run: dotnet restore ATBM_FrontEnd/ATBM
     - name: Build the project
