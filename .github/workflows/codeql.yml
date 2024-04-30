@@ -79,8 +79,9 @@ jobs:
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
     - name: Build Code Manually
       run: |
+        cd ATBM-N02-2022-2023/ATBM_FrontEnd/ATBM
         dotnet restore
-        dotnet build --configuration Release
+        dotnet msbuild ATBM.sln /p:Configuration=Release
         if [ -d "TestProject" ]; then
           dotnet test --no-build --configuration Release
         fi
