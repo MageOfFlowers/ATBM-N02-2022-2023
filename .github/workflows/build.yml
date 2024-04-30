@@ -25,7 +25,7 @@ jobs:
         run: dotnet restore ATBM_FrontEnd/ATBM/ATBM.csproj # Phục hồi các gói NuGet
         
       - name: Build the project
-        run: dotnet build ATBM_FrontEnd/ATBM/ATBM.csproj--configuration Release  # Xây dựng dự án với cấu hình Release
+        run: dotnet build --configuration Release  # Xây dựng dự án với cấu hình Release
         
       - name: Run tests
         run: dotnet test --configuration Release
