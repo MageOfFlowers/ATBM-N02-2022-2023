@@ -7,7 +7,6 @@ Create or replace function xem_cua_chinh_minh_function(p_schema varchar2, p_obj 
 Return varchar2
 As
 user VARCHAR2(100);
-role varchar2(100);
 Begin
 user := SYS_CONTEXT('userenv', 'SESSION_USER');
 for r in (SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = user)

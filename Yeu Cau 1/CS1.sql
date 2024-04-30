@@ -10,20 +10,15 @@ create or replace function ADMIN_OLS1.xemBT_nhansu(p_schema varchar2, p_obj varc
 return varchar2
 as
 m_user varchar2(100);
-m_role varchar2(100);
 begin
     m_user := sys_context('userenv', 'session_user');
-    select vaitro into m_role
-    from admin_ols1.nhansu
-    where manv = m_user;
-    exception
-    when NO_DATA_FOUND then
-        m_role := 'Unknown';
-    if (m_role = 'Nhan vien co ban') then
-        return 'MANV = '|| m_user;
-    else 
-        return '1=1';
-    end if;
+    for r in (SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = m_user)
+    loop
+        IF (r.granted_role = 'ROLE_TRUONGDONVI' or r.granted_role = 'ROLE_TRUONGKHOA') then 
+            return '1=1';
+        end if;
+    END LOOP;
+        return 'MANV = ''' || m_user ||'''';
 end;
 /
 begin 
