@@ -77,9 +77,8 @@ DECLARE
                     elsif (TO_DATE(EXTRACT(YEAR FROM sysdate) || '-09-01', 'YYYY-MM-DD')>= trunc(sysdate)-14 and TO_DATE(EXTRACT(YEAR FROM sysdate) || '-09-01', 'YYYY-MM-DD')<= trunc(sysdate)) then
                         return 'Nam='||EXTRACT(YEAR FROM sysdate)||' and HK=3';
                     end if;
-                    return '1=0';
                 end;
-            else
+            elsif r.granted_role = 'ROLE_SINHVIEN' then 
                 begin
                     return '1=1';
                 end;
