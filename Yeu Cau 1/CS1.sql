@@ -4,7 +4,6 @@ grant select on sinhvien to role_nhanvien;
 grant select on donvi to role_nhanvien;
 grant select on hocphan to role_nhanvien;
 grant select on khmo to role_nhanvien;
-revoke role_nhanvien from admin_ols1;
 /
 create or replace function ADMIN_OLS1.xemBT_nhansu(p_schema varchar2, p_obj varchar2)
 return varchar2
@@ -38,7 +37,19 @@ begin
 end;
 */
 /
-execute dbms_rls.add_policy (object_schema => 'ADMIN_OLS1', object_name => 'nhansu', policy_name => 'suaBT_nhansu', function_schema => 'ADMIN_OLS1', policy_function => 'xemBT_nhansu', statement_types => 'update', sec_relevant_cols => 'DT');
+begin 
+    dbms_rls.add_policy (object_schema => 'ADMIN_OLS1', 
+                         object_name => 'nhansu', 
+                         policy_name => 'suaBT_nhansu', 
+                         function_schema => 'ADMIN_OLS1', 
+                         policy_function => 'xemBT_nhansu', 
+                         statement_types => 'update', 
+                         sec_relevant_cols => 'DT');
+end;
 /*
-execute dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1', object_name => 'nhansu', policy_name => 'suaBT_nhansu')
+begin 
+dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1', 
+                      object_name => 'nhansu', 
+                      policy_name => 'suaBT_nhansu');
+end;
 */

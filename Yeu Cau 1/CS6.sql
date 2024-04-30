@@ -27,6 +27,13 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             statement_types => 'select');
 end;
 /
+/*
+begin
+dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
+                      object_name => 'SINHVIEN',
+                      policy_name => 'xem_cua_chinh_minh_policy');
+end;
+*/
 begin
 dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'DANGKY',
@@ -36,6 +43,13 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             statement_types => 'select');
 end;
 /
+/*
+begin
+dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
+                      object_name => 'DANGKY',
+                      policy_name => 'xem_cua_chinh_minh_policy');
+end;
+*/
 begin
 dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'SINHVIEN',
@@ -46,11 +60,13 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             sec_relevant_cols => 'DCHI, DT',
                             update_check => true);
 end;
---begin
---dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
---                            object_name => 'SINHVIEN',
---                            policy_name => 'sua_cua_chinh_minh_policy');
---end;
+/*
+begin
+dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
+                      object_name => 'SINHVIEN',
+                      policy_name => 'sua_cua_chinh_minh_policy');
+end;
+*/
 /
 Create or replace function xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function(p_schema varchar2, p_obj varchar2)
 Return varchar2
@@ -112,7 +128,7 @@ end;
 begin
 dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'KHMO',
-                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy2');
+                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy');
 end;
 */
 begin
@@ -176,6 +192,14 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             statement_types => 'insert, delete',
                             update_check => TRUE );
 end;
+/
+/*
+begin
+dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'DANGKY',
+                            policy_name => 'dang_ky_hoc_phan_trong_hoc_ky_nay_policy');
+end;
+*/
 begin
 dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'DANGKY',
@@ -185,3 +209,10 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             statement_types => 'select',
                             update_check => TRUE );
 end;
+/*
+begin
+dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
+                            object_name => 'DANGKY',
+                            policy_name => 'xem_hoc_phan_trong_hoc_ky_nay_policy');
+end;
+*/
