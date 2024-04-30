@@ -39,9 +39,9 @@ namespace ATBM
                 if (role == 0 || role == 1 || role == 3)
                 {
                     ThongTinLopHoc_btn.Hide();
-                    PhanCong_btn.Hide();
                     if (role == 0)
                     {
+                        PhanCong_btn.Hide();
                         DanhSachDonVi_btn.Hide();
                     }
                 }
