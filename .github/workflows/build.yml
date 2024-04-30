@@ -22,10 +22,10 @@ jobs:
           dotnet-version: '8.0.x'  # Sử dụng phiên bản .NET phù hợp với dự án của bạn
 
       - name: Restore NuGet packages
-        run: dotnet restore 'ATBM_FrontEnd/ATBM.sln' # Phục hồi các gói NuGet
+        run: dotnet restore 'ATBM_FrontEnd/ATBM/ATBM.csproj' # Phục hồi các gói NuGet
         
       - name: Build the project
-        run: dotnet build 'ATBM_FrontEnd/ATBM.sln' --configuration Release  # Xây dựng dự án với cấu hình Release
+        run: dotnet build 'ATBM_FrontEnd/ATBM/ATBM.csproj' --configuration Release  # Xây dựng dự án với cấu hình Release
         
       - name: Run tests
-        run: dotnet test 'ATBM_FrontEnd/ATBM.sln' --configuration Release
+        run: dotnet test --configuration Release
