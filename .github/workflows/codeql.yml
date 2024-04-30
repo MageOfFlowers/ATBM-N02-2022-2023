@@ -84,7 +84,7 @@ jobs:
     - name: Restore NuGet packages
       run: dotnet restore ATBM_FrontEnd/ATBM
     - name: Build the project
-      run: dotnet msbuild ATBM_FrontEnd/ATBM/ATBM.csproj /p:TargetFrameworkVersion="v4.8.x"
+      run: dotnet msbuild ATBM_FrontEnd/ATBM/ATBM.csproj /p:TargetFrameworkVersion="v4.7.2"
     - name: Run tests
       run: dotnet test --configuration Release
 
