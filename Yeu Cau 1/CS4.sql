@@ -1,4 +1,4 @@
-alter session set container = XEPDB1;
+alter session set container = ATBM_3;
 --create user ATBM_Admin identified by 123456 DEFAULT TABLESPACE USERS;
 --ALTER USER ATBM_Admin quota unlimited on USERS;
 --grant create table,create view,create trigger,create procedure,create user,create role,create session to ATBM_Admin;
@@ -11,7 +11,7 @@ grant select on phancong to ROLE_TruongDonVi;
 --grant ROLE_GiangVien to ROLE_TruongDonVi;
 --drop role ROLE_TruongDonVi;
 /
-create or replace function ATBM_Admin.sua_phan_cong_cua_TrBM (p_schema IN VARCHAR2, p_obj varchar2) return varchar2
+create or replace function Admin_ols1.sua_phan_cong_cua_TrBM (p_schema IN VARCHAR2, p_obj varchar2) return varchar2
 as
 begin
     DECLARE
@@ -19,7 +19,7 @@ begin
         mahpArr v_array_type;
         mahp_s varchar(200);
     begin
-        select MAHP bulk collect into mahpArr from ATBM_Admin.HOCPHAN where MADV in (select MADV from ATBM_Admin.NHANSU where MANV=SYS_CONTEXT('userenv', 'SESSION_USER'));
+        select MAHP bulk collect into mahpArr from Admin_ols1.HOCPHAN where MADV in (select MADV from Admin_ols1.NHANSU where MANV=SYS_CONTEXT('userenv', 'SESSION_USER'));
         if(mahpArr.count>1) then
             begin
             mahp_s:= chr(39)|| mahpArr(1) || chr(39);
@@ -35,7 +35,7 @@ end;
 --select * from ALL_POLICIES ;
 --SELECT ATBM_Admin.sua_phan_cong_cua_TrBM('ATBM_Admin', 'phancong') FROM DUAL;
 /
-execute dbms_rls.add_policy(object_schema => 'ATBM_Admin',object_name => 'phancong',policy_name => 'TrBM_PHANCONG',function_schema => 'ATBM_Admin',policy_function => 'sua_phan_cong_cua_TrBM',statement_types => 'update,insert,delete',update_check => TRUE );
+execute dbms_rls.add_policy(object_schema => 'Admin_ols1',object_name => 'phancong',policy_name => 'TrBM_PHANCONG',function_schema => 'Admin_ols1',policy_function => 'sua_phan_cong_cua_TrBM',statement_types => 'update,insert,delete',update_check => TRUE );
 /
 --execute dbms_rls.drop_policy(object_schema => 'ATBM_Admin',object_name => 'phancong',policy_name => 'TrBM_PHANCONG');
 --/
@@ -49,7 +49,7 @@ execute dbms_rls.add_policy(object_schema => 'ATBM_Admin',object_name => 'phanco
 --grant ROLE_TruongDonVi to NV002;
 --drop user NV02 cascade;
 /
-create or replace function ATBM_Admin.xem_phan_cong_giang_day_TrBM (p_schema IN VARCHAR2, p_obj varchar2) return varchar2
+create or replace function Admin_ols1.xem_phan_cong_giang_day_TrBM (p_schema IN VARCHAR2, p_obj varchar2) return varchar2
 as
 begin
     DECLARE
@@ -57,7 +57,7 @@ begin
         magvArr v_array_type;
         magv_s varchar(200);
     begin
-        select MANV bulk collect into magvArr from ATBM_Admin.NHANSU where MADV in (select MADV from ATBM_Admin.NHANSU where MANV=SYS_CONTEXT('userenv', 'SESSION_USER'));
+        select MANV bulk collect into magvArr from Admin_ols1.NHANSU where MADV in (select MADV from Admin_ols1.NHANSU where MANV=SYS_CONTEXT('userenv', 'SESSION_USER'));
         
         if(magvArr.count>1) then
             begin
@@ -75,7 +75,7 @@ end;
 --select * from ALL_POLICIES ;
 --SELECT ATBM_Admin.xem_phan_cong_giang_day_TrBM('ATBM_Admin', 'phancong') FROM DUAL;
 /
-execute dbms_rls.add_policy(object_schema => 'ATBM_Admin',object_name => 'phancong',policy_name => 'TrBM_PHANCONG_GIANGVIEN',function_schema => 'ATBM_Admin',policy_function => 'xem_phan_cong_giang_day_TrBM',statement_types => 'select' );
+execute dbms_rls.add_policy(object_schema => 'Admin_ols1',object_name => 'phancong',policy_name => 'TrBM_PHANCONG_GIANGVIEN',function_schema => 'Admin_ols1',policy_function => 'xem_phan_cong_giang_day_TrBM',statement_types => 'select' );
 /
 --execute dbms_rls.drop_policy(object_schema => 'ATBM_Admin',object_name => 'phancong',policy_name => 'TrBM_PHANCONG');
 /
