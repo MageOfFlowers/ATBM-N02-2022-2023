@@ -79,3 +79,26 @@ FROM
     user_procedures
 WHERE
     object_type = 'PROCEDURE';
+    
+    
+declare
+p_MACT VARCHAR2(100);
+TYPE v_array_type IS VARRAY (20) OF CHAR(8);
+        mahpArr v_array_type;
+        mahp_s varchar(200);
+user VARCHAR2(100);
+Begin
+user := SYS_CONTEXT('userenv', 'SESSION_USER');
+SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
+select MAHP bulk collect into mahpArr from Admin_ols1.KHMO where MACT = p_MACT;
+        if(mahpArr.count>1) then
+            begin
+            mahp_s:= chr(39)|| mahpArr(1) || chr(39);
+                for x in 2..mahpArr.count 
+                loop
+                  mahp_s := mahp_s||','||chr(39)|| mahpArr(x)|| chr(39);
+                end loop;
+            end;
+        end if;
+        DBMS_OUTPUT.PUT_LINE( 'MAHP in (' || mahp_s || ')');
+End;
