@@ -37,6 +37,49 @@ create role role_nhanvien;
 create role role_truongdonvi;
 create role role_sinhvien;
 /
+grant select on donvi to role_truongkhoa;
+grant select,insert,delete,update on nhansu to role_truongkhoa;
+grant select on hocphan to role_truongkhoa;
+grant select on khmo to role_truongkhoa;
+grant select on sinhvien to role_truongkhoa;
+grant select,insert,delete,update on phancong to role_truongkhoa;
+grant select,update on dangky to role_truongkhoa;
+/
+grant select on donvi to role_truongdonvi;
+grant select,update on nhansu to role_truongdonvi;
+grant select on hocphan to role_truongdonvi;
+grant select on khmo to role_truongdonvi;
+grant select on sinhvien to role_truongdonvi;
+grant select,insert,delete,update on phancong to role_truongdonvi;
+grant select,update on dangky to role_truongdonvi;
+/
+grant select on donvi to role_giangvien;
+grant select,update on nhansu to role_giangvien;
+grant select on hocphan to role_giangvien;
+grant select on khmo to role_giangvien;
+grant select on sinhvien to role_giangvien;
+grant select on phancong to role_giangvien;
+grant select,update on dangky to role_giangvien;
+/
+grant select,insert,update on donvi to role_giaovu;
+grant select,update on nhansu to role_giaovu;
+grant select,insert,update on hocphan to role_giaovu;
+grant select,insert,update on khmo to role_giaovu;
+grant select,insert,update on sinhvien to role_giaovu;
+grant select,insert,update on phancong to role_giaovu;
+grant select,insert,delete on dangky to role_giaovu;
+/
+grant select on donvi to role_nhanvien;
+grant select,update on nhansu to role_nhanvien;
+grant select on hocphan to role_nhanvien;
+grant select on khmo to role_nhanvien;
+grant select on sinhvien to role_nhanvien;
+/
+grant select on hocphan to role_sinhvien;
+grant select on khmo to role_sinhvien;
+grant select,update on sinhvien to role_sinhvien;
+grant select,insert,delete on dangky to role_sinhvien;
+/
 CREATE OR REPLACE PROCEDURE USP_ADDUSRMEM
 AS
     CURSOR CUR IS (SELECT ns.MANV, ns.VAITRO, dv.TRGDV, dv.TENDV
@@ -88,3 +131,4 @@ END;
 exec USP_ADDUSRMEM;
 /
 exec USP_ADDUSRSTU;
+/

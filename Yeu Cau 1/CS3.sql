@@ -13,6 +13,7 @@ grant select,insert,update on khmo to ROLE_GIAOVU;
 grant select,insert,update on hocphan to ROLE_GIAOVU;
 --drop role ROLE_GIAOVU;
 grant select,update on phancong to ROLE_GIAOVU;
+/
 create or replace function Admin_ols1.sua_phan_cong_cua_vpk (p_schema IN VARCHAR2, p_obj varchar2) return varchar2
 as
 begin
@@ -66,7 +67,7 @@ begin
                         policy_function => 'dang_ki_cho_sv',
                         statement_types => 'insert,delete',
                         update_check => TRUE );
-end
+end;
 /
 --execute dbms_rls.drop_policy(object_schema => 'ATBM_Admin',object_name => 'dangky',policy_name => 'GIAOVU_DANGKY');
 --select * from ALL_POLICIES ;
