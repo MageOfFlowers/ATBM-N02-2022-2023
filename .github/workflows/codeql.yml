@@ -84,7 +84,7 @@ jobs:
     - name: Find Path
       run: cd ATBM_FrontEnd/ATBM
     - name: Restore NuGet packages
-      run: dotnet restore
+      run: dotnet restore ATBM_FrontEnd/ATBM
     - name: Build the project
       run: dotnet msbuild ATBM.csproj /p:Configuration=Release
     - name: Run tests
