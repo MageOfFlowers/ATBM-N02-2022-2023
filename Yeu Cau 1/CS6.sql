@@ -56,13 +56,48 @@ Create or replace function xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_functio
 Return varchar2
 As
 p_MACT VARCHAR2(100);
-p_MAHP VARCHAR2(100);
+TYPE v_array_type IS VARRAY (20) OF CHAR(8);
+        mahpArr v_array_type;
+        mahp_s varchar(200);
 user VARCHAR2(100);
 Begin
 user := SYS_CONTEXT('userenv', 'SESSION_USER');
-SELECT MACT INTO p_MACT FROM SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
-SELECT MAHP INTO p_MAHP FROM KHMO WHERE MACT = p_MACT;
-return 'MAHP = ''' || p_MAHP || '''';
+SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
+select MAHP bulk collect into mahpArr from Admin_ols1.HOCPHAN;
+        if(mahpArr.count>1) then
+            begin
+            mahp_s:= chr(39)|| mahpArr(1) || chr(39);
+                for x in 2..mahpArr.count 
+                loop
+                  mahp_s := mahp_s||','||chr(39)|| mahpArr(x)|| chr(39);
+                end loop;
+            end;
+        end if;
+        return 'MAHP in (' || mahp_s || ') and MACT = '||p_MACT;
+End;
+/
+Create or replace function xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function2(p_schema varchar2, p_obj varchar2)
+Return varchar2
+As
+p_MACT VARCHAR2(100);
+TYPE v_array_type IS VARRAY (20) OF CHAR(8);
+        mahpArr v_array_type;
+        mahp_s varchar(200);
+user VARCHAR2(100);
+Begin
+user := SYS_CONTEXT('userenv', 'SESSION_USER');
+SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
+select MAHP bulk collect into mahpArr from Admin_ols1.KHMO where MACT = p_MACT;
+        if(mahpArr.count>1) then
+            begin
+            mahp_s:= chr(39)|| mahpArr(1) || chr(39);
+                for x in 2..mahpArr.count 
+                loop
+                  mahp_s := mahp_s||','||chr(39)|| mahpArr(x)|| chr(39);
+                end loop;
+            end;
+        end if;
+        return 'MAHP in (' || mahp_s || ')';
 End;
 /
 begin
@@ -70,14 +105,14 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'KHMO',
                             policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy',
                             function_schema => 'ADMIN_OLS1',
-                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function',
+                            policy_function => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function2',
                             statement_types => 'select');
 end;       
 /*
 begin
 dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'KHMO',
-                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy');
+                            policy_name => 'xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_policy2');
 end;
 */
 begin
