@@ -188,6 +188,7 @@ loop
     end;
     end if;
     end loop;
+    return '1=1';
 End;                                                    
 /
 begin
@@ -203,7 +204,7 @@ end;
 begin
 dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'KHMO',
-                            policy_name => 'dang_ky_hoc_phan_trong_hoc_ky_nay_policy',
+                            policy_name => 'dang_ky_hoc_phan_trong_hoc_ky_nay_policy2',
                             function_schema => 'ADMIN_OLS1',
                             policy_function => 'dang_ky_hoc_phan_trong_hoc_ky_nay_function',
                             statement_types => 'select');
@@ -212,7 +213,7 @@ end;
 /*
 begin
 dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
-                            object_name => 'DANGKY',
+                            object_name => 'KNMO',
                             policy_name => 'dang_ky_hoc_phan_trong_hoc_ky_nay_policy');
 end;
 */
