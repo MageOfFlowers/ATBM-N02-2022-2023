@@ -24,16 +24,9 @@ namespace ATBM.FORM.Hocphan
         {
             InitializeComponent();
             masv = m_masv;
-            try
-            {
-                ds = hp.ds_HocPhanDangKy();
-                loadCB(ds);
-                loadHP(ds);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            ds = hp.ds_HocPhanDangKy();
+            loadCB(ds);
+            loadHP(ds);
         }
 
         private void loadCB(IList<LopDTO> ds)

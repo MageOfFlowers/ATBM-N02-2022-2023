@@ -1,5 +1,6 @@
 --Hoc Phan
 create or replace procedure lay_ds_hoc_phan(c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
 open c1 for
@@ -9,6 +10,7 @@ end;
 /
 
 create or replace procedure lay_thong_tin_hoc_phan(pMAHP in varchar2, c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
 open c1 for
@@ -20,6 +22,7 @@ end;
 /
 
 create or replace procedure dang_ky_hoc_phan(m_masv varchar2, m_mahp varchar2, m_hk number, m_nam number, m_mact varchar2)
+authid current_user
 as
 begin
     insert into admin_ols1.dangky values (m_masv,m_mahp,m_hk,m_nam,m_mact, null, null, null, null);
@@ -27,12 +30,15 @@ end;
 /
 
 create or replace procedure huy_dang_ky_hoc_phan(m_masv varchar2, m_mahp varchar2, m_hk number, m_nam number)
+authid current_user
 as
 begin
     execute immediate 'delete from admin_ols1.dangky where masv = ''' || m_masv || ''' and mahp = ''' || m_mahp || ''' and hk = ' || m_hk || 'and nam = ' || m_nam;
 end;
 /
+
 create or replace procedure cap_nhat_hoc_phan(m_mahp in char, m_tenhp in nvarchar2, m_sotc in int, m_stlt in int, m_stth in int, m_sosvtd in int, m_madv in char)
+authid current_user
 as
 begin
     update hocphan set tenhp=m_tenhp, sotc=m_sotc, stlt=m_stlt, stth=m_stth, sosvtd=m_sosvtd, madv=m_madv
@@ -49,6 +55,7 @@ grant execute on cap_nhat_hoc_phan to role_giaovu;
 
 --Lop
 create or replace procedure lay_ds_lop(c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
 open c1 for
@@ -59,6 +66,7 @@ end;
 /
 
 create or replace procedure lay_thong_tin_lop_hoc(pMAHP in varchar2, pHK in number, pNAM in number, pMACT in varchar2, c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
 open c1 for
@@ -70,6 +78,7 @@ end;
 /
 create or replace procedure cap_nhat_diem(pMAHP in varchar2, pHK in number, pNAM in number,pMACT in varchar2, pMASV in varchar2, 
                         pTH in number , pQT in number, pCK in number, pTK in number)
+authid current_user
 as
 begin
 update admin_ols1.dangky
@@ -85,6 +94,7 @@ grant execute on cap_nhat_diem to role_giangvien, role_truongdonvi, role_truongk
 
 --Ke hoach mo
 create or replace procedure xem_ds_ke_hoach_mo (c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
     open c1 for
@@ -96,6 +106,7 @@ end;
 /
 
 create or replace procedure them_ke_hoach (m_mahp varchar2, m_hk integer, m_nam integer, m_mact varchar2)
+authid current_user
 as
 begin
     execute immediate 'insert into admin_ols1.khmo values(''' || m_mahp || ''',' || m_hk || ',' || m_nam || ',''' || m_mact || ''')';
@@ -103,6 +114,7 @@ end;
 /
 
 create or replace procedure thay_doi_ke_hoach (m_mahp varchar2, m_hk integer, m_nam integer, m_mact varchar2)
+authid current_user
 as
 begin
     execute immediate 'update admin_ols1.khmo set hk = ' || m_hk || ', nam = ' || m_nam || ', mact = ''' || m_mact || ''' where mahp = ''' || m_mahp || '';
@@ -110,6 +122,7 @@ end;
 /
 
 create or replace procedure xem_khm_cua_sv (c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
     open c1 for
@@ -124,7 +137,8 @@ begin
 end;
 /
 
-create or replace procedure xem_khm_da_dk (c1 out SYS_REFCURSOR)
+create or replace procedure xem_khm_da_dk(c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
     open c1 for
@@ -145,6 +159,7 @@ grant execute on xem_khm_da_dk to role_sinhvien, role_giaovu;
 
 --Nhan su
 create or replace procedure lay_ds_nhan_su(c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
 open c1 for
@@ -154,6 +169,7 @@ end;
 /
 
 create or replace procedure lay_thong_tin_nhan_su(pMANV in varchar2, c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
 open c1 for
@@ -165,6 +181,7 @@ end;
 /
 
 create or replace procedure cap_nhat_sdt_nhan_su(pMANV in varchar2,sdt in varchar2)
+authid current_user
 as
 begin
     update admin_ols1.nhansu set dt=sdt where manv=pMANV;
@@ -172,6 +189,7 @@ end;
 /
 
 create or replace procedure xem_vai_tro(c1 out SYS_REFCURSOR)
+authid current_user
 as
 role varchar2(100);
 c_temp SYS_REFCURSOR;
@@ -192,6 +210,7 @@ end;
 /
 
 create or replace procedure them_nhan_su(m_manv varchar2, m_hoten varchar2, m_phai char, m_ngsinh date, m_phucap number, m_dt varchar2, m_vaitro varchar2, m_madv varchar2)
+authid current_user
 as
 begin
     insert into admin_ols1.nhansu values (m_manv, m_hoten, m_phai, m_ngsinh, m_phucap, m_dt, m_vaitro, m_madv);
@@ -203,6 +222,7 @@ end;
 /
 
 create or replace procedure xoa_nhan_su(m_manv varchar2)
+authid current_user
 as
 begin
     delete admin_ols1.nhansu where manv = m_manv;
@@ -211,6 +231,7 @@ end;
 /
 
 create or replace procedure sua_nhan_su(m_manv varchar2, m_hoten varchar2, m_phai char, m_ngsinh date, m_phucap number, m_dt varchar2, m_vaitro_cu varchar2, m_vaitro_moi varchar2, m_madv varchar2)
+authid current_user
 as
 revoke_role varchar2(20);
 grant_role varchar2(20);
@@ -257,6 +278,7 @@ grant execute on sua_nhan_su to role_truongkhoa;
 
 --Sinh vien
 create or replace procedure lay_danh_sach_sinh_vien(c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
 open c1 for
@@ -266,6 +288,7 @@ DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
 create or replace procedure lay_thong_tin_sinh_vien(pMASV in varchar2, c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
 open c1 for
@@ -277,6 +300,7 @@ end;
 /
 
 create or replace procedure cap_nhat_dia_chi_va_sdt_sinh_vien(pMASV in varchar2, diachi in varchar2,sdt in varchar2)
+authid current_user
 as
 begin
     update admin_ols1.sinhvien set dchi=diachi, dt=sdt
@@ -285,13 +309,17 @@ end;
 /
 
 create or replace procedure them_sinh_vien(pMASV in varchar2,hotensv in nvarchar2,phaisv in char,ngsinhsv in date, dchisv in nvarchar2,dtsv in varchar2,mactsv in varchar2,manganhsv in varchar2,sotctlsv in number,dtbtlsv in number)
+authid current_user
 as
 begin
     insert into admin_ols1.sinhvien values (pMASV, hotensv, phaisv, ngsinhsv, dchisv, dtsv, mactsv, manganhsv, sotctlsv, dtbtlsv);
+    execute immediate 'create user ' || pMASV || ' identified by ' || pMASV;
+    execute immediate 'grant role_sinhvien to ' || pMASV;
 end;
 /
 
 create or replace procedure cap_nhat_tt_sinh_vien(pMASV in varchar2,hotensv in nvarchar2,phaisv in char,ngsinhsv in date, dchisv in nvarchar2,dtsv in varchar2,mactsv in varchar2,manganhsv in varchar2,sotctlsv in number,dtbtlsv in number)
+authid current_user
 as
 begin
     update admin_ols1.sinhvien set HOTEN=hotensv,PHAI=phaisv,NGSINH=ngsinhsv,DCHI=dchisv, DT=dtsv,MACT=mactsv,MANGANH=manganhsv,SOTCTL=sotctlsv,DTBTL=dtbtlsv
@@ -308,6 +336,7 @@ grant execute on cap_nhat_tt_sinh_vien to role_giaovu;
 
 --Phan cong
 create or replace procedure xem_phan_cong(c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
 open c1 for
@@ -317,6 +346,7 @@ end;
 /
 
 create or replace procedure them_phan_cong(m_magv varchar2, m_mahp varchar2, m_hk number, m_nam number, m_mact varchar2)
+authid current_user
 as
 begin
     execute immediate 'insert into admin_ols1.phancong values (''' ||m_magv|| ''', ''' ||m_mahp|| ''', ' ||m_hk|| ', ' ||m_nam|| ', ''' ||m_mact|| ''')';
@@ -324,6 +354,7 @@ end;
 /
 
 create or replace procedure xoa_phan_cong(m_magv varchar2, m_mahp varchar2, m_hk number, m_nam number, m_mact varchar2)
+authid current_user
 as
 begin
     execute immediate 'delete from admin_ols1.phancong where magv = ''' ||m_magv|| ''' and mahp = ''' ||m_mahp|| ''' and hk = ' ||m_hk|| ' and nam = ' ||m_nam|| ' and mact = ''' ||m_mact|| '''';
@@ -331,6 +362,7 @@ end;
 /
 
 create or replace procedure sua_phan_cong(m_magv_cu varchar2, m_magv_moi varchar2, m_mahp varchar2, m_hk number, m_nam number, m_mact varchar2)
+authid current_user
 as
 begin
     execute immediate 'update admin_ols1.phancong set magv = ''' ||m_magv_moi|| ''' where magv = ''' ||m_magv_cu|| ''' and mahp = ''' ||m_mahp|| ''' and hk = ' ||m_hk|| ' and nam = ' ||m_nam|| ' and mact = ''' ||m_mact|| '''';
@@ -345,6 +377,7 @@ grant execute on sua_phan_cong to role_truongdonvi, role_truongkhoa;
 
 --Don vi
 create or replace procedure lay_ds_don_vi(c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
     open c1 for
@@ -358,6 +391,7 @@ grant execute on lay_ds_don_vi to role_nhanvien, role_giangvien, role_giaovu, ro
 
 --Thong bao
 create or replace procedure lay_thong_bao(c1 out SYS_REFCURSOR)
+authid current_user
 as
 begin
     open c1 for

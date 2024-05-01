@@ -5,6 +5,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Windows.Forms;
 using ATBM.Admin.DTO;
 using ATBM.DTO;
+using System.Data.Linq.Mapping;
 
 namespace ATBM.BUS
 {
@@ -95,7 +96,7 @@ namespace ATBM.BUS
             }
             return ds;
         }
-
+        
         public IList<LopDTO> ds_DaDangKy()
         {
             string procedureName = "admin_ols1.xem_khm_da_dk";

@@ -45,7 +45,7 @@
             // 
             this.Label.AutoSize = true;
             this.Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.8F);
-            this.Label.Location = new System.Drawing.Point(283, 22);
+            this.Label.Location = new System.Drawing.Point(359, 24);
             this.Label.Name = "Label";
             this.Label.Size = new System.Drawing.Size(169, 31);
             this.Label.TabIndex = 2;

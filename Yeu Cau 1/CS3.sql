@@ -5,7 +5,6 @@ alter session set container = ATBM_3;
 --grant create table,create view,create trigger,create procedure,create user,create role,create session to ATBM_Admin;
 --drop user ATBM_Admin cascade;
 
-create role ROLE_GIAOVU not identified;
 --grant ROLE_NHANVIEN to ROLE_GIAOVU;
 grant create session to ROLE_GIAOVU;
 grant select,insert,update on sinhvien to ROLE_GIAOVU;
@@ -14,6 +13,8 @@ grant select,insert,update on khmo to ROLE_GIAOVU;
 grant select,insert,update on hocphan to ROLE_GIAOVU;
 --drop role ROLE_GIAOVU;
 grant select,update on phancong to ROLE_GIAOVU;
+grant create user to ROLE_GIAOVU;
+grant role_sinhvien to role_giaovu with admin option;
 /
 create or replace function Admin_ols1.sua_phan_cong_cua_vpk (p_schema IN VARCHAR2, p_obj varchar2) return varchar2
 as

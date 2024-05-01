@@ -2,7 +2,6 @@ grant select, insert, delete on dangky to role_sinhvien;
 grant select on hocphan to role_sinhvien;
 grant select on khmo to role_sinhvien;
 grant select, update(dchi, dt) on sinhvien to role_sinhvien;
-grant role_sinhvien to SV001;
 /
 Create or replace function xem_cua_chinh_minh_function(p_schema varchar2, p_obj varchar2)
 Return varchar2
@@ -72,35 +71,37 @@ end;
 Create or replace function xem_mon_hoc_trong_chuong_trinh_cua_chinh_minh_function(p_schema varchar2, p_obj varchar2)
 Return varchar2
 As
-p_MACT VARCHAR2(100);
-TYPE v_array_type IS VARRAY (20) OF CHAR(8);
-        mahpArr v_array_type;
-        mahp_s varchar(200);
-user VARCHAR2(100);
+begin
+declare
+    p_MACT VARCHAR2(100);
+    TYPE v_array_type IS VARRAY (20) OF CHAR(8);
+            mahpArr v_array_type;
+            mahp_s varchar(200);
+    user VARCHAR2(100);
 Begin
 user := SYS_CONTEXT('userenv', 'SESSION_USER');
 for r in (SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = user)
 loop
     IF r.granted_role = 'ROLE_SINHVIEN' then 
         begin
-        SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
-        select MAHP bulk collect into mahpArr from Admin_ols1.PHANCONG where MACT = p_MACT;
-        if(mahpArr.count>1) then
-            begin
-            mahp_s:= chr(39)|| mahpArr(1) || chr(39);
-                for x in 2..mahpArr.count 
-                loop
-                  mahp_s := mahp_s||','||chr(39)|| mahpArr(x)|| chr(39);
-                end loop;
-            end;
-        end if;
-        return 'MAHP in (' || mahp_s || ')';
+            SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = user;
+            select MAHP bulk collect into mahpArr from Admin_ols1.PHANCONG where MACT = p_MACT;
+            if(mahpArr.count>0) then
+                begin
+                mahp_s:= chr(39)|| mahpArr(1) || chr(39);
+                    for x in 2..mahpArr.count 
+                    loop
+                      mahp_s := mahp_s||','||chr(39)|| mahpArr(x)|| chr(39);
+                    end loop;
+                end;
+            end if;
+            return 'MAHP in (' || mahp_s || ')';
         end;
     end if;
 END LOOP;
 return '1=1';
 End;
-
+end;
 /
 begin
 dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
@@ -213,8 +214,8 @@ end;
 /*
 begin
 dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
-                            object_name => 'KNMO',
-                            policy_name => 'dang_ky_hoc_phan_trong_hoc_ky_nay_policy');
+                            object_name => 'KHMO',
+                            policy_name => 'dang_ky_hoc_phan_trong_hoc_ky_nay_policy2');
 end;
 */
 begin
@@ -233,6 +234,7 @@ dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
                             policy_name => 'xem_hoc_phan_trong_hoc_ky_nay_policy');
 end;
 */
+/
 select * from all_policies where object_name = 'DANGKY';
 grant execute on XEMBT_DANGKY to SV001;
 grant execute on XEM_CUA_CHINH_MINH_FUNCTION to SV001;
