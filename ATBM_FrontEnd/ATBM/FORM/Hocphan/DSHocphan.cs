@@ -75,5 +75,12 @@ namespace ATBM.FORM
             var source = new BindingSource(bindingList, null);
             DSHocphanDGV.DataSource = source;
         }
+
+        private void Them_btn_Click(object sender, EventArgs e)
+        {
+            ChitietHocphan chitietHocphan = new ChitietHocphan();
+            chitietHocphan.FormClosed += refreshData;
+            chitietHocphan.Show();
+        }
     }
 }

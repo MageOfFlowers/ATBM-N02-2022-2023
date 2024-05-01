@@ -34,23 +34,6 @@ namespace ATBM.BUS
 
             //input command line here;
             sw.WriteLine("sqlplus / as sysdba"); 
-<<<<<<< Updated upstream
-            sw.WriteLine("alter session set container = ATBM_3;");
-            sw.WriteLine("ALTER TABLE admin_ols1." + tenbang+" ENABLE ROW MOVEMENT;");
-            //sw.WriteLine("ALTER TABLE admin_ols1." + tenbang+" FLASHBACK ON;");
-            if (luachon == "1")
-            {
-                sw.WriteLine("flashback TABLE admin_ols1." + tenbang + " to timestamp (systimestamp - interval '" + tg + "' minute);");
-            }
-            else if (luachon == "2") 
-            {
-                sw.WriteLine("flashback TABLE admin_ols1." + tenbang + " to timestamp TO_TIMESTAMP('" + tg + "', 'YYYY-MM-DD HH24:MI:SS');");
-            }
-            else
-            {
-                sw.WriteLine("flashback table admin_ols1." + tenbang + " to restore point CHECKPOINT_1;");
-                sw.WriteLine("alter database open resetlogs;");
-=======
             sw.WriteLine("alter session set container = ATBM_3");
             sw.WriteLine("ALTER TABLE "+tenbang+" ENABLE ROW MOVEMENT");
             sw.WriteLine("ALTER TABLE "+tenbang+" FLASHBACK ON");
@@ -66,7 +49,6 @@ namespace ATBM.BUS
             {
                 sw.WriteLine("flashback table " + tenbang + " to restore point "+tg);
                 sw.WriteLine("alter database open resetlogs");
->>>>>>> Stashed changes
             }
             
             sw.WriteLine("exit");
@@ -93,22 +75,6 @@ namespace ATBM.BUS
 
             //input command line here;
             sw.WriteLine("sqlplus / as sysdba");
-<<<<<<< Updated upstream
-            sw.WriteLine("alter session set container = ATBM_3;");
-            sw.WriteLine("alter pluggable database ATBM_3 close;");
-            if (luachon == "1")
-            {
-                sw.WriteLine("flashback TABLE pluggable database ATBM_3 to timestamp (systimestamp - interval '" + tg + "' minute);");
-            }
-            else if (luachon == "2")
-            {
-                sw.WriteLine("flashback TABLE pluggable database ATBM_3 to timestamp TO_TIMESTAMP('" + tg + "', 'YYYY-MM-DD HH24:MI:SS');");
-            }
-            else
-            {
-                sw.WriteLine("flashback pluggable database ATBM_3 to restore point CHECKPOINT_1;");
-                sw.WriteLine("alter database open resetlogs;");
-=======
             sw.WriteLine("alter session set container = ATBM_3");
             sw.WriteLine("alter pluggable database ATBM_3 close");
             if (luachon == "1")
@@ -123,7 +89,6 @@ namespace ATBM.BUS
             {
                 sw.WriteLine("flashback pluggable database ATBM_3 to restore point "+tg);
                 sw.WriteLine("alter database open resetlogs");
->>>>>>> Stashed changes
             }
             
             sw.WriteLine("exit");
@@ -136,11 +101,7 @@ namespace ATBM.BUS
             process.Close();
 
         }
-<<<<<<< Updated upstream
         public void TaoCheckPoint()
-=======
-        void TaoCheckPoint()
->>>>>>> Stashed changes
         {
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.FileName = "cmd.exe";
@@ -154,11 +115,7 @@ namespace ATBM.BUS
 
             //input command line here;
             sw.WriteLine("sqlplus / as sysdba");
-<<<<<<< Updated upstream
-            sw.WriteLine("create restore point CHECKPOINT_1 guarantee flashback database;");
-=======
             sw.WriteLine("create restore point CHECKPOINT_1 guarantee flashback database");
->>>>>>> Stashed changes
             sw.WriteLine("exit");
 
             //

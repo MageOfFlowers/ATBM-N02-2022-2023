@@ -185,6 +185,38 @@ namespace ATBM.BUS
             }
 
         }
+        public void ThemHocPhan(HocPhanDTO hocPhan)
+        {
+            string procedureName = "admin_ols1.them_hoc_phan";
+            try
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("m_mahp", OracleDbType.Char).Value = hocPhan.MAHP;
+                    command.Parameters.Add("m_tenhp", OracleDbType.NVarchar2).Value = hocPhan.TENHP;
+                    command.Parameters.Add("m_sotc", OracleDbType.Int32).Value = hocPhan.SOTC;
+                    command.Parameters.Add("m_stlt", OracleDbType.Int32).Value = hocPhan.STLT;
+                    command.Parameters.Add("m_stth", OracleDbType.Int32).Value = hocPhan.STTH;
+                    command.Parameters.Add("m_sosvtd", OracleDbType.Int32).Value = hocPhan.SOSVTD;
+                    command.Parameters.Add("m_madv", OracleDbType.Char).Value = hocPhan.MADV;
+
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            MessageBox.Show("Thêm thành công.", "Thông báo");
+        }
         public void CapNhatHocPhan(HocPhanDTO hocPhan)
         {
             string procedureName = "admin_ols1.cap_nhat_hoc_phan";
