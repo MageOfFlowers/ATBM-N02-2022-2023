@@ -55,7 +55,13 @@ end;
 --select * from ALL_POLICIES ;
 --SELECT sua_phan_cong_cua_vpk('Admin_ols1', 'phancong') FROM DUAL;
 /
-execute dbms_rls.add_policy(object_schema => 'Admin_ols1',object_name => 'phancong',policy_name => 'GIAOVU_PHANCONG',policy_function => 'sua_phan_cong_cua_vpk',statement_types => 'update',update_check => TRUE );
+begin
+    dbms_rls.add_policy(object_schema => 'Admin_ols1',
+                        object_name => 'phancong',
+                        policy_name => 'GIAOVU_PHANCONG',
+                        policy_function => 'sua_phan_cong_cua_vpk',
+                        statement_types => 'update',update_check => TRUE );
+end;
 /
 --execute dbms_rls.drop_policy(object_schema => 'Admin_ols1',object_name => 'phancong',policy_name => 'GIAOVU_PHANCONG');
 /

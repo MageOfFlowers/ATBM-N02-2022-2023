@@ -123,3 +123,4 @@ C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATB
 C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.csproj.CopyComplete
 C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.exe
 C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.pdb
+C:\KHTN\n3_hk2\ATBM\DoAn\src\ATBM-N02-2022-2023\ATBM_FrontEnd\ATBM\obj\Debug\ATBM.Admin.Recover.resources
