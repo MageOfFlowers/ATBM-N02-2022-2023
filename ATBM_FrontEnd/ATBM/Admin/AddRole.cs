@@ -29,7 +29,6 @@ namespace ATBM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
                 MessageBox.Show("không hợp lệ");
             }
             finally
