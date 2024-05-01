@@ -110,7 +110,7 @@ namespace ATBM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi không hợp lệ");
             }
             Close();
         }

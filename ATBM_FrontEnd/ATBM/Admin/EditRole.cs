@@ -37,7 +37,7 @@ namespace ATBM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi");
             }
         }
 
@@ -68,7 +68,7 @@ namespace ATBM
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Lỗi");
                 }
             }
         }

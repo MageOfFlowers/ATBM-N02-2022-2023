@@ -70,14 +70,14 @@ namespace ATBM
                     try
                     {
                         adminBUS.DeleteRole(role);
-                        MessageBox.Show("Delete success");
+                        MessageBox.Show("Xóa thành công");
                         Close();
                         Roles r = new Roles();
                         r.ShowDialog();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Xóa không thành công");
                     }
                 }
             }

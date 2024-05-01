@@ -47,5 +47,10 @@ namespace ATBM
             NhatKyHeThong t = new NhatKyHeThong();
             t.ShowDialog();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

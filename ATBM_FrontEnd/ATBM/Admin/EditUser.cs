@@ -42,7 +42,7 @@ namespace ATBM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi hiển thị quyền");
             }
         }
 
@@ -56,7 +56,7 @@ namespace ATBM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi hiển thị Role");
             }
 
         }
@@ -76,7 +76,7 @@ namespace ATBM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi");
             }
 
             DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
@@ -100,11 +100,11 @@ namespace ATBM
                 try
                 {
                     adminBUS.RevokePriv(priv, table, username);
-                    MessageBox.Show("Revoke success");
+                    MessageBox.Show("Thu hồi thành công");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Thu hồi không thành công");
                 }
             }
         }
@@ -136,7 +136,7 @@ namespace ATBM
             string role=RoleCB.SelectedItem.ToString();
             if(role=="None")
             {
-                MessageBox.Show("Please choose a role to grant");
+                MessageBox.Show("Vui lòng chọn một vai trò đề cấp");
             }
             else
             {
@@ -157,12 +157,12 @@ namespace ATBM
                 {
                     string a_status = (StatusCB.SelectedItem.ToString() == "OPEN" ? "UNLOCK" : "LOCK");
                     adminBUS.ChangeStatus(Username.Text, a_status);
-                    MessageBox.Show("Success");
+                    MessageBox.Show("Thành công");
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Không thành công");
                 }
             }
         }

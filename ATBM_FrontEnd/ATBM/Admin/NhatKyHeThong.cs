@@ -56,7 +56,7 @@ namespace ATBM.Admin
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi hiển thị");
             }
         }
         private void LayDSThem()
@@ -90,7 +90,7 @@ namespace ATBM.Admin
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi");
             }
         }
 

@@ -126,7 +126,7 @@ namespace ATBM.Admin
                 if (group == "") { group = null; }
                 string NguoiDung = NguoiDungCB.SelectedItem.ToString();
                 AdminBUS.GanNhan(NguoiDung, level, compartment, group);
-                MessageBox.Show("Thành công!");
+                MessageBox.Show("Thành công");
             }
             else
             {

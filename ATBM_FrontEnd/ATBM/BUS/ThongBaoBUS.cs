@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 
 namespace ATBM.BUS
@@ -15,10 +16,21 @@ namespace ATBM.BUS
         {
             DataTable dataTable = new DataTable();
             string sqlQuery = "select * from admin_ols1.thongbao";
-            using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
+            try
             {
-                connection.Open();
-                adapter.Fill(dataTable);
+                using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
+                {
+                    connection.Open();
+                    adapter.Fill(dataTable);
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
                 connection.Close();
             }
             return dataTable;

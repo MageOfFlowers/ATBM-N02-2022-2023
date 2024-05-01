@@ -30,7 +30,7 @@ namespace ATBM
                 {
                     if (username == "ADMIN_OLS1")
                     {
-                        MessageBox.Show("CANNOT EDIT AN ADMIN!");
+                        MessageBox.Show("KHÔNG THỂ SỬA QUẢN TRỊ VIÊN");
                         return;
                     }
                     EditUser editUser = new EditUser(username, status);
@@ -40,13 +40,13 @@ namespace ATBM
                 {
                     if (username == "ADMIN_OLS1")
                     {
-                        MessageBox.Show("CANNOT DELETE AN ADMIN!");
+                        MessageBox.Show("KHÔNG THỂ XÓA QUẢN TRỊ VIÊN");
                         return;
                     }
                     try
                     {
                         adminBUS.DeleteUser(username);
-                        MessageBox.Show("Delete success");
+                        MessageBox.Show("Xóa thành công");
                         Close();
                         Users u = new Users();
                         u.ShowDialog();
@@ -54,7 +54,7 @@ namespace ATBM
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Xóa không thành công");
                     }
                 }
             }
@@ -69,7 +69,7 @@ namespace ATBM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("lỗi hiển thị");
             }
 
 

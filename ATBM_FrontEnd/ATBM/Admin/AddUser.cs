@@ -34,11 +34,11 @@ namespace ATBM
                 {
                     adminBUS.AddRoleToUser(role, username);
                 }
-                MessageBox.Show("Success");
+                MessageBox.Show("Thêm thành công");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi không hợp lệ");
             }
             finally
             {
@@ -61,7 +61,7 @@ namespace ATBM
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi");
             }
         }
     }

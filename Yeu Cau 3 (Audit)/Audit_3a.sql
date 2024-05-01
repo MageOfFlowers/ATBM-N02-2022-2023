@@ -10,11 +10,10 @@ CURSOR gv_cursor IS
 BEGIN
     FOR gv IN gv_cursor LOOP
         IF gv.MANV = sys_context('userenv', 'session_user') THEN
-            RETURN '1=1';
+            RETURN 1;
         END IF;
     END LOOP;
-    
-    RETURN '1=0';
+    RETURN 0;
 END;
 /
 BEGIN
@@ -22,7 +21,7 @@ BEGIN
     object_schema   => 'ADMIN_OLS1',
     object_name     => 'DANGKY',
     policy_name     => 'AUDIT_3A',
-    audit_condition => 'check_giang_vien()',
+    audit_condition => 'admin_ols1.check_giang_vien()=0',
     audit_column    => 'DIEMTH, DIEMQT, DIEMCK, DIEMTK',        
     enable          => TRUE,
     statement_types => 'UPDATE'
@@ -38,7 +37,8 @@ BEGIN
   );
 END;
 */
-SELECT * FROM DBA_FGA_AUDIT_TRAIL
-WHERE policy_name = 'AUDIT_2A';
-grant select on nhansu to role_giangvien;
+SELECT DBUSERNAME, SQL_TEXT, AUDIT_TYPE,EVENT_TIMESTAMP 
+FROM UNIFIED_AUDIT_TRAIL 
+WHERE OBJECT_SCHEMA = 'ADMIN_OLS1' AND OBJECT_NAME = 'DANGKY' and audit_type='FineGrainedAudit';
+
 update DANGKY set diemth = 10, diemtk = 5 where masv = 'SV003';
