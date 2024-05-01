@@ -155,26 +155,26 @@ for r in (SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = user)
 loop
     IF r.granted_role = 'ROLE_SINHVIEN' then 
     begin
-SELECT TRUNC(CURRENT_DATE) into current_date FROM dual;
-first := to_date('1-1-' || TO_CHAR(SYSDATE, 'YYYY'), 'DD-MM-YYYY');
-second := to_date('1-5-' || TO_CHAR(SYSDATE, 'YYYY'), 'DD-MM-YYYY');
-third := to_date('1-9-' || TO_CHAR(SYSDATE, 'YYYY'), 'DD-MM-YYYY');
-p_NAM := EXTRACT(YEAR FROM CURRENT_DATE);
-IF EXTRACT(DAY FROM CURRENT_DATE) BETWEEN EXTRACT(DAY FROM first) AND EXTRACT(DAY FROM first+14) AND
-    EXTRACT(MONTH FROM CURRENT_DATE) BETWEEN EXTRACT(MONTH FROM first) AND EXTRACT(MONTH FROM first+14) THEN
-    p_HK := 1;
-ELSIF EXTRACT(DAY FROM CURRENT_DATE) BETWEEN EXTRACT(DAY FROM second) AND EXTRACT(DAY FROM second+14) AND
-    EXTRACT(MONTH FROM CURRENT_DATE) BETWEEN EXTRACT(MONTH FROM second) AND EXTRACT(MONTH FROM second+14) THEN
-    p_HK := 2;
-ELSIF EXTRACT(DAY FROM CURRENT_DATE) BETWEEN EXTRACT(DAY FROM third) AND EXTRACT(DAY FROM third+14) AND
-    EXTRACT(MONTH FROM CURRENT_DATE) BETWEEN EXTRACT(MONTH FROM third) AND EXTRACT(MONTH FROM third+14) THEN
-    p_HK := 3; 
-ELSE
-    p_HK := 0;
-END IF;
-user := SYS_CONTEXT('userenv', 'SESSION_USER');
-SELECT MACT INTO p_MACT FROM SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
-select MAHP bulk collect into mahpArr from Admin_ols1.KHMO where MACT = p_MACT;
+        SELECT TRUNC(CURRENT_DATE) into current_date FROM dual;
+        first := to_date('1-1-' || TO_CHAR(SYSDATE, 'YYYY'), 'DD-MM-YYYY');
+        second := to_date('1-5-' || TO_CHAR(SYSDATE, 'YYYY'), 'DD-MM-YYYY');
+        third := to_date('1-9-' || TO_CHAR(SYSDATE, 'YYYY'), 'DD-MM-YYYY');
+        p_NAM := EXTRACT(YEAR FROM CURRENT_DATE);
+        IF EXTRACT(DAY FROM CURRENT_DATE) BETWEEN EXTRACT(DAY FROM first) AND EXTRACT(DAY FROM first+14) AND
+            EXTRACT(MONTH FROM CURRENT_DATE) BETWEEN EXTRACT(MONTH FROM first) AND EXTRACT(MONTH FROM first+14) THEN
+            p_HK := 1;
+        ELSIF EXTRACT(DAY FROM CURRENT_DATE) BETWEEN EXTRACT(DAY FROM second) AND EXTRACT(DAY FROM second+14) AND
+            EXTRACT(MONTH FROM CURRENT_DATE) BETWEEN EXTRACT(MONTH FROM second) AND EXTRACT(MONTH FROM second+14) THEN
+            p_HK := 2;
+        ELSIF EXTRACT(DAY FROM CURRENT_DATE) BETWEEN EXTRACT(DAY FROM third) AND EXTRACT(DAY FROM third+14) AND
+            EXTRACT(MONTH FROM CURRENT_DATE) BETWEEN EXTRACT(MONTH FROM third) AND EXTRACT(MONTH FROM third+14) THEN
+            p_HK := 3; 
+        ELSE
+            p_HK := 0;
+        END IF;
+        user := SYS_CONTEXT('userenv', 'SESSION_USER');
+        SELECT MACT INTO p_MACT FROM SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
+        select MAHP bulk collect into mahpArr from Admin_ols1.KHMO where MACT = p_MACT;
         if(mahpArr.count>1) then
             begin
             mahp_s:= chr(39)|| mahpArr(1) || chr(39);
@@ -184,7 +184,10 @@ select MAHP bulk collect into mahpArr from Admin_ols1.KHMO where MACT = p_MACT;
                 end loop;
             end;
         end if;
-return 'NAM = ''' || p_NAM ||''' AND HK = ''' || p_HK || ''' AND MASV = ''' || user || ''' MAHP in (' || mahp_s || ')';
+        return 'NAM = ''' || p_NAM ||''' AND HK = ''' || p_HK || ''' AND MASV = ''' || user || ''' and MAHP in (' || mahp_s || ')';
+    end;
+    end if;
+    end loop;
 End;                                                    
 /
 begin
@@ -229,3 +232,7 @@ dbms_rls.drop_policy (object_schema => 'ADMIN_OLS1',
                             policy_name => 'xem_hoc_phan_trong_hoc_ky_nay_policy');
 end;
 */
+select * from all_policies where object_name = 'DANGKY';
+grant execute on XEMBT_DANGKY to SV001;
+grant execute on XEM_CUA_CHINH_MINH_FUNCTION to SV001;
+grant execute on DANG_KY_HOC_PHAN_TRONG_HOC_KY_NAY_FUNCTION to SV001;
