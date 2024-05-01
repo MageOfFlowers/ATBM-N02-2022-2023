@@ -48,7 +48,10 @@
             this.HanhDongCB = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.HanhDongCB2 = new System.Windows.Forms.ComboBox();
+            this.DoiCheDo = new System.Windows.Forms.Button();
+            this.PolicyDGV = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.NhatKyDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PolicyDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // BatGhiNhatKy
@@ -57,7 +60,7 @@
             this.BatGhiNhatKy.Name = "BatGhiNhatKy";
             this.BatGhiNhatKy.Size = new System.Drawing.Size(231, 27);
             this.BatGhiNhatKy.TabIndex = 0;
-            this.BatGhiNhatKy.Text = "Bật Ghi nhật ký";
+            this.BatGhiNhatKy.Text = "Theo dõi đối tượng";
             this.BatGhiNhatKy.UseVisualStyleBackColor = true;
             this.BatGhiNhatKy.Click += new System.EventHandler(this.BatGhiNhatKy_Click);
             // 
@@ -105,7 +108,7 @@
             this.NhatKyDGV.Name = "NhatKyDGV";
             this.NhatKyDGV.RowHeadersWidth = 51;
             this.NhatKyDGV.RowTemplate.Height = 24;
-            this.NhatKyDGV.Size = new System.Drawing.Size(723, 534);
+            this.NhatKyDGV.Size = new System.Drawing.Size(719, 265);
             this.NhatKyDGV.TabIndex = 7;
             this.NhatKyDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -233,11 +236,34 @@
             this.HanhDongCB2.TabIndex = 23;
             this.HanhDongCB2.SelectedIndexChanged += new System.EventHandler(this.HanhDongCB2_SelectedIndexChanged);
             // 
+            // DoiCheDo
+            // 
+            this.DoiCheDo.Location = new System.Drawing.Point(50, 575);
+            this.DoiCheDo.Name = "DoiCheDo";
+            this.DoiCheDo.Size = new System.Drawing.Size(231, 27);
+            this.DoiCheDo.TabIndex = 25;
+            this.DoiCheDo.Text = "Bật Chế độ Ghi Nhật ký";
+            this.DoiCheDo.UseVisualStyleBackColor = true;
+            this.DoiCheDo.Click += new System.EventHandler(this.DoiCheDo_Click);
+            // 
+            // PolicyDGV
+            // 
+            this.PolicyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PolicyDGV.Location = new System.Drawing.Point(504, 367);
+            this.PolicyDGV.Name = "PolicyDGV";
+            this.PolicyDGV.RowHeadersWidth = 51;
+            this.PolicyDGV.RowTemplate.Height = 24;
+            this.PolicyDGV.Size = new System.Drawing.Size(719, 203);
+            this.PolicyDGV.TabIndex = 26;
+            this.PolicyDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PolicyDGV_CellContentClick);
+            // 
             // NhatKyHeThong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 629);
+            this.Controls.Add(this.PolicyDGV);
+            this.Controls.Add(this.DoiCheDo);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.HanhDongCB2);
             this.Controls.Add(this.label9);
@@ -262,6 +288,7 @@
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.NhatKyHeThong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NhatKyDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PolicyDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,5 +316,7 @@
         private System.Windows.Forms.ComboBox HanhDongCB;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox HanhDongCB2;
+        private System.Windows.Forms.Button DoiCheDo;
+        private System.Windows.Forms.DataGridView PolicyDGV;
     }
 }

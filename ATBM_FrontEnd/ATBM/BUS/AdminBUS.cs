@@ -1,8 +1,9 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
@@ -13,6 +14,7 @@ using System.Data.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ATBM.DTO;
 using System.CodeDom.Compiler;
+using System.Text.RegularExpressions;
 
 namespace ATBM.BUS
 {
@@ -92,6 +94,7 @@ namespace ATBM.BUS
             return ds;
         }
 
+
         public DataTable RoleList2()
         {
             DataTable dataTable = new DataTable();
@@ -103,6 +106,49 @@ namespace ATBM.BUS
             }
             connection.Close();
             return dataTable;
+        }
+
+        public DataTable AuditPolicyList()
+        {
+            DataTable dataTable = new DataTable();
+            string procedureName = "lay_ds_audit_policy";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                OracleDataAdapter da = new OracleDataAdapter();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                da.SelectCommand = command;
+                da.Fill(dataTable);
+                connection.Close();
+            }
+            return dataTable;
+        }
+
+        public void ThayDoi(bool bat, string policy)
+        {
+            string STRSQL = "";
+            if (bat) { STRSQL = "NOAUDIT policy "+policy; }
+            else { 
+                STRSQL = "AUDIT policy " + policy; 
+            }
+            string pattern = @"(SV\d+|NV\d+)";
+            Match match = Regex.Match(policy, pattern);
+            string id = match.Value;
+            char last = policy.Last();
+            STRSQL += " BY " + id;
+            if (last == '1') { STRSQL += " whenever successful"; }
+            else if (last == '0') { STRSQL += " whenever not successful"; }
+            Console.WriteLine(STRSQL);
+            using (OracleCommand command = new OracleCommand(STRSQL, connection))
+            {
+                connection.Open();
+                    
+                    command.ExecuteNonQuery();
+                
+                connection.Close();
+            }
         }
         public IList<string> ViewList()
         {
@@ -144,6 +190,37 @@ namespace ATBM.BUS
                 connection.Close();
             }
             return dataTable;
+        }
+
+        public bool NhatKyCoHoatDong()
+        {
+            bool bat;
+            string procedureName = "NhatKyCoHoatDong";
+            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            {
+                connection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("c1", OracleDbType.Boolean).Direction = ParameterDirection.Output;
+
+                command.ExecuteNonQuery();
+                bat = (command.Parameters["c1"].Value.ToString() == "true");
+                Console.WriteLine(bat);
+                connection.Close();
+            }
+            return bat;
+        }
+
+        public void ThayDoiHoatDong(bool bat)
+        {
+            string STRSQL="";
+            if ( bat ) { STRSQL = "ALTER SYSTEM SET audit_trail = none SCOPE = SPFILE"; }
+            else { STRSQL = "ALTER SYSTEM SET audit_trail = db SCOPE = SPFILE"; }
+            using (OracleCommand command = new OracleCommand(STRSQL, connection))
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
         public void ThemThongBao(string noidung, string level, string compartment, string group)
@@ -518,4 +595,5 @@ namespace ATBM.BUS
             return ds;
         }
     }
+
 }
