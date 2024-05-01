@@ -120,3 +120,21 @@ open c1 for
 select grp from dba_sa_user_groups where policy_name = 'REGION_POLICY2' and user_name = p_user;
 DBMS_SQL.RETURN_RESULT(c1);
 end;
+/
+create or replace procedure gan_nhan (user nvarchar2, level varchar2, compartment varchar2, p_group varchar2)
+as 
+STRSQL VARCHAR(2000);
+begin
+    STRSQL:=level||':';
+    if compartment is not null then
+        STRSQL:=STRSQL||compartment;
+    end if;
+    STRSQL:=STRSQL||':';
+    if p_group is not null then
+        STRSQL:=STRSQL||p_group;
+    end if;
+     BEGIN
+     SA_USER_ADMIN.SET_USER_LABELS('region_policy2',user,STRSQL);
+    END;
+end;
+/
