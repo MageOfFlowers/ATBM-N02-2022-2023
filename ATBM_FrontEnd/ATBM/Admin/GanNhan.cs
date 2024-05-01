@@ -105,7 +105,7 @@ namespace ATBM.Admin
                     {
                         compartment += item + ",";
                     }
-                    compartment.Remove(compartment.Length - 1, 1);
+                    compartment = compartment.Substring(0, compartment.Length - 1);
                 }
 
                 CheckedListBox.CheckedItemCollection selectedItems3 = GroupCLB.CheckedItems;
@@ -120,7 +120,7 @@ namespace ATBM.Admin
 
                         group += tmp + ",";
                     }
-                    group.Remove(group.Length - 1, 1);
+                    group = group.Substring(0, group.Length - 1);
                 }
                 if (compartment == "") { compartment = null; }
                 if (group == "") { group = null; }
