@@ -13,7 +13,7 @@ begin
     m_user := sys_context('userenv', 'session_user');
     for r in (SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = m_user)
     loop
-        IF (r.granted_role = 'ROLE_TRUONGDONVI' or r.granted_role = 'ROLE_TRUONGKHOA') then 
+        IF (r.granted_role = 'ROLE_TRUONGKHOA' or r.granted_role = 'DBA') then 
             return '1=1';
         end if;
     END LOOP;

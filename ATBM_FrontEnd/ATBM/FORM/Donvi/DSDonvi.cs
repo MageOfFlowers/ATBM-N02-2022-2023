@@ -18,6 +18,7 @@ namespace ATBM.FORM
         static DonViBUS dv = new DonViBUS();
         IList<DonViDTO> dsdv = dv.lay_ds_don_vi();
         DonViDTO ds = new DonViDTO();
+        int role;
         public DSDonvi()
         {
             InitializeComponent();
@@ -26,19 +27,34 @@ namespace ATBM.FORM
         public DSDonvi(int m_role)
         {
             InitializeComponent();
+            role = m_role;
             loadDS();
         }
 
         private void loadDS()
         {
             DonVi_dgv.DataSource = dsdv;
+            if (role == 5)
+            {
+                DataGridViewButtonColumn dtColumn = new DataGridViewButtonColumn();
+                dtColumn.Name = "CT";
+                dtColumn.Text = "Chi tiết";
+                dtColumn.HeaderText = "Chi tiết nhân sự";
+                dtColumn.UseColumnTextForButtonValue = true;
+                DonVi_dgv.Columns.Add(dtColumn);
+
+                DonVi_dgv.CellContentClick += DonVi_dgv_CellContentClick;
+            }
         }
 
-        private void DSDonviBTN_Click(object sender, EventArgs e)
+        private void DonVi_dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string MSDV_B = MsDV_B.Text;
-            ThongtinNhansu f = new ThongtinNhansu();// (MSDV_B);
-            f.ShowDialog();
+            if (e.ColumnIndex == DonVi_dgv.Columns["CT"].Index)
+            {
+                string madv = DonVi_dgv.Rows[e.RowIndex].Cells["MADV"].Value.ToString();
+                ThongtinNhansu t = new ThongtinNhansu(madv);
+                t.Show();
+            }    
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -49,13 +65,6 @@ namespace ATBM.FORM
         private void DSDonvi_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void DSDonviBTN_Click_1(object sender, EventArgs e)
-        {
-            string MSDV_B = MsDV_B.Text;
-            ThongtinNhansu f = new ThongtinNhansu();// (MSDV_B);
-            f.ShowDialog();
         }
     }
 }
