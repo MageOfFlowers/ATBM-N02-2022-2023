@@ -191,10 +191,69 @@ DBMS_SQL.RETURN_RESULT(c1);
 end;
 /
 
+create or replace procedure them_nhan_su(m_manv varchar2, m_hoten varchar2, m_phai char, m_ngsinh date, m_phucap number, m_dt varchar2, m_vaitro varchar2, m_madv varchar2)
+as
+begin
+    insert into admin_ols1.nhansu values (m_manv, m_hoten, m_phai, m_ngsinh, m_phucap, m_dt, m_vaitro, m_madv);
+    begin
+        admin_ols1.USP_CREATEUSER;
+        admin_ols1.USP_ADDUSRMEM;
+    end;
+end;
+/
+
+create or replace procedure xoa_nhan_su(m_manv varchar2)
+as
+begin
+    delete admin_ols1.nhansu where manv = m_manv;
+    execute immediate 'drop user ' || m_manv; 
+end;
+/
+
+create or replace procedure sua_nhan_su(m_manv varchar2, m_hoten varchar2, m_phai char, m_ngsinh date, m_phucap number, m_dt varchar2, m_vaitro_cu varchar2, m_vaitro_moi varchar2, m_madv varchar2)
+as
+revoke_role varchar2(20);
+grant_role varchar2(20);
+begin
+    update admin_ols1.nhansu
+    set hoten = m_hoten, phai = m_phai, ngsinh = m_ngsinh, phucap = m_phucap, dt = m_dt, vaitro = m_vaitro_moi, madv = m_madv
+    where manv = m_manv;
+    
+    if (m_vaitro_cu != m_vaitro_moi) then
+        IF (m_vaitro_cu = 'Nhan vien co ban') then
+            revoke_role := 'ROLE_NHANVIEN';
+        ELSIF (m_vaitro_cu = 'Giang vien') then
+            revoke_role := 'ROLE_GIANGVIEN';
+        ELSIF (m_vaitro_cu = 'Giao vu') then
+            revoke_role := 'ROLE_GIAOVU';
+        ELSIF (m_vaitro_cu = 'Truong don vi') then
+            revoke_role := 'ROLE_TRUONGDONVI';
+        END IF;    
+        
+        IF (m_vaitro_moi = 'Nhan vien co ban') then
+            grant_role := 'ROLE_NHANVIEN';
+        ELSIF (m_vaitro_moi = 'Giang vien') then
+            grant_role := 'ROLE_GIANGVIEN';
+        ELSIF (m_vaitro_moi = 'Giao vu') then
+            grant_role := 'ROLE_GIAOVU';
+        ELSIF (m_vaitro_moi = 'Truong don vi') then
+            grant_role := 'ROLE_TRUONGDONVI';
+        END IF;
+        
+        execute immediate 'Revoke ' || revoke_role || ' from ' || m_manv;
+        execute immediate 'Grant ' || grant_role || ' to ' || m_manv;
+    end if;
+end;
+/
+
 grant execute on lay_ds_nhan_su to role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_tin_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on cap_nhat_sdt_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on xem_vai_tro to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
+grant execute on them_nhan_su to role_truongkhoa;
+grant execute on xoa_nhan_su to role_truongkhoa;
+grant execute on sua_nhan_su to role_truongkhoa;
+
 
 --Sinh vien
 create or replace procedure lay_danh_sach_sinh_vien(c1 out SYS_REFCURSOR)

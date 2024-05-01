@@ -3,13 +3,19 @@ alter session set "_ORACLE_SCRIPT"=true;
 create role ROLE_TRUONGKHOA
 not identified;
 
-grant ROLE_GIANGVIEN to ROLE_TRUONGKHOA;
+grant ROLE_NHANVIEN to ROLE_TRUONGKHOA WITH ADMIN OPTION;
+grant ROLE_GIANGVIEN to ROLE_TRUONGKHOA WITH ADMIN OPTION;
+grant ROLE_GIAOVU to ROLE_TRUONGKHOA WITH ADMIN OPTION;
+grant ROLE_TRUONGDONVI to ROLE_TRUONGKHOA WITH ADMIN OPTION;
+
 grant select,insert, update, delete on NHANSU to ROLE_TRUONGKHOA;
 grant select on HOCPHAN to ROLE_TRUONGKHOA;
 grant select on KHMO to ROLE_TRUONGKHOA;
 --grant select on KHMO to NV001;
 grant SELECT ANY TABLE to ROLE_TRUONGKHOA;
-
+grant create user, drop user to ROLE_TRUONGKHOA;
+grant execute on USP_CREATEUSER to ROLE_TRUONGKHOA;
+grant execute on USP_ADDUSRMEM to ROLE_TRUONGKHOA;
 --SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = 'NV001';
 
 create or replace function xem_phan_cong_chinh_minh_functionTK(p_schema varchar2, p_obj varchar2)

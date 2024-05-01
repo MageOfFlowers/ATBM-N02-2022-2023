@@ -1,4 +1,3 @@
-
 alter table DONVI drop constraint FK_DONVI_TRGDV;
 alter table NHANSU drop constraint FK_NHANSU_MADV;
 alter table HOCPHAN drop constraint FK_HOCPHAN_MADV;
@@ -169,7 +168,7 @@ insert into hocphan values ('CSC11005',N'Thuc tap mang may tinh',4,45,30,45,'MMT
 insert into hocphan values ('CSC11002',N'He thong vien thong',4,45,30,45,'MMT');
 insert into hocphan values ('BAA00004',N'Phap luat dai cuong',3,45,0,90,'VPK');
 insert into hocphan values ('BAA00021',N'The duc 1',2,15,30,45,'VPK');
-insert into hocphan values ('BAA00101',N'Triet hoc Mac – Lenin',3,45,0,90,'VPK');
+insert into hocphan values ('BAA00101',N'Triet hoc Mac ? Lenin',3,45,0,90,'VPK');
 
 //KHMO
 insert into KHMO values ('CSC12002',1,2023,'CLC');
