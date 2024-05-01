@@ -55,7 +55,7 @@ namespace ATBM.BUS
             return ds;
         }
 
-        public IList<LopDTO> ds_HocPhanDangKy(string masv)
+        public IList<LopDTO> ds_HocPhanDangKy()
         {
             string procedureName = "admin_ols1.xem_khm_cua_sv";
             IList<LopDTO> ds = new List<LopDTO>();
@@ -67,7 +67,47 @@ namespace ATBM.BUS
                     OracleDataAdapter da = new OracleDataAdapter();
                     DataTable dataTable = new DataTable();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("m_masv", OracleDbType.Varchar2).Value = masv;
+                    command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                    da.SelectCommand = command;
+                    da.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        LopDTO obj = new LopDTO();
+                        obj.MAHP = row["mahp"].ToString();
+                        obj.TENHP = row["tenhp"].ToString();
+                        obj.HK = Convert.ToInt32(row["hk"]);
+                        obj.NAM = Convert.ToInt32(row["nam"]);
+                        obj.MACT = row["mact"].ToString();
+
+                        ds.Add(obj);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ds;
+        }
+
+        public IList<LopDTO> ds_DaDangKy()
+        {
+            string procedureName = "admin_ols1.xem_khm_da_dk";
+            IList<LopDTO> ds = new List<LopDTO>();
+            try
+            {
+                using (OracleCommand command = new OracleCommand(procedureName, connection))
+                {
+                    connection.Open();
+                    OracleDataAdapter da = new OracleDataAdapter();
+                    DataTable dataTable = new DataTable();
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
 
                     da.SelectCommand = command;

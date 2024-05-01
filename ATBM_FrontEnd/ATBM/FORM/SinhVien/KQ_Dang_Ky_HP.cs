@@ -16,9 +16,8 @@ namespace ATBM.FORM.SinhVien
 {
     public partial class KQ_Dang_Ky_HP : Form
     {
-        private static LopBUS lop = new LopBUS();
-        private HocPhanBUS hp = new HocPhanBUS();
-        IList<LopDTO> ds = lop.layDSLop();
+        private static HocPhanBUS hp = new HocPhanBUS();
+        IList<LopDTO> ds = hp.ds_DaDangKy();
 
         string masv;
         public KQ_Dang_Ky_HP(string username)
