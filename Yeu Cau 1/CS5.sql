@@ -4,12 +4,13 @@ create role ROLE_TRUONGKHOA
 not identified;
 
 grant ROLE_GIANGVIEN to ROLE_TRUONGKHOA;
-grant select, update, delete on NHANSU to ROLE_TRUONGKHOA;
+grant select,insert, update, delete on NHANSU to ROLE_TRUONGKHOA;
 grant select on HOCPHAN to ROLE_TRUONGKHOA;
-grant SELECT ANY TABLE to NV001;
+grant select on KHMO to ROLE_TRUONGKHOA;
+--grant select on KHMO to NV001;
+grant SELECT ANY TABLE to ROLE_TRUONGKHOA;
 
-SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = 'NV001';
-
+--SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = 'NV001';
 
 create or replace function xem_phan_cong_chinh_minh_functionTK(p_schema varchar2, p_obj varchar2)
 return varchar2
@@ -52,8 +53,12 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             policy_name => 'xem_phan_cong_policyTK',
                             function_schema => 'ADMIN_OLS1',
                             policy_function => 'xem_phan_cong_chinh_minh_functionTK',
-                            statement_types => 'select, delete',
+                            statement_types => 'insert,update, delete',
                             update_check => TRUE );
 end;
 
-execute dbms_rls.drop_policy(object_schema => 'ADMIN_OLS1',object_name => 'phancong',policy_name => 'xem_phan_cong_policy');
+execute dbms_rls.drop_policy(object_schema => 'ADMIN_OLS1',object_name => 'phancong',policy_name => 'xem_phan_cong_policyTK');
+
+grant execute on XEM_CUA_CHINH_MINH_FUNCTION to NV001;
+grant execute on DANG_KY_HOC_PHAN_TRONG_HOC_KY_NAY_FUNCTION to NV001;
+
