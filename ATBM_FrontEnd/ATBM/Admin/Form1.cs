@@ -1,4 +1,5 @@
 ﻿using ATBM.Admin;
+using ATBM.BUS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,9 +49,22 @@ namespace ATBM
             t.ShowDialog();
         }
 
+<<<<<<< Updated upstream
         private void Form1_Load(object sender, EventArgs e)
         {
 
+=======
+        private void button3_Click(object sender, EventArgs e)
+        {
+            cmdBUS cmdBUS = new cmdBUS();
+            cmdBUS.TaoCheckPoint();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Recover r=new Recover();
+            r.ShowDialog();
+>>>>>>> Stashed changes
         }
     }
 }
