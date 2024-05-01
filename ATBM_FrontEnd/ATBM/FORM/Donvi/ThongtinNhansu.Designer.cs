@@ -54,6 +54,7 @@ namespace ATBM.FORM.Donvi
             this.TTNhansu_BTN.TabIndex = 8;
             this.TTNhansu_BTN.Text = "Chọn";
             this.TTNhansu_BTN.UseVisualStyleBackColor = true;
+            this.TTNhansu_BTN.Click += new System.EventHandler(this.TTNhansu_BTN_Click);
             // 
             // label1
             // 

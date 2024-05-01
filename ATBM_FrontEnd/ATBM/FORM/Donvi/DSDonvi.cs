@@ -50,5 +50,12 @@ namespace ATBM.FORM
         {
 
         }
+
+        private void DSDonviBTN_Click_1(object sender, EventArgs e)
+        {
+            string MSDV_B = MsDV_B.Text;
+            ThongtinNhansu f = new ThongtinNhansu();// (MSDV_B);
+            f.ShowDialog();
+        }
     }
 }
