@@ -80,25 +80,26 @@ FROM
 WHERE
     object_type = 'PROCEDURE';
     
-    
-declare
-p_MACT VARCHAR2(100);
-TYPE v_array_type IS VARRAY (20) OF CHAR(8);
-        mahpArr v_array_type;
-        mahp_s varchar(200);
-user VARCHAR2(100);
-Begin
-user := SYS_CONTEXT('userenv', 'SESSION_USER');
-SELECT MACT INTO p_MACT FROM admin_ols1.SINHVIEN WHERE MASV = SYS_CONTEXT('userenv', 'SESSION_USER');
-select MAHP bulk collect into mahpArr from Admin_ols1.KHMO where MACT = p_MACT;
-        if(mahpArr.count>1) then
-            begin
-            mahp_s:= chr(39)|| mahpArr(1) || chr(39);
-                for x in 2..mahpArr.count 
-                loop
-                  mahp_s := mahp_s||','||chr(39)|| mahpArr(x)|| chr(39);
-                end loop;
-            end;
-        end if;
-        DBMS_OUTPUT.PUT_LINE( 'MAHP in (' || mahp_s || ')');
-End;
+create or replace procedure NhatKyCoHoatDong(c1 out boolean)
+as
+str varchar2(100);
+begin
+    SELECT value into str FROM v$option WHERE parameter = 'Unified Auditing';
+    if ('FALSE'=str) then c1:=false;
+    else c1:=true;
+    end if;
+end;
+/
+create or replace procedure lay_ds_audit_policy(c1 out SYS_REFCURSOR)
+as
+begin
+open c1 for
+SELECT 0 as TrangThai,policy_name, object_name, audit_option FROM AUDIT_UNIFIED_POLICIES where policy_name not like 'ORA%' and policy_name not in (select policy_name FROM AUDIT_UNIFIED_ENABLED_POLICIES where policy_name not like 'ORA%')
+union
+SELECT 1 as TrangThai,policy_name, object_name, audit_option FROM AUDIT_UNIFIED_POLICIES where policy_name not like 'ORA%' and policy_name in (select policy_name FROM AUDIT_UNIFIED_ENABLED_POLICIES where policy_name not like 'ORA%');
+DBMS_SQL.RETURN_RESULT(c1);
+end;
+create audit POLICY DONVISV001SELECT_POLICY1
+actions select on donvi;
+AUDIT policy DONVISV001SELECT_POLICY1 BY SV002 whenever successful;
+NOAUDIT policy DONVISV001SELECT_POLICY1 BY SV002 whenever successful;

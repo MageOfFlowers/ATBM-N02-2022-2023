@@ -2,6 +2,7 @@
 using ATBM.Admin.DTO;
 using ATBM.BUS;
 using ATBM.DTO;
+using ATBM.FORM.KeHoachMo;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,37 @@ namespace ATBM.Admin
             InitializeComponent();
             LayDSNhatKy();
             LayDSThem();
+            //Console.WriteLine(AdminBUS.NhatKyCoHoatDong());
+            DataTable dt = AdminBUS.AuditPolicyList();
+            PolicyDGV.DataSource = dt;
+            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
+            editColumn.Name = "Change";
+            editColumn.HeaderText = "Bật/tắt";
+            editColumn.Text = "Bật/Tắt";
+            editColumn.UseColumnTextForButtonValue = true;
+            PolicyDGV.Columns.Add(editColumn);
+            PolicyDGV.CellClick += KHM_dvg_CellClick;
+        }
+
+        private void KHM_dvg_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                bool bat = false;
+                string policy = "";
+                if (PolicyDGV.Rows[e.RowIndex].Cells["TrangThai"].Value.ToString() == "1") { bat= true; }
+                policy = PolicyDGV.Rows[e.RowIndex].Cells["POLICY_NAME"].Value.ToString();
+                if (e.ColumnIndex == PolicyDGV.Columns["Change"].Index)
+                {
+                    Console.WriteLine(policy);
+                    AdminBUS.ThayDoi(bat, policy);
+                }
+            
+            }
+            DataTable dt = AdminBUS.AuditPolicyList();
+            PolicyDGV.DataSource = dt;
+            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
+            PolicyDGV.Columns.Add(editColumn);
         }
 
         private void LayDSNhatKy()
@@ -506,6 +538,17 @@ namespace ATBM.Admin
         }
 
         private void NhatKyHeThong_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DoiCheDo_Click(object sender, EventArgs e)
+        {
+            if (AdminBUS.NhatKyCoHoatDong()) { AdminBUS.ThayDoiHoatDong(false); DoiCheDo.Text = "Bật Chế độ Ghi Nhật Ký"; }
+            else { AdminBUS.ThayDoiHoatDong(true); DoiCheDo.Text = "Tắt Chế độ Ghi Nhật Ký"; }
+        }
+
+        private void PolicyDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
