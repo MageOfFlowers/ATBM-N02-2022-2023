@@ -138,8 +138,8 @@ end;
 grant execute on xem_ds_ke_hoach_mo to role_sinhvien, role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on them_ke_hoach to role_giaovu;
 grant execute on thay_doi_ke_hoach to role_giaovu;
-grant execute on xem_khm_cua_sv to role_sinhvien;
-grant execute on xem_khm_da_dk to role_sinhvien;
+grant execute on xem_khm_cua_sv to role_sinhvien, role_giaovu;
+grant execute on xem_khm_da_dk to role_sinhvien, role_giaovu;
 /
 
 
@@ -225,6 +225,13 @@ begin
 end;
 /
 
+create or replace procedure them_sinh_vien(pMASV in varchar2,hotensv in nvarchar2,phaisv in char,ngsinhsv in date, dchisv in nvarchar2,dtsv in varchar2,mactsv in varchar2,manganhsv in varchar2,sotctlsv in number,dtbtlsv in number)
+as
+begin
+    insert into admin_ols1.sinhvien values (pMASV, hotensv, phaisv, ngsinhsv, dchisv, dtsv, mactsv, manganhsv, sotctlsv, dtbtlsv);
+end;
+/
+
 create or replace procedure cap_nhat_tt_sinh_vien(pMASV in varchar2,hotensv in nvarchar2,phaisv in char,ngsinhsv in date, dchisv in nvarchar2,dtsv in varchar2,mactsv in varchar2,manganhsv in varchar2,sotctlsv in number,dtbtlsv in number)
 as
 begin
@@ -234,8 +241,9 @@ end;
 /
 
 grant execute on lay_danh_sach_sinh_vien to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
-grant execute on lay_thong_tin_sinh_vien to role_sinhvien;
+grant execute on lay_thong_tin_sinh_vien to role_sinhvien, role_giaovu;
 grant execute on cap_nhat_dia_chi_va_sdt_sinh_vien to role_sinhvien;
+grant execute on them_sinh_vien to role_giaovu;
 grant execute on cap_nhat_tt_sinh_vien to role_giaovu;
 
 
