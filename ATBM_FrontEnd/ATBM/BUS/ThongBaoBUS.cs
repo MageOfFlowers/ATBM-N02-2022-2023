@@ -14,16 +14,11 @@ namespace ATBM.BUS
         public DataTable LayThongBao()
         {
             DataTable dataTable = new DataTable();
-            string procedureName = "admin_ols1.lay_thong_bao";
-            using (OracleCommand command = new OracleCommand(procedureName, connection))
+            string sqlQuery = "select * from admin_ols1.thongbao";
+            using (OracleDataAdapter adapter = new OracleDataAdapter(sqlQuery, connection))
             {
                 connection.Open();
-                OracleDataAdapter da = new OracleDataAdapter();
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("c1", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
-                da.SelectCommand = command;
-
-                da.Fill(dataTable);
+                adapter.Fill(dataTable);
                 connection.Close();
             }
             return dataTable;
