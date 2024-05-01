@@ -25,11 +25,11 @@ namespace ATBM
             {
                 AdminBUS adminBUS = new AdminBUS();
                 adminBUS.AddRole(RoleName.Text);
-                MessageBox.Show("Success");
+                MessageBox.Show("Thêm thành công");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("không hợp lệ");
             }
             finally
             {
