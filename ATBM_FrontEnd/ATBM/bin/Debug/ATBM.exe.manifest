@@ -42,7 +42,7 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ATBM.exe" size="151000">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ATBM.exe" size="154072">
       <assemblyIdentity name="ATBM" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>

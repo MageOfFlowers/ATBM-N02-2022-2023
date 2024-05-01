@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATBM.DTO
 {
-    internal class SinhVienDTO
+    public class SinhVienDTO
     {
         public string MASV { get; set; }
         public string HOTEN { get; set; }

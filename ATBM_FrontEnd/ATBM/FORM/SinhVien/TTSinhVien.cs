@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ATBM.FORM.SinhVien
 {
@@ -17,57 +18,95 @@ namespace ATBM.FORM.SinhVien
     {
         readonly SinhVienBUS sinhVienBUS=new SinhVienBUS();
         readonly DonViBUS donViBUS=new DonViBUS();
-        string masv;
-        int role;
-        public TTSinhVien(string maSV,int r)
+        private bool Them;
+        public TTSinhVien(SinhVienDTO sv)
         {
             InitializeComponent();
-            masv = maSV;
-            role = r;
+            loadComponent(sv);
+            Them = false;
         }
 
-        private void TTSinhVien_Load(object sender, EventArgs e)
+        public TTSinhVien()
         {
-            SinhVienDTO sinhVien = sinhVienBUS.layTTSinhVien(masv);
+            InitializeComponent();
+            loadComboBox();
+            generateMaSV();
+            btnCapNhat.Text = "Thêm";
+            Them = true;
+        }
+
+        private void generateMaSV()
+        {
+            List<string> ds = sinhVienBUS.lay_danh_sach_sinh_vien().Select(sv => sv.MASV).ToList();
+            
+            int maxId = ds
+            .Select(id => int.Parse(id.Substring(2)))
+            .Max();
+
+            int newId = maxId + 1;
+            string masv = "SV" + newId.ToString("D3");
+
             lblMaSV.Text = masv;
-            txtHoTen.Text = sinhVien.HOTEN;
+        }
+
+        private void loadComboBox()
+        {
 
             cbPhai.Items.Clear();
             cbPhai.Items.Add("Nam");
             cbPhai.Items.Add("Nữ");
-            cbPhai.SelectedIndex = sinhVien.PHAI == "M" ? 0 : 1;
-
-            ngaySinh.Value = sinhVien.NGSINH;
-            diaChi.Text = sinhVien.DCHI;
-            sdt.Text = sinhVien.DT;
+            cbPhai.SelectedIndex = 0;
 
             cbMaCT.Items.Clear();
             cbMaCT.Items.Add("CLC");
             cbMaCT.Items.Add("VP");
             cbMaCT.Items.Add("CQ");
             cbMaCT.Items.Add("CTTT");
-            cbMaCT.SelectedIndex = cbMaCT.FindStringExact(sinhVien.MACT);
+            cbMaCT.SelectedIndex = 0;
 
-            cbMaNganh.Items.Clear();
-            List<DonViDTO> dsDonVi = donViBUS.lay_ds_don_vi();
+            IList<DonViDTO> dsDonVi = donViBUS.lay_ds_don_vi();
+
             foreach (DonViDTO d in dsDonVi)
             {
-                if (d.MADV == "VPK") continue;
-                cbMaNganh.Items.Add(d.MADV);
+                if (d.MADV.Trim().ToUpper() != "VPK")
+                {
+                    cbMaNganh.Items.Add(d.MADV.Trim().ToUpper());
+                }
             }
-            cbMaNganh.SelectedIndex = cbMaNganh.FindStringExact(sinhVien.MANGANH);
+            cbMaNganh.SelectedIndex = 0;
+        }
+
+        private void loadComponent(SinhVienDTO sinhVien)
+        {
+            loadComboBox();
+
+            lblMaSV.Text = sinhVien.MASV;
+            txtHoTen.Text = sinhVien.HOTEN;
+
+            cbPhai.SelectedIndex = sinhVien.PHAI == "Nam" ? 0 : 1;
+
+            ngaySinh.Value = sinhVien.NGSINH;
+            diaChi.Text = sinhVien.DCHI;
+            sdt.Text = sinhVien.DT;
+
+            cbMaCT.SelectedIndex = cbMaCT.FindStringExact(sinhVien.MACT);
+
+            cbMaNganh.SelectedIndex = cbMaNganh.FindStringExact(sinhVien.MANGANH.Trim().ToUpper());
+
 
             numSTCTL.Value = sinhVien.SOTCTL;
             numDTBTL.Value = Convert.ToDecimal(sinhVien.DTBTL);
+        }
 
-            CtrlSV.Enabled = (role == 3);
+        private void TTSinhVien_Load(object sender, EventArgs e)
+        {        
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             SinhVienDTO sinhVien = new SinhVienDTO()
             {
-                MASV = masv,
+                MASV = lblMaSV.Text,
                 HOTEN = txtHoTen.Text,
                 PHAI = cbPhai.SelectedIndex == 0 ? "M" : "F",
                 NGSINH = ngaySinh.Value,
@@ -96,7 +135,15 @@ namespace ATBM.FORM.SinhVien
             }
             else
             {
-                sinhVienBUS.cap_nhat_tt_sinh_vien(sinhVien);
+                if (Them)
+                {
+                    sinhVienBUS.them_sinh_vien(sinhVien);
+                }
+                else
+                {
+                    sinhVienBUS.cap_nhat_tt_sinh_vien(sinhVien);
+                }
+                Close();
             }
         }
 

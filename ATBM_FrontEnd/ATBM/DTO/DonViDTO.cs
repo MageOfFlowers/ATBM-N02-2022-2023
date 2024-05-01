@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATBM.DTO
 {
-    internal class DonViDTO
+    public class DonViDTO
     {
         public string MADV { get; set; }
         public string TENDV { get; set; }

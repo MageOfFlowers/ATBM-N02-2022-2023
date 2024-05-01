@@ -86,7 +86,7 @@
             // 
             // KeHoachMo_btn
             // 
-            this.KeHoachMo_btn.Location = new System.Drawing.Point(88, 418);
+            this.KeHoachMo_btn.Location = new System.Drawing.Point(88, 391);
             this.KeHoachMo_btn.Margin = new System.Windows.Forms.Padding(4);
             this.KeHoachMo_btn.Name = "KeHoachMo_btn";
             this.KeHoachMo_btn.Size = new System.Drawing.Size(231, 28);
@@ -97,7 +97,7 @@
             // 
             // DanhSac
             // 
-            this.DanhSac.Location = new System.Drawing.Point(708, 418);
+            this.DanhSac.Location = new System.Drawing.Point(708, 391);
             this.DanhSac.Margin = new System.Windows.Forms.Padding(4);
             this.DanhSac.Name = "DanhSac";
             this.DanhSac.Size = new System.Drawing.Size(221, 28);
@@ -108,7 +108,7 @@
             // 
             // DanhSachDonVi_btn
             // 
-            this.DanhSachDonVi_btn.Location = new System.Drawing.Point(399, 418);
+            this.DanhSachDonVi_btn.Location = new System.Drawing.Point(399, 499);
             this.DanhSachDonVi_btn.Margin = new System.Windows.Forms.Padding(4);
             this.DanhSachDonVi_btn.Name = "DanhSachDonVi_btn";
             this.DanhSachDonVi_btn.Size = new System.Drawing.Size(217, 28);
@@ -152,9 +152,9 @@
             // 
             // DKHP_btn
             // 
-            this.DKHP_btn.Location = new System.Drawing.Point(399, 423);
+            this.DKHP_btn.Location = new System.Drawing.Point(399, 391);
             this.DKHP_btn.Name = "DKHP_btn";
-            this.DKHP_btn.Size = new System.Drawing.Size(217, 23);
+            this.DKHP_btn.Size = new System.Drawing.Size(217, 32);
             this.DKHP_btn.TabIndex = 14;
             this.DKHP_btn.Text = "Đăng ký học phần";
             this.DKHP_btn.UseVisualStyleBackColor = true;
