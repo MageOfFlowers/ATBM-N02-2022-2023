@@ -17,7 +17,7 @@ grant create user, drop user to ROLE_TRUONGKHOA;
 grant execute on USP_CREATEUSER to ROLE_TRUONGKHOA;
 grant execute on USP_ADDUSRMEM to ROLE_TRUONGKHOA;
 --SELECT granted_role FROM DBA_ROLE_PRIVS where grantee = 'NV001';
-
+/
 create or replace function xem_phan_cong_chinh_minh_functionTK(p_schema varchar2, p_obj varchar2)
 return varchar2
 as
@@ -52,7 +52,7 @@ end loop;
 return '1=1';
 end;
 end;
-
+/
 begin
 dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             object_name => 'PHANCONG',
@@ -62,9 +62,10 @@ dbms_rls.add_policy (object_schema => 'ADMIN_OLS1',
                             statement_types => 'insert,update, delete',
                             update_check => TRUE );
 end;
-
+/
+/*
 execute dbms_rls.drop_policy(object_schema => 'ADMIN_OLS1',object_name => 'phancong',policy_name => 'xem_phan_cong_policyTK');
-
+*/
 grant execute on XEM_CUA_CHINH_MINH_FUNCTION to NV001;
 grant execute on DANG_KY_HOC_PHAN_TRONG_HOC_KY_NAY_FUNCTION to NV001;
 

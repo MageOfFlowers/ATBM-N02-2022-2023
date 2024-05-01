@@ -129,7 +129,6 @@ namespace ATBM.BUS
                     command.Parameters.Add("m_hk", OracleDbType.Int32).Value = pc.HK;
                     command.Parameters.Add("m_nam", OracleDbType.Int32).Value = pc.NAM;
                     command.Parameters.Add("m_mact", OracleDbType.Varchar2).Value = pc.MACT;
-                    command.ExecuteNonQuery();
 
                     MessageBox.Show("Thay đổi thành công");
                 }

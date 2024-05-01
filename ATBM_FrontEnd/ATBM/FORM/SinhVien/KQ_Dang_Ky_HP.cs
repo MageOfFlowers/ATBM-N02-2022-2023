@@ -11,62 +11,70 @@ using ATBM.Admin.DTO;
 using ATBM.Admin.BUS;
 using ATBM.FORM.KeHoachMo;
 using ATBM.BUS;
+using ATBM.DTO;
 
 namespace ATBM.FORM.SinhVien
 {
     public partial class KQ_Dang_Ky_HP : Form
     {
         private static HocPhanBUS hp = new HocPhanBUS();
-        IList<LopDTO> ds = hp.ds_DaDangKy();
-
-        string masv;
-        public KQ_Dang_Ky_HP(string username)
+        IList<DangKyDTO> ds = hp.ds_DaDangKy();
+        string masv = "";
+        int role;
+        public KQ_Dang_Ky_HP(int m_role, string username)
         {
             InitializeComponent();
-            loadComboBox();
             masv = username;
+            role = m_role;
+            loadComboBox();
+        }
+
+        public KQ_Dang_Ky_HP(int m_role)
+        {
+            InitializeComponent();
+            role = m_role;
+            loadComboBox();
         }
 
         private void loadComboBox()
         {
-            HocKyCB.DataSource = ds.Select(lop => lop.HK).Distinct().OrderBy(n => n).ToList();
+            HocKyCB.DataSource = ds.Select(hk => hk.HK).Distinct().OrderBy(n => n).ToList();
 
-            NamCB.DataSource = ds.Select(lop => lop.NAM).Distinct().OrderBy(n => n).ToList();
+            NamCB.DataSource = ds.Select(nam => nam.NAM).Distinct().OrderBy(n => n).ToList();
 
             HocPhan_dvg.DataSource = ds;
-            HocPhan_dvg.Columns["display"].Visible = false;
 
-            HocPhan_dvg.Columns[0].HeaderText = "Mã học phần";
-            HocPhan_dvg.Columns[1].HeaderText = "Tên học phần";
-            HocPhan_dvg.Columns[2].HeaderText = "Học kỳ";
-            HocPhan_dvg.Columns[3].HeaderText = "Năm học";
-            HocPhan_dvg.Columns[4].HeaderText = "Chương trình";
+            if (role == 3)
+            {
+                HocPhan_dvg.Columns["MASV"].Visible = true;
+            }
 
             DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
             deleteColumn.Name = "delete";
             deleteColumn.HeaderText = "Hủy đăng ký";
             deleteColumn.Text = "Delete";
             deleteColumn.UseColumnTextForButtonValue = true;
-            HocPhan_dvg.Columns.Insert(5, deleteColumn);
+            HocPhan_dvg.Columns.Add(deleteColumn);
 
             HocPhan_dvg.CellClick += HocPhan_dvg_CellClick;
         }
 
         private void HocPhan_dvg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            LopDTO lop = new LopDTO();
+            DangKyDTO dk = new DangKyDTO();
             if (e.RowIndex >= 0)
             {
-                lop.MAHP = HocPhan_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
-                lop.TENHP = HocPhan_dvg.Rows[e.RowIndex].Cells["TENHP"].Value.ToString();
-                lop.HK = Convert.ToInt32(HocPhan_dvg.Rows[e.RowIndex].Cells["HK"].Value);
-                lop.NAM = Convert.ToInt32(HocPhan_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
+                dk.MASV = masv != "" ? masv : HocPhan_dvg.Rows[e.RowIndex].Cells["MASV"].Value.ToString();
+                dk.MAHP = HocPhan_dvg.Rows[e.RowIndex].Cells["MAHP"].Value.ToString();
+                dk.TENHP = HocPhan_dvg.Rows[e.RowIndex].Cells["TENHP"].Value.ToString();
+                dk.HK = Convert.ToInt32(HocPhan_dvg.Rows[e.RowIndex].Cells["HK"].Value);
+                dk.NAM = Convert.ToInt32(HocPhan_dvg.Rows[e.RowIndex].Cells["NAM"].Value);
 
                 if (e.ColumnIndex == HocPhan_dvg.Columns["Delete"].Index)
                 {
                     try
                     {
-                        hp.huy_dang_ky(masv, lop);
+                        hp.huy_dang_ky(dk);
                         MessageBox.Show("Hủy thành công");
                     }
                     catch(Exception ex)
@@ -76,8 +84,16 @@ namespace ATBM.FORM.SinhVien
                     finally
                     {
                         Close();
-                        KQ_Dang_Ky_HP f = new KQ_Dang_Ky_HP(masv);
-                        f.Show();
+                        if (role == 3)
+                        {
+                            KQ_Dang_Ky_HP f = new KQ_Dang_Ky_HP(role);
+                            f.Show();
+                        }
+                        else
+                        {
+                            KQ_Dang_Ky_HP f = new KQ_Dang_Ky_HP(role, masv);
+                            f.Show();
+                        }    
                     }
                 }
             }
@@ -85,8 +101,12 @@ namespace ATBM.FORM.SinhVien
 
         private void loadData(int hk, int nam)
         {
-            IList<LopDTO> temp_list = ds.Where(lop => lop.HK == hk && lop.NAM == nam).ToList();
+            IList<DangKyDTO> temp_list = ds.Where(dk => dk.HK == hk && dk.NAM == nam).ToList();
             HocPhan_dvg.DataSource = temp_list;
+            if (role == 0)
+            {
+                HocPhan_dvg.Columns["MASV"].Visible = false;
+            }
         }
 
         private void KQ_Dang_Ky_HP_Load(object sender, EventArgs e)

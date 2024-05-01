@@ -20,22 +20,27 @@ namespace ATBM.FORM.KeHoachMo
     {
         LopBUS lop = new LopBUS();
         KHMBUS khm = new KHMBUS();
+        LopDTO kh_cu = new LopDTO();
+        bool Them;
         public ThemKHM()
         {
             InitializeComponent();
             loadHP();
+            Them = true;
         }
 
         public ThemKHM(LopDTO khm)
         {
             InitializeComponent();
             loadHP();
+            kh_cu = khm;
             Them_btn.Text = "Cập nhật";
             HocPhan_cb.SelectedValue= khm.MAHP;
             HocPhan_cb.Enabled = false;
             HocKy_cb.SelectedItem = khm.HK.ToString();
             NamHoc_txt.Text = khm.NAM.ToString();
             ChuongTrinh_cb.SelectedItem = khm.MACT;
+            Them = false;
         }
 
         private void ThemKHM_Load(object sender, EventArgs e)
@@ -65,7 +70,14 @@ namespace ATBM.FORM.KeHoachMo
             {
                 try
                 {
-                    khm.themKHM(k);
+                    if (Them)
+                    {
+                        khm.themKHM(k);
+                    }
+                    else
+                    {
+                        khm.capNhatKHM(kh_cu, k);
+                    }    
                     MessageBox.Show("Thành công");
                 }
                 catch (Exception ex)

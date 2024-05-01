@@ -92,13 +92,21 @@ namespace ATBM
 
         private void HocPhanDangKy_btn_Click(object sender, EventArgs e)
         {
-            KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP(username);
-            kq_Dang_Ky_HP.Show();
+            if (role == 0)
+            {
+                KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP(role, username);
+                kq_Dang_Ky_HP.Show();
+            }
+            else
+            {
+                KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP(role);
+                kq_Dang_Ky_HP.Show();
+            } 
         }
 
         private void DKHP_btn_Click(object sender, EventArgs e)
         {
-            DangkyHocphan dangkyHocphan = new DangkyHocphan(username);
+            DangkyHocphan dangkyHocphan = new DangkyHocphan(role, username);
             dangkyHocphan.Show();
         }
 

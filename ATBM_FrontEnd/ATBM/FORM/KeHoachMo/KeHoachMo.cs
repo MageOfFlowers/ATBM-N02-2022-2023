@@ -44,7 +44,6 @@ namespace ATBM.FORM.KeHoachMo
             KHM_dvg.Columns[2].HeaderText = "Học kỳ";
             KHM_dvg.Columns[3].HeaderText = "Năm học";
             KHM_dvg.Columns[4].HeaderText = "Chương trình";
-
             if (role == 3 || role == -1)
             {
                 DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();

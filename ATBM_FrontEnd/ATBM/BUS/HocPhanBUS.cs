@@ -5,6 +5,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Windows.Forms;
 using ATBM.Admin.DTO;
 using ATBM.DTO;
+using System.Data.Linq.Mapping;
 
 namespace ATBM.BUS
 {
@@ -95,11 +96,11 @@ namespace ATBM.BUS
             }
             return ds;
         }
-
-        public IList<LopDTO> ds_DaDangKy()
+        
+        public IList<DangKyDTO> ds_DaDangKy()
         {
             string procedureName = "admin_ols1.xem_khm_da_dk";
-            IList<LopDTO> ds = new List<LopDTO>();
+            IList<DangKyDTO> ds = new List<DangKyDTO>();
             try
             {
                 using (OracleCommand command = new OracleCommand(procedureName, connection))
@@ -115,7 +116,8 @@ namespace ATBM.BUS
 
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        LopDTO obj = new LopDTO();
+                        DangKyDTO obj = new DangKyDTO();
+                        obj.MASV = row["masv"].ToString();
                         obj.MAHP = row["mahp"].ToString();
                         obj.TENHP = row["tenhp"].ToString();
                         obj.HK = Convert.ToInt32(row["hk"]);
@@ -155,7 +157,7 @@ namespace ATBM.BUS
             }
         }
 
-        public void huy_dang_ky(string masv, LopDTO lop)
+        public void huy_dang_ky(DangKyDTO dk)
         {
             string procedureName = "admin_ols1.huy_dang_ky_hoc_phan";
             try
@@ -164,10 +166,10 @@ namespace ATBM.BUS
                 {
                     connection.Open();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add("m_masv", OracleDbType.Varchar2).Value = masv;
-                    command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = lop.MAHP;
-                    command.Parameters.Add("m_hk", OracleDbType.Int32).Value = lop.HK;
-                    command.Parameters.Add("m_nam", OracleDbType.Int32).Value = lop.NAM;
+                    command.Parameters.Add("m_masv", OracleDbType.Varchar2).Value = dk.MASV;
+                    command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = dk.MAHP;
+                    command.Parameters.Add("m_hk", OracleDbType.Int32).Value = dk.HK;
+                    command.Parameters.Add("m_nam", OracleDbType.Int32).Value = dk.NAM;
 
                     command.ExecuteNonQuery();
                     connection.Close();

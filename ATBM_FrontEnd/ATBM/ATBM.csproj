@@ -151,6 +151,7 @@
     <Compile Include="BUS\PhanCongBUS.cs" />
     <Compile Include="BUS\ThongBaoBUS.cs" />
     <Compile Include="BUS\TTHSTrongLopBUS.cs" />
+    <Compile Include="DTO\DangKyDTO.cs" />
     <Compile Include="DTO\DonViDTO.cs" />
     <Compile Include="DTO\HocPhanDTO.cs" />
     <Compile Include="DTO\LopDTO.cs" />

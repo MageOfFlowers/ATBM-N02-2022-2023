@@ -15,6 +15,8 @@ begin
     loop
         IF (r.granted_role = 'ROLE_TRUONGKHOA' or r.granted_role = 'DBA') then 
             return '1=1';
+        elsif (r.granted_role = 'ROLE_GIAOVU') then
+            return '(vaitro = ''Giang vien'' and madv = ''VPK'') or manv = ''' || m_user ||'''';
         end if;
     END LOOP;
         return 'MANV = ''' || m_user ||'''';

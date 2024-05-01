@@ -5,11 +5,10 @@ alter session set container = ATBM_3;
 --grant create table,create view,create trigger,create procedure,create user,create role,create session to ATBM_Admin;
 --drop user ATBM_Admin cascade;
 
-create role ROLE_TruongDonVi not identified;
 grant create session to ROLE_TruongDonVi;
 grant select on phancong to ROLE_TruongDonVi;
 --grant execute on ATBM_Admin.xem_phan_cong_giang_day_TrBM to ROLE_TruongDonVi;
---grant ROLE_GiangVien to ROLE_TruongDonVi;
+grant ROLE_GiangVien to ROLE_TruongDonVi;
 --drop role ROLE_TruongDonVi;
 /
 create or replace function Admin_ols1.sua_phan_cong_cua_TrBM (p_schema IN VARCHAR2, p_obj varchar2) return varchar2
