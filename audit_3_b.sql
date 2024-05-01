@@ -9,13 +9,6 @@ BEGIN
    audit_column       => 'PHUCAP',
    enable             =>  TRUE,
    statement_types    => 'SELECT');
-END; 
-BEGIN
- DBMS_FGA.ENABLE_POLICY(
-  object_schema        => 'admin_ols1',
-  object_name          => 'nhansu',
-  policy_name          => 'xem_phu_cap_nv_khac',
-  enable               => TRUE);
 END;
 
 
