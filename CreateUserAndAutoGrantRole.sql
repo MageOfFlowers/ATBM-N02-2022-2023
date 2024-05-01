@@ -103,16 +103,43 @@ BEGIN
         FETCH CUR INTO USR, USR2, USR3, USR4;
         EXIT WHEN CUR%NOTFOUND;
         IF USR2 = 'Giao vu' THEN
+        BEGIN
             STRSQL := 'GRANT role_giaovu TO '||USR;
-        ELSIF USR2 = 'Nhan vien co ban' THEN
+            EXECUTE IMMEDIATE (STRSQL);
             STRSQL := 'GRANT role_nhanvien TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);
+        END;
+        ELSIF USR2 = 'Nhan vien co ban' THEN
+        BEGIN
+            STRSQL := 'GRANT role_nhanvien TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);
+        END;
         ELSIF USR3 = USR AND USR4 = 'Van phong khoa' THEN
+        BEGIN
             STRSQL := 'GRANT role_truongkhoa TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);
+            STRSQL := 'GRANT role_nhanvien TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);
+            STRSQL := 'GRANT role_giangvien TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);     
+        END;
         ELSIF USR3 = USR THEN
+        BEGIN
             STRSQL := 'GRANT role_truongdonvi TO '||USR; 
-        ELSE STRSQL := 'GRANT role_giangvien TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);
+            STRSQL := 'GRANT role_nhanvien TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);
+            STRSQL := 'GRANT role_giangvien TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);   
+        END;
+        ELSE 
+        BEGIN
+            STRSQL := 'GRANT role_nhanvien TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);
+            STRSQL := 'GRANT role_giangvien TO '||USR;
+            EXECUTE IMMEDIATE (STRSQL);   
+        END;
         END IF;
-        EXECUTE IMMEDIATE (STRSQL);
     END LOOP;
     CLOSE CUR;
 END;
