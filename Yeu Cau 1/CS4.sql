@@ -51,7 +51,14 @@ end;
 --select * from ALL_POLICIES ;
 --SELECT ATBM_Admin.sua_phan_cong_cua_TrBM('ATBM_Admin', 'phancong') FROM DUAL;
 /
-execute dbms_rls.add_policy(object_schema => 'Admin_ols1',object_name => 'phancong',policy_name => 'TrBM_PHANCONG',function_schema => 'Admin_ols1',policy_function => 'sua_phan_cong_cua_TrBM',statement_types => 'update,insert,delete',update_check => TRUE );
+begin
+ dbms_rls.add_policy(object_schema => 'Admin_ols1',
+                     object_name => 'phancong',policy_name => 'TrBM_PHANCONG',
+                     function_schema => 'Admin_ols1',
+                     policy_function => 'sua_phan_cong_cua_TrBM',
+                     statement_types => 'update,insert,delete',
+                     update_check => TRUE );
+end;
 /
 --execute dbms_rls.drop_policy(object_schema => 'ATBM_Admin',object_name => 'phancong',policy_name => 'TrBM_PHANCONG');
 --/
@@ -104,7 +111,14 @@ end;
 --select * from ALL_POLICIES ;
 --SELECT Admin_ols1.xem_phan_cong_giang_day_TrBM('Admin_ols1', 'phancong') FROM DUAL;
 /
-execute dbms_rls.add_policy(object_schema => 'Admin_ols1',object_name => 'phancong',policy_name => 'TrBM_PHANCONG_GIANGVIEN',function_schema => 'Admin_ols1',policy_function => 'xem_phan_cong_giang_day_TrBM',statement_types => 'select' );
+begin
+    dbms_rls.add_policy(object_schema => 'Admin_ols1',
+                        object_name => 'phancong',
+                        policy_name => 'TrBM_PHANCONG_GIANGVIEN',
+                        function_schema => 'Admin_ols1',
+                        policy_function => 'xem_phan_cong_giang_day_TrBM',
+                        statement_types => 'select' );
+end;
 /
 --execute dbms_rls.drop_policy(object_schema => 'Admin_ols1',object_name => 'phancong',policy_name => 'TrBM_PHANCONG_GIANGVIEN');
 /

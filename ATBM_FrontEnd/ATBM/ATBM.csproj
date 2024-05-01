@@ -127,6 +127,12 @@
     <Compile Include="Admin\NhatKyHeThong.Designer.cs">
       <DependentUpon>NhatKyHeThong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Recover.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Recover.Designer.cs">
+      <DependentUpon>Recover.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\TaoThongBao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,7 @@
       <DependentUpon>TaoThongBao.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\AdminBUS.cs" />
+    <Compile Include="BUS\cmdBUS.cs" />
     <Compile Include="BUS\DonViBUS.cs" />
     <Compile Include="BUS\HocPhanBUS.cs" />
     <Compile Include="BUS\KHMBUS.cs" />
@@ -324,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Recover.resx">
+      <DependentUpon>Recover.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>

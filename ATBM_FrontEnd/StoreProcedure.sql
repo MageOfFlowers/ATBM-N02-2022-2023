@@ -367,3 +367,4 @@ end;
 /
 
 grant execute on lay_thong_bao to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
+grant select on thongbao to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;

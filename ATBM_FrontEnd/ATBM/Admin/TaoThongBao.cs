@@ -94,7 +94,7 @@ namespace ATBM.Admin
                     foreach (string item in selectedItems3)
                     {
                         tmp = "";
-                        if (item == "Cở sở 1") { tmp = "CS1"; }
+                        if (item == "Cơ sở 1") { tmp = "CS1"; }
                         else if (item == "Cơ sở 2") { tmp = "CS2"; }
 
                         group += tmp + ",";
