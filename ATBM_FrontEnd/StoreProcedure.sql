@@ -22,7 +22,7 @@ end;
 create or replace procedure dang_ky_hoc_phan(m_masv varchar2, m_mahp varchar2, m_hk number, m_nam number, m_mact varchar2)
 as
 begin
-    execute immediate 'insert into admin_ols1.dangky values (''' || m_masv || ''', ''' || m_mahp || ''', ' || m_hk || ', ' || m_nam || ', ''' || m_mact || ''', null, null, null, null)';
+    insert into admin_ols1.dangky values (m_masv,m_mahp,m_hk,m_nam,m_mact, null, null, null, null);
 end;
 /
 
