@@ -19,6 +19,11 @@ namespace ATBM
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Users users = new Users();
@@ -49,11 +54,6 @@ namespace ATBM
             t.ShowDialog();
         }
 
-<<<<<<< Updated upstream
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-=======
         private void button3_Click(object sender, EventArgs e)
         {
             cmdBUS cmdBUS = new cmdBUS();
@@ -64,7 +64,6 @@ namespace ATBM
         {
             Recover r=new Recover();
             r.ShowDialog();
->>>>>>> Stashed changes
         }
     }
 }

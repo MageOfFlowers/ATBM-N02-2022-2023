@@ -1,4 +1,6 @@
-﻿namespace ATBM
+﻿using System;
+
+namespace ATBM
 {
     partial class Form1
     {
@@ -50,17 +52,10 @@
             // 
             // button1
             // 
-<<<<<<< Updated upstream
-            this.button1.Location = new System.Drawing.Point(144, 104);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 19);
-=======
             this.button1.Location = new System.Drawing.Point(104, 104);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(163, 25);
->>>>>>> Stashed changes
             this.button1.TabIndex = 1;
             this.button1.Text = "User List";
             this.button1.UseVisualStyleBackColor = true;
@@ -68,17 +63,10 @@
             // 
             // button2
             // 
-<<<<<<< Updated upstream
-            this.button2.Location = new System.Drawing.Point(321, 103);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(56, 19);
-=======
             this.button2.Location = new System.Drawing.Point(304, 103);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(157, 26);
->>>>>>> Stashed changes
             this.button2.TabIndex = 2;
             this.button2.Text = "Role list";
             this.button2.UseVisualStyleBackColor = true;
@@ -86,17 +74,10 @@
             // 
             // GanNhan
             // 
-<<<<<<< Updated upstream
-            this.GanNhan.Location = new System.Drawing.Point(144, 163);
-            this.GanNhan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.GanNhan.Name = "GanNhan";
-            this.GanNhan.Size = new System.Drawing.Size(118, 24);
-=======
             this.GanNhan.Location = new System.Drawing.Point(104, 163);
             this.GanNhan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GanNhan.Name = "GanNhan";
             this.GanNhan.Size = new System.Drawing.Size(158, 24);
->>>>>>> Stashed changes
             this.GanNhan.TabIndex = 3;
             this.GanNhan.Text = "Gán Nhãn Người dùng";
             this.GanNhan.UseVisualStyleBackColor = true;
@@ -104,17 +85,10 @@
             // 
             // TaoThongBao
             // 
-<<<<<<< Updated upstream
-            this.TaoThongBao.Location = new System.Drawing.Point(300, 163);
-            this.TaoThongBao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.TaoThongBao.Name = "TaoThongBao";
-            this.TaoThongBao.Size = new System.Drawing.Size(118, 24);
-=======
             this.TaoThongBao.Location = new System.Drawing.Point(304, 163);
             this.TaoThongBao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TaoThongBao.Name = "TaoThongBao";
             this.TaoThongBao.Size = new System.Drawing.Size(157, 24);
->>>>>>> Stashed changes
             this.TaoThongBao.TabIndex = 4;
             this.TaoThongBao.Text = "Tạo thông báo";
             this.TaoThongBao.UseVisualStyleBackColor = true;
@@ -122,17 +96,10 @@
             // 
             // NhatKyHeThong
             // 
-<<<<<<< Updated upstream
-            this.NhatKyHeThong.Location = new System.Drawing.Point(144, 236);
-            this.NhatKyHeThong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.NhatKyHeThong.Name = "NhatKyHeThong";
-            this.NhatKyHeThong.Size = new System.Drawing.Size(118, 24);
-=======
             this.NhatKyHeThong.Location = new System.Drawing.Point(104, 225);
             this.NhatKyHeThong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NhatKyHeThong.Name = "NhatKyHeThong";
             this.NhatKyHeThong.Size = new System.Drawing.Size(158, 24);
->>>>>>> Stashed changes
             this.NhatKyHeThong.TabIndex = 5;
             this.NhatKyHeThong.Text = "Nhật kí hệ thống";
             this.NhatKyHeThong.UseVisualStyleBackColor = true;
@@ -163,11 +130,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
-<<<<<<< Updated upstream
-=======
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
->>>>>>> Stashed changes
             this.Controls.Add(this.NhatKyHeThong);
             this.Controls.Add(this.TaoThongBao);
             this.Controls.Add(this.GanNhan);

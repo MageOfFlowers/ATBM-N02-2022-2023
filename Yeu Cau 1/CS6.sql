@@ -185,7 +185,7 @@ loop
                 end loop;
             end;
         end if;
-        return 'NAM = ''' || p_NAM ||''' AND HK = ''' || p_HK || ''' AND MASV = ''' || user || ''' and MAHP in (' || mahp_s || ')';
+        return 'NAM = ''' || p_NAM ||''' AND HK = ''' || p_HK || ''' and MAHP in (' || mahp_s || ')';
     end;
     end if;
     end loop;

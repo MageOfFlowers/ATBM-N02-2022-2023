@@ -7,6 +7,7 @@ alter session set container = ATBM_3;
 
 --grant ROLE_NHANVIEN to ROLE_GIAOVU;
 grant create session to ROLE_GIAOVU;
+grant select on nhansu to role_giaovu;
 grant select,insert,update on sinhvien to ROLE_GIAOVU;
 grant select,insert,update on donvi to ROLE_GIAOVU;
 grant select,insert,update on khmo to ROLE_GIAOVU;

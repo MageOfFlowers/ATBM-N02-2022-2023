@@ -41,7 +41,7 @@ create or replace procedure cap_nhat_hoc_phan(m_mahp in char, m_tenhp in nvarcha
 authid current_user
 as
 begin
-    update hocphan set tenhp=m_tenhp, sotc=m_sotc, stlt=m_stlt, stth=m_stth, sosvtd=m_sosvtd, madv=m_madv
+    update admin_ols1.hocphan set tenhp=m_tenhp, sotc=m_sotc, stlt=m_stlt, stth=m_stth, sosvtd=m_sosvtd, madv=m_madv
     where mahp=m_mahp;
 end;
 /
@@ -113,11 +113,11 @@ begin
 end;
 /
 
-create or replace procedure thay_doi_ke_hoach (m_mahp varchar2, m_hk integer, m_nam integer, m_mact varchar2)
+create or replace procedure thay_doi_ke_hoach (m_mahp varchar2, m_hk_cu integer, m_hk_moi integer, m_nam_cu integer, m_nam_moi integer, m_mact_cu varchar2, m_mact_moi varchar2)
 authid current_user
 as
 begin
-    execute immediate 'update admin_ols1.khmo set hk = ' || m_hk || ', nam = ' || m_nam || ', mact = ''' || m_mact || ''' where mahp = ''' || m_mahp || '';
+    update admin_ols1.khmo set hk = m_hk_moi, nam = m_nam_moi, mact = m_mact_moi where mahp = m_mahp and hk = m_hk_cu and nam = m_nam_cu and mact = m_mact_cu;
 end;
 /
 
@@ -142,7 +142,7 @@ authid current_user
 as
 begin
     open c1 for
-    select k.mahp, h.tenhp, k.hk, k.nam, k.mact 
+    select k.masv, k.mahp, h.tenhp, k.hk, k.nam, k.mact 
     from admin_ols1.dangky k join admin_ols1.hocphan h
     on k.mahp = h.mahp;
     DBMS_SQL.RETURN_RESULT(c1);
@@ -191,19 +191,17 @@ end;
 create or replace procedure xem_vai_tro(c1 out SYS_REFCURSOR)
 authid current_user
 as
+user varchar2(100);
 role varchar2(100);
 c_temp SYS_REFCURSOR;
 begin
-open c_temp for
-    select vaitro from admin_ols1.nhansu
-    where manv = sys_context('userenv', 'session_user');
-fetch c_temp into role;
-if role is not null then
-    close c_temp;
-    open c1 for select role as vaitro from dual;
+user := sys_context('userenv', 'session_user');
+if (user like 'NV%') then
+    open c1 for
+    select vaitro from admin_ols1.nhansu where manv = user;
 else
-    close c_temp;
-    open c1 for select 'Sinh vien' as vaitro from dual;
+    open c1 for
+    select 'Sinh vien' as vaitro from dual;
 end if;
 DBMS_SQL.RETURN_RESULT(c1);
 end;
@@ -267,7 +265,7 @@ begin
 end;
 /
 
-grant execute on lay_ds_nhan_su to role_truongdonvi, role_truongkhoa;
+grant execute on lay_ds_nhan_su to role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on lay_thong_tin_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on cap_nhat_sdt_nhan_su to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on xem_vai_tro to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa, role_sinhvien;
@@ -328,7 +326,7 @@ end;
 /
 
 grant execute on lay_danh_sach_sinh_vien to role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
-grant execute on lay_thong_tin_sinh_vien to role_sinhvien, role_giaovu;
+grant execute on lay_thong_tin_sinh_vien to role_sinhvien, role_nhanvien, role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on cap_nhat_dia_chi_va_sdt_sinh_vien to role_sinhvien;
 grant execute on them_sinh_vien to role_giaovu;
 grant execute on cap_nhat_tt_sinh_vien to role_giaovu;
@@ -369,10 +367,10 @@ begin
 end;
 /
 
-grant execute on xem_phan_cong to role_giangvien, role_truongdonvi, role_truongkhoa;
+grant execute on xem_phan_cong to role_giangvien, role_giaovu, role_truongdonvi, role_truongkhoa;
 grant execute on them_phan_cong to role_truongdonvi, role_truongkhoa;
 grant execute on xoa_phan_cong to role_truongdonvi, role_truongkhoa;
-grant execute on sua_phan_cong to role_truongdonvi, role_truongkhoa;
+grant execute on sua_phan_cong to role_giaovu, role_truongdonvi, role_truongkhoa;
 
 
 --Don vi

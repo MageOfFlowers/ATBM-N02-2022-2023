@@ -127,6 +127,12 @@
     <Compile Include="Admin\NhatKyHeThong.Designer.cs">
       <DependentUpon>NhatKyHeThong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Recover.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Recover.Designer.cs">
+      <DependentUpon>Recover.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\TaoThongBao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,7 @@
       <DependentUpon>TaoThongBao.cs</DependentUpon>
     </Compile>
     <Compile Include="BUS\AdminBUS.cs" />
+    <Compile Include="BUS\cmdBUS.cs" />
     <Compile Include="BUS\DonViBUS.cs" />
     <Compile Include="BUS\HocPhanBUS.cs" />
     <Compile Include="BUS\KHMBUS.cs" />
@@ -144,6 +151,7 @@
     <Compile Include="BUS\PhanCongBUS.cs" />
     <Compile Include="BUS\ThongBaoBUS.cs" />
     <Compile Include="BUS\TTHSTrongLopBUS.cs" />
+    <Compile Include="DTO\DangKyDTO.cs" />
     <Compile Include="DTO\DonViDTO.cs" />
     <Compile Include="DTO\HocPhanDTO.cs" />
     <Compile Include="DTO\LopDTO.cs" />

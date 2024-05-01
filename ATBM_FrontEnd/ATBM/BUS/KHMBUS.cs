@@ -68,7 +68,7 @@ namespace ATBM.BUS
                 connection.Close();
             }
         }
-        public void capNhatKHM(LopDTO khm)
+        public void capNhatKHM(LopDTO kh_cu, LopDTO khm)
         {
             string procedureName = "admin_ols1.thay_doi_ke_hoach";
             using (OracleCommand command = new OracleCommand(procedureName, connection))
@@ -76,9 +76,15 @@ namespace ATBM.BUS
                 connection.Open();
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("m_mahp", OracleDbType.Varchar2).Value = khm.MAHP;
-                command.Parameters.Add("m_hk", OracleDbType.Int32).Value = khm.HK;
-                command.Parameters.Add("m_nam", OracleDbType.Int32).Value = khm.NAM;
-                command.Parameters.Add("m_mact", OracleDbType.Varchar2).Value = khm.MACT;
+
+                command.Parameters.Add("m_hk_cu", OracleDbType.Int32).Value = kh_cu.HK;
+                command.Parameters.Add("m_hk_moi", OracleDbType.Int32).Value = khm.HK;
+
+                command.Parameters.Add("m_nam_cu", OracleDbType.Int32).Value = kh_cu.NAM;
+                command.Parameters.Add("m_nam_moi", OracleDbType.Int32).Value = khm.NAM;
+
+                command.Parameters.Add("m_mact_cu", OracleDbType.Varchar2).Value = kh_cu.MACT;
+                command.Parameters.Add("m_mact_moi", OracleDbType.Varchar2).Value = khm.MACT;
 
                 command.ExecuteNonQuery();
                 connection.Close();

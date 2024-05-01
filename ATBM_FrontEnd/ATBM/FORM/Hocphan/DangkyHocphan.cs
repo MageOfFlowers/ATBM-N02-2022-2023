@@ -19,11 +19,13 @@ namespace ATBM.FORM.Hocphan
         HocPhanBUS hp = new HocPhanBUS();
         IList<LopDTO> ds = new List<LopDTO>();
         string masv;
+        int role;
 
-        public DangkyHocphan(string m_masv)
+        public DangkyHocphan(int m_role, string m_masv)
         {
             InitializeComponent();
             masv = m_masv;
+            role = m_role;
             ds = hp.ds_HocPhanDangKy();
             loadCB(ds);
             loadHP(ds);
@@ -118,7 +120,7 @@ namespace ATBM.FORM.Hocphan
 
         private void KetQua_btn_Click(object sender, EventArgs e)
         {
-            KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP(masv);
+            KQ_Dang_Ky_HP kq_Dang_Ky_HP = new KQ_Dang_Ky_HP(role, masv);
             kq_Dang_Ky_HP.Show();
         }
     }
