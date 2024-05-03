@@ -89,6 +89,7 @@ namespace ATBM.Admin
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi hiển thị");
+                MessageBox.Show(ex.Message);
             }
         }
         private void LayDSThem()
@@ -408,8 +409,6 @@ namespace ATBM.Admin
             dt.Columns.Add("object_name");
             dt.Columns.Add("return_code");
             dt.Columns.Add("event_timestamp");
-            dt.Columns.Add("system_privilege");
-            dt.Columns.Add("unified_audit_policies");
             foreach (var item in dsNhatKy)
             {
                 if (item.check == true)
@@ -421,9 +420,6 @@ namespace ATBM.Admin
                     row["object_name"] = item.object_name;
                     row["return_code"] = item.return_code;
                     row["event_timestamp"] = item.event_timestamp;
-                    row["system_privilege"] = item.system_privilege;
-                    row["system_privilege"] = item.system_privilege;
-                    row["unified_audit_policies"] = item.unified_audit_policies;
                     dt.Rows.Add(row);
                 }
             }

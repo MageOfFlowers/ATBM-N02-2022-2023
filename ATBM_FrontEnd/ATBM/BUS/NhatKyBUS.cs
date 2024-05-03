@@ -44,8 +44,6 @@ namespace ATBM.BUS
                     NhatKy.object_name = row["object_name"].ToString();
                     NhatKy.return_code = row["return_code"].ToString();
                     NhatKy.event_timestamp = row["event_timestamp"].ToString();
-                    NhatKy.system_privilege = row["system_privilege"].ToString();
-                    NhatKy.unified_audit_policies = row["unified_audit_policies"].ToString();
                     if (NhatKy.return_code == "0")
                     {
                         NhatKy.return_code = "Thành công";
