@@ -34,13 +34,15 @@ namespace ATBM.FORM.Hocphan
             this.label1 = new System.Windows.Forms.Label();
             this.HocPhanCB = new System.Windows.Forms.ComboBox();
             this.KetQua_btn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.MaSV_CB = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DSHocphanDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // MaHPLB
             // 
             this.MaHPLB.AutoSize = true;
-            this.MaHPLB.Location = new System.Drawing.Point(151, 95);
+            this.MaHPLB.Location = new System.Drawing.Point(104, 97);
             this.MaHPLB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MaHPLB.Name = "MaHPLB";
             this.MaHPLB.Size = new System.Drawing.Size(84, 16);
@@ -71,7 +73,7 @@ namespace ATBM.FORM.Hocphan
             // HocPhanCB
             // 
             this.HocPhanCB.FormattingEnabled = true;
-            this.HocPhanCB.Location = new System.Drawing.Point(279, 92);
+            this.HocPhanCB.Location = new System.Drawing.Point(232, 94);
             this.HocPhanCB.Name = "HocPhanCB";
             this.HocPhanCB.Size = new System.Drawing.Size(135, 24);
             this.HocPhanCB.TabIndex = 13;
@@ -87,12 +89,33 @@ namespace ATBM.FORM.Hocphan
             this.KetQua_btn.UseVisualStyleBackColor = true;
             this.KetQua_btn.Click += new System.EventHandler(this.KetQua_btn_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(431, 98);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 16);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Mã sinh viên";
+            // 
+            // MaSV_CB
+            // 
+            this.MaSV_CB.FormattingEnabled = true;
+            this.MaSV_CB.Location = new System.Drawing.Point(552, 94);
+            this.MaSV_CB.Name = "MaSV_CB";
+            this.MaSV_CB.Size = new System.Drawing.Size(135, 24);
+            this.MaSV_CB.TabIndex = 13;
+            this.MaSV_CB.SelectedIndexChanged += new System.EventHandler(this.HocPhanCB_SelectedIndexChanged);
+            // 
             // DangkyHocphan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 554);
             this.Controls.Add(this.KetQua_btn);
+            this.Controls.Add(this.MaSV_CB);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.HocPhanCB);
             this.Controls.Add(this.MaHPLB);
             this.Controls.Add(this.DSHocphanDGV);
@@ -113,5 +136,7 @@ namespace ATBM.FORM.Hocphan
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox HocPhanCB;
         private System.Windows.Forms.Button KetQua_btn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox MaSV_CB;
     }
 }

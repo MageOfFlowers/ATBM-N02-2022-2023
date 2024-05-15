@@ -105,6 +105,16 @@ begin
                         statement_types => 'insert,delete',
                         update_check => TRUE );
 end;
+
+begin
+    dbms_rls.add_policy(object_schema => 'Admin_ols1',
+                        object_name => 'dangky',
+                        policy_name => 'GIAOVU_XEM_DANGKY',
+                        function_schema => 'Admin_ols1',
+                        policy_function => 'dang_ki_cho_sv',
+                        statement_types => 'select',
+                        update_check => TRUE );
+end;
 /
 --execute dbms_rls.drop_policy(object_schema => 'Admin_ols1',object_name => 'dangky',policy_name => 'GIAOVU_DANGKY');
 --select * from ALL_POLICIES ;

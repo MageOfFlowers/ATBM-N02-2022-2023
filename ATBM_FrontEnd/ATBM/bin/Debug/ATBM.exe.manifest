@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ATBM.exe" size="178136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ATBM.exe" size="179160">
       <assemblyIdentity name="ATBM" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GD8k9cdkJq6CyIStfiWazq3YlZJ0MWwmpWRugD1VZdU=</dsig:DigestValue>
+        <dsig:DigestValue>C043nCyh5NDzEl7hFfpKqvFDsg31CGomnBPq1xOGIrg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

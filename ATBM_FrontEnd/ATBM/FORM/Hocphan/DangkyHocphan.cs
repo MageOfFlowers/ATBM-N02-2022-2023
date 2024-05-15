@@ -11,12 +11,14 @@ using ATBM.BUS;
 using ATBM.Admin.DTO;
 using ATBM.FORM.SinhVien;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using ATBM.DTO;
 
 namespace ATBM.FORM.Hocphan
 {
     public partial class DangkyHocphan : Form
     {
         HocPhanBUS hp = new HocPhanBUS();
+        SinhVienBUS sv = new SinhVienBUS();
         IList<LopDTO> ds = new List<LopDTO>();
         string masv;
         int role;
@@ -24,7 +26,12 @@ namespace ATBM.FORM.Hocphan
         public DangkyHocphan(int m_role, string m_masv)
         {
             InitializeComponent();
-            masv = m_masv;
+            if (m_role == 0)
+            {
+                masv = m_masv;
+                label2.Hide();
+                MaSV_CB.Hide();
+            }
             role = m_role;
             ds = hp.ds_HocPhanDangKy();
             loadCB(ds);
@@ -53,6 +60,12 @@ namespace ATBM.FORM.Hocphan
             HocPhanCB.DataSource = temp;
             HocPhanCB.DisplayMember = "MAHP";
             HocPhanCB.ValueMember = "MAHP";
+
+            if (role == 3)
+            {
+                IList<SinhVienDTO> dssv = sv.lay_danh_sach_sinh_vien();
+                MaSV_CB.DataSource = dssv.Select(sv => sv.MASV).ToList();
+            }
         }
 
         private void DSHocphanDGV_CellClick(object sender, DataGridViewCellEventArgs e)

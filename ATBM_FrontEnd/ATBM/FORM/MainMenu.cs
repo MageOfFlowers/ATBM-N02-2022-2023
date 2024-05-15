@@ -33,8 +33,8 @@ namespace ATBM
                     if (role != 3)
                     {
                         HocPhanDangKy_btn.Hide();
+                        DKHP_btn.Hide();
                     }
-                    DKHP_btn.Hide();
                 }
                 if (role == 0 || role == 1 || role == 3)
                 {
